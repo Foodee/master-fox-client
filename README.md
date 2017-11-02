@@ -1,125 +1,82 @@
-# MasterFox JsonAPI Client
+# MasterFox JSONAPI Client
+
+MasterFox is a a JSONAPI compliant api details can be found here: http://jsonapi.org/
 
 ## TOC
 
-- Resources
-    - [AppConfiguration](#resource-AppConfiguration)
-    - [Area](#resource-Area)
-    - [AreaClosure](#resource-AreaClosure)
-    - [Client](#resource-Client)
-    - [ClientDiscount](#resource-ClientDiscount)
-    - [ClientOrderInvoice](#resource-ClientOrderInvoice)
-    - [ClientSignup](#resource-ClientSignup)
-    - [Company](#resource-Company)
-    - [Contact](#resource-Contact)
-    - [Courier](#resource-Courier)
-    - [DeliveryCase](#resource-DeliveryCase)
-    - [DeliveryLocation](#resource-DeliveryLocation)
-    - [DeskCase](#resource-DeskCase)
-    - [DietaryTag](#resource-DietaryTag)
-    - [DiscountCode](#resource-DiscountCode)
-    - [DriverDay](#resource-DriverDay)
-    - [DriverPing](#resource-DriverPing)
-    - [DriverWeek](#resource-DriverWeek)
-    - [EmailMessage](#resource-EmailMessage)
-    - [GiftbitCard](#resource-GiftbitCard)
-    - [GiftbitError](#resource-GiftbitError)
-    - [GiftbitGift](#resource-GiftbitGift)
-    - [GroupOrderMember](#resource-GroupOrderMember)
-    - [Invoice](#resource-Invoice)
-    - [InvoicingTaxRate](#resource-InvoicingTaxRate)
-    - [Location](#resource-Location)
-    - [MealPlan](#resource-MealPlan)
-    - [Menu](#resource-Menu)
-    - [MenuGroup](#resource-MenuGroup)
-    - [MenuItem](#resource-MenuItem)
-    - [MenuOptionGroup](#resource-MenuOptionGroup)
-    - [MenuOptionItem](#resource-MenuOptionItem)
-    - [Order](#resource-Order)
-    - [OrderItem](#resource-OrderItem)
-    - [PaymentCard](#resource-PaymentCard)
-    - [PickupLocation](#resource-PickupLocation)
-    - [PromoCode](#resource-PromoCode)
-    - [QualifyingQuestion](#resource-QualifyingQuestion)
-    - [Restaurant](#resource-Restaurant)
-    - [RestaurantClosure](#resource-RestaurantClosure)
-    - [RestaurantDiscount](#resource-RestaurantDiscount)
-    - [RestaurantOrderInvoice](#resource-RestaurantOrderInvoice)
-    - [Role](#resource-Role)
-    - [SalesforceSyncError](#resource-SalesforceSyncError)
-    - [ServiceTime](#resource-ServiceTime)
-    - [Tag](#resource-Tag)
-    - [User](#resource-User)
-    - [UserFeedback](#resource-UserFeedback)
-    - [UserInvite](#resource-UserInvite)
-    - [Version](#resource-Version)
-  
-- ResourceFilters
-    - [AppConfiguration](#resource-filter-AppConfiguration)
-    - [Area](#resource-filter-Area)
-    - [AreaClosure](#resource-filter-AreaClosure)
-    - [Client](#resource-filter-Client)
-    - [ClientDiscount](#resource-filter-ClientDiscount)
-    - [ClientOrderInvoice](#resource-filter-ClientOrderInvoice)
-    - [ClientSignup](#resource-filter-ClientSignup)
-    - [Company](#resource-filter-Company)
-    - [Contact](#resource-filter-Contact)
-    - [Courier](#resource-filter-Courier)
-    - [DeliveryCase](#resource-filter-DeliveryCase)
-    - [DeliveryLocation](#resource-filter-DeliveryLocation)
-    - [DeskCase](#resource-filter-DeskCase)
-    - [DietaryTag](#resource-filter-DietaryTag)
-    - [DiscountCode](#resource-filter-DiscountCode)
-    - [DriverDay](#resource-filter-DriverDay)
-    - [DriverPing](#resource-filter-DriverPing)
-    - [DriverWeek](#resource-filter-DriverWeek)
-    - [EmailMessage](#resource-filter-EmailMessage)
-    - [GiftbitCard](#resource-filter-GiftbitCard)
-    - [GiftbitError](#resource-filter-GiftbitError)
-    - [GiftbitGift](#resource-filter-GiftbitGift)
-    - [GroupOrderMember](#resource-filter-GroupOrderMember)
-    - [Invoice](#resource-filter-Invoice)
-    - [InvoicingTaxRate](#resource-filter-InvoicingTaxRate)
-    - [Location](#resource-filter-Location)
-    - [MealPlan](#resource-filter-MealPlan)
-    - [Menu](#resource-filter-Menu)
-    - [MenuGroup](#resource-filter-MenuGroup)
-    - [MenuItem](#resource-filter-MenuItem)
-    - [MenuOptionGroup](#resource-filter-MenuOptionGroup)
-    - [MenuOptionItem](#resource-filter-MenuOptionItem)
-    - [Order](#resource-filter-Order)
-    - [OrderItem](#resource-filter-OrderItem)
-    - [PaymentCard](#resource-filter-PaymentCard)
-    - [PickupLocation](#resource-filter-PickupLocation)
-    - [PromoCode](#resource-filter-PromoCode)
-    - [QualifyingQuestion](#resource-filter-QualifyingQuestion)
-    - [Restaurant](#resource-filter-Restaurant)
-    - [RestaurantClosure](#resource-filter-RestaurantClosure)
-    - [RestaurantDiscount](#resource-filter-RestaurantDiscount)
-    - [RestaurantOrderInvoice](#resource-filter-RestaurantOrderInvoice)
-    - [Role](#resource-filter-Role)
-    - [SalesforceSyncError](#resource-filter-SalesforceSyncError)
-    - [ServiceTime](#resource-filter-ServiceTime)
-    - [Tag](#resource-filter-Tag)
-    - [User](#resource-filter-User)
-    - [UserFeedback](#resource-filter-UserFeedback)
-    - [UserInvite](#resource-filter-UserInvite)
-    - [Version](#resource-filter-Version)
-  
+| ResourceName | | | |
+| --- | --- | --- | --- |
+ AppConfiguration | [Data Access Object](#resource-dao-AppConfiguration)  | [Schema](#resource-AppConfiguration) | [Filter Definition](#resource-filter-AppConfiguration) |
+ Area | [Data Access Object](#resource-dao-Area)  | [Schema](#resource-Area) | [Filter Definition](#resource-filter-Area) |
+ AreaClosure | [Data Access Object](#resource-dao-AreaClosure)  | [Schema](#resource-AreaClosure) | [Filter Definition](#resource-filter-AreaClosure) |
+ Client | [Data Access Object](#resource-dao-Client)  | [Schema](#resource-Client) | [Filter Definition](#resource-filter-Client) |
+ ClientDiscount | [Data Access Object](#resource-dao-ClientDiscount)  | [Schema](#resource-ClientDiscount) | [Filter Definition](#resource-filter-ClientDiscount) |
+ ClientOrderInvoice | [Data Access Object](#resource-dao-ClientOrderInvoice)  | [Schema](#resource-ClientOrderInvoice) | [Filter Definition](#resource-filter-ClientOrderInvoice) |
+ ClientSignup | [Data Access Object](#resource-dao-ClientSignup)  | [Schema](#resource-ClientSignup) | [Filter Definition](#resource-filter-ClientSignup) |
+ Company | [Data Access Object](#resource-dao-Company)  | [Schema](#resource-Company) | [Filter Definition](#resource-filter-Company) |
+ Contact | [Data Access Object](#resource-dao-Contact)  | [Schema](#resource-Contact) | [Filter Definition](#resource-filter-Contact) |
+ Courier | [Data Access Object](#resource-dao-Courier)  | [Schema](#resource-Courier) | [Filter Definition](#resource-filter-Courier) |
+ DeliveryCase | [Data Access Object](#resource-dao-DeliveryCase)  | [Schema](#resource-DeliveryCase) | [Filter Definition](#resource-filter-DeliveryCase) |
+ DeliveryLocation | [Data Access Object](#resource-dao-DeliveryLocation)  | [Schema](#resource-DeliveryLocation) | [Filter Definition](#resource-filter-DeliveryLocation) |
+ DeskCase | [Data Access Object](#resource-dao-DeskCase)  | [Schema](#resource-DeskCase) | [Filter Definition](#resource-filter-DeskCase) |
+ DietaryTag | [Data Access Object](#resource-dao-DietaryTag)  | [Schema](#resource-DietaryTag) | [Filter Definition](#resource-filter-DietaryTag) |
+ DiscountCode | [Data Access Object](#resource-dao-DiscountCode)  | [Schema](#resource-DiscountCode) | [Filter Definition](#resource-filter-DiscountCode) |
+ DriverDay | [Data Access Object](#resource-dao-DriverDay)  | [Schema](#resource-DriverDay) | [Filter Definition](#resource-filter-DriverDay) |
+ DriverPing | [Data Access Object](#resource-dao-DriverPing)  | [Schema](#resource-DriverPing) | [Filter Definition](#resource-filter-DriverPing) |
+ DriverWeek | [Data Access Object](#resource-dao-DriverWeek)  | [Schema](#resource-DriverWeek) | [Filter Definition](#resource-filter-DriverWeek) |
+ EmailMessage | [Data Access Object](#resource-dao-EmailMessage)  | [Schema](#resource-EmailMessage) | [Filter Definition](#resource-filter-EmailMessage) |
+ GiftbitCard | [Data Access Object](#resource-dao-GiftbitCard)  | [Schema](#resource-GiftbitCard) | [Filter Definition](#resource-filter-GiftbitCard) |
+ GiftbitError | [Data Access Object](#resource-dao-GiftbitError)  | [Schema](#resource-GiftbitError) | [Filter Definition](#resource-filter-GiftbitError) |
+ GiftbitGift | [Data Access Object](#resource-dao-GiftbitGift)  | [Schema](#resource-GiftbitGift) | [Filter Definition](#resource-filter-GiftbitGift) |
+ GroupOrderMember | [Data Access Object](#resource-dao-GroupOrderMember)  | [Schema](#resource-GroupOrderMember) | [Filter Definition](#resource-filter-GroupOrderMember) |
+ Invoice | [Data Access Object](#resource-dao-Invoice)  | [Schema](#resource-Invoice) | [Filter Definition](#resource-filter-Invoice) |
+ InvoicingTaxRate | [Data Access Object](#resource-dao-InvoicingTaxRate)  | [Schema](#resource-InvoicingTaxRate) | [Filter Definition](#resource-filter-InvoicingTaxRate) |
+ Location | [Data Access Object](#resource-dao-Location)  | [Schema](#resource-Location) | [Filter Definition](#resource-filter-Location) |
+ MealPlan | [Data Access Object](#resource-dao-MealPlan)  | [Schema](#resource-MealPlan) | [Filter Definition](#resource-filter-MealPlan) |
+ Menu | [Data Access Object](#resource-dao-Menu)  | [Schema](#resource-Menu) | [Filter Definition](#resource-filter-Menu) |
+ MenuGroup | [Data Access Object](#resource-dao-MenuGroup)  | [Schema](#resource-MenuGroup) | [Filter Definition](#resource-filter-MenuGroup) |
+ MenuItem | [Data Access Object](#resource-dao-MenuItem)  | [Schema](#resource-MenuItem) | [Filter Definition](#resource-filter-MenuItem) |
+ MenuOptionGroup | [Data Access Object](#resource-dao-MenuOptionGroup)  | [Schema](#resource-MenuOptionGroup) | [Filter Definition](#resource-filter-MenuOptionGroup) |
+ MenuOptionItem | [Data Access Object](#resource-dao-MenuOptionItem)  | [Schema](#resource-MenuOptionItem) | [Filter Definition](#resource-filter-MenuOptionItem) |
+ Order | [Data Access Object](#resource-dao-Order)  | [Schema](#resource-Order) | [Filter Definition](#resource-filter-Order) |
+ OrderItem | [Data Access Object](#resource-dao-OrderItem)  | [Schema](#resource-OrderItem) | [Filter Definition](#resource-filter-OrderItem) |
+ PaymentCard | [Data Access Object](#resource-dao-PaymentCard)  | [Schema](#resource-PaymentCard) | [Filter Definition](#resource-filter-PaymentCard) |
+ PickupLocation | [Data Access Object](#resource-dao-PickupLocation)  | [Schema](#resource-PickupLocation) | [Filter Definition](#resource-filter-PickupLocation) |
+ PromoCode | [Data Access Object](#resource-dao-PromoCode)  | [Schema](#resource-PromoCode) | [Filter Definition](#resource-filter-PromoCode) |
+ QualifyingQuestion | [Data Access Object](#resource-dao-QualifyingQuestion)  | [Schema](#resource-QualifyingQuestion) | [Filter Definition](#resource-filter-QualifyingQuestion) |
+ Restaurant | [Data Access Object](#resource-dao-Restaurant)  | [Schema](#resource-Restaurant) | [Filter Definition](#resource-filter-Restaurant) |
+ RestaurantClosure | [Data Access Object](#resource-dao-RestaurantClosure)  | [Schema](#resource-RestaurantClosure) | [Filter Definition](#resource-filter-RestaurantClosure) |
+ RestaurantDiscount | [Data Access Object](#resource-dao-RestaurantDiscount)  | [Schema](#resource-RestaurantDiscount) | [Filter Definition](#resource-filter-RestaurantDiscount) |
+ RestaurantOrderInvoice | [Data Access Object](#resource-dao-RestaurantOrderInvoice)  | [Schema](#resource-RestaurantOrderInvoice) | [Filter Definition](#resource-filter-RestaurantOrderInvoice) |
+ Role | [Data Access Object](#resource-dao-Role)  | [Schema](#resource-Role) | [Filter Definition](#resource-filter-Role) |
+ SalesforceSyncError | [Data Access Object](#resource-dao-SalesforceSyncError)  | [Schema](#resource-SalesforceSyncError) | [Filter Definition](#resource-filter-SalesforceSyncError) |
+ ServiceTime | [Data Access Object](#resource-dao-ServiceTime)  | [Schema](#resource-ServiceTime) | [Filter Definition](#resource-filter-ServiceTime) |
+ Tag | [Data Access Object](#resource-dao-Tag)  | [Schema](#resource-Tag) | [Filter Definition](#resource-filter-Tag) |
+ User | [Data Access Object](#resource-dao-User)  | [Schema](#resource-User) | [Filter Definition](#resource-filter-User) |
+ UserFeedback | [Data Access Object](#resource-dao-UserFeedback)  | [Schema](#resource-UserFeedback) | [Filter Definition](#resource-filter-UserFeedback) |
+ UserInvite | [Data Access Object](#resource-dao-UserInvite)  | [Schema](#resource-UserInvite) | [Filter Definition](#resource-filter-UserInvite) |
+ Version | [Data Access Object](#resource-dao-Version)  | [Schema](#resource-Version) | [Filter Definition](#resource-filter-Version) |
+ 
 
 ## Data Access
-Fetching resources works as follows
+Data access objects are connected to the base of the MasterFox client. You can initialize a new MasterFox client using the
+following code:
 
 ```JavaScript
 import MasterFox from 'master-fox';
 const client = new MasterFox('https://food.ee/api/v3/', '<your-api-key>');
 ```
+Once connected, any of the resource, and their related resources may be accessed using the patterns outlined in this section
 
 ### <a name='resource-dao-AppConfiguration'></a>AppConfiguration
-See [AppConfiguration](#resource-filter-AppConfiguration) for valid filters.
+See [AppConfigurationFilter](#resource-filter-AppConfiguration) for valid filters.
+See [AppConfiguration](#resource-AppConfiguration) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -129,18 +86,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.appConfigurations.get(1,  options);
-const pagedIndexOfResources = await client.appConfigurations.index(1, options);
+const singleAppConfiguration= await client.appConfigurations.get(1,  options);
+const pagedIndexOfAppConfigurations = await client.appConfigurations.index(options);
+
 // Related Resources
 // To Many
 // Index AppConfiguration#1's versions
-const singleResource = await client.appConfigurations.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.appConfigurations.from(1).versions.index(options);
 ```
 ### <a name='resource-dao-Area'></a>Area
-See [Area](#resource-filter-Area) for valid filters.
+See [AreaFilter](#resource-filter-Area) for valid filters.
+See [Area](#resource-Area) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -150,37 +112,42 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.areas.get(1,  options);
-const pagedIndexOfResources = await client.areas.index(1, options);
+const singleArea= await client.areas.get(1,  options);
+const pagedIndexOfAreas = await client.areas.index(options);
+
 // Related Resources
 // To One
 // Get Area#1's deliveryFeeTaxRate
-const singleResource = await client.areas.from(1).deliveryFeeTaxRate.get(1,  options);
+const singleInvoicingTaxRate = await client.areas.from(1).deliveryFeeTaxRate.get(1,  options);
 // To Many
 // Index Area#1's couriers
-const singleResource = await client.areas.from(1).couriers.index(options);
+const pagedIndexOfCouriers = await client.areas.from(1).couriers.index(options);
 // Index Area#1's clients
-const singleResource = await client.areas.from(1).clients.index(options);
+const pagedIndexOfClients = await client.areas.from(1).clients.index(options);
 // Index Area#1's restaurants
-const singleResource = await client.areas.from(1).restaurants.index(options);
+const pagedIndexOfRestaurants = await client.areas.from(1).restaurants.index(options);
 // Index Area#1's invoicingTaxRates
-const singleResource = await client.areas.from(1).invoicingTaxRates.index(options);
+const pagedIndexOfInvoicingTaxRates = await client.areas.from(1).invoicingTaxRates.index(options);
 // Index Area#1's globalInvoicingTaxRates
-const singleResource = await client.areas.from(1).globalInvoicingTaxRates.index(options);
+const pagedIndexOfInvoicingTaxRates = await client.areas.from(1).globalInvoicingTaxRates.index(options);
 // Index Area#1's areaClosures
-const singleResource = await client.areas.from(1).areaClosures.index(options);
+const pagedIndexOfAreaClosures = await client.areas.from(1).areaClosures.index(options);
 // Index Area#1's currentAreaClosures
-const singleResource = await client.areas.from(1).currentAreaClosures.index(options);
+const pagedIndexOfAreaClosures = await client.areas.from(1).currentAreaClosures.index(options);
 // Index Area#1's promoCodes
-const singleResource = await client.areas.from(1).promoCodes.index(options);
+const pagedIndexOfPromoCodes = await client.areas.from(1).promoCodes.index(options);
 // Index Area#1's versions
-const singleResource = await client.areas.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.areas.from(1).versions.index(options);
 ```
 ### <a name='resource-dao-AreaClosure'></a>AreaClosure
-See [AreaClosure](#resource-filter-AreaClosure) for valid filters.
+See [AreaClosureFilter](#resource-filter-AreaClosure) for valid filters.
+See [AreaClosure](#resource-AreaClosure) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -190,18 +157,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.areaClosures.get(1,  options);
-const pagedIndexOfResources = await client.areaClosures.index(1, options);
+const singleAreaClosure= await client.areaClosures.get(1,  options);
+const pagedIndexOfAreaClosures = await client.areaClosures.index(options);
+
 // Related Resources
 // To One
 // Get AreaClosure#1's area
-const singleResource = await client.areaClosures.from(1).area.get(1,  options);
+const singleArea = await client.areaClosures.from(1).area.get(1,  options);
 ```
 ### <a name='resource-dao-Client'></a>Client
-See [Client](#resource-filter-Client) for valid filters.
+See [ClientFilter](#resource-filter-Client) for valid filters.
+See [Client](#resource-Client) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -211,53 +183,58 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.clients.get(1,  options);
-const pagedIndexOfResources = await client.clients.index(1, options);
+const singleClient= await client.clients.get(1,  options);
+const pagedIndexOfClients = await client.clients.index(options);
+
 // Related Resources
 // To One
 // Get Client#1's defaultArea
-const singleResource = await client.clients.from(1).defaultArea.get(1,  options);
+const singleArea = await client.clients.from(1).defaultArea.get(1,  options);
 // Get Client#1's billingLocation
-const singleResource = await client.clients.from(1).billingLocation.get(1,  options);
+const singleLocation = await client.clients.from(1).billingLocation.get(1,  options);
 // Get Client#1's accountManager
-const singleResource = await client.clients.from(1).accountManager.get(1,  options);
+const singleUser = await client.clients.from(1).accountManager.get(1,  options);
 // Get Client#1's owner
-const singleResource = await client.clients.from(1).owner.get(1,  options);
+const singleUser = await client.clients.from(1).owner.get(1,  options);
 // Get Client#1's company
-const singleResource = await client.clients.from(1).company.get(1,  options);
+const singleCompany = await client.clients.from(1).company.get(1,  options);
 // Get Client#1's mealPlan
-const singleResource = await client.clients.from(1).mealPlan.get(1,  options);
+const singleMealPlan = await client.clients.from(1).mealPlan.get(1,  options);
 // Get Client#1's taxRate
-const singleResource = await client.clients.from(1).taxRate.get(1,  options);
+const singleInvoicingTaxRate = await client.clients.from(1).taxRate.get(1,  options);
 // Get Client#1's giftbitCard
-const singleResource = await client.clients.from(1).giftbitCard.get(1,  options);
+const singleGiftbitCard = await client.clients.from(1).giftbitCard.get(1,  options);
 // To Many
 // Index Client#1's areas
-const singleResource = await client.clients.from(1).areas.index(options);
+const pagedIndexOfAreas = await client.clients.from(1).areas.index(options);
 // Index Client#1's deliveryLocations
-const singleResource = await client.clients.from(1).deliveryLocations.index(options);
+const pagedIndexOfDeliveryLocations = await client.clients.from(1).deliveryLocations.index(options);
 // Index Client#1's adminContacts
-const singleResource = await client.clients.from(1).adminContacts.index(options);
+const pagedIndexOfContacts = await client.clients.from(1).adminContacts.index(options);
 // Index Client#1's admins
-const singleResource = await client.clients.from(1).admins.index(options);
+const pagedIndexOfUsers = await client.clients.from(1).admins.index(options);
 // Index Client#1's orderContacts
-const singleResource = await client.clients.from(1).orderContacts.index(options);
+const pagedIndexOfContacts = await client.clients.from(1).orderContacts.index(options);
 // Index Client#1's orders
-const singleResource = await client.clients.from(1).orders.index(options);
+const pagedIndexOfOrders = await client.clients.from(1).orders.index(options);
 // Index Client#1's paymentCards
-const singleResource = await client.clients.from(1).paymentCards.index(options);
+const pagedIndexOfPaymentCards = await client.clients.from(1).paymentCards.index(options);
 // Index Client#1's versions
-const singleResource = await client.clients.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.clients.from(1).versions.index(options);
 // Index Client#1's giftbitGifts
-const singleResource = await client.clients.from(1).giftbitGifts.index(options);
+const pagedIndexOfGiftbitGifts = await client.clients.from(1).giftbitGifts.index(options);
 // Index Client#1's giftbitErrors
-const singleResource = await client.clients.from(1).giftbitErrors.index(options);
+const pagedIndexOfGiftbitErrors = await client.clients.from(1).giftbitErrors.index(options);
 ```
 ### <a name='resource-dao-ClientDiscount'></a>ClientDiscount
-See [ClientDiscount](#resource-filter-ClientDiscount) for valid filters.
+See [ClientDiscountFilter](#resource-filter-ClientDiscount) for valid filters.
+See [ClientDiscount](#resource-ClientDiscount) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -267,18 +244,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.clientDiscounts.get(1,  options);
-const pagedIndexOfResources = await client.clientDiscounts.index(1, options);
+const singleClientDiscount= await client.clientDiscounts.get(1,  options);
+const pagedIndexOfClientDiscounts = await client.clientDiscounts.index(options);
+
 // Related Resources
 // To One
 // Get ClientDiscount#1's order
-const singleResource = await client.clientDiscounts.from(1).order.get(1,  options);
+const singleOrder = await client.clientDiscounts.from(1).order.get(1,  options);
 ```
 ### <a name='resource-dao-ClientOrderInvoice'></a>ClientOrderInvoice
-See [ClientOrderInvoice](#resource-filter-ClientOrderInvoice) for valid filters.
+See [ClientOrderInvoiceFilter](#resource-filter-ClientOrderInvoice) for valid filters.
+See [ClientOrderInvoice](#resource-ClientOrderInvoice) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -288,14 +270,18 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.clientOrderInvoices.get(1,  options);
-const pagedIndexOfResources = await client.clientOrderInvoices.index(1, options);
+const singleClientOrderInvoice= await client.clientOrderInvoices.get(1,  options);
+const pagedIndexOfClientOrderInvoices = await client.clientOrderInvoices.index(options);
 ```
 ### <a name='resource-dao-ClientSignup'></a>ClientSignup
-See [ClientSignup](#resource-filter-ClientSignup) for valid filters.
+See [ClientSignupFilter](#resource-filter-ClientSignup) for valid filters.
+See [ClientSignup](#resource-ClientSignup) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -305,33 +291,38 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.clientSignups.get(1,  options);
-const pagedIndexOfResources = await client.clientSignups.index(1, options);
+const singleClientSignup= await client.clientSignups.get(1,  options);
+const pagedIndexOfClientSignups = await client.clientSignups.index(options);
+
 // Related Resources
 // To One
 // Get ClientSignup#1's user
-const singleResource = await client.clientSignups.from(1).user.get(1,  options);
+const singleUser = await client.clientSignups.from(1).user.get(1,  options);
 // Get ClientSignup#1's qualifyingQuestion
-const singleResource = await client.clientSignups.from(1).qualifyingQuestion.get(1,  options);
+const singleQualifyingQuestion = await client.clientSignups.from(1).qualifyingQuestion.get(1,  options);
 // Get ClientSignup#1's billingLocation
-const singleResource = await client.clientSignups.from(1).billingLocation.get(1,  options);
+const singleLocation = await client.clientSignups.from(1).billingLocation.get(1,  options);
 // Get ClientSignup#1's deliveryLocation
-const singleResource = await client.clientSignups.from(1).deliveryLocation.get(1,  options);
+const singleLocation = await client.clientSignups.from(1).deliveryLocation.get(1,  options);
 // Get ClientSignup#1's billingContact
-const singleResource = await client.clientSignups.from(1).billingContact.get(1,  options);
+const singleContact = await client.clientSignups.from(1).billingContact.get(1,  options);
 // Get ClientSignup#1's contact
-const singleResource = await client.clientSignups.from(1).contact.get(1,  options);
+const singleContact = await client.clientSignups.from(1).contact.get(1,  options);
 // To Many
 // Index ClientSignup#1's clients
-const singleResource = await client.clientSignups.from(1).clients.index(options);
+const pagedIndexOfClients = await client.clientSignups.from(1).clients.index(options);
 // Index ClientSignup#1's areas
-const singleResource = await client.clientSignups.from(1).areas.index(options);
+const pagedIndexOfAreas = await client.clientSignups.from(1).areas.index(options);
 ```
 ### <a name='resource-dao-Company'></a>Company
-See [Company](#resource-filter-Company) for valid filters.
+See [CompanyFilter](#resource-filter-Company) for valid filters.
+See [Company](#resource-Company) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -341,18 +332,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.companies.get(1,  options);
-const pagedIndexOfResources = await client.companies.index(1, options);
+const singleCompany= await client.companies.get(1,  options);
+const pagedIndexOfCompanies = await client.companies.index(options);
+
 // Related Resources
 // To Many
 // Index Company#1's clients
-const singleResource = await client.companies.from(1).clients.index(options);
+const pagedIndexOfClients = await client.companies.from(1).clients.index(options);
 ```
 ### <a name='resource-dao-Contact'></a>Contact
-See [Contact](#resource-filter-Contact) for valid filters.
+See [ContactFilter](#resource-filter-Contact) for valid filters.
+See [Contact](#resource-Contact) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -362,14 +358,18 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.contacts.get(1,  options);
-const pagedIndexOfResources = await client.contacts.index(1, options);
+const singleContact= await client.contacts.get(1,  options);
+const pagedIndexOfContacts = await client.contacts.index(options);
 ```
 ### <a name='resource-dao-Courier'></a>Courier
-See [Courier](#resource-filter-Courier) for valid filters.
+See [CourierFilter](#resource-filter-Courier) for valid filters.
+See [Courier](#resource-Courier) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -379,25 +379,30 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.couriers.get(1,  options);
-const pagedIndexOfResources = await client.couriers.index(1, options);
+const singleCourier= await client.couriers.get(1,  options);
+const pagedIndexOfCouriers = await client.couriers.index(options);
+
 // Related Resources
 // To One
 // Get Courier#1's owner
-const singleResource = await client.couriers.from(1).owner.get(1,  options);
+const singleUser = await client.couriers.from(1).owner.get(1,  options);
 // To Many
 // Index Courier#1's drivers
-const singleResource = await client.couriers.from(1).drivers.index(options);
+const pagedIndexOfUsers = await client.couriers.from(1).drivers.index(options);
 // Index Courier#1's areas
-const singleResource = await client.couriers.from(1).areas.index(options);
+const pagedIndexOfAreas = await client.couriers.from(1).areas.index(options);
 // Index Courier#1's versions
-const singleResource = await client.couriers.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.couriers.from(1).versions.index(options);
 ```
 ### <a name='resource-dao-DeliveryCase'></a>DeliveryCase
-See [DeliveryCase](#resource-filter-DeliveryCase) for valid filters.
+See [DeliveryCaseFilter](#resource-filter-DeliveryCase) for valid filters.
+See [DeliveryCase](#resource-DeliveryCase) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -407,20 +412,25 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.deliveryCases.get(1,  options);
-const pagedIndexOfResources = await client.deliveryCases.index(1, options);
+const singleDeliveryCase= await client.deliveryCases.get(1,  options);
+const pagedIndexOfDeliveryCases = await client.deliveryCases.index(options);
+
 // Related Resources
 // To One
 // Get DeliveryCase#1's user
-const singleResource = await client.deliveryCases.from(1).user.get(1,  options);
+const singleUser = await client.deliveryCases.from(1).user.get(1,  options);
 // Get DeliveryCase#1's order
-const singleResource = await client.deliveryCases.from(1).order.get(1,  options);
+const singleOrder = await client.deliveryCases.from(1).order.get(1,  options);
 ```
 ### <a name='resource-dao-DeliveryLocation'></a>DeliveryLocation
-See [DeliveryLocation](#resource-filter-DeliveryLocation) for valid filters.
+See [DeliveryLocationFilter](#resource-filter-DeliveryLocation) for valid filters.
+See [DeliveryLocation](#resource-DeliveryLocation) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -430,20 +440,25 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.deliveryLocations.get(1,  options);
-const pagedIndexOfResources = await client.deliveryLocations.index(1, options);
+const singleDeliveryLocation= await client.deliveryLocations.get(1,  options);
+const pagedIndexOfDeliveryLocations = await client.deliveryLocations.index(options);
+
 // Related Resources
 // To One
 // Get DeliveryLocation#1's client
-const singleResource = await client.deliveryLocations.from(1).client.get(1,  options);
+const singleClient = await client.deliveryLocations.from(1).client.get(1,  options);
 // Get DeliveryLocation#1's location
-const singleResource = await client.deliveryLocations.from(1).location.get(1,  options);
+const singleLocation = await client.deliveryLocations.from(1).location.get(1,  options);
 ```
 ### <a name='resource-dao-DeskCase'></a>DeskCase
-See [DeskCase](#resource-filter-DeskCase) for valid filters.
+See [DeskCaseFilter](#resource-filter-DeskCase) for valid filters.
+See [DeskCase](#resource-DeskCase) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -453,20 +468,25 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.deskCases.get(1,  options);
-const pagedIndexOfResources = await client.deskCases.index(1, options);
+const singleDeskCase= await client.deskCases.get(1,  options);
+const pagedIndexOfDeskCases = await client.deskCases.index(options);
+
 // Related Resources
 // To One
 // Get DeskCase#1's user
-const singleResource = await client.deskCases.from(1).user.get(1,  options);
+const singleUser = await client.deskCases.from(1).user.get(1,  options);
 // Get DeskCase#1's order
-const singleResource = await client.deskCases.from(1).order.get(1,  options);
+const singleOrder = await client.deskCases.from(1).order.get(1,  options);
 ```
 ### <a name='resource-dao-DietaryTag'></a>DietaryTag
-See [DietaryTag](#resource-filter-DietaryTag) for valid filters.
+See [DietaryTagFilter](#resource-filter-DietaryTag) for valid filters.
+See [DietaryTag](#resource-DietaryTag) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -476,18 +496,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.dietaryTags.get(1,  options);
-const pagedIndexOfResources = await client.dietaryTags.index(1, options);
+const singleDietaryTag= await client.dietaryTags.get(1,  options);
+const pagedIndexOfDietaryTags = await client.dietaryTags.index(options);
+
 // Related Resources
 // To Many
 // Index DietaryTag#1's menuOptionItems
-const singleResource = await client.dietaryTags.from(1).menuOptionItems.index(options);
+const pagedIndexOfMenuOptionItems = await client.dietaryTags.from(1).menuOptionItems.index(options);
 ```
 ### <a name='resource-dao-DiscountCode'></a>DiscountCode
-See [DiscountCode](#resource-filter-DiscountCode) for valid filters.
+See [DiscountCodeFilter](#resource-filter-DiscountCode) for valid filters.
+See [DiscountCode](#resource-DiscountCode) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -497,14 +522,18 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.discountCodes.get(1,  options);
-const pagedIndexOfResources = await client.discountCodes.index(1, options);
+const singleDiscountCode= await client.discountCodes.get(1,  options);
+const pagedIndexOfDiscountCodes = await client.discountCodes.index(options);
 ```
 ### <a name='resource-dao-DriverDay'></a>DriverDay
-See [DriverDay](#resource-filter-DriverDay) for valid filters.
+See [DriverDayFilter](#resource-filter-DriverDay) for valid filters.
+See [DriverDay](#resource-DriverDay) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -514,18 +543,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.driverDays.get(1,  options);
-const pagedIndexOfResources = await client.driverDays.index(1, options);
+const singleDriverDay= await client.driverDays.get(1,  options);
+const pagedIndexOfDriverDays = await client.driverDays.index(options);
+
 // Related Resources
 // To One
 // Get DriverDay#1's driver
-const singleResource = await client.driverDays.from(1).driver.get(1,  options);
+const singleUser = await client.driverDays.from(1).driver.get(1,  options);
 ```
 ### <a name='resource-dao-DriverPing'></a>DriverPing
-See [DriverPing](#resource-filter-DriverPing) for valid filters.
+See [DriverPingFilter](#resource-filter-DriverPing) for valid filters.
+See [DriverPing](#resource-DriverPing) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -535,18 +569,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.driverPings.get(1,  options);
-const pagedIndexOfResources = await client.driverPings.index(1, options);
+const singleDriverPing= await client.driverPings.get(1,  options);
+const pagedIndexOfDriverPings = await client.driverPings.index(options);
+
 // Related Resources
 // To One
 // Get DriverPing#1's user
-const singleResource = await client.driverPings.from(1).user.get(1,  options);
+const singleUser = await client.driverPings.from(1).user.get(1,  options);
 ```
 ### <a name='resource-dao-DriverWeek'></a>DriverWeek
-See [DriverWeek](#resource-filter-DriverWeek) for valid filters.
+See [DriverWeekFilter](#resource-filter-DriverWeek) for valid filters.
+See [DriverWeek](#resource-DriverWeek) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -556,18 +595,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.driverWeeks.get(1,  options);
-const pagedIndexOfResources = await client.driverWeeks.index(1, options);
+const singleDriverWeek= await client.driverWeeks.get(1,  options);
+const pagedIndexOfDriverWeeks = await client.driverWeeks.index(options);
+
 // Related Resources
 // To One
 // Get DriverWeek#1's driver
-const singleResource = await client.driverWeeks.from(1).driver.get(1,  options);
+const singleUser = await client.driverWeeks.from(1).driver.get(1,  options);
 ```
 ### <a name='resource-dao-EmailMessage'></a>EmailMessage
-See [EmailMessage](#resource-filter-EmailMessage) for valid filters.
+See [EmailMessageFilter](#resource-filter-EmailMessage) for valid filters.
+See [EmailMessage](#resource-EmailMessage) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -577,18 +621,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.emailMessages.get(1,  options);
-const pagedIndexOfResources = await client.emailMessages.index(1, options);
+const singleEmailMessage= await client.emailMessages.get(1,  options);
+const pagedIndexOfEmailMessages = await client.emailMessages.index(options);
+
 // Related Resources
 // To One
 // Get EmailMessage#1's order
-const singleResource = await client.emailMessages.from(1).order.get(1,  options);
+const singleOrder = await client.emailMessages.from(1).order.get(1,  options);
 ```
 ### <a name='resource-dao-GiftbitCard'></a>GiftbitCard
-See [GiftbitCard](#resource-filter-GiftbitCard) for valid filters.
+See [GiftbitCardFilter](#resource-filter-GiftbitCard) for valid filters.
+See [GiftbitCard](#resource-GiftbitCard) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -598,14 +647,18 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.giftbitCards.get(1,  options);
-const pagedIndexOfResources = await client.giftbitCards.index(1, options);
+const singleGiftbitCard= await client.giftbitCards.get(1,  options);
+const pagedIndexOfGiftbitCards = await client.giftbitCards.index(options);
 ```
 ### <a name='resource-dao-GiftbitError'></a>GiftbitError
-See [GiftbitError](#resource-filter-GiftbitError) for valid filters.
+See [GiftbitErrorFilter](#resource-filter-GiftbitError) for valid filters.
+See [GiftbitError](#resource-GiftbitError) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -615,18 +668,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.giftbitErrors.get(1,  options);
-const pagedIndexOfResources = await client.giftbitErrors.index(1, options);
+const singleGiftbitError= await client.giftbitErrors.get(1,  options);
+const pagedIndexOfGiftbitErrors = await client.giftbitErrors.index(options);
+
 // Related Resources
 // To One
 // Get GiftbitError#1's order
-const singleResource = await client.giftbitErrors.from(1).order.get(1,  options);
+const singleOrder = await client.giftbitErrors.from(1).order.get(1,  options);
 ```
 ### <a name='resource-dao-GiftbitGift'></a>GiftbitGift
-See [GiftbitGift](#resource-filter-GiftbitGift) for valid filters.
+See [GiftbitGiftFilter](#resource-filter-GiftbitGift) for valid filters.
+See [GiftbitGift](#resource-GiftbitGift) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -636,14 +694,18 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.giftbitGifts.get(1,  options);
-const pagedIndexOfResources = await client.giftbitGifts.index(1, options);
+const singleGiftbitGift= await client.giftbitGifts.get(1,  options);
+const pagedIndexOfGiftbitGifts = await client.giftbitGifts.index(options);
 ```
 ### <a name='resource-dao-GroupOrderMember'></a>GroupOrderMember
-See [GroupOrderMember](#resource-filter-GroupOrderMember) for valid filters.
+See [GroupOrderMemberFilter](#resource-filter-GroupOrderMember) for valid filters.
+See [GroupOrderMember](#resource-GroupOrderMember) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -653,23 +715,28 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.groupOrderMembers.get(1,  options);
-const pagedIndexOfResources = await client.groupOrderMembers.index(1, options);
+const singleGroupOrderMember= await client.groupOrderMembers.get(1,  options);
+const pagedIndexOfGroupOrderMembers = await client.groupOrderMembers.index(options);
+
 // Related Resources
 // To One
 // Get GroupOrderMember#1's user
-const singleResource = await client.groupOrderMembers.from(1).user.get(1,  options);
+const singleUser = await client.groupOrderMembers.from(1).user.get(1,  options);
 // Get GroupOrderMember#1's order
-const singleResource = await client.groupOrderMembers.from(1).order.get(1,  options);
+const singleOrder = await client.groupOrderMembers.from(1).order.get(1,  options);
 // To Many
 // Index GroupOrderMember#1's orderItems
-const singleResource = await client.groupOrderMembers.from(1).orderItems.index(options);
+const pagedIndexOfOrderItems = await client.groupOrderMembers.from(1).orderItems.index(options);
 ```
 ### <a name='resource-dao-Invoice'></a>Invoice
-See [Invoice](#resource-filter-Invoice) for valid filters.
+See [InvoiceFilter](#resource-filter-Invoice) for valid filters.
+See [Invoice](#resource-Invoice) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -679,14 +746,18 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.invoices.get(1,  options);
-const pagedIndexOfResources = await client.invoices.index(1, options);
+const singleInvoice= await client.invoices.get(1,  options);
+const pagedIndexOfInvoices = await client.invoices.index(options);
 ```
 ### <a name='resource-dao-InvoicingTaxRate'></a>InvoicingTaxRate
-See [InvoicingTaxRate](#resource-filter-InvoicingTaxRate) for valid filters.
+See [InvoicingTaxRateFilter](#resource-filter-InvoicingTaxRate) for valid filters.
+See [InvoicingTaxRate](#resource-InvoicingTaxRate) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -696,18 +767,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.invoicingTaxRates.get(1,  options);
-const pagedIndexOfResources = await client.invoicingTaxRates.index(1, options);
+const singleInvoicingTaxRate= await client.invoicingTaxRates.get(1,  options);
+const pagedIndexOfInvoicingTaxRates = await client.invoicingTaxRates.index(options);
+
 // Related Resources
 // To One
 // Get InvoicingTaxRate#1's area
-const singleResource = await client.invoicingTaxRates.from(1).area.get(1,  options);
+const singleArea = await client.invoicingTaxRates.from(1).area.get(1,  options);
 ```
 ### <a name='resource-dao-Location'></a>Location
-See [Location](#resource-filter-Location) for valid filters.
+See [LocationFilter](#resource-filter-Location) for valid filters.
+See [Location](#resource-Location) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -717,18 +793,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.locations.get(1,  options);
-const pagedIndexOfResources = await client.locations.index(1, options);
+const singleLocation= await client.locations.get(1,  options);
+const pagedIndexOfLocations = await client.locations.index(options);
+
 // Related Resources
 // To One
 // Get Location#1's area
-const singleResource = await client.locations.from(1).area.get(1,  options);
+const singleArea = await client.locations.from(1).area.get(1,  options);
 ```
 ### <a name='resource-dao-MealPlan'></a>MealPlan
-See [MealPlan](#resource-filter-MealPlan) for valid filters.
+See [MealPlanFilter](#resource-filter-MealPlan) for valid filters.
+See [MealPlan](#resource-MealPlan) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -738,23 +819,28 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.mealPlans.get(1,  options);
-const pagedIndexOfResources = await client.mealPlans.index(1, options);
+const singleMealPlan= await client.mealPlans.get(1,  options);
+const pagedIndexOfMealPlans = await client.mealPlans.index(options);
+
 // Related Resources
 // To One
 // Get MealPlan#1's mealPlanUser
-const singleResource = await client.mealPlans.from(1).mealPlanUser.get(1,  options);
+const singleUser = await client.mealPlans.from(1).mealPlanUser.get(1,  options);
 // Get MealPlan#1's client
-const singleResource = await client.mealPlans.from(1).client.get(1,  options);
+const singleClient = await client.mealPlans.from(1).client.get(1,  options);
 // To Many
 // Index MealPlan#1's orders
-const singleResource = await client.mealPlans.from(1).orders.index(options);
+const pagedIndexOfOrders = await client.mealPlans.from(1).orders.index(options);
 ```
 ### <a name='resource-dao-Menu'></a>Menu
-See [Menu](#resource-filter-Menu) for valid filters.
+See [MenuFilter](#resource-filter-Menu) for valid filters.
+See [Menu](#resource-Menu) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -764,29 +850,34 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.menus.get(1,  options);
-const pagedIndexOfResources = await client.menus.index(1, options);
+const singleMenu= await client.menus.get(1,  options);
+const pagedIndexOfMenus = await client.menus.index(options);
+
 // Related Resources
 // To One
 // Get Menu#1's area
-const singleResource = await client.menus.from(1).area.get(1,  options);
+const singleArea = await client.menus.from(1).area.get(1,  options);
 // Get Menu#1's restaurant
-const singleResource = await client.menus.from(1).restaurant.get(1,  options);
+const singleRestaurant = await client.menus.from(1).restaurant.get(1,  options);
 // To Many
 // Index Menu#1's menuGroups
-const singleResource = await client.menus.from(1).menuGroups.index(options);
+const pagedIndexOfMenuGroups = await client.menus.from(1).menuGroups.index(options);
 // Index Menu#1's menuItems
-const singleResource = await client.menus.from(1).menuItems.index(options);
+const pagedIndexOfMenuItems = await client.menus.from(1).menuItems.index(options);
 // Index Menu#1's dietaryTags
-const singleResource = await client.menus.from(1).dietaryTags.index(options);
+const pagedIndexOfDietaryTags = await client.menus.from(1).dietaryTags.index(options);
 // Index Menu#1's orders
-const singleResource = await client.menus.from(1).orders.index(options);
+const pagedIndexOfOrders = await client.menus.from(1).orders.index(options);
 ```
 ### <a name='resource-dao-MenuGroup'></a>MenuGroup
-See [MenuGroup](#resource-filter-MenuGroup) for valid filters.
+See [MenuGroupFilter](#resource-filter-MenuGroup) for valid filters.
+See [MenuGroup](#resource-MenuGroup) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -796,21 +887,26 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.menuGroups.get(1,  options);
-const pagedIndexOfResources = await client.menuGroups.index(1, options);
+const singleMenuGroup= await client.menuGroups.get(1,  options);
+const pagedIndexOfMenuGroups = await client.menuGroups.index(options);
+
 // Related Resources
 // To One
 // Get MenuGroup#1's menu
-const singleResource = await client.menuGroups.from(1).menu.get(1,  options);
+const singleMenu = await client.menuGroups.from(1).menu.get(1,  options);
 // To Many
 // Index MenuGroup#1's menuItems
-const singleResource = await client.menuGroups.from(1).menuItems.index(options);
+const pagedIndexOfMenuItems = await client.menuGroups.from(1).menuItems.index(options);
 ```
 ### <a name='resource-dao-MenuItem'></a>MenuItem
-See [MenuItem](#resource-filter-MenuItem) for valid filters.
+See [MenuItemFilter](#resource-filter-MenuItem) for valid filters.
+See [MenuItem](#resource-MenuItem) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -820,25 +916,30 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.menuItems.get(1,  options);
-const pagedIndexOfResources = await client.menuItems.index(1, options);
+const singleMenuItem= await client.menuItems.get(1,  options);
+const pagedIndexOfMenuItems = await client.menuItems.index(options);
+
 // Related Resources
 // To One
 // Get MenuItem#1's taxRate
-const singleResource = await client.menuItems.from(1).taxRate.get(1,  options);
+const singleInvoicingTaxRate = await client.menuItems.from(1).taxRate.get(1,  options);
 // Get MenuItem#1's menuGroup
-const singleResource = await client.menuItems.from(1).menuGroup.get(1,  options);
+const singleMenuGroup = await client.menuItems.from(1).menuGroup.get(1,  options);
 // To Many
 // Index MenuItem#1's dietaryTags
-const singleResource = await client.menuItems.from(1).dietaryTags.index(options);
+const pagedIndexOfDietaryTags = await client.menuItems.from(1).dietaryTags.index(options);
 // Index MenuItem#1's menuOptionGroups
-const singleResource = await client.menuItems.from(1).menuOptionGroups.index(options);
+const pagedIndexOfMenuOptionGroups = await client.menuItems.from(1).menuOptionGroups.index(options);
 ```
 ### <a name='resource-dao-MenuOptionGroup'></a>MenuOptionGroup
-See [MenuOptionGroup](#resource-filter-MenuOptionGroup) for valid filters.
+See [MenuOptionGroupFilter](#resource-filter-MenuOptionGroup) for valid filters.
+See [MenuOptionGroup](#resource-MenuOptionGroup) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -848,21 +949,26 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.menuOptionGroups.get(1,  options);
-const pagedIndexOfResources = await client.menuOptionGroups.index(1, options);
+const singleMenuOptionGroup= await client.menuOptionGroups.get(1,  options);
+const pagedIndexOfMenuOptionGroups = await client.menuOptionGroups.index(options);
+
 // Related Resources
 // To One
 // Get MenuOptionGroup#1's menuItem
-const singleResource = await client.menuOptionGroups.from(1).menuItem.get(1,  options);
+const singleMenuItem = await client.menuOptionGroups.from(1).menuItem.get(1,  options);
 // To Many
 // Index MenuOptionGroup#1's menuOptionItems
-const singleResource = await client.menuOptionGroups.from(1).menuOptionItems.index(options);
+const pagedIndexOfMenuOptionItems = await client.menuOptionGroups.from(1).menuOptionItems.index(options);
 ```
 ### <a name='resource-dao-MenuOptionItem'></a>MenuOptionItem
-See [MenuOptionItem](#resource-filter-MenuOptionItem) for valid filters.
+See [MenuOptionItemFilter](#resource-filter-MenuOptionItem) for valid filters.
+See [MenuOptionItem](#resource-MenuOptionItem) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -872,23 +978,28 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.menuOptionItems.get(1,  options);
-const pagedIndexOfResources = await client.menuOptionItems.index(1, options);
+const singleMenuOptionItem= await client.menuOptionItems.get(1,  options);
+const pagedIndexOfMenuOptionItems = await client.menuOptionItems.index(options);
+
 // Related Resources
 // To One
 // Get MenuOptionItem#1's menuOptionGroup
-const singleResource = await client.menuOptionItems.from(1).menuOptionGroup.get(1,  options);
+const singleMenuOptionGroup = await client.menuOptionItems.from(1).menuOptionGroup.get(1,  options);
 // To Many
 // Index MenuOptionItem#1's dietaryTags
-const singleResource = await client.menuOptionItems.from(1).dietaryTags.index(options);
+const pagedIndexOfDietaryTags = await client.menuOptionItems.from(1).dietaryTags.index(options);
 // Index MenuOptionItem#1's orderItems
-const singleResource = await client.menuOptionItems.from(1).orderItems.index(options);
+const pagedIndexOfOrderItems = await client.menuOptionItems.from(1).orderItems.index(options);
 ```
 ### <a name='resource-dao-Order'></a>Order
-See [Order](#resource-filter-Order) for valid filters.
+See [OrderFilter](#resource-filter-Order) for valid filters.
+See [Order](#resource-Order) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -898,67 +1009,72 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.orders.get(1,  options);
-const pagedIndexOfResources = await client.orders.index(1, options);
+const singleOrder= await client.orders.get(1,  options);
+const pagedIndexOfOrders = await client.orders.index(options);
+
 // Related Resources
 // To One
 // Get Order#1's area
-const singleResource = await client.orders.from(1).area.get(1,  options);
+const singleArea = await client.orders.from(1).area.get(1,  options);
 // Get Order#1's owner
-const singleResource = await client.orders.from(1).owner.get(1,  options);
+const singleUser = await client.orders.from(1).owner.get(1,  options);
 // Get Order#1's creator
-const singleResource = await client.orders.from(1).creator.get(1,  options);
+const singleUser = await client.orders.from(1).creator.get(1,  options);
 // Get Order#1's paymentCard
-const singleResource = await client.orders.from(1).paymentCard.get(1,  options);
+const singlePaymentCard = await client.orders.from(1).paymentCard.get(1,  options);
 // Get Order#1's contact
-const singleResource = await client.orders.from(1).contact.get(1,  options);
+const singleContact = await client.orders.from(1).contact.get(1,  options);
 // Get Order#1's client
-const singleResource = await client.orders.from(1).client.get(1,  options);
+const singleClient = await client.orders.from(1).client.get(1,  options);
 // Get Order#1's restaurant
-const singleResource = await client.orders.from(1).restaurant.get(1,  options);
+const singleRestaurant = await client.orders.from(1).restaurant.get(1,  options);
 // Get Order#1's courier
-const singleResource = await client.orders.from(1).courier.get(1,  options);
+const singleCourier = await client.orders.from(1).courier.get(1,  options);
 // Get Order#1's promoCode
-const singleResource = await client.orders.from(1).promoCode.get(1,  options);
+const singlePromoCode = await client.orders.from(1).promoCode.get(1,  options);
 // Get Order#1's driver
-const singleResource = await client.orders.from(1).driver.get(1,  options);
+const singleUser = await client.orders.from(1).driver.get(1,  options);
 // Get Order#1's restaurantLocation
-const singleResource = await client.orders.from(1).restaurantLocation.get(1,  options);
+const singleLocation = await client.orders.from(1).restaurantLocation.get(1,  options);
 // Get Order#1's clientLocation
-const singleResource = await client.orders.from(1).clientLocation.get(1,  options);
+const singleLocation = await client.orders.from(1).clientLocation.get(1,  options);
 // Get Order#1's clientDiscount
-const singleResource = await client.orders.from(1).clientDiscount.get(1,  options);
+const singleClientDiscount = await client.orders.from(1).clientDiscount.get(1,  options);
 // Get Order#1's restaurantDiscount
-const singleResource = await client.orders.from(1).restaurantDiscount.get(1,  options);
+const singleRestaurantDiscount = await client.orders.from(1).restaurantDiscount.get(1,  options);
 // Get Order#1's menu
-const singleResource = await client.orders.from(1).menu.get(1,  options);
+const singleMenu = await client.orders.from(1).menu.get(1,  options);
 // Get Order#1's customLocation
-const singleResource = await client.orders.from(1).customLocation.get(1,  options);
+const singleLocation = await client.orders.from(1).customLocation.get(1,  options);
 // Get Order#1's giftbitError
-const singleResource = await client.orders.from(1).giftbitError.get(1,  options);
+const singleGiftbitError = await client.orders.from(1).giftbitError.get(1,  options);
 // Get Order#1's clientOrderInvoice
-const singleResource = await client.orders.from(1).clientOrderInvoice.get(1,  options);
+const singleClientOrderInvoice = await client.orders.from(1).clientOrderInvoice.get(1,  options);
 // Get Order#1's restaurantOrderInvoice
-const singleResource = await client.orders.from(1).restaurantOrderInvoice.get(1,  options);
+const singleRestaurantOrderInvoice = await client.orders.from(1).restaurantOrderInvoice.get(1,  options);
 // To Many
 // Index Order#1's emailMessages
-const singleResource = await client.orders.from(1).emailMessages.index(options);
+const pagedIndexOfEmailMessages = await client.orders.from(1).emailMessages.index(options);
 // Index Order#1's deliveryCases
-const singleResource = await client.orders.from(1).deliveryCases.index(options);
+const pagedIndexOfDeliveryCases = await client.orders.from(1).deliveryCases.index(options);
 // Index Order#1's deskCases
-const singleResource = await client.orders.from(1).deskCases.index(options);
+const pagedIndexOfDeskCases = await client.orders.from(1).deskCases.index(options);
 // Index Order#1's versions
-const singleResource = await client.orders.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.orders.from(1).versions.index(options);
 // Index Order#1's groupOrderMembers
-const singleResource = await client.orders.from(1).groupOrderMembers.index(options);
+const pagedIndexOfGroupOrderMembers = await client.orders.from(1).groupOrderMembers.index(options);
 // Index Order#1's orderItems
-const singleResource = await client.orders.from(1).orderItems.index(options);
+const pagedIndexOfOrderItems = await client.orders.from(1).orderItems.index(options);
 ```
 ### <a name='resource-dao-OrderItem'></a>OrderItem
-See [OrderItem](#resource-filter-OrderItem) for valid filters.
+See [OrderItemFilter](#resource-filter-OrderItem) for valid filters.
+See [OrderItem](#resource-OrderItem) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -968,25 +1084,30 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.orderItems.get(1,  options);
-const pagedIndexOfResources = await client.orderItems.index(1, options);
+const singleOrderItem= await client.orderItems.get(1,  options);
+const pagedIndexOfOrderItems = await client.orderItems.index(options);
+
 // Related Resources
 // To One
 // Get OrderItem#1's order
-const singleResource = await client.orderItems.from(1).order.get(1,  options);
+const singleOrder = await client.orderItems.from(1).order.get(1,  options);
 // Get OrderItem#1's menuItem
-const singleResource = await client.orderItems.from(1).menuItem.get(1,  options);
+const singleMenuItem = await client.orderItems.from(1).menuItem.get(1,  options);
 // Get OrderItem#1's groupOrderMember
-const singleResource = await client.orderItems.from(1).groupOrderMember.get(1,  options);
+const singleGroupOrderMember = await client.orderItems.from(1).groupOrderMember.get(1,  options);
 // To Many
 // Index OrderItem#1's menuOptionItems
-const singleResource = await client.orderItems.from(1).menuOptionItems.index(options);
+const pagedIndexOfMenuOptionItems = await client.orderItems.from(1).menuOptionItems.index(options);
 ```
 ### <a name='resource-dao-PaymentCard'></a>PaymentCard
-See [PaymentCard](#resource-filter-PaymentCard) for valid filters.
+See [PaymentCardFilter](#resource-filter-PaymentCard) for valid filters.
+See [PaymentCard](#resource-PaymentCard) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -996,20 +1117,25 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.paymentCards.get(1,  options);
-const pagedIndexOfResources = await client.paymentCards.index(1, options);
+const singlePaymentCard= await client.paymentCards.get(1,  options);
+const pagedIndexOfPaymentCards = await client.paymentCards.index(options);
+
 // Related Resources
 // To One
 // Get PaymentCard#1's client
-const singleResource = await client.paymentCards.from(1).client.get(1,  options);
+const singleClient = await client.paymentCards.from(1).client.get(1,  options);
 // Get PaymentCard#1's user
-const singleResource = await client.paymentCards.from(1).user.get(1,  options);
+const singleUser = await client.paymentCards.from(1).user.get(1,  options);
 ```
 ### <a name='resource-dao-PickupLocation'></a>PickupLocation
-See [PickupLocation](#resource-filter-PickupLocation) for valid filters.
+See [PickupLocationFilter](#resource-filter-PickupLocation) for valid filters.
+See [PickupLocation](#resource-PickupLocation) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1019,20 +1145,25 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.pickupLocations.get(1,  options);
-const pagedIndexOfResources = await client.pickupLocations.index(1, options);
+const singlePickupLocation= await client.pickupLocations.get(1,  options);
+const pagedIndexOfPickupLocations = await client.pickupLocations.index(options);
+
 // Related Resources
 // To One
 // Get PickupLocation#1's restaurant
-const singleResource = await client.pickupLocations.from(1).restaurant.get(1,  options);
+const singleRestaurant = await client.pickupLocations.from(1).restaurant.get(1,  options);
 // Get PickupLocation#1's location
-const singleResource = await client.pickupLocations.from(1).location.get(1,  options);
+const singleLocation = await client.pickupLocations.from(1).location.get(1,  options);
 ```
 ### <a name='resource-dao-PromoCode'></a>PromoCode
-See [PromoCode](#resource-filter-PromoCode) for valid filters.
+See [PromoCodeFilter](#resource-filter-PromoCode) for valid filters.
+See [PromoCode](#resource-PromoCode) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1042,25 +1173,30 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.promoCodes.get(1,  options);
-const pagedIndexOfResources = await client.promoCodes.index(1, options);
+const singlePromoCode= await client.promoCodes.get(1,  options);
+const pagedIndexOfPromoCodes = await client.promoCodes.index(options);
+
 // Related Resources
 // To One
 // Get PromoCode#1's area
-const singleResource = await client.promoCodes.from(1).area.get(1,  options);
+const singleArea = await client.promoCodes.from(1).area.get(1,  options);
 // Get PromoCode#1's restaurant
-const singleResource = await client.promoCodes.from(1).restaurant.get(1,  options);
+const singleRestaurant = await client.promoCodes.from(1).restaurant.get(1,  options);
 // To Many
 // Index PromoCode#1's orders
-const singleResource = await client.promoCodes.from(1).orders.index(options);
+const pagedIndexOfOrders = await client.promoCodes.from(1).orders.index(options);
 // Index PromoCode#1's versions
-const singleResource = await client.promoCodes.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.promoCodes.from(1).versions.index(options);
 ```
 ### <a name='resource-dao-QualifyingQuestion'></a>QualifyingQuestion
-See [QualifyingQuestion](#resource-filter-QualifyingQuestion) for valid filters.
+See [QualifyingQuestionFilter](#resource-filter-QualifyingQuestion) for valid filters.
+See [QualifyingQuestion](#resource-QualifyingQuestion) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1070,14 +1206,18 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.qualifyingQuestions.get(1,  options);
-const pagedIndexOfResources = await client.qualifyingQuestions.index(1, options);
+const singleQualifyingQuestion= await client.qualifyingQuestions.get(1,  options);
+const pagedIndexOfQualifyingQuestions = await client.qualifyingQuestions.index(options);
 ```
 ### <a name='resource-dao-Restaurant'></a>Restaurant
-See [Restaurant](#resource-filter-Restaurant) for valid filters.
+See [RestaurantFilter](#resource-filter-Restaurant) for valid filters.
+See [Restaurant](#resource-Restaurant) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1087,43 +1227,48 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.restaurants.get(1,  options);
-const pagedIndexOfResources = await client.restaurants.index(1, options);
+const singleRestaurant= await client.restaurants.get(1,  options);
+const pagedIndexOfRestaurants = await client.restaurants.index(options);
+
 // Related Resources
 // To One
 // Get Restaurant#1's billingLocation
-const singleResource = await client.restaurants.from(1).billingLocation.get(1,  options);
+const singleLocation = await client.restaurants.from(1).billingLocation.get(1,  options);
 // Get Restaurant#1's billingContact
-const singleResource = await client.restaurants.from(1).billingContact.get(1,  options);
+const singleContact = await client.restaurants.from(1).billingContact.get(1,  options);
 // Get Restaurant#1's owner
-const singleResource = await client.restaurants.from(1).owner.get(1,  options);
+const singleUser = await client.restaurants.from(1).owner.get(1,  options);
 // To Many
 // Index Restaurant#1's orders
-const singleResource = await client.restaurants.from(1).orders.index(options);
+const pagedIndexOfOrders = await client.restaurants.from(1).orders.index(options);
 // Index Restaurant#1's serviceTimes
-const singleResource = await client.restaurants.from(1).serviceTimes.index(options);
+const pagedIndexOfServiceTimes = await client.restaurants.from(1).serviceTimes.index(options);
 // Index Restaurant#1's pickupLocations
-const singleResource = await client.restaurants.from(1).pickupLocations.index(options);
+const pagedIndexOfPickupLocations = await client.restaurants.from(1).pickupLocations.index(options);
 // Index Restaurant#1's dietaryTags
-const singleResource = await client.restaurants.from(1).dietaryTags.index(options);
+const pagedIndexOfDietaryTags = await client.restaurants.from(1).dietaryTags.index(options);
 // Index Restaurant#1's tags
-const singleResource = await client.restaurants.from(1).tags.index(options);
+const pagedIndexOfTags = await client.restaurants.from(1).tags.index(options);
 // Index Restaurant#1's areas
-const singleResource = await client.restaurants.from(1).areas.index(options);
+const pagedIndexOfAreas = await client.restaurants.from(1).areas.index(options);
 // Index Restaurant#1's menus
-const singleResource = await client.restaurants.from(1).menus.index(options);
+const pagedIndexOfMenus = await client.restaurants.from(1).menus.index(options);
 // Index Restaurant#1's closures
-const singleResource = await client.restaurants.from(1).closures.index(options);
+const pagedIndexOfRestaurantClosures = await client.restaurants.from(1).closures.index(options);
 // Index Restaurant#1's versions
-const singleResource = await client.restaurants.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.restaurants.from(1).versions.index(options);
 // Index Restaurant#1's promoCodes
-const singleResource = await client.restaurants.from(1).promoCodes.index(options);
+const pagedIndexOfPromoCodes = await client.restaurants.from(1).promoCodes.index(options);
 ```
 ### <a name='resource-dao-RestaurantClosure'></a>RestaurantClosure
-See [RestaurantClosure](#resource-filter-RestaurantClosure) for valid filters.
+See [RestaurantClosureFilter](#resource-filter-RestaurantClosure) for valid filters.
+See [RestaurantClosure](#resource-RestaurantClosure) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1133,18 +1278,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.restaurantClosures.get(1,  options);
-const pagedIndexOfResources = await client.restaurantClosures.index(1, options);
+const singleRestaurantClosure= await client.restaurantClosures.get(1,  options);
+const pagedIndexOfRestaurantClosures = await client.restaurantClosures.index(options);
+
 // Related Resources
 // To One
 // Get RestaurantClosure#1's restaurant
-const singleResource = await client.restaurantClosures.from(1).restaurant.get(1,  options);
+const singleRestaurant = await client.restaurantClosures.from(1).restaurant.get(1,  options);
 ```
 ### <a name='resource-dao-RestaurantDiscount'></a>RestaurantDiscount
-See [RestaurantDiscount](#resource-filter-RestaurantDiscount) for valid filters.
+See [RestaurantDiscountFilter](#resource-filter-RestaurantDiscount) for valid filters.
+See [RestaurantDiscount](#resource-RestaurantDiscount) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1154,18 +1304,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.restaurantDiscounts.get(1,  options);
-const pagedIndexOfResources = await client.restaurantDiscounts.index(1, options);
+const singleRestaurantDiscount= await client.restaurantDiscounts.get(1,  options);
+const pagedIndexOfRestaurantDiscounts = await client.restaurantDiscounts.index(options);
+
 // Related Resources
 // To One
 // Get RestaurantDiscount#1's order
-const singleResource = await client.restaurantDiscounts.from(1).order.get(1,  options);
+const singleOrder = await client.restaurantDiscounts.from(1).order.get(1,  options);
 ```
 ### <a name='resource-dao-RestaurantOrderInvoice'></a>RestaurantOrderInvoice
-See [RestaurantOrderInvoice](#resource-filter-RestaurantOrderInvoice) for valid filters.
+See [RestaurantOrderInvoiceFilter](#resource-filter-RestaurantOrderInvoice) for valid filters.
+See [RestaurantOrderInvoice](#resource-RestaurantOrderInvoice) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1175,14 +1330,18 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.restaurantOrderInvoices.get(1,  options);
-const pagedIndexOfResources = await client.restaurantOrderInvoices.index(1, options);
+const singleRestaurantOrderInvoice= await client.restaurantOrderInvoices.get(1,  options);
+const pagedIndexOfRestaurantOrderInvoices = await client.restaurantOrderInvoices.index(options);
 ```
 ### <a name='resource-dao-Role'></a>Role
-See [Role](#resource-filter-Role) for valid filters.
+See [RoleFilter](#resource-filter-Role) for valid filters.
+See [Role](#resource-Role) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1192,18 +1351,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.roles.get(1,  options);
-const pagedIndexOfResources = await client.roles.index(1, options);
+const singleRole= await client.roles.get(1,  options);
+const pagedIndexOfRoles = await client.roles.index(options);
+
 // Related Resources
 // To One
 // Get Role#1's user
-const singleResource = await client.roles.from(1).user.get(1,  options);
+const singleUser = await client.roles.from(1).user.get(1,  options);
 ```
 ### <a name='resource-dao-SalesforceSyncError'></a>SalesforceSyncError
-See [SalesforceSyncError](#resource-filter-SalesforceSyncError) for valid filters.
+See [SalesforceSyncErrorFilter](#resource-filter-SalesforceSyncError) for valid filters.
+See [SalesforceSyncError](#resource-SalesforceSyncError) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1213,14 +1377,18 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.salesforceSyncErrors.get(1,  options);
-const pagedIndexOfResources = await client.salesforceSyncErrors.index(1, options);
+const singleSalesforceSyncError= await client.salesforceSyncErrors.get(1,  options);
+const pagedIndexOfSalesforceSyncErrors = await client.salesforceSyncErrors.index(options);
 ```
 ### <a name='resource-dao-ServiceTime'></a>ServiceTime
-See [ServiceTime](#resource-filter-ServiceTime) for valid filters.
+See [ServiceTimeFilter](#resource-filter-ServiceTime) for valid filters.
+See [ServiceTime](#resource-ServiceTime) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1230,18 +1398,23 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.serviceTimes.get(1,  options);
-const pagedIndexOfResources = await client.serviceTimes.index(1, options);
+const singleServiceTime= await client.serviceTimes.get(1,  options);
+const pagedIndexOfServiceTimes = await client.serviceTimes.index(options);
+
 // Related Resources
 // To One
 // Get ServiceTime#1's restaurant
-const singleResource = await client.serviceTimes.from(1).restaurant.get(1,  options);
+const singleRestaurant = await client.serviceTimes.from(1).restaurant.get(1,  options);
 ```
 ### <a name='resource-dao-Tag'></a>Tag
-See [Tag](#resource-filter-Tag) for valid filters.
+See [TagFilter](#resource-filter-Tag) for valid filters.
+See [Tag](#resource-Tag) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1251,14 +1424,18 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.tags.get(1,  options);
-const pagedIndexOfResources = await client.tags.index(1, options);
+const singleTag= await client.tags.get(1,  options);
+const pagedIndexOfTags = await client.tags.index(options);
 ```
 ### <a name='resource-dao-User'></a>User
-See [User](#resource-filter-User) for valid filters.
+See [UserFilter](#resource-filter-User) for valid filters.
+See [User](#resource-User) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1268,32 +1445,37 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.users.get(1,  options);
-const pagedIndexOfResources = await client.users.index(1, options);
+const singleUser= await client.users.get(1,  options);
+const pagedIndexOfUsers = await client.users.index(options);
+
 // Related Resources
 // To Many
 // Index User#1's driverPings
-const singleResource = await client.users.from(1).driverPings.index(options);
+const pagedIndexOfDriverPings = await client.users.from(1).driverPings.index(options);
 // Index User#1's driverWeeks
-const singleResource = await client.users.from(1).driverWeeks.index(options);
+const pagedIndexOfDriverWeeks = await client.users.from(1).driverWeeks.index(options);
 // Index User#1's driverDays
-const singleResource = await client.users.from(1).driverDays.index(options);
+const pagedIndexOfDriverDays = await client.users.from(1).driverDays.index(options);
 // Index User#1's deliveredOrders
-const singleResource = await client.users.from(1).deliveredOrders.index(options);
+const pagedIndexOfOrders = await client.users.from(1).deliveredOrders.index(options);
 // Index User#1's couriers
-const singleResource = await client.users.from(1).couriers.index(options);
+const pagedIndexOfCouriers = await client.users.from(1).couriers.index(options);
 // Index User#1's roles
-const singleResource = await client.users.from(1).roles.index(options);
+const pagedIndexOfRoles = await client.users.from(1).roles.index(options);
 // Index User#1's paymentCards
-const singleResource = await client.users.from(1).paymentCards.index(options);
+const pagedIndexOfPaymentCards = await client.users.from(1).paymentCards.index(options);
 // Index User#1's versions
-const singleResource = await client.users.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.users.from(1).versions.index(options);
 ```
 ### <a name='resource-dao-UserFeedback'></a>UserFeedback
-See [UserFeedback](#resource-filter-UserFeedback) for valid filters.
+See [UserFeedbackFilter](#resource-filter-UserFeedback) for valid filters.
+See [UserFeedback](#resource-UserFeedback) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1303,14 +1485,18 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.userFeedbacks.get(1,  options);
-const pagedIndexOfResources = await client.userFeedbacks.index(1, options);
+const singleUserFeedback= await client.userFeedbacks.get(1,  options);
+const pagedIndexOfUserFeedbacks = await client.userFeedbacks.index(options);
 ```
 ### <a name='resource-dao-UserInvite'></a>UserInvite
-See [UserInvite](#resource-filter-UserInvite) for valid filters.
+See [UserInviteFilter](#resource-filter-UserInvite) for valid filters.
+See [UserInvite](#resource-UserInvite) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1320,20 +1506,25 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.userInvites.get(1,  options);
-const pagedIndexOfResources = await client.userInvites.index(1, options);
+const singleUserInvite= await client.userInvites.get(1,  options);
+const pagedIndexOfUserInvites = await client.userInvites.index(options);
+
 // Related Resources
 // To One
 // Get UserInvite#1's client
-const singleResource = await client.userInvites.from(1).client.get(1,  options);
+const singleClient = await client.userInvites.from(1).client.get(1,  options);
 // Get UserInvite#1's user
-const singleResource = await client.userInvites.from(1).user.get(1,  options);
+const singleUser = await client.userInvites.from(1).user.get(1,  options);
 ```
 ### <a name='resource-dao-Version'></a>Version
-See [Version](#resource-filter-Version) for valid filters.
+See [VersionFilter](#resource-filter-Version) for valid filters.
+See [Version](#resource-Version) for the resource schema.
 ```JavaScript
 const options = {
-  inlcude: '',
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
 
   // only valid for index fields
   fitlers: {},
@@ -1343,15 +1534,16 @@ const options = {
     limit: 20
   }
 };
-const singleResource = await client.versions.get(1,  options);
-const pagedIndexOfResources = await client.versions.index(1, options);
+const singleVersion= await client.versions.get(1,  options);
+const pagedIndexOfVersions = await client.versions.index(options);
 ```
 
 
 ## Resources
-Resources are the base data transfer objects, they are made up of attributes and relationships
+Resources are the base data transfer objects, they are made up of attributes and relationships.
 
-
+The relationship resources will not be included on the resource when fetched from the api unless they are specifically included
+using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 
 ### <a name='resource-AppConfiguration'></a>AppConfiguration
 
@@ -2521,10 +2713,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | key |  string |
 
 
@@ -2534,10 +2726,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2546,12 +2738,12 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | area |  any |
-| starts_after |  any |
+| startsAfter |  any |
 
 
 
@@ -2560,10 +2752,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | name |  String |
 | area |  any |
 | search |  any |
@@ -2575,10 +2767,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2587,10 +2779,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2599,10 +2791,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2611,10 +2803,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | name |  string |
 
 
@@ -2624,10 +2816,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | name |  any |
 
 
@@ -2637,10 +2829,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | name |  string |
 | area |  any |
 
@@ -2651,10 +2843,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2663,10 +2855,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | client |  any |
 | search |  any |
 
@@ -2677,10 +2869,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2689,10 +2881,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | name |  string |
 
 
@@ -2702,10 +2894,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2714,10 +2906,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | day |  date |
 
 
@@ -2727,10 +2919,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2739,14 +2931,14 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | name |  any |
 | monday |  date |
 | area |  any |
-| driver_id |  integer |
+| driverId |  integer |
 
 
 
@@ -2755,11 +2947,11 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
-| message_type |  string |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
+| messageType |  string |
 | recipients |  string |
 
 
@@ -2769,10 +2961,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2781,10 +2973,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2793,10 +2985,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | currencyisocode |  any |
 
 
@@ -2806,10 +2998,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | email |  string |
 | search |  any |
 
@@ -2820,10 +3012,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2832,10 +3024,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | global |  any |
 
 
@@ -2845,10 +3037,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | broken |  any |
 
 
@@ -2858,11 +3050,11 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
-| vanity_url |  string |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
+| vanityUrl |  string |
 
 
 
@@ -2871,10 +3063,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | active |  boolean |
 
 
@@ -2884,10 +3076,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | active |  boolean |
 | internal |  boolean |
 
@@ -2898,10 +3090,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | active |  boolean |
 
 
@@ -2911,10 +3103,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2923,10 +3115,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2935,28 +3127,28 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
-| is_bookmark |  boolean |
-| reject_state |  any |
-| search |  any |
-| reject_online_draft |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
+| isBookmark |  boolean |
+| rejectState |  any |
+| search |  string |
+| rejectOnlineDraft |  any |
 | uuid |  uuid |
-| url_safe_id |  string |
-| deliver_on |  date |
-| deliver_at |  datetime |
-| delivered_at_after |  any |
-| areas |  any |
+| urlSafeId |  string |
+| deliverOn |  date |
+| deliverAt |  datetime |
+| deliveredAtAfter |  any |
+| areas |  string |
 | date |  any |
 | upcoming |  any |
-| is_group_order |  any |
-| driver_id |  integer |
-| restaurant_ids |  any |
+| isGroupOrder |  boolean |
+| driverId |  integer |
+| restaurantIds |  any |
 | state |  string |
-| meal_orders |  any |
-| order_week |  any |
+| mealOrders |  any |
+| orderWeek |  any |
 
 
 
@@ -2965,10 +3157,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2977,10 +3169,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -2989,10 +3181,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -3001,10 +3193,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  uuid |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | code |  string |
 | removed |  boolean |
 | expired |  any |
@@ -3016,10 +3208,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -3028,20 +3220,20 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | slug |  string |
-| can_group_order |  boolean |
+| canGroupOrder |  boolean |
 | name |  string |
 | search |  any |
 | features |  any |
 | cuisines |  any |
-| dietary_tag_ordering |  any |
+| dietaryTagOrdering |  any |
 | area |  any |
-| updated_after |  any |
-| available_at |  any |
+| updatedAfter |  any |
+| availableAt |  any |
 
 
 
@@ -3050,10 +3242,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | month |  any |
 
 
@@ -3063,10 +3255,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -3075,10 +3267,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -3087,10 +3279,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | resource |  any |
 
 
@@ -3100,12 +3292,12 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
-| record_type |  string |
-| record_id |  integer |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
+| recordType |  string |
+| recordId |  integer |
 
 
 
@@ -3114,10 +3306,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -3126,10 +3318,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | name |  string |
 
 
@@ -3139,14 +3331,14 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 | name |  any |
 | email |  string |
-| driver_missing_monday |  any |
-| courier_area |  any |
+| driverMissingMonday |  any |
+| courierArea |  any |
 
 
 
@@ -3155,11 +3347,11 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
-| created_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
+| createdAfter |  any |
 
 
 
@@ -3168,10 +3360,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
@@ -3180,10 +3372,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| created_at_before |  any |
-| created_at_after |  any |
-| updated_at_before |  any |
-| updated_at_after |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
 
 
 
