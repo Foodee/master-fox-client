@@ -80,7 +80,28 @@ client.apiKey;
 
 ```
 
-Once connected, any of the resource, and their related resources may be accessed using the patterns outlined in this section
+
+
+
+Once connected, any of the resource, and their related resources may be accessed using the patterns outlined in this section below
+
+
+#### IndexResult
+
+Note that any of the index endpoints will return an IndexResult which contains an array of results with additional meta information
+about the contained results with regards to pagination. It supports standard higher order functions (map, filter, reduce) and also
+supports the following:
+
+
+```javascript
+const result = await = client.restaurants.index();
+
+result.hasMore; // true / false if there are more results on the server
+result.total; // total number of records on the server
+result.length; // total number of records in this request
+```
+
+
 
 ### <a name='resource-dao-AppConfiguration'></a>AppConfiguration
 See [AppConfigurationFilter](#resource-filter-AppConfiguration) for valid filters.

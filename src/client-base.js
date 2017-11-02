@@ -1,5 +1,6 @@
 import ResourceClasses from './resources/resources';
 import Resource from './resources/resource';
+import { dasherize, underscore } from 'inflected'
 
 const nodeFetch = require('node-fetch');
 
@@ -81,11 +82,11 @@ export class ResourceDao {
   /**
    * Index a collection of resources searched by options
    *
-   * @param {{include: string, filters: {}}} options
+   * @param {{include: string, filter: {}}} options
    * @return Promise<T[]>
    */
   index(options = {}) {
-    return this._client.index(this._route, options.include, options.filters, options.sort, options.page);
+    return this._client.index(this._route, options.include, options.filter, options.sort, options.page);
   }
 
   /**
@@ -139,7 +140,129 @@ export class RelationshipDao {
   }
 
   toMany(childRoute, options = {}) {
-    return this._client.index(`${this._parentRoute}/${this._id}/${childRoute}`, options.include, options.filters, options.sort, options.page);
+    return this._client.index(`${this._parentRoute}/${this._id}/${childRoute}`, options.include, options.filter, options.sort, options.page);
+  }
+
+}
+
+
+/**
+ * @class
+ * @template T
+ */
+export class IndexResult {
+
+  /**
+   * @param {T[]} records
+   * @param {Object} meta
+   * @param {Object} page
+   */
+  constructor(records, meta, page) {
+    this.records = records;
+    this.page = page;
+    this.meta = meta;
+    this.index = 0;
+  }
+
+  /**
+   * Delegates to the filter function of the contained array
+   * @param func
+   * @returns {Array.<T>}
+   */
+  filter(func) {
+    return this.records.filter(func);
+  }
+
+  /**
+   * Delegates to the map function of the contained array
+   * @param func
+   * @returns {Array.<T>}
+   */
+  map(func) {
+    return this.records.map(func);
+  }
+
+  /**
+   * Delegates to the every function of the contained array
+   * @param func
+   * @returns {Array.<T>}
+   */
+  every(func) {
+    return this.records.every(func);
+  }
+
+  /**
+   * Delegates to the forEach function of the contained array
+   * @param func
+   * @returns {Array.<T>}
+   */
+  forEach(func) {
+    return this.records.forEach(func);
+  }
+
+  /**
+   * Delegates to the find function of the contained array
+   * @param func
+   * @returns {Array.<T>}
+   */
+  find(func) {
+    return this.records.find(func);
+  }
+
+  /**
+   * Delegates to the reduce function of the contained array
+   * @param func
+   * @returns {Array.<T>}
+   */
+  reduce(func, initial) {
+    return this.records.reduce(func, initial);
+  }
+
+  /**
+   * Delegates to the [] function of the contained array
+   * @param func
+   * @returns {Array.<T>}
+   */
+  objectAt(index) {
+    return this.records[index];
+  }
+
+  // mount the iterator on this
+  [Symbol.iterator]() {
+    return {
+      next: () => {
+        if (this.index < this.records.length) {
+          return {value: this.records[this.index++], done: false};
+        } else {
+          this.index = 0; //If we would like to iterate over this again without forcing manual update of the index
+          return {done: true};
+        }
+      }
+    }
+  };
+
+  /**
+   * The total length of records on the server
+   * @returns {number}
+   */
+  get total() {
+    return this.meta['record-count'];
+  }
+
+  /**
+   * The length of this result set
+   * @returns {number}
+   */
+  get length() {
+    return this.records.length;
+  }
+
+  /**
+   * Whether or not there are more records on the server that match this set
+   * @returns {boolean}
+   */
+  get hasMore() {
+    return this.page.offset + this.page.limit < this.total;
   }
 
 }
@@ -187,31 +310,47 @@ export class JRClient {
 
     // Append Filters
     if (filter) {
-      qs = qs.concat(Object.keys(filter).map(([key, value]) => `filter[${dasherize(key)}]=${value}`));
+      qs = qs.concat(Object.entries(filter).map(([key, value]) => `filter[${dasherize(underscore(key))}]=${value}`));
     }
 
-    // Append Filters
+    // Append Page
     if (page) {
-      qs = qs.concat(Object.keys(page).map(([key, value]) => `page[${dasherize(key)}]=${value}`));
+      qs = qs.concat(Object.entries(page).map(([key, value]) => `page[${dasherize(underscore(key))}]=${value}`));
     }
 
     if (sort) {
-      qs.push(sort)
+      qs.push(`sort=${sort}`)
     }
 
     qs = qs.length ? '?' + qs.join('&') : '';
 
     let url = `${this.baseUrl}api/v3/${uri}${qs}`;
 
-    console.log(`${method}: ${url}`)
+    console.log(`${method}: ${url}`);
 
     return JRClient.fetch(url, {
-      headers: this.headers,
-      method: method,
-      body: body ? JSON.stringify(body) : body
-    })
-      .then((response) => response.json())
-      .catch(console.err)
+        headers: this.headers,
+        method: method,
+        body: body ? JSON.stringify(body) : body
+      })
+      .then((response) => {
+        return response
+          .json()
+          .then((body) => {
+            // Handle all errors the same
+            if (response.status > 299) {
+              const errors = body.errors;
+              if (errors && errors[0]) {
+                throw `${errors[0].title}: ${errors[0].detail}`;
+              }
+              else {
+                throw `${response.status}: something went wrong`;
+              }
+            }
+
+            return body;
+          })
+      })
   }
 
   // delegate to the polyfill so we're all using the same fetch
@@ -219,16 +358,14 @@ export class JRClient {
     return nodeFetch(url, options);
   }
 
-  index(uri, include, filters, sort, page) {
+  index(uri, include, filter, sort, page) {
     return this.fetchJR(uri, {
         include: include,
-        filters: filters,
+        filter: filter,
         sort: sort,
         page: page
       })
-      .then(({data, included, meta}) => {
-        return data.map(_ => extractJRObject(_, included))
-      });
+      .then(({data, included, meta}) => new IndexResult(data.map(_ => extractJRObject(_, included)), meta, page));
   }
 
   get(uri, include) {
