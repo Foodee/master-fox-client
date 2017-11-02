@@ -64,8 +64,22 @@ following code:
 
 ```JavaScript
 import MasterFox from 'master-fox';
-const client = new MasterFox('https://food.ee/api/v3/', '<your-api-key>');
+const client = new MasterFox('https://food.ee/', '<your-api-key>');
 ```
+
+You can also connect using an email and password as follows:
+
+```JavaScript
+import MasterFox from 'master-fox';
+const client = MasterFox.login('https://food.ee/', '<email>', '<password>');
+
+// will be your current API token, you can save this in order to prevent subsequent logins
+// NOTE: never store a user's password but rather use this to power login experiences and store
+// the resulting tokens
+client.apiKey;
+
+```
+
 Once connected, any of the resource, and their related resources may be accessed using the patterns outlined in this section
 
 ### <a name='resource-dao-AppConfiguration'></a>AppConfiguration

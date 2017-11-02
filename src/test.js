@@ -1,15 +1,15 @@
 import MasterFox from './index';
 
-const client = new MasterFox('https://concierge.food.ee/api/v3/', 'H7jPOjCbT1deq+uSCmcSjwzp5kDambeXPnLieHYMZgkFCYBCG0tYpQ==');
-client
-  .restaurants
-  .get(1, {
-    include: 'owner'
-  })
-  .then((resto) => {
-    console.log(resto.name)
-    console.log(resto.owner.firstName)
-  });
+// const client = new MasterFox('https://concierge.food.ee/', 'H7jPOjCbT1deq+uSCmcSjwzp5kDambeXPnLieHYMZgkFCYBCG0tYpQ==');
+// client
+//   .restaurants
+//   .get(1, {
+//     include: 'owner'
+//   })
+//   .then((resto) => {
+//     console.log(resto.name)
+//     console.log(resto.owner.firstName)
+//   });
 // client.restaurants
 //   .index({})
 //   .then((restos) => {
@@ -35,4 +35,18 @@ client
 //   .then((serviceTimes) => {
 //     console.log(serviceTimes);
 //   });
+
+  const client = MasterFox
+    .login('https://concierge.food.ee/', 'joe.gaudet@food.ee', '$Yjn2JFWMTBi7)')
+    .then((client) =>
+      client
+        .restaurants
+        .get(1, {
+          include: 'owner'
+        })
+        .then((resto) => {
+          console.log(resto.name)
+          console.log(resto.owner.firstName)
+        })
+    )
 

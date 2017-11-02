@@ -1,7 +1,7 @@
 import ResourceClasses from './resources/resources';
 import Resource from './resources/resource';
 
-const fetch = require('node-fetch');
+const nodeFetch = require('node-fetch');
 
 function extractJRObject(data, included) {
   const id = data.id;
@@ -151,6 +151,7 @@ export class JRClient {
 
   constructor(baseUrl, apiKey) {
     this.baseUrl = baseUrl;
+    this.apiKey = apiKey;
 
     this.headers = {
       'Authorization': `Token token="${apiKey}"`,
@@ -164,7 +165,7 @@ export class JRClient {
    * @param options
    * @returns {Promise.<T>}
    */
-  fetch(uri, options = {}) {
+  fetchJR(uri, options = {}) {
 
     const method = options.method || 'GET';
     const body = options.body;
@@ -200,11 +201,11 @@ export class JRClient {
 
     qs = qs.length ? '?' + qs.join('&') : '';
 
-    let url = `${this.baseUrl}${uri}${qs}`;
+    let url = `${this.baseUrl}api/v3/${uri}${qs}`;
 
     console.log(`${method}: ${url}`)
 
-    return fetch(url, {
+    return JRClient.fetch(url, {
       headers: this.headers,
       method: method,
       body: body ? JSON.stringify(body) : body
@@ -213,8 +214,13 @@ export class JRClient {
       .catch(console.err)
   }
 
+  // delegate to the polyfill so we're all using the same fetch
+  static fetch(url, options) {
+    return nodeFetch(url, options);
+  }
+
   index(uri, include, filters, sort, page) {
-    return this.fetch(uri, {
+    return this.fetchJR(uri, {
         include: include,
         filters: filters,
         sort: sort,
@@ -226,14 +232,14 @@ export class JRClient {
   }
 
   get(uri, include) {
-    return this.fetch(uri, {
+    return this.fetchJR(uri, {
         include: include
       })
       .then(({data, included}) => extractJRObject(data, included));
   }
 
   post(uri, record, include) {
-    return this.fetch(uri, {
+    return this.fetchJR(uri, {
         method: 'POST',
         body: record,
         include: include
@@ -242,7 +248,7 @@ export class JRClient {
   }
 
   patch(uri, record, include) {
-    return this.fetch(uri, {
+    return this.fetchJR(uri, {
         method: 'PATCH',
         body: record,
         include: include
@@ -251,7 +257,7 @@ export class JRClient {
   }
 
   delete(uri) {
-    return this.fetch(uri, {
+    return this.fetchJR(uri, {
       method: 'DELETE',
     })
   }

@@ -211,6 +211,32 @@ class MFClient extends JRClient {
   
   }
 
+  /**
+   * Returns a client logged in with the provided credientials.
+   *
+   * NOTE: You should **never** store the client's credentials, this is useful for environments
+   * where we might need to login - Think Chrome Extension or FleetFox
+   *
+   * @param {String} rootUrl
+   * @param {String} email
+   * @param {String} password
+   * @returns {Promise.<MFClient>}
+   */
+  static login(rootUrl, email, password) {
+    let url = `${rootUrl}api/v3/users/sign_in`;
+    console.log(`Logging in to ${url}`);
+    return this.fetch(url, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({user: {email, password}})
+      })
+      .then((response) => response.json())
+  .then((value) => new MFClient(rootUrl, value.token))
+  .catch(reason => console.err(reason))
+  }
 }
 
 export default MFClient;
