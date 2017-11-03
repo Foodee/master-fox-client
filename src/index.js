@@ -18,6 +18,7 @@ import {
     DriverPingDao,
     DriverWeekDao,
     EmailMessageDao,
+    EventDao,
     GiftbitCardDao,
     GiftbitErrorDao,
     GiftbitGiftDao,
@@ -33,6 +34,7 @@ import {
     MenuOptionItemDao,
     OrderDao,
     OrderItemDao,
+    PaymentAccountDao,
     PaymentCardDao,
     PickupLocationDao,
     PromoCodeDao,
@@ -116,6 +118,9 @@ class MFClient extends JRClient {
     /** @type {EmailMessageDao} **/
     this.emailMessages = new EmailMessageDao(this);
   
+    /** @type {EventDao} **/
+    this.events = new EventDao(this);
+  
     /** @type {GiftbitCardDao} **/
     this.giftbitCards = new GiftbitCardDao(this);
   
@@ -160,6 +165,9 @@ class MFClient extends JRClient {
   
     /** @type {OrderItemDao} **/
     this.orderItems = new OrderItemDao(this);
+  
+    /** @type {PaymentAccountDao} **/
+    this.paymentAccounts = new PaymentAccountDao(this);
   
     /** @type {PaymentCardDao} **/
     this.paymentCards = new PaymentCardDao(this);

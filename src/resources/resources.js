@@ -1265,6 +1265,42 @@ export class EmailMessage extends Resource {
 
 }
 
+/** @class Event
+  * @extends {Resource}
+  **/
+export class Event extends Resource {
+
+  // attributes
+
+  /** @param {any} event **/
+  set event(event){this._attributes['event'] = event};
+  /** @type {any} */
+  get event(){return this._attributes['event'];};
+
+  /** @param {any} timestamp **/
+  set timestamp(timestamp){this._attributes['timestamp'] = timestamp};
+  /** @type {any} */
+  get timestamp(){return this._attributes['timestamp'];};
+
+  /** @param {any} createdAt **/
+  set createdAt(createdAt){this._attributes['created-at'] = createdAt};
+  /** @type {any} */
+  get createdAt(){return this._attributes['created-at'];};
+
+  /** @param {any} eventTimestamp **/
+  set eventTimestamp(eventTimestamp){this._attributes['event-timestamp'] = eventTimestamp};
+  /** @type {any} */
+  get eventTimestamp(){return this._attributes['event-timestamp'];};
+
+
+  // relationships
+
+
+
+
+
+}
+
 /** @class GiftbitCard
   * @extends {Resource}
   **/
@@ -2500,6 +2536,22 @@ export class OrderItem extends Resource {
 
 }
 
+/** @class PaymentAccount
+  * @extends {Resource}
+  **/
+export class PaymentAccount extends Resource {
+
+  // attributes
+
+
+  // relationships
+
+
+
+
+
+}
+
 /** @class PaymentCard
   * @extends {Resource}
   **/
@@ -3603,6 +3655,7 @@ const ResourceClasses = {
   ['driver-pings']:DriverPing,
   ['driver-weeks']:DriverWeek,
   ['email-messages']:EmailMessage,
+  ['events']:Event,
   ['giftbit-cards']:GiftbitCard,
   ['giftbit-errors']:GiftbitError,
   ['giftbit-gifts']:GiftbitGift,
@@ -3618,6 +3671,7 @@ const ResourceClasses = {
   ['menu-option-items']:MenuOptionItem,
   ['orders']:Order,
   ['order-items']:OrderItem,
+  ['payment-accounts']:PaymentAccount,
   ['payment-cards']:PaymentCard,
   ['pickup-locations']:PickupLocation,
   ['promo-codes']:PromoCode,
