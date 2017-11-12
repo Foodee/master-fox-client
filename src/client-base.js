@@ -352,7 +352,7 @@ export class JRClient {
   }
 
   // delegate to the polyfill so we're all using the same fetch
-  static fetch(url, options) {
+  static fetch(url, options = {}) {
     if(fetch === undefined) {
       throw new Error('Fetch is not defined, to fix this error set JRClient.fetch with a polyfill fetch function.');
     }
