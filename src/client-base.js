@@ -326,7 +326,7 @@ export class JRClient {
 
     console.log(`${method}: ${url}`);
 
-    return JRClient.fetch(url, {
+    return fetch(url, {
         headers: this.headers,
         method: method,
         body: body ? JSON.stringify(body) : body
@@ -351,15 +351,6 @@ export class JRClient {
       })
   }
 
-  // delegate to the polyfill so we're all using the same fetch
-  static fetch(url, options = {}) {
-    if(fetch === undefined) {
-      throw new Error('Fetch is not defined, to fix this error set JRClient.fetch with a polyfill fetch function.');
-    }
-    else {
-      return fetch(url, options);
-    }
-  }
 
   index(uri, include, filter, sort, page) {
     return this.fetchJR(uri, {
