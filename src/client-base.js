@@ -19,10 +19,10 @@ function extractJRObject(data, included) {
 
         // included relationships are either to one or to many
         if (Array.isArray(value.data)) {
-          related = value.data.map((r) => extractJRObject(findRelationship(included, r)));
+          related = value.data.map((r) => extractJRObject(findRelationship(included, r)), included);
         }
         else {
-          related = extractJRObject(findRelationship(included, value.data));
+          related = extractJRObject(findRelationship(included, value.data), included);
         }
 
         acc[key] = related;
