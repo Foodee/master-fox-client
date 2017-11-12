@@ -129,7 +129,7 @@ const pagedIndexOfAppConfigurations = await client.appConfigurations.index(optio
 // Related Resources
 // To Many
 // Index AppConfiguration#1's versions
-const pagedIndexOfVersions = await client.appConfigurations.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.appConfigurations.from(1).index.versions(options);
 ```
 ### <a name='resource-dao-Area'></a>Area
 See [AreaFilter](#resource-filter-Area) for valid filters.
@@ -155,26 +155,26 @@ const pagedIndexOfAreas = await client.areas.index(options);
 // Related Resources
 // To One
 // Get Area#1's deliveryFeeTaxRate
-const singleInvoicingTaxRate = await client.areas.from(1).deliveryFeeTaxRate.get(1,  options);
+const singleInvoicingTaxRate = await client.areas.from(1).get.deliveryFeeTaxRate(1,  options);
 // To Many
 // Index Area#1's couriers
-const pagedIndexOfCouriers = await client.areas.from(1).couriers.index(options);
+const pagedIndexOfCouriers = await client.areas.from(1).index.couriers(options);
 // Index Area#1's clients
-const pagedIndexOfClients = await client.areas.from(1).clients.index(options);
+const pagedIndexOfClients = await client.areas.from(1).index.clients(options);
 // Index Area#1's restaurants
-const pagedIndexOfRestaurants = await client.areas.from(1).restaurants.index(options);
+const pagedIndexOfRestaurants = await client.areas.from(1).index.restaurants(options);
 // Index Area#1's invoicingTaxRates
-const pagedIndexOfInvoicingTaxRates = await client.areas.from(1).invoicingTaxRates.index(options);
+const pagedIndexOfInvoicingTaxRates = await client.areas.from(1).index.invoicingTaxRates(options);
 // Index Area#1's globalInvoicingTaxRates
-const pagedIndexOfInvoicingTaxRates = await client.areas.from(1).globalInvoicingTaxRates.index(options);
+const pagedIndexOfInvoicingTaxRates = await client.areas.from(1).index.globalInvoicingTaxRates(options);
 // Index Area#1's areaClosures
-const pagedIndexOfAreaClosures = await client.areas.from(1).areaClosures.index(options);
+const pagedIndexOfAreaClosures = await client.areas.from(1).index.areaClosures(options);
 // Index Area#1's currentAreaClosures
-const pagedIndexOfAreaClosures = await client.areas.from(1).currentAreaClosures.index(options);
+const pagedIndexOfAreaClosures = await client.areas.from(1).index.currentAreaClosures(options);
 // Index Area#1's promoCodes
-const pagedIndexOfPromoCodes = await client.areas.from(1).promoCodes.index(options);
+const pagedIndexOfPromoCodes = await client.areas.from(1).index.promoCodes(options);
 // Index Area#1's versions
-const pagedIndexOfVersions = await client.areas.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.areas.from(1).index.versions(options);
 ```
 ### <a name='resource-dao-AreaClosure'></a>AreaClosure
 See [AreaClosureFilter](#resource-filter-AreaClosure) for valid filters.
@@ -200,7 +200,7 @@ const pagedIndexOfAreaClosures = await client.areaClosures.index(options);
 // Related Resources
 // To One
 // Get AreaClosure#1's area
-const singleArea = await client.areaClosures.from(1).area.get(1,  options);
+const singleArea = await client.areaClosures.from(1).get.area(1,  options);
 ```
 ### <a name='resource-dao-Client'></a>Client
 See [ClientFilter](#resource-filter-Client) for valid filters.
@@ -226,42 +226,42 @@ const pagedIndexOfClients = await client.clients.index(options);
 // Related Resources
 // To One
 // Get Client#1's defaultArea
-const singleArea = await client.clients.from(1).defaultArea.get(1,  options);
+const singleArea = await client.clients.from(1).get.defaultArea(1,  options);
 // Get Client#1's billingLocation
-const singleLocation = await client.clients.from(1).billingLocation.get(1,  options);
+const singleLocation = await client.clients.from(1).get.billingLocation(1,  options);
 // Get Client#1's accountManager
-const singleUser = await client.clients.from(1).accountManager.get(1,  options);
+const singleUser = await client.clients.from(1).get.accountManager(1,  options);
 // Get Client#1's owner
-const singleUser = await client.clients.from(1).owner.get(1,  options);
+const singleUser = await client.clients.from(1).get.owner(1,  options);
 // Get Client#1's company
-const singleCompany = await client.clients.from(1).company.get(1,  options);
+const singleCompany = await client.clients.from(1).get.company(1,  options);
 // Get Client#1's mealPlan
-const singleMealPlan = await client.clients.from(1).mealPlan.get(1,  options);
+const singleMealPlan = await client.clients.from(1).get.mealPlan(1,  options);
 // Get Client#1's taxRate
-const singleInvoicingTaxRate = await client.clients.from(1).taxRate.get(1,  options);
+const singleInvoicingTaxRate = await client.clients.from(1).get.taxRate(1,  options);
 // Get Client#1's giftbitCard
-const singleGiftbitCard = await client.clients.from(1).giftbitCard.get(1,  options);
+const singleGiftbitCard = await client.clients.from(1).get.giftbitCard(1,  options);
 // To Many
 // Index Client#1's areas
-const pagedIndexOfAreas = await client.clients.from(1).areas.index(options);
+const pagedIndexOfAreas = await client.clients.from(1).index.areas(options);
 // Index Client#1's deliveryLocations
-const pagedIndexOfDeliveryLocations = await client.clients.from(1).deliveryLocations.index(options);
+const pagedIndexOfDeliveryLocations = await client.clients.from(1).index.deliveryLocations(options);
 // Index Client#1's adminContacts
-const pagedIndexOfContacts = await client.clients.from(1).adminContacts.index(options);
+const pagedIndexOfContacts = await client.clients.from(1).index.adminContacts(options);
 // Index Client#1's admins
-const pagedIndexOfUsers = await client.clients.from(1).admins.index(options);
+const pagedIndexOfUsers = await client.clients.from(1).index.admins(options);
 // Index Client#1's orderContacts
-const pagedIndexOfContacts = await client.clients.from(1).orderContacts.index(options);
+const pagedIndexOfContacts = await client.clients.from(1).index.orderContacts(options);
 // Index Client#1's orders
-const pagedIndexOfOrders = await client.clients.from(1).orders.index(options);
+const pagedIndexOfOrders = await client.clients.from(1).index.orders(options);
 // Index Client#1's paymentCards
-const pagedIndexOfPaymentCards = await client.clients.from(1).paymentCards.index(options);
+const pagedIndexOfPaymentCards = await client.clients.from(1).index.paymentCards(options);
 // Index Client#1's versions
-const pagedIndexOfVersions = await client.clients.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.clients.from(1).index.versions(options);
 // Index Client#1's giftbitGifts
-const pagedIndexOfGiftbitGifts = await client.clients.from(1).giftbitGifts.index(options);
+const pagedIndexOfGiftbitGifts = await client.clients.from(1).index.giftbitGifts(options);
 // Index Client#1's giftbitErrors
-const pagedIndexOfGiftbitErrors = await client.clients.from(1).giftbitErrors.index(options);
+const pagedIndexOfGiftbitErrors = await client.clients.from(1).index.giftbitErrors(options);
 ```
 ### <a name='resource-dao-ClientDiscount'></a>ClientDiscount
 See [ClientDiscountFilter](#resource-filter-ClientDiscount) for valid filters.
@@ -287,7 +287,7 @@ const pagedIndexOfClientDiscounts = await client.clientDiscounts.index(options);
 // Related Resources
 // To One
 // Get ClientDiscount#1's order
-const singleOrder = await client.clientDiscounts.from(1).order.get(1,  options);
+const singleOrder = await client.clientDiscounts.from(1).get.order(1,  options);
 ```
 ### <a name='resource-dao-ClientOrderInvoice'></a>ClientOrderInvoice
 See [ClientOrderInvoiceFilter](#resource-filter-ClientOrderInvoice) for valid filters.
@@ -334,22 +334,22 @@ const pagedIndexOfClientSignups = await client.clientSignups.index(options);
 // Related Resources
 // To One
 // Get ClientSignup#1's user
-const singleUser = await client.clientSignups.from(1).user.get(1,  options);
+const singleUser = await client.clientSignups.from(1).get.user(1,  options);
 // Get ClientSignup#1's qualifyingQuestion
-const singleQualifyingQuestion = await client.clientSignups.from(1).qualifyingQuestion.get(1,  options);
+const singleQualifyingQuestion = await client.clientSignups.from(1).get.qualifyingQuestion(1,  options);
 // Get ClientSignup#1's billingLocation
-const singleLocation = await client.clientSignups.from(1).billingLocation.get(1,  options);
+const singleLocation = await client.clientSignups.from(1).get.billingLocation(1,  options);
 // Get ClientSignup#1's deliveryLocation
-const singleLocation = await client.clientSignups.from(1).deliveryLocation.get(1,  options);
+const singleLocation = await client.clientSignups.from(1).get.deliveryLocation(1,  options);
 // Get ClientSignup#1's billingContact
-const singleContact = await client.clientSignups.from(1).billingContact.get(1,  options);
+const singleContact = await client.clientSignups.from(1).get.billingContact(1,  options);
 // Get ClientSignup#1's contact
-const singleContact = await client.clientSignups.from(1).contact.get(1,  options);
+const singleContact = await client.clientSignups.from(1).get.contact(1,  options);
 // To Many
 // Index ClientSignup#1's clients
-const pagedIndexOfClients = await client.clientSignups.from(1).clients.index(options);
+const pagedIndexOfClients = await client.clientSignups.from(1).index.clients(options);
 // Index ClientSignup#1's areas
-const pagedIndexOfAreas = await client.clientSignups.from(1).areas.index(options);
+const pagedIndexOfAreas = await client.clientSignups.from(1).index.areas(options);
 ```
 ### <a name='resource-dao-Company'></a>Company
 See [CompanyFilter](#resource-filter-Company) for valid filters.
@@ -375,7 +375,7 @@ const pagedIndexOfCompanies = await client.companies.index(options);
 // Related Resources
 // To Many
 // Index Company#1's clients
-const pagedIndexOfClients = await client.companies.from(1).clients.index(options);
+const pagedIndexOfClients = await client.companies.from(1).index.clients(options);
 ```
 ### <a name='resource-dao-Contact'></a>Contact
 See [ContactFilter](#resource-filter-Contact) for valid filters.
@@ -422,14 +422,14 @@ const pagedIndexOfCouriers = await client.couriers.index(options);
 // Related Resources
 // To One
 // Get Courier#1's owner
-const singleUser = await client.couriers.from(1).owner.get(1,  options);
+const singleUser = await client.couriers.from(1).get.owner(1,  options);
 // To Many
 // Index Courier#1's drivers
-const pagedIndexOfUsers = await client.couriers.from(1).drivers.index(options);
+const pagedIndexOfUsers = await client.couriers.from(1).index.drivers(options);
 // Index Courier#1's areas
-const pagedIndexOfAreas = await client.couriers.from(1).areas.index(options);
+const pagedIndexOfAreas = await client.couriers.from(1).index.areas(options);
 // Index Courier#1's versions
-const pagedIndexOfVersions = await client.couriers.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.couriers.from(1).index.versions(options);
 ```
 ### <a name='resource-dao-DeliveryCase'></a>DeliveryCase
 See [DeliveryCaseFilter](#resource-filter-DeliveryCase) for valid filters.
@@ -455,9 +455,9 @@ const pagedIndexOfDeliveryCases = await client.deliveryCases.index(options);
 // Related Resources
 // To One
 // Get DeliveryCase#1's user
-const singleUser = await client.deliveryCases.from(1).user.get(1,  options);
+const singleUser = await client.deliveryCases.from(1).get.user(1,  options);
 // Get DeliveryCase#1's order
-const singleOrder = await client.deliveryCases.from(1).order.get(1,  options);
+const singleOrder = await client.deliveryCases.from(1).get.order(1,  options);
 ```
 ### <a name='resource-dao-DeliveryLocation'></a>DeliveryLocation
 See [DeliveryLocationFilter](#resource-filter-DeliveryLocation) for valid filters.
@@ -483,9 +483,9 @@ const pagedIndexOfDeliveryLocations = await client.deliveryLocations.index(optio
 // Related Resources
 // To One
 // Get DeliveryLocation#1's client
-const singleClient = await client.deliveryLocations.from(1).client.get(1,  options);
+const singleClient = await client.deliveryLocations.from(1).get.client(1,  options);
 // Get DeliveryLocation#1's location
-const singleLocation = await client.deliveryLocations.from(1).location.get(1,  options);
+const singleLocation = await client.deliveryLocations.from(1).get.location(1,  options);
 ```
 ### <a name='resource-dao-DeskCase'></a>DeskCase
 See [DeskCaseFilter](#resource-filter-DeskCase) for valid filters.
@@ -511,9 +511,9 @@ const pagedIndexOfDeskCases = await client.deskCases.index(options);
 // Related Resources
 // To One
 // Get DeskCase#1's user
-const singleUser = await client.deskCases.from(1).user.get(1,  options);
+const singleUser = await client.deskCases.from(1).get.user(1,  options);
 // Get DeskCase#1's order
-const singleOrder = await client.deskCases.from(1).order.get(1,  options);
+const singleOrder = await client.deskCases.from(1).get.order(1,  options);
 ```
 ### <a name='resource-dao-DietaryTag'></a>DietaryTag
 See [DietaryTagFilter](#resource-filter-DietaryTag) for valid filters.
@@ -539,7 +539,7 @@ const pagedIndexOfDietaryTags = await client.dietaryTags.index(options);
 // Related Resources
 // To Many
 // Index DietaryTag#1's menuOptionItems
-const pagedIndexOfMenuOptionItems = await client.dietaryTags.from(1).menuOptionItems.index(options);
+const pagedIndexOfMenuOptionItems = await client.dietaryTags.from(1).index.menuOptionItems(options);
 ```
 ### <a name='resource-dao-DiscountCode'></a>DiscountCode
 See [DiscountCodeFilter](#resource-filter-DiscountCode) for valid filters.
@@ -586,7 +586,7 @@ const pagedIndexOfDriverDays = await client.driverDays.index(options);
 // Related Resources
 // To One
 // Get DriverDay#1's driver
-const singleUser = await client.driverDays.from(1).driver.get(1,  options);
+const singleUser = await client.driverDays.from(1).get.driver(1,  options);
 ```
 ### <a name='resource-dao-DriverPing'></a>DriverPing
 See [DriverPingFilter](#resource-filter-DriverPing) for valid filters.
@@ -612,7 +612,7 @@ const pagedIndexOfDriverPings = await client.driverPings.index(options);
 // Related Resources
 // To One
 // Get DriverPing#1's user
-const singleUser = await client.driverPings.from(1).user.get(1,  options);
+const singleUser = await client.driverPings.from(1).get.user(1,  options);
 ```
 ### <a name='resource-dao-DriverWeek'></a>DriverWeek
 See [DriverWeekFilter](#resource-filter-DriverWeek) for valid filters.
@@ -638,7 +638,7 @@ const pagedIndexOfDriverWeeks = await client.driverWeeks.index(options);
 // Related Resources
 // To One
 // Get DriverWeek#1's driver
-const singleUser = await client.driverWeeks.from(1).driver.get(1,  options);
+const singleUser = await client.driverWeeks.from(1).get.driver(1,  options);
 ```
 ### <a name='resource-dao-EmailMessage'></a>EmailMessage
 See [EmailMessageFilter](#resource-filter-EmailMessage) for valid filters.
@@ -664,7 +664,7 @@ const pagedIndexOfEmailMessages = await client.emailMessages.index(options);
 // Related Resources
 // To One
 // Get EmailMessage#1's order
-const singleOrder = await client.emailMessages.from(1).order.get(1,  options);
+const singleOrder = await client.emailMessages.from(1).get.order(1,  options);
 ```
 ### <a name='resource-dao-Event'></a>Event
 See [EventFilter](#resource-filter-Event) for valid filters.
@@ -732,7 +732,7 @@ const pagedIndexOfGiftbitErrors = await client.giftbitErrors.index(options);
 // Related Resources
 // To One
 // Get GiftbitError#1's order
-const singleOrder = await client.giftbitErrors.from(1).order.get(1,  options);
+const singleOrder = await client.giftbitErrors.from(1).get.order(1,  options);
 ```
 ### <a name='resource-dao-GiftbitGift'></a>GiftbitGift
 See [GiftbitGiftFilter](#resource-filter-GiftbitGift) for valid filters.
@@ -779,12 +779,12 @@ const pagedIndexOfGroupOrderMembers = await client.groupOrderMembers.index(optio
 // Related Resources
 // To One
 // Get GroupOrderMember#1's user
-const singleUser = await client.groupOrderMembers.from(1).user.get(1,  options);
+const singleUser = await client.groupOrderMembers.from(1).get.user(1,  options);
 // Get GroupOrderMember#1's order
-const singleOrder = await client.groupOrderMembers.from(1).order.get(1,  options);
+const singleOrder = await client.groupOrderMembers.from(1).get.order(1,  options);
 // To Many
 // Index GroupOrderMember#1's orderItems
-const pagedIndexOfOrderItems = await client.groupOrderMembers.from(1).orderItems.index(options);
+const pagedIndexOfOrderItems = await client.groupOrderMembers.from(1).index.orderItems(options);
 ```
 ### <a name='resource-dao-Invoice'></a>Invoice
 See [InvoiceFilter](#resource-filter-Invoice) for valid filters.
@@ -831,7 +831,7 @@ const pagedIndexOfInvoicingTaxRates = await client.invoicingTaxRates.index(optio
 // Related Resources
 // To One
 // Get InvoicingTaxRate#1's area
-const singleArea = await client.invoicingTaxRates.from(1).area.get(1,  options);
+const singleArea = await client.invoicingTaxRates.from(1).get.area(1,  options);
 ```
 ### <a name='resource-dao-Location'></a>Location
 See [LocationFilter](#resource-filter-Location) for valid filters.
@@ -857,7 +857,7 @@ const pagedIndexOfLocations = await client.locations.index(options);
 // Related Resources
 // To One
 // Get Location#1's area
-const singleArea = await client.locations.from(1).area.get(1,  options);
+const singleArea = await client.locations.from(1).get.area(1,  options);
 ```
 ### <a name='resource-dao-MealPlan'></a>MealPlan
 See [MealPlanFilter](#resource-filter-MealPlan) for valid filters.
@@ -883,12 +883,12 @@ const pagedIndexOfMealPlans = await client.mealPlans.index(options);
 // Related Resources
 // To One
 // Get MealPlan#1's mealPlanUser
-const singleUser = await client.mealPlans.from(1).mealPlanUser.get(1,  options);
+const singleUser = await client.mealPlans.from(1).get.mealPlanUser(1,  options);
 // Get MealPlan#1's client
-const singleClient = await client.mealPlans.from(1).client.get(1,  options);
+const singleClient = await client.mealPlans.from(1).get.client(1,  options);
 // To Many
 // Index MealPlan#1's orders
-const pagedIndexOfOrders = await client.mealPlans.from(1).orders.index(options);
+const pagedIndexOfOrders = await client.mealPlans.from(1).index.orders(options);
 ```
 ### <a name='resource-dao-Menu'></a>Menu
 See [MenuFilter](#resource-filter-Menu) for valid filters.
@@ -914,18 +914,18 @@ const pagedIndexOfMenus = await client.menus.index(options);
 // Related Resources
 // To One
 // Get Menu#1's area
-const singleArea = await client.menus.from(1).area.get(1,  options);
+const singleArea = await client.menus.from(1).get.area(1,  options);
 // Get Menu#1's restaurant
-const singleRestaurant = await client.menus.from(1).restaurant.get(1,  options);
+const singleRestaurant = await client.menus.from(1).get.restaurant(1,  options);
 // To Many
 // Index Menu#1's menuGroups
-const pagedIndexOfMenuGroups = await client.menus.from(1).menuGroups.index(options);
+const pagedIndexOfMenuGroups = await client.menus.from(1).index.menuGroups(options);
 // Index Menu#1's menuItems
-const pagedIndexOfMenuItems = await client.menus.from(1).menuItems.index(options);
+const pagedIndexOfMenuItems = await client.menus.from(1).index.menuItems(options);
 // Index Menu#1's dietaryTags
-const pagedIndexOfDietaryTags = await client.menus.from(1).dietaryTags.index(options);
+const pagedIndexOfDietaryTags = await client.menus.from(1).index.dietaryTags(options);
 // Index Menu#1's orders
-const pagedIndexOfOrders = await client.menus.from(1).orders.index(options);
+const pagedIndexOfOrders = await client.menus.from(1).index.orders(options);
 ```
 ### <a name='resource-dao-MenuGroup'></a>MenuGroup
 See [MenuGroupFilter](#resource-filter-MenuGroup) for valid filters.
@@ -951,10 +951,10 @@ const pagedIndexOfMenuGroups = await client.menuGroups.index(options);
 // Related Resources
 // To One
 // Get MenuGroup#1's menu
-const singleMenu = await client.menuGroups.from(1).menu.get(1,  options);
+const singleMenu = await client.menuGroups.from(1).get.menu(1,  options);
 // To Many
 // Index MenuGroup#1's menuItems
-const pagedIndexOfMenuItems = await client.menuGroups.from(1).menuItems.index(options);
+const pagedIndexOfMenuItems = await client.menuGroups.from(1).index.menuItems(options);
 ```
 ### <a name='resource-dao-MenuItem'></a>MenuItem
 See [MenuItemFilter](#resource-filter-MenuItem) for valid filters.
@@ -980,14 +980,14 @@ const pagedIndexOfMenuItems = await client.menuItems.index(options);
 // Related Resources
 // To One
 // Get MenuItem#1's taxRate
-const singleInvoicingTaxRate = await client.menuItems.from(1).taxRate.get(1,  options);
+const singleInvoicingTaxRate = await client.menuItems.from(1).get.taxRate(1,  options);
 // Get MenuItem#1's menuGroup
-const singleMenuGroup = await client.menuItems.from(1).menuGroup.get(1,  options);
+const singleMenuGroup = await client.menuItems.from(1).get.menuGroup(1,  options);
 // To Many
 // Index MenuItem#1's dietaryTags
-const pagedIndexOfDietaryTags = await client.menuItems.from(1).dietaryTags.index(options);
+const pagedIndexOfDietaryTags = await client.menuItems.from(1).index.dietaryTags(options);
 // Index MenuItem#1's menuOptionGroups
-const pagedIndexOfMenuOptionGroups = await client.menuItems.from(1).menuOptionGroups.index(options);
+const pagedIndexOfMenuOptionGroups = await client.menuItems.from(1).index.menuOptionGroups(options);
 ```
 ### <a name='resource-dao-MenuOptionGroup'></a>MenuOptionGroup
 See [MenuOptionGroupFilter](#resource-filter-MenuOptionGroup) for valid filters.
@@ -1013,10 +1013,10 @@ const pagedIndexOfMenuOptionGroups = await client.menuOptionGroups.index(options
 // Related Resources
 // To One
 // Get MenuOptionGroup#1's menuItem
-const singleMenuItem = await client.menuOptionGroups.from(1).menuItem.get(1,  options);
+const singleMenuItem = await client.menuOptionGroups.from(1).get.menuItem(1,  options);
 // To Many
 // Index MenuOptionGroup#1's menuOptionItems
-const pagedIndexOfMenuOptionItems = await client.menuOptionGroups.from(1).menuOptionItems.index(options);
+const pagedIndexOfMenuOptionItems = await client.menuOptionGroups.from(1).index.menuOptionItems(options);
 ```
 ### <a name='resource-dao-MenuOptionItem'></a>MenuOptionItem
 See [MenuOptionItemFilter](#resource-filter-MenuOptionItem) for valid filters.
@@ -1042,12 +1042,12 @@ const pagedIndexOfMenuOptionItems = await client.menuOptionItems.index(options);
 // Related Resources
 // To One
 // Get MenuOptionItem#1's menuOptionGroup
-const singleMenuOptionGroup = await client.menuOptionItems.from(1).menuOptionGroup.get(1,  options);
+const singleMenuOptionGroup = await client.menuOptionItems.from(1).get.menuOptionGroup(1,  options);
 // To Many
 // Index MenuOptionItem#1's dietaryTags
-const pagedIndexOfDietaryTags = await client.menuOptionItems.from(1).dietaryTags.index(options);
+const pagedIndexOfDietaryTags = await client.menuOptionItems.from(1).index.dietaryTags(options);
 // Index MenuOptionItem#1's orderItems
-const pagedIndexOfOrderItems = await client.menuOptionItems.from(1).orderItems.index(options);
+const pagedIndexOfOrderItems = await client.menuOptionItems.from(1).index.orderItems(options);
 ```
 ### <a name='resource-dao-Order'></a>Order
 See [OrderFilter](#resource-filter-Order) for valid filters.
@@ -1073,56 +1073,56 @@ const pagedIndexOfOrders = await client.orders.index(options);
 // Related Resources
 // To One
 // Get Order#1's area
-const singleArea = await client.orders.from(1).area.get(1,  options);
+const singleArea = await client.orders.from(1).get.area(1,  options);
 // Get Order#1's owner
-const singleUser = await client.orders.from(1).owner.get(1,  options);
+const singleUser = await client.orders.from(1).get.owner(1,  options);
 // Get Order#1's creator
-const singleUser = await client.orders.from(1).creator.get(1,  options);
+const singleUser = await client.orders.from(1).get.creator(1,  options);
 // Get Order#1's paymentCard
-const singlePaymentCard = await client.orders.from(1).paymentCard.get(1,  options);
+const singlePaymentCard = await client.orders.from(1).get.paymentCard(1,  options);
 // Get Order#1's contact
-const singleContact = await client.orders.from(1).contact.get(1,  options);
+const singleContact = await client.orders.from(1).get.contact(1,  options);
 // Get Order#1's client
-const singleClient = await client.orders.from(1).client.get(1,  options);
+const singleClient = await client.orders.from(1).get.client(1,  options);
 // Get Order#1's restaurant
-const singleRestaurant = await client.orders.from(1).restaurant.get(1,  options);
+const singleRestaurant = await client.orders.from(1).get.restaurant(1,  options);
 // Get Order#1's courier
-const singleCourier = await client.orders.from(1).courier.get(1,  options);
+const singleCourier = await client.orders.from(1).get.courier(1,  options);
 // Get Order#1's promoCode
-const singlePromoCode = await client.orders.from(1).promoCode.get(1,  options);
+const singlePromoCode = await client.orders.from(1).get.promoCode(1,  options);
 // Get Order#1's driver
-const singleUser = await client.orders.from(1).driver.get(1,  options);
+const singleUser = await client.orders.from(1).get.driver(1,  options);
 // Get Order#1's restaurantLocation
-const singleLocation = await client.orders.from(1).restaurantLocation.get(1,  options);
+const singleLocation = await client.orders.from(1).get.restaurantLocation(1,  options);
 // Get Order#1's clientLocation
-const singleLocation = await client.orders.from(1).clientLocation.get(1,  options);
+const singleLocation = await client.orders.from(1).get.clientLocation(1,  options);
 // Get Order#1's clientDiscount
-const singleClientDiscount = await client.orders.from(1).clientDiscount.get(1,  options);
+const singleClientDiscount = await client.orders.from(1).get.clientDiscount(1,  options);
 // Get Order#1's restaurantDiscount
-const singleRestaurantDiscount = await client.orders.from(1).restaurantDiscount.get(1,  options);
+const singleRestaurantDiscount = await client.orders.from(1).get.restaurantDiscount(1,  options);
 // Get Order#1's menu
-const singleMenu = await client.orders.from(1).menu.get(1,  options);
+const singleMenu = await client.orders.from(1).get.menu(1,  options);
 // Get Order#1's customLocation
-const singleLocation = await client.orders.from(1).customLocation.get(1,  options);
+const singleLocation = await client.orders.from(1).get.customLocation(1,  options);
 // Get Order#1's giftbitError
-const singleGiftbitError = await client.orders.from(1).giftbitError.get(1,  options);
+const singleGiftbitError = await client.orders.from(1).get.giftbitError(1,  options);
 // Get Order#1's clientOrderInvoice
-const singleClientOrderInvoice = await client.orders.from(1).clientOrderInvoice.get(1,  options);
+const singleClientOrderInvoice = await client.orders.from(1).get.clientOrderInvoice(1,  options);
 // Get Order#1's restaurantOrderInvoice
-const singleRestaurantOrderInvoice = await client.orders.from(1).restaurantOrderInvoice.get(1,  options);
+const singleRestaurantOrderInvoice = await client.orders.from(1).get.restaurantOrderInvoice(1,  options);
 // To Many
 // Index Order#1's emailMessages
-const pagedIndexOfEmailMessages = await client.orders.from(1).emailMessages.index(options);
+const pagedIndexOfEmailMessages = await client.orders.from(1).index.emailMessages(options);
 // Index Order#1's deliveryCases
-const pagedIndexOfDeliveryCases = await client.orders.from(1).deliveryCases.index(options);
+const pagedIndexOfDeliveryCases = await client.orders.from(1).index.deliveryCases(options);
 // Index Order#1's deskCases
-const pagedIndexOfDeskCases = await client.orders.from(1).deskCases.index(options);
+const pagedIndexOfDeskCases = await client.orders.from(1).index.deskCases(options);
 // Index Order#1's versions
-const pagedIndexOfVersions = await client.orders.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.orders.from(1).index.versions(options);
 // Index Order#1's groupOrderMembers
-const pagedIndexOfGroupOrderMembers = await client.orders.from(1).groupOrderMembers.index(options);
+const pagedIndexOfGroupOrderMembers = await client.orders.from(1).index.groupOrderMembers(options);
 // Index Order#1's orderItems
-const pagedIndexOfOrderItems = await client.orders.from(1).orderItems.index(options);
+const pagedIndexOfOrderItems = await client.orders.from(1).index.orderItems(options);
 ```
 ### <a name='resource-dao-OrderItem'></a>OrderItem
 See [OrderItemFilter](#resource-filter-OrderItem) for valid filters.
@@ -1148,14 +1148,14 @@ const pagedIndexOfOrderItems = await client.orderItems.index(options);
 // Related Resources
 // To One
 // Get OrderItem#1's order
-const singleOrder = await client.orderItems.from(1).order.get(1,  options);
+const singleOrder = await client.orderItems.from(1).get.order(1,  options);
 // Get OrderItem#1's menuItem
-const singleMenuItem = await client.orderItems.from(1).menuItem.get(1,  options);
+const singleMenuItem = await client.orderItems.from(1).get.menuItem(1,  options);
 // Get OrderItem#1's groupOrderMember
-const singleGroupOrderMember = await client.orderItems.from(1).groupOrderMember.get(1,  options);
+const singleGroupOrderMember = await client.orderItems.from(1).get.groupOrderMember(1,  options);
 // To Many
 // Index OrderItem#1's menuOptionItems
-const pagedIndexOfMenuOptionItems = await client.orderItems.from(1).menuOptionItems.index(options);
+const pagedIndexOfMenuOptionItems = await client.orderItems.from(1).index.menuOptionItems(options);
 ```
 ### <a name='resource-dao-PaymentAccount'></a>PaymentAccount
 See [PaymentAccountFilter](#resource-filter-PaymentAccount) for valid filters.
@@ -1202,9 +1202,9 @@ const pagedIndexOfPaymentCards = await client.paymentCards.index(options);
 // Related Resources
 // To One
 // Get PaymentCard#1's client
-const singleClient = await client.paymentCards.from(1).client.get(1,  options);
+const singleClient = await client.paymentCards.from(1).get.client(1,  options);
 // Get PaymentCard#1's user
-const singleUser = await client.paymentCards.from(1).user.get(1,  options);
+const singleUser = await client.paymentCards.from(1).get.user(1,  options);
 ```
 ### <a name='resource-dao-PickupLocation'></a>PickupLocation
 See [PickupLocationFilter](#resource-filter-PickupLocation) for valid filters.
@@ -1230,9 +1230,9 @@ const pagedIndexOfPickupLocations = await client.pickupLocations.index(options);
 // Related Resources
 // To One
 // Get PickupLocation#1's restaurant
-const singleRestaurant = await client.pickupLocations.from(1).restaurant.get(1,  options);
+const singleRestaurant = await client.pickupLocations.from(1).get.restaurant(1,  options);
 // Get PickupLocation#1's location
-const singleLocation = await client.pickupLocations.from(1).location.get(1,  options);
+const singleLocation = await client.pickupLocations.from(1).get.location(1,  options);
 ```
 ### <a name='resource-dao-PromoCode'></a>PromoCode
 See [PromoCodeFilter](#resource-filter-PromoCode) for valid filters.
@@ -1258,14 +1258,14 @@ const pagedIndexOfPromoCodes = await client.promoCodes.index(options);
 // Related Resources
 // To One
 // Get PromoCode#1's area
-const singleArea = await client.promoCodes.from(1).area.get(1,  options);
+const singleArea = await client.promoCodes.from(1).get.area(1,  options);
 // Get PromoCode#1's restaurant
-const singleRestaurant = await client.promoCodes.from(1).restaurant.get(1,  options);
+const singleRestaurant = await client.promoCodes.from(1).get.restaurant(1,  options);
 // To Many
 // Index PromoCode#1's orders
-const pagedIndexOfOrders = await client.promoCodes.from(1).orders.index(options);
+const pagedIndexOfOrders = await client.promoCodes.from(1).index.orders(options);
 // Index PromoCode#1's versions
-const pagedIndexOfVersions = await client.promoCodes.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.promoCodes.from(1).index.versions(options);
 ```
 ### <a name='resource-dao-QualifyingQuestion'></a>QualifyingQuestion
 See [QualifyingQuestionFilter](#resource-filter-QualifyingQuestion) for valid filters.
@@ -1312,32 +1312,32 @@ const pagedIndexOfRestaurants = await client.restaurants.index(options);
 // Related Resources
 // To One
 // Get Restaurant#1's billingLocation
-const singleLocation = await client.restaurants.from(1).billingLocation.get(1,  options);
+const singleLocation = await client.restaurants.from(1).get.billingLocation(1,  options);
 // Get Restaurant#1's billingContact
-const singleContact = await client.restaurants.from(1).billingContact.get(1,  options);
+const singleContact = await client.restaurants.from(1).get.billingContact(1,  options);
 // Get Restaurant#1's owner
-const singleUser = await client.restaurants.from(1).owner.get(1,  options);
+const singleUser = await client.restaurants.from(1).get.owner(1,  options);
 // To Many
 // Index Restaurant#1's orders
-const pagedIndexOfOrders = await client.restaurants.from(1).orders.index(options);
+const pagedIndexOfOrders = await client.restaurants.from(1).index.orders(options);
 // Index Restaurant#1's serviceTimes
-const pagedIndexOfServiceTimes = await client.restaurants.from(1).serviceTimes.index(options);
+const pagedIndexOfServiceTimes = await client.restaurants.from(1).index.serviceTimes(options);
 // Index Restaurant#1's pickupLocations
-const pagedIndexOfPickupLocations = await client.restaurants.from(1).pickupLocations.index(options);
+const pagedIndexOfPickupLocations = await client.restaurants.from(1).index.pickupLocations(options);
 // Index Restaurant#1's dietaryTags
-const pagedIndexOfDietaryTags = await client.restaurants.from(1).dietaryTags.index(options);
+const pagedIndexOfDietaryTags = await client.restaurants.from(1).index.dietaryTags(options);
 // Index Restaurant#1's tags
-const pagedIndexOfTags = await client.restaurants.from(1).tags.index(options);
+const pagedIndexOfTags = await client.restaurants.from(1).index.tags(options);
 // Index Restaurant#1's areas
-const pagedIndexOfAreas = await client.restaurants.from(1).areas.index(options);
+const pagedIndexOfAreas = await client.restaurants.from(1).index.areas(options);
 // Index Restaurant#1's menus
-const pagedIndexOfMenus = await client.restaurants.from(1).menus.index(options);
+const pagedIndexOfMenus = await client.restaurants.from(1).index.menus(options);
 // Index Restaurant#1's closures
-const pagedIndexOfRestaurantClosures = await client.restaurants.from(1).closures.index(options);
+const pagedIndexOfRestaurantClosures = await client.restaurants.from(1).index.closures(options);
 // Index Restaurant#1's versions
-const pagedIndexOfVersions = await client.restaurants.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.restaurants.from(1).index.versions(options);
 // Index Restaurant#1's promoCodes
-const pagedIndexOfPromoCodes = await client.restaurants.from(1).promoCodes.index(options);
+const pagedIndexOfPromoCodes = await client.restaurants.from(1).index.promoCodes(options);
 ```
 ### <a name='resource-dao-RestaurantClosure'></a>RestaurantClosure
 See [RestaurantClosureFilter](#resource-filter-RestaurantClosure) for valid filters.
@@ -1363,7 +1363,7 @@ const pagedIndexOfRestaurantClosures = await client.restaurantClosures.index(opt
 // Related Resources
 // To One
 // Get RestaurantClosure#1's restaurant
-const singleRestaurant = await client.restaurantClosures.from(1).restaurant.get(1,  options);
+const singleRestaurant = await client.restaurantClosures.from(1).get.restaurant(1,  options);
 ```
 ### <a name='resource-dao-RestaurantDiscount'></a>RestaurantDiscount
 See [RestaurantDiscountFilter](#resource-filter-RestaurantDiscount) for valid filters.
@@ -1389,7 +1389,7 @@ const pagedIndexOfRestaurantDiscounts = await client.restaurantDiscounts.index(o
 // Related Resources
 // To One
 // Get RestaurantDiscount#1's order
-const singleOrder = await client.restaurantDiscounts.from(1).order.get(1,  options);
+const singleOrder = await client.restaurantDiscounts.from(1).get.order(1,  options);
 ```
 ### <a name='resource-dao-RestaurantOrderInvoice'></a>RestaurantOrderInvoice
 See [RestaurantOrderInvoiceFilter](#resource-filter-RestaurantOrderInvoice) for valid filters.
@@ -1436,7 +1436,7 @@ const pagedIndexOfRoles = await client.roles.index(options);
 // Related Resources
 // To One
 // Get Role#1's user
-const singleUser = await client.roles.from(1).user.get(1,  options);
+const singleUser = await client.roles.from(1).get.user(1,  options);
 ```
 ### <a name='resource-dao-SalesforceSyncError'></a>SalesforceSyncError
 See [SalesforceSyncErrorFilter](#resource-filter-SalesforceSyncError) for valid filters.
@@ -1483,7 +1483,7 @@ const pagedIndexOfServiceTimes = await client.serviceTimes.index(options);
 // Related Resources
 // To One
 // Get ServiceTime#1's restaurant
-const singleRestaurant = await client.serviceTimes.from(1).restaurant.get(1,  options);
+const singleRestaurant = await client.serviceTimes.from(1).get.restaurant(1,  options);
 ```
 ### <a name='resource-dao-Tag'></a>Tag
 See [TagFilter](#resource-filter-Tag) for valid filters.
@@ -1530,21 +1530,21 @@ const pagedIndexOfUsers = await client.users.index(options);
 // Related Resources
 // To Many
 // Index User#1's driverPings
-const pagedIndexOfDriverPings = await client.users.from(1).driverPings.index(options);
+const pagedIndexOfDriverPings = await client.users.from(1).index.driverPings(options);
 // Index User#1's driverWeeks
-const pagedIndexOfDriverWeeks = await client.users.from(1).driverWeeks.index(options);
+const pagedIndexOfDriverWeeks = await client.users.from(1).index.driverWeeks(options);
 // Index User#1's driverDays
-const pagedIndexOfDriverDays = await client.users.from(1).driverDays.index(options);
+const pagedIndexOfDriverDays = await client.users.from(1).index.driverDays(options);
 // Index User#1's deliveredOrders
-const pagedIndexOfOrders = await client.users.from(1).deliveredOrders.index(options);
+const pagedIndexOfOrders = await client.users.from(1).index.deliveredOrders(options);
 // Index User#1's couriers
-const pagedIndexOfCouriers = await client.users.from(1).couriers.index(options);
+const pagedIndexOfCouriers = await client.users.from(1).index.couriers(options);
 // Index User#1's roles
-const pagedIndexOfRoles = await client.users.from(1).roles.index(options);
+const pagedIndexOfRoles = await client.users.from(1).index.roles(options);
 // Index User#1's paymentCards
-const pagedIndexOfPaymentCards = await client.users.from(1).paymentCards.index(options);
+const pagedIndexOfPaymentCards = await client.users.from(1).index.paymentCards(options);
 // Index User#1's versions
-const pagedIndexOfVersions = await client.users.from(1).versions.index(options);
+const pagedIndexOfVersions = await client.users.from(1).index.versions(options);
 ```
 ### <a name='resource-dao-UserFeedback'></a>UserFeedback
 See [UserFeedbackFilter](#resource-filter-UserFeedback) for valid filters.
@@ -1591,9 +1591,9 @@ const pagedIndexOfUserInvites = await client.userInvites.index(options);
 // Related Resources
 // To One
 // Get UserInvite#1's client
-const singleClient = await client.userInvites.from(1).client.get(1,  options);
+const singleClient = await client.userInvites.from(1).get.client(1,  options);
 // Get UserInvite#1's user
-const singleUser = await client.userInvites.from(1).user.get(1,  options);
+const singleUser = await client.userInvites.from(1).get.user(1,  options);
 ```
 ### <a name='resource-dao-Version'></a>Version
 See [VersionFilter](#resource-filter-Version) for valid filters.
