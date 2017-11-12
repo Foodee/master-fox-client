@@ -2,7 +2,9 @@ import ResourceClasses from './resources/resources';
 import Resource from './resources/resource';
 import { dasherize, underscore } from 'inflected'
 
-const nodeFetch = require('node-fetch');
+if (fetch === undefined){
+  const nodeFetch = require('node-fetch');
+}
 
 function extractJRObject(data, included) {
   const id = data.id;
