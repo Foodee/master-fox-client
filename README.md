@@ -13,6 +13,7 @@ MasterFox is a a JSONAPI compliant api details can be found here: http://jsonapi
  ClientDiscount | [Data Access Object](#resource-dao-ClientDiscount)  | [Schema](#resource-ClientDiscount) | [Filter Definition](#resource-filter-ClientDiscount) |
  ClientOrderInvoice | [Data Access Object](#resource-dao-ClientOrderInvoice)  | [Schema](#resource-ClientOrderInvoice) | [Filter Definition](#resource-filter-ClientOrderInvoice) |
  ClientSignup | [Data Access Object](#resource-dao-ClientSignup)  | [Schema](#resource-ClientSignup) | [Filter Definition](#resource-filter-ClientSignup) |
+ CommunicationPreference | [Data Access Object](#resource-dao-CommunicationPreference)  | [Schema](#resource-CommunicationPreference) | [Filter Definition](#resource-filter-CommunicationPreference) |
  Company | [Data Access Object](#resource-dao-Company)  | [Schema](#resource-Company) | [Filter Definition](#resource-filter-Company) |
  Contact | [Data Access Object](#resource-dao-Contact)  | [Schema](#resource-Contact) | [Filter Definition](#resource-filter-Contact) |
  Courier | [Data Access Object](#resource-dao-Courier)  | [Schema](#resource-Courier) | [Filter Definition](#resource-filter-Courier) |
@@ -22,10 +23,12 @@ MasterFox is a a JSONAPI compliant api details can be found here: http://jsonapi
  DietaryTag | [Data Access Object](#resource-dao-DietaryTag)  | [Schema](#resource-DietaryTag) | [Filter Definition](#resource-filter-DietaryTag) |
  DiscountCode | [Data Access Object](#resource-dao-DiscountCode)  | [Schema](#resource-DiscountCode) | [Filter Definition](#resource-filter-DiscountCode) |
  DriverDay | [Data Access Object](#resource-dao-DriverDay)  | [Schema](#resource-DriverDay) | [Filter Definition](#resource-filter-DriverDay) |
+ DriverPayment | [Data Access Object](#resource-dao-DriverPayment)  | [Schema](#resource-DriverPayment) | [Filter Definition](#resource-filter-DriverPayment) |
+ DriverPayrollRun | [Data Access Object](#resource-dao-DriverPayrollRun)  | [Schema](#resource-DriverPayrollRun) | [Filter Definition](#resource-filter-DriverPayrollRun) |
  DriverPing | [Data Access Object](#resource-dao-DriverPing)  | [Schema](#resource-DriverPing) | [Filter Definition](#resource-filter-DriverPing) |
+ DriverResource | [Data Access Object](#resource-dao-DriverResource)  | [Schema](#resource-DriverResource) | [Filter Definition](#resource-filter-DriverResource) |
  DriverWeek | [Data Access Object](#resource-dao-DriverWeek)  | [Schema](#resource-DriverWeek) | [Filter Definition](#resource-filter-DriverWeek) |
  EmailMessage | [Data Access Object](#resource-dao-EmailMessage)  | [Schema](#resource-EmailMessage) | [Filter Definition](#resource-filter-EmailMessage) |
- Event | [Data Access Object](#resource-dao-Event)  | [Schema](#resource-Event) | [Filter Definition](#resource-filter-Event) |
  GiftbitCard | [Data Access Object](#resource-dao-GiftbitCard)  | [Schema](#resource-GiftbitCard) | [Filter Definition](#resource-filter-GiftbitCard) |
  GiftbitError | [Data Access Object](#resource-dao-GiftbitError)  | [Schema](#resource-GiftbitError) | [Filter Definition](#resource-filter-GiftbitError) |
  GiftbitGift | [Data Access Object](#resource-dao-GiftbitGift)  | [Schema](#resource-GiftbitGift) | [Filter Definition](#resource-filter-GiftbitGift) |
@@ -41,8 +44,8 @@ MasterFox is a a JSONAPI compliant api details can be found here: http://jsonapi
  MenuOptionItem | [Data Access Object](#resource-dao-MenuOptionItem)  | [Schema](#resource-MenuOptionItem) | [Filter Definition](#resource-filter-MenuOptionItem) |
  Order | [Data Access Object](#resource-dao-Order)  | [Schema](#resource-Order) | [Filter Definition](#resource-filter-Order) |
  OrderItem | [Data Access Object](#resource-dao-OrderItem)  | [Schema](#resource-OrderItem) | [Filter Definition](#resource-filter-OrderItem) |
- PaymentAccount | [Data Access Object](#resource-dao-PaymentAccount)  | [Schema](#resource-PaymentAccount) | [Filter Definition](#resource-filter-PaymentAccount) |
  PaymentCard | [Data Access Object](#resource-dao-PaymentCard)  | [Schema](#resource-PaymentCard) | [Filter Definition](#resource-filter-PaymentCard) |
+ PayrollRun | [Data Access Object](#resource-dao-PayrollRun)  | [Schema](#resource-PayrollRun) | [Filter Definition](#resource-filter-PayrollRun) |
  PickupLocation | [Data Access Object](#resource-dao-PickupLocation)  | [Schema](#resource-PickupLocation) | [Filter Definition](#resource-filter-PickupLocation) |
  PromoCode | [Data Access Object](#resource-dao-PromoCode)  | [Schema](#resource-PromoCode) | [Filter Definition](#resource-filter-PromoCode) |
  QualifyingQuestion | [Data Access Object](#resource-dao-QualifyingQuestion)  | [Schema](#resource-QualifyingQuestion) | [Filter Definition](#resource-filter-QualifyingQuestion) |
@@ -229,6 +232,8 @@ const pagedIndexOfClients = await client.clients.index(options);
 const singleArea = await client.clients.from(1).get.defaultArea(1,  options);
 // Get Client#1's billingLocation
 const singleLocation = await client.clients.from(1).get.billingLocation(1,  options);
+// Get Client#1's billingContact
+const singleContact = await client.clients.from(1).get.billingContact(1,  options);
 // Get Client#1's accountManager
 const singleUser = await client.clients.from(1).get.accountManager(1,  options);
 // Get Client#1's owner
@@ -350,6 +355,32 @@ const singleContact = await client.clientSignups.from(1).get.contact(1,  options
 const pagedIndexOfClients = await client.clientSignups.from(1).index.clients(options);
 // Index ClientSignup#1's areas
 const pagedIndexOfAreas = await client.clientSignups.from(1).index.areas(options);
+```
+### <a name='resource-dao-CommunicationPreference'></a>CommunicationPreference
+See [CommunicationPreferenceFilter](#resource-filter-CommunicationPreference) for valid filters.
+See [CommunicationPreference](#resource-CommunicationPreference) for the resource schema.
+```JavaScript
+const options = {
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
+
+  // only valid for index fields
+  fitlers: {},
+  sort: '',
+  page: {
+    offet: 0,
+    limit: 20
+  }
+};
+const singleCommunicationPreference= await client.communicationPreferences.get(1,  options);
+const pagedIndexOfCommunicationPreferences = await client.communicationPreferences.index(options);
+
+// Related Resources
+// To One
+// Get CommunicationPreference#1's user
+const singleUser = await client.communicationPreferences.from(1).get.user(1,  options);
 ```
 ### <a name='resource-dao-Company'></a>Company
 See [CompanyFilter](#resource-filter-Company) for valid filters.
@@ -588,6 +619,60 @@ const pagedIndexOfDriverDays = await client.driverDays.index(options);
 // Get DriverDay#1's driver
 const singleUser = await client.driverDays.from(1).get.driver(1,  options);
 ```
+### <a name='resource-dao-DriverPayment'></a>DriverPayment
+See [DriverPaymentFilter](#resource-filter-DriverPayment) for valid filters.
+See [DriverPayment](#resource-DriverPayment) for the resource schema.
+```JavaScript
+const options = {
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
+
+  // only valid for index fields
+  fitlers: {},
+  sort: '',
+  page: {
+    offet: 0,
+    limit: 20
+  }
+};
+const singleDriverPayment= await client.driverPayments.get(1,  options);
+const pagedIndexOfDriverPayments = await client.driverPayments.index(options);
+
+// Related Resources
+// To One
+// Get DriverPayment#1's driverPayrollRun
+const singleDriverPayrollRun = await client.driverPayments.from(1).get.driverPayrollRun(1,  options);
+```
+### <a name='resource-dao-DriverPayrollRun'></a>DriverPayrollRun
+See [DriverPayrollRunFilter](#resource-filter-DriverPayrollRun) for valid filters.
+See [DriverPayrollRun](#resource-DriverPayrollRun) for the resource schema.
+```JavaScript
+const options = {
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
+
+  // only valid for index fields
+  fitlers: {},
+  sort: '',
+  page: {
+    offet: 0,
+    limit: 20
+  }
+};
+const singleDriverPayrollRun= await client.driverPayrollRuns.get(1,  options);
+const pagedIndexOfDriverPayrollRuns = await client.driverPayrollRuns.index(options);
+
+// Related Resources
+// To One
+// Get DriverPayrollRun#1's driver
+const singleDriver = await client.driverPayrollRuns.from(1).get.driver(1,  options);
+// Get DriverPayrollRun#1's payrollRun
+const singlePayrollRun = await client.driverPayrollRuns.from(1).get.payrollRun(1,  options);
+```
 ### <a name='resource-dao-DriverPing'></a>DriverPing
 See [DriverPingFilter](#resource-filter-DriverPing) for valid filters.
 See [DriverPing](#resource-DriverPing) for the resource schema.
@@ -613,6 +698,27 @@ const pagedIndexOfDriverPings = await client.driverPings.index(options);
 // To One
 // Get DriverPing#1's user
 const singleUser = await client.driverPings.from(1).get.user(1,  options);
+```
+### <a name='resource-dao-DriverResource'></a>DriverResource
+See [DriverResourceFilter](#resource-filter-DriverResource) for valid filters.
+See [DriverResource](#resource-DriverResource) for the resource schema.
+```JavaScript
+const options = {
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
+
+  // only valid for index fields
+  fitlers: {},
+  sort: '',
+  page: {
+    offet: 0,
+    limit: 20
+  }
+};
+const singleDriverResource= await client.driverResources.get(1,  options);
+const pagedIndexOfDriverResources = await client.driverResources.index(options);
 ```
 ### <a name='resource-dao-DriverWeek'></a>DriverWeek
 See [DriverWeekFilter](#resource-filter-DriverWeek) for valid filters.
@@ -665,27 +771,6 @@ const pagedIndexOfEmailMessages = await client.emailMessages.index(options);
 // To One
 // Get EmailMessage#1's order
 const singleOrder = await client.emailMessages.from(1).get.order(1,  options);
-```
-### <a name='resource-dao-Event'></a>Event
-See [EventFilter](#resource-filter-Event) for valid filters.
-See [Event](#resource-Event) for the resource schema.
-```JavaScript
-const options = {
-  // this is used to include related resources on gets or indexes
-  // if provided it will include them on the returned resources
-  // see http://jsonapi.org/format/#fetching-includes for more details
-  include: '',
-
-  // only valid for index fields
-  fitlers: {},
-  sort: '',
-  page: {
-    offet: 0,
-    limit: 20
-  }
-};
-const singleEvent= await client.events.get(1,  options);
-const pagedIndexOfEvents = await client.events.index(options);
 ```
 ### <a name='resource-dao-GiftbitCard'></a>GiftbitCard
 See [GiftbitCardFilter](#resource-filter-GiftbitCard) for valid filters.
@@ -1157,27 +1242,6 @@ const singleGroupOrderMember = await client.orderItems.from(1).get.groupOrderMem
 // Index OrderItem#1's menuOptionItems
 const pagedIndexOfMenuOptionItems = await client.orderItems.from(1).index.menuOptionItems(options);
 ```
-### <a name='resource-dao-PaymentAccount'></a>PaymentAccount
-See [PaymentAccountFilter](#resource-filter-PaymentAccount) for valid filters.
-See [PaymentAccount](#resource-PaymentAccount) for the resource schema.
-```JavaScript
-const options = {
-  // this is used to include related resources on gets or indexes
-  // if provided it will include them on the returned resources
-  // see http://jsonapi.org/format/#fetching-includes for more details
-  include: '',
-
-  // only valid for index fields
-  fitlers: {},
-  sort: '',
-  page: {
-    offet: 0,
-    limit: 20
-  }
-};
-const singlePaymentAccount= await client.paymentAccounts.get(1,  options);
-const pagedIndexOfPaymentAccounts = await client.paymentAccounts.index(options);
-```
 ### <a name='resource-dao-PaymentCard'></a>PaymentCard
 See [PaymentCardFilter](#resource-filter-PaymentCard) for valid filters.
 See [PaymentCard](#resource-PaymentCard) for the resource schema.
@@ -1205,6 +1269,32 @@ const pagedIndexOfPaymentCards = await client.paymentCards.index(options);
 const singleClient = await client.paymentCards.from(1).get.client(1,  options);
 // Get PaymentCard#1's user
 const singleUser = await client.paymentCards.from(1).get.user(1,  options);
+```
+### <a name='resource-dao-PayrollRun'></a>PayrollRun
+See [PayrollRunFilter](#resource-filter-PayrollRun) for valid filters.
+See [PayrollRun](#resource-PayrollRun) for the resource schema.
+```JavaScript
+const options = {
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
+
+  // only valid for index fields
+  fitlers: {},
+  sort: '',
+  page: {
+    offet: 0,
+    limit: 20
+  }
+};
+const singlePayrollRun= await client.payrollRuns.get(1,  options);
+const pagedIndexOfPayrollRuns = await client.payrollRuns.index(options);
+
+// Related Resources
+// To Many
+// Index PayrollRun#1's driverPayrollRuns
+const pagedIndexOfDriverPayrollRuns = await client.payrollRuns.from(1).index.driverPayrollRuns(options);
 ```
 ### <a name='resource-dao-PickupLocation'></a>PickupLocation
 See [PickupLocationFilter](#resource-filter-PickupLocation) for valid filters.
@@ -1528,6 +1618,9 @@ const singleUser= await client.users.get(1,  options);
 const pagedIndexOfUsers = await client.users.index(options);
 
 // Related Resources
+// To One
+// Get User#1's communicationPreference
+const singleCommunicationPreference = await client.users.from(1).get.communicationPreference(1,  options);
 // To Many
 // Index User#1's driverPings
 const pagedIndexOfDriverPings = await client.users.from(1).index.driverPings(options);
@@ -1656,7 +1749,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | deliveryLeadTime |  boolean |
 | currency |  boolean |
 | deliveryFee |  boolean |
-| geoJSON |  boolean |
+| deliveryZone |  boolean |
 | createdAt |  boolean |
 | prefix |  boolean |
 | coverImageUrl |  boolean |
@@ -1711,6 +1804,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | terms |  string |
 | termDays |  string |
 | apiToken |  string |
+| veryLateScore |  string |
 | salesSupportClient |  string |
 | salesSupportAgent |  string |
 
@@ -1720,6 +1814,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | ------------- |:-------------:|
 | defaultArea |  Area |
 | billingLocation |  Location |
+| billingContact |  Contact |
 | accountManager |  User |
 | owner |  User |
 | company |  Company |
@@ -1744,9 +1839,10 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 #### Attributes
 | Name | Type |
 | ------------- |:-------------:|
-| amountType |  string |
 | accountingCode |  string |
 | amount |  string |
+| amountType |  string |
+| caseId |  string |
 | description |  string |
 
 
@@ -1788,8 +1884,10 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | email |  any |
 | phoneNumber |  any |
 | extension |  any |
+| smsNumber |  any |
 | consentToNewTerms |  any |
 | receiveNewsletters |  any |
+| smsEnabled |  any |
 
 
 #### Relationships
@@ -1803,6 +1901,22 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | contact |  Contact |
 | clients |  Client[] |
 | areas |  Area[] |
+
+
+
+### <a name='resource-CommunicationPreference'></a>CommunicationPreference
+
+#### Attributes
+| Name | Type |
+| ------------- |:-------------:|
+| sms |  boolean |
+| emailFeedback |  boolean |
+
+
+#### Relationships
+| Name | Type |
+| ------------- |:-------------:|
+| user |  User |
 
 
 
@@ -1973,6 +2087,47 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 
 
 
+### <a name='resource-DriverPayment'></a>DriverPayment
+
+#### Attributes
+| Name | Type |
+| ------------- |:-------------:|
+| amount |  float |
+| deliveryDate |  date |
+| driverId |  integer |
+| manuallyAdded |  boolean |
+| notes |  string |
+| orderId |  integer |
+| driverPayrollRunId |  integer |
+| ruleName |  string |
+
+
+#### Relationships
+| Name | Type |
+| ------------- |:-------------:|
+| driverPayrollRun |  DriverPayrollRun |
+
+
+
+### <a name='resource-DriverPayrollRun'></a>DriverPayrollRun
+
+#### Attributes
+| Name | Type |
+| ------------- |:-------------:|
+| amounts |  json |
+| approvals |  json |
+| driverId |  integer |
+| payrollRunId |  integer |
+
+
+#### Relationships
+| Name | Type |
+| ------------- |:-------------:|
+| driver |  Driver |
+| payrollRun |  PayrollRun |
+
+
+
 ### <a name='resource-DriverPing'></a>DriverPing
 
 #### Attributes
@@ -1986,6 +2141,18 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | Name | Type |
 | ------------- |:-------------:|
 | user |  User |
+
+
+
+### <a name='resource-DriverResource'></a>DriverResource
+
+#### Attributes
+| Name | Type |
+| ------------- |:-------------:|
+| driverId |  integer |
+| firstName |  string |
+| lastName |  string |
+
 
 
 
@@ -2048,19 +2215,6 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | Name | Type |
 | ------------- |:-------------:|
 | order |  Order |
-
-
-
-### <a name='resource-Event'></a>Event
-
-#### Attributes
-| Name | Type |
-| ------------- |:-------------:|
-| event |  any |
-| timestamp |  any |
-| createdAt |  any |
-| eventTimestamp |  any |
-
 
 
 
@@ -2350,6 +2504,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | allowsPayOutOfPocket |  number |
 | bowtieServiceFee |  number |
 | clientInvoicePdf |  number |
+| createdAt |  number |
 | deadlineAt |  number |
 | deliverAt |  number |
 | deliverOn |  number |
@@ -2364,8 +2519,10 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | isSameDay |  number |
 | lastMinute |  number |
 | maxNumberOfPeople |  number |
-| monitoringNotes |  number |
 | name |  number |
+| clientNotes |  number |
+| courierNotes |  number |
+| monitoringNotes |  number |
 | notes |  number |
 | numberOfPeople |  number |
 | orderSoldOut |  number |
@@ -2379,6 +2536,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | state |  number |
 | tranche |  number |
 | totalAmount |  number |
+| restaurantTotalAmount |  number |
 | updatedAt |  number |
 | clientLocationId |  number |
 | clientConfirmationId |  number |
@@ -2446,15 +2604,6 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 
 
 
-### <a name='resource-PaymentAccount'></a>PaymentAccount
-
-#### Attributes
-| Name | Type |
-| ------------- |:-------------:|
-
-
-
-
 ### <a name='resource-PaymentCard'></a>PaymentCard
 
 #### Attributes
@@ -2475,6 +2624,23 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | ------------- |:-------------:|
 | client |  Client |
 | user |  User |
+
+
+
+### <a name='resource-PayrollRun'></a>PayrollRun
+
+#### Attributes
+| Name | Type |
+| ------------- |:-------------:|
+| country |  boolean |
+| payrollPeriod |  string |
+| paid |  boolean |
+
+
+#### Relationships
+| Name | Type |
+| ------------- |:-------------:|
+| driverPayrollRun |  DriverPayrollRun[] |
 
 
 
@@ -2618,9 +2784,10 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 #### Attributes
 | Name | Type |
 | ------------- |:-------------:|
-| amountType |  string |
 | accountingCode |  string |
 | amount |  string |
+| amountType |  string |
+| caseId |  string |
 | description |  string |
 
 
@@ -2719,6 +2886,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | hasPassword |  boolean |
 | phoneNumber |  boolean |
 | extension |  boolean |
+| smsNumber |  boolean |
 | phoneCanSMS |  boolean |
 | phoneType |  boolean |
 | profilePicture |  boolean |
@@ -2739,6 +2907,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 #### Relationships
 | Name | Type |
 | ------------- |:-------------:|
+| communicationPreference |  CommunicationPreference |
 | driverPings |  DriverPing[] |
 | driverWeeks |  DriverWeek[] |
 | driverDays |  DriverDay[] |
@@ -2831,6 +3000,11 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | createdAtAfter |  date |
 | updatedAtBefore |  date |
 | updatedAtAfter |  date |
+| active |  boolean |
+| nearestTo |  any |
+| nearestToAddress |  any |
+| containing |  any |
+| containingAddress |  any |
 
 
 
@@ -2892,6 +3066,18 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
+
+
+
+### <a name='resource-filter-CommunicationPreference'></a>CommunicationPreference
+#### Available Filters
+| Name | Type |
+| ------------- |:-------------:|
+| id |  integer |
 | createdAtBefore |  date |
 | createdAtAfter |  date |
 | updatedAtBefore |  date |
@@ -3015,6 +3201,25 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 
 
 
+### <a name='resource-filter-DriverPayment'></a>DriverPayment
+#### Available Filters
+| Name | Type |
+| ------------- |:-------------:|
+| deliveryDate |  string |
+| driverPayrollRunId |  number |
+
+
+
+### <a name='resource-filter-DriverPayrollRun'></a>DriverPayrollRun
+#### Available Filters
+| Name | Type |
+| ------------- |:-------------:|
+| areaId |  integer |
+| payrollRunPeriod |  string |
+| masterFoxDriverId |  integer |
+
+
+
 ### <a name='resource-filter-DriverPing'></a>DriverPing
 #### Available Filters
 | Name | Type |
@@ -3025,6 +3230,11 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | updatedAtBefore |  date |
 | updatedAtAfter |  date |
 
+
+
+### <a name='resource-filter-DriverResource'></a>DriverResource
+
+None
 
 
 ### <a name='resource-filter-DriverWeek'></a>DriverWeek
@@ -3054,18 +3264,6 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | updatedAtAfter |  date |
 | messageType |  string |
 | recipients |  string |
-
-
-
-### <a name='resource-filter-Event'></a>Event
-#### Available Filters
-| Name | Type |
-| ------------- |:-------------:|
-| id |  any |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
 
 
 
@@ -3247,6 +3445,7 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | isBookmark |  boolean |
 | rejectState |  any |
 | search |  string |
+| isDraft |  any |
 | rejectOnlineDraft |  any |
 | uuid |  uuid |
 | urlSafeId |  string |
@@ -3277,18 +3476,6 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 
 
 
-### <a name='resource-filter-PaymentAccount'></a>PaymentAccount
-#### Available Filters
-| Name | Type |
-| ------------- |:-------------:|
-| id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
-
-
-
 ### <a name='resource-filter-PaymentCard'></a>PaymentCard
 #### Available Filters
 | Name | Type |
@@ -3298,6 +3485,14 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | createdAtAfter |  date |
 | updatedAtBefore |  date |
 | updatedAtAfter |  date |
+
+
+
+### <a name='resource-filter-PayrollRun'></a>PayrollRun
+#### Available Filters
+| Name | Type |
+| ------------- |:-------------:|
+| payrollRunPeriod |  string |
 
 
 
@@ -3461,9 +3656,11 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | updatedAtBefore |  date |
 | updatedAtAfter |  date |
 | name |  any |
+| search |  any |
 | email |  string |
 | driverMissingMonday |  any |
 | courierArea |  any |
+| isDriver |  any |
 
 
 

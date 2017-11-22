@@ -6,6 +6,7 @@ import {
     ClientDiscountDao,
     ClientOrderInvoiceDao,
     ClientSignupDao,
+    CommunicationPreferenceDao,
     CompanyDao,
     ContactDao,
     CourierDao,
@@ -15,10 +16,12 @@ import {
     DietaryTagDao,
     DiscountCodeDao,
     DriverDayDao,
+    DriverPaymentDao,
+    DriverPayrollRunDao,
     DriverPingDao,
+    DriverResourceDao,
     DriverWeekDao,
     EmailMessageDao,
-    EventDao,
     GiftbitCardDao,
     GiftbitErrorDao,
     GiftbitGiftDao,
@@ -34,8 +37,8 @@ import {
     MenuOptionItemDao,
     OrderDao,
     OrderItemDao,
-    PaymentAccountDao,
     PaymentCardDao,
+    PayrollRunDao,
     PickupLocationDao,
     PromoCodeDao,
     QualifyingQuestionDao,
@@ -82,6 +85,9 @@ class MFClient extends JRClient {
     /** @type {ClientSignupDao} **/
     this.clientSignups = new ClientSignupDao(this);
   
+    /** @type {CommunicationPreferenceDao} **/
+    this.communicationPreferences = new CommunicationPreferenceDao(this);
+  
     /** @type {CompanyDao} **/
     this.companies = new CompanyDao(this);
   
@@ -109,17 +115,23 @@ class MFClient extends JRClient {
     /** @type {DriverDayDao} **/
     this.driverDays = new DriverDayDao(this);
   
+    /** @type {DriverPaymentDao} **/
+    this.driverPayments = new DriverPaymentDao(this);
+  
+    /** @type {DriverPayrollRunDao} **/
+    this.driverPayrollRuns = new DriverPayrollRunDao(this);
+  
     /** @type {DriverPingDao} **/
     this.driverPings = new DriverPingDao(this);
+  
+    /** @type {DriverResourceDao} **/
+    this.driverResources = new DriverResourceDao(this);
   
     /** @type {DriverWeekDao} **/
     this.driverWeeks = new DriverWeekDao(this);
   
     /** @type {EmailMessageDao} **/
     this.emailMessages = new EmailMessageDao(this);
-  
-    /** @type {EventDao} **/
-    this.events = new EventDao(this);
   
     /** @type {GiftbitCardDao} **/
     this.giftbitCards = new GiftbitCardDao(this);
@@ -166,11 +178,11 @@ class MFClient extends JRClient {
     /** @type {OrderItemDao} **/
     this.orderItems = new OrderItemDao(this);
   
-    /** @type {PaymentAccountDao} **/
-    this.paymentAccounts = new PaymentAccountDao(this);
-  
     /** @type {PaymentCardDao} **/
     this.paymentCards = new PaymentCardDao(this);
+  
+    /** @type {PayrollRunDao} **/
+    this.payrollRuns = new PayrollRunDao(this);
   
     /** @type {PickupLocationDao} **/
     this.pickupLocations = new PickupLocationDao(this);

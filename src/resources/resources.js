@@ -6,6 +6,11 @@ import  Resource from './resource';
   **/
 export class AppConfiguration extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'app-configurations', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {string} key **/
@@ -36,6 +41,11 @@ export class AppConfiguration extends Resource {
   * @extends {Resource}
   **/
 export class Area extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'areas', attributes, relationships);
+  }
 
   // attributes
 
@@ -94,10 +104,10 @@ export class Area extends Resource {
   /** @type {boolean} */
   get deliveryFee(){return this._attributes['delivery-fee'];};
 
-  /** @param {boolean} geoJSON **/
-  set geoJSON(geoJSON){this._attributes['geo-json'] = geoJSON};
+  /** @param {boolean} deliveryZone **/
+  set deliveryZone(deliveryZone){this._attributes['delivery-zone'] = deliveryZone};
   /** @type {boolean} */
-  get geoJSON(){return this._attributes['geo-json'];};
+  get deliveryZone(){return this._attributes['delivery-zone'];};
 
   /** @param {boolean} createdAt **/
   set createdAt(createdAt){this._attributes['created-at'] = createdAt};
@@ -178,6 +188,11 @@ export class Area extends Resource {
   **/
 export class AreaClosure extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'area-closures', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {Date} startBlock **/
@@ -218,6 +233,11 @@ export class AreaClosure extends Resource {
   * @extends {Resource}
   **/
 export class Client extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'clients', attributes, relationships);
+  }
 
   // attributes
 
@@ -271,6 +291,11 @@ export class Client extends Resource {
   /** @type {string} */
   get apiToken(){return this._attributes['api-token'];};
 
+  /** @param {string} veryLateScore **/
+  set veryLateScore(veryLateScore){this._attributes['very-late-score'] = veryLateScore};
+  /** @type {string} */
+  get veryLateScore(){return this._attributes['very-late-score'];};
+
   /** @param {string} salesSupportClient **/
   set salesSupportClient(salesSupportClient){this._attributes['sales-support-client'] = salesSupportClient};
   /** @type {string} */
@@ -294,6 +319,11 @@ export class Client extends Resource {
   set billingLocation(billingLocation){this._relationships['billing-location'] = billingLocation};
   /** @type {Location} */
   get billingLocation(){return this._relationships['billing-location']};
+
+  /** @param {Contact} billingContact **/
+  set billingContact(billingContact){this._relationships['billing-contact'] = billingContact};
+  /** @type {Contact} */
+  get billingContact(){return this._relationships['billing-contact']};
 
   /** @param {User} accountManager **/
   set accountManager(accountManager){this._relationships['account-manager'] = accountManager};
@@ -385,12 +415,12 @@ export class Client extends Resource {
   **/
 export class ClientDiscount extends Resource {
 
-  // attributes
 
-  /** @param {string} amountType **/
-  set amountType(amountType){this._attributes['amount-type'] = amountType};
-  /** @type {string} */
-  get amountType(){return this._attributes['amount-type'];};
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'client-discounts', attributes, relationships);
+  }
+
+  // attributes
 
   /** @param {string} accountingCode **/
   set accountingCode(accountingCode){this._attributes['accounting-code'] = accountingCode};
@@ -401,6 +431,16 @@ export class ClientDiscount extends Resource {
   set amount(amount){this._attributes['amount'] = amount};
   /** @type {string} */
   get amount(){return this._attributes['amount'];};
+
+  /** @param {string} amountType **/
+  set amountType(amountType){this._attributes['amount-type'] = amountType};
+  /** @type {string} */
+  get amountType(){return this._attributes['amount-type'];};
+
+  /** @param {string} caseId **/
+  set caseId(caseId){this._attributes['case-id'] = caseId};
+  /** @type {string} */
+  get caseId(){return this._attributes['case-id'];};
 
   /** @param {string} description **/
   set description(description){this._attributes['description'] = description};
@@ -426,6 +466,11 @@ export class ClientDiscount extends Resource {
   **/
 export class ClientOrderInvoice extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'client-order-invoices', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {any} summary **/
@@ -446,6 +491,11 @@ export class ClientOrderInvoice extends Resource {
   * @extends {Resource}
   **/
 export class ClientSignup extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'client-signups', attributes, relationships);
+  }
 
   // attributes
 
@@ -529,6 +579,11 @@ export class ClientSignup extends Resource {
   /** @type {any} */
   get extension(){return this._attributes['extension'];};
 
+  /** @param {any} smsNumber **/
+  set smsNumber(smsNumber){this._attributes['sms-number'] = smsNumber};
+  /** @type {any} */
+  get smsNumber(){return this._attributes['sms-number'];};
+
   /** @param {any} consentToNewTerms **/
   set consentToNewTerms(consentToNewTerms){this._attributes['consent-to-new-terms'] = consentToNewTerms};
   /** @type {any} */
@@ -538,6 +593,11 @@ export class ClientSignup extends Resource {
   set receiveNewsletters(receiveNewsletters){this._attributes['receive-newsletters'] = receiveNewsletters};
   /** @type {any} */
   get receiveNewsletters(){return this._attributes['receive-newsletters'];};
+
+  /** @param {any} smsEnabled **/
+  set smsEnabled(smsEnabled){this._attributes['sms-enabled'] = smsEnabled};
+  /** @type {any} */
+  get smsEnabled(){return this._attributes['sms-enabled'];};
 
 
   // relationships
@@ -588,10 +648,51 @@ export class ClientSignup extends Resource {
 
 }
 
+/** @class CommunicationPreference
+  * @extends {Resource}
+  **/
+export class CommunicationPreference extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'communication-preferences', attributes, relationships);
+  }
+
+  // attributes
+
+  /** @param {boolean} sms **/
+  set sms(sms){this._attributes['sms'] = sms};
+  /** @type {boolean} */
+  get sms(){return this._attributes['sms'];};
+
+  /** @param {boolean} emailFeedback **/
+  set emailFeedback(emailFeedback){this._attributes['email-feedback'] = emailFeedback};
+  /** @type {boolean} */
+  get emailFeedback(){return this._attributes['email-feedback'];};
+
+
+  // relationships
+
+
+  /** @param {User} user **/
+  set user(user){this._relationships['user'] = user};
+  /** @type {User} */
+  get user(){return this._relationships['user']};
+
+
+
+
+}
+
 /** @class Company
   * @extends {Resource}
   **/
 export class Company extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'companies', attributes, relationships);
+  }
 
   // attributes
 
@@ -623,6 +724,11 @@ export class Company extends Resource {
   * @extends {Resource}
   **/
 export class Contact extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'contacts', attributes, relationships);
+  }
 
   // attributes
 
@@ -674,6 +780,11 @@ export class Contact extends Resource {
   * @extends {Resource}
   **/
 export class Courier extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'couriers', attributes, relationships);
+  }
 
   // attributes
 
@@ -731,6 +842,11 @@ export class Courier extends Resource {
   **/
 export class DeliveryCase extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'delivery-cases', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {string} caseType **/
@@ -771,6 +887,11 @@ export class DeliveryCase extends Resource {
   * @extends {Resource}
   **/
 export class DeliveryLocation extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'delivery-locations', attributes, relationships);
+  }
 
   // attributes
 
@@ -873,6 +994,11 @@ export class DeliveryLocation extends Resource {
   **/
 export class DeskCase extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'desk-cases', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {string} caseRequest **/
@@ -929,6 +1055,11 @@ export class DeskCase extends Resource {
   **/
 export class DietaryTag extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'dietary-tags', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {string} name **/
@@ -970,6 +1101,11 @@ export class DietaryTag extends Resource {
   **/
 export class DiscountCode extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'discount-codes', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {any} code **/
@@ -1001,6 +1137,11 @@ export class DiscountCode extends Resource {
   **/
 export class DriverDay extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'driver-days', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {jsonb} pings **/
@@ -1022,10 +1163,132 @@ export class DriverDay extends Resource {
 
 }
 
+/** @class DriverPayment
+  * @extends {Resource}
+  **/
+export class DriverPayment extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'driver-payments', attributes, relationships);
+  }
+
+  // attributes
+
+  /** @param {float} amount **/
+  set amount(amount){this._attributes['amount'] = amount};
+  /** @type {float} */
+  get amount(){return this._attributes['amount'];};
+
+  /** @param {date} deliveryDate **/
+  set deliveryDate(deliveryDate){this._attributes['delivery-date'] = deliveryDate};
+  /** @type {date} */
+  get deliveryDate(){return this._attributes['delivery-date'];};
+
+  /** @param {integer} driverId **/
+  set driverId(driverId){this._attributes['driver-id'] = driverId};
+  /** @type {integer} */
+  get driverId(){return this._attributes['driver-id'];};
+
+  /** @param {boolean} manuallyAdded **/
+  set manuallyAdded(manuallyAdded){this._attributes['manually-added'] = manuallyAdded};
+  /** @type {boolean} */
+  get manuallyAdded(){return this._attributes['manually-added'];};
+
+  /** @param {string} notes **/
+  set notes(notes){this._attributes['notes'] = notes};
+  /** @type {string} */
+  get notes(){return this._attributes['notes'];};
+
+  /** @param {integer} orderId **/
+  set orderId(orderId){this._attributes['order-id'] = orderId};
+  /** @type {integer} */
+  get orderId(){return this._attributes['order-id'];};
+
+  /** @param {integer} driverPayrollRunId **/
+  set driverPayrollRunId(driverPayrollRunId){this._attributes['driver-payroll-run-id'] = driverPayrollRunId};
+  /** @type {integer} */
+  get driverPayrollRunId(){return this._attributes['driver-payroll-run-id'];};
+
+  /** @param {string} ruleName **/
+  set ruleName(ruleName){this._attributes['rule-name'] = ruleName};
+  /** @type {string} */
+  get ruleName(){return this._attributes['rule-name'];};
+
+
+  // relationships
+
+
+  /** @param {DriverPayrollRun} driverPayrollRun **/
+  set driverPayrollRun(driverPayrollRun){this._relationships['driver-payroll-run'] = driverPayrollRun};
+  /** @type {DriverPayrollRun} */
+  get driverPayrollRun(){return this._relationships['driver-payroll-run']};
+
+
+
+
+}
+
+/** @class DriverPayrollRun
+  * @extends {Resource}
+  **/
+export class DriverPayrollRun extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'driver-payroll-runs', attributes, relationships);
+  }
+
+  // attributes
+
+  /** @param {json} amounts **/
+  set amounts(amounts){this._attributes['amounts'] = amounts};
+  /** @type {json} */
+  get amounts(){return this._attributes['amounts'];};
+
+  /** @param {json} approvals **/
+  set approvals(approvals){this._attributes['approvals'] = approvals};
+  /** @type {json} */
+  get approvals(){return this._attributes['approvals'];};
+
+  /** @param {integer} driverId **/
+  set driverId(driverId){this._attributes['driver-id'] = driverId};
+  /** @type {integer} */
+  get driverId(){return this._attributes['driver-id'];};
+
+  /** @param {integer} payrollRunId **/
+  set payrollRunId(payrollRunId){this._attributes['payroll-run-id'] = payrollRunId};
+  /** @type {integer} */
+  get payrollRunId(){return this._attributes['payroll-run-id'];};
+
+
+  // relationships
+
+
+  /** @param {Driver} driver **/
+  set driver(driver){this._relationships['driver'] = driver};
+  /** @type {Driver} */
+  get driver(){return this._relationships['driver']};
+
+  /** @param {PayrollRun} payrollRun **/
+  set payrollRun(payrollRun){this._relationships['payroll-run'] = payrollRun};
+  /** @type {PayrollRun} */
+  get payrollRun(){return this._relationships['payroll-run']};
+
+
+
+
+}
+
 /** @class DriverPing
   * @extends {Resource}
   **/
 export class DriverPing extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'driver-pings', attributes, relationships);
+  }
 
   // attributes
 
@@ -1053,10 +1316,51 @@ export class DriverPing extends Resource {
 
 }
 
+/** @class DriverResource
+  * @extends {Resource}
+  **/
+export class DriverResource extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'driver-resources', attributes, relationships);
+  }
+
+  // attributes
+
+  /** @param {integer} driverId **/
+  set driverId(driverId){this._attributes['driver-id'] = driverId};
+  /** @type {integer} */
+  get driverId(){return this._attributes['driver-id'];};
+
+  /** @param {string} firstName **/
+  set firstName(firstName){this._attributes['first-name'] = firstName};
+  /** @type {string} */
+  get firstName(){return this._attributes['first-name'];};
+
+  /** @param {string} lastName **/
+  set lastName(lastName){this._attributes['last-name'] = lastName};
+  /** @type {string} */
+  get lastName(){return this._attributes['last-name'];};
+
+
+  // relationships
+
+
+
+
+
+}
+
 /** @class DriverWeek
   * @extends {Resource}
   **/
 export class DriverWeek extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'driver-weeks', attributes, relationships);
+  }
 
   // attributes
 
@@ -1204,6 +1508,11 @@ export class DriverWeek extends Resource {
   **/
 export class EmailMessage extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'email-messages', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {string} messageId **/
@@ -1265,46 +1574,15 @@ export class EmailMessage extends Resource {
 
 }
 
-/** @class Event
-  * @extends {Resource}
-  **/
-export class Event extends Resource {
-
-  // attributes
-
-  /** @param {any} event **/
-  set event(event){this._attributes['event'] = event};
-  /** @type {any} */
-  get event(){return this._attributes['event'];};
-
-  /** @param {any} timestamp **/
-  set timestamp(timestamp){this._attributes['timestamp'] = timestamp};
-  /** @type {any} */
-  get timestamp(){return this._attributes['timestamp'];};
-
-  /** @param {any} createdAt **/
-  set createdAt(createdAt){this._attributes['created-at'] = createdAt};
-  /** @type {any} */
-  get createdAt(){return this._attributes['created-at'];};
-
-  /** @param {any} eventTimestamp **/
-  set eventTimestamp(eventTimestamp){this._attributes['event-timestamp'] = eventTimestamp};
-  /** @type {any} */
-  get eventTimestamp(){return this._attributes['event-timestamp'];};
-
-
-  // relationships
-
-
-
-
-
-}
-
 /** @class GiftbitCard
   * @extends {Resource}
   **/
 export class GiftbitCard extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'giftbit-cards', attributes, relationships);
+  }
 
   // attributes
 
@@ -1331,6 +1609,11 @@ export class GiftbitCard extends Resource {
   * @extends {Resource}
   **/
 export class GiftbitError extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'giftbit-errors', attributes, relationships);
+  }
 
   // attributes
 
@@ -1372,6 +1655,11 @@ export class GiftbitError extends Resource {
   * @extends {Resource}
   **/
 export class GiftbitGift extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'giftbit-gifts', attributes, relationships);
+  }
 
   // attributes
 
@@ -1444,6 +1732,11 @@ export class GiftbitGift extends Resource {
   **/
 export class GroupOrderMember extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'group-order-members', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {string} name **/
@@ -1505,6 +1798,11 @@ export class GroupOrderMember extends Resource {
   **/
 export class Invoice extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'invoices', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {any} clientInvoice **/
@@ -1530,6 +1828,11 @@ export class Invoice extends Resource {
   * @extends {Resource}
   **/
 export class InvoicingTaxRate extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'invoicing-tax-rates', attributes, relationships);
+  }
 
   // attributes
 
@@ -1591,6 +1894,11 @@ export class InvoicingTaxRate extends Resource {
   * @extends {Resource}
   **/
 export class Location extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'locations', attributes, relationships);
+  }
 
   // attributes
 
@@ -1683,6 +1991,11 @@ export class Location extends Resource {
   **/
 export class MealPlan extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'meal-plans', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {string} brandColor **/
@@ -1758,6 +2071,11 @@ export class MealPlan extends Resource {
   * @extends {Resource}
   **/
 export class Menu extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'menus', attributes, relationships);
+  }
 
   // attributes
 
@@ -1840,6 +2158,11 @@ export class Menu extends Resource {
   **/
 export class MenuGroup extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'menu-groups', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {string} name **/
@@ -1915,6 +2238,11 @@ export class MenuGroup extends Resource {
   * @extends {Resource}
   **/
 export class MenuItem extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'menu-items', attributes, relationships);
+  }
 
   // attributes
 
@@ -2012,6 +2340,11 @@ export class MenuItem extends Resource {
   **/
 export class MenuOptionGroup extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'menu-option-groups', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {string} name **/
@@ -2057,6 +2390,11 @@ export class MenuOptionGroup extends Resource {
   * @extends {Resource}
   **/
 export class MenuOptionItem extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'menu-option-items', attributes, relationships);
+  }
 
   // attributes
 
@@ -2109,6 +2447,11 @@ export class MenuOptionItem extends Resource {
   **/
 export class Order extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'orders', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {number} areaId **/
@@ -2135,6 +2478,11 @@ export class Order extends Resource {
   set clientInvoicePdf(clientInvoicePdf){this._attributes['client-invoice-pdf'] = clientInvoicePdf};
   /** @type {number} */
   get clientInvoicePdf(){return this._attributes['client-invoice-pdf'];};
+
+  /** @param {number} createdAt **/
+  set createdAt(createdAt){this._attributes['created-at'] = createdAt};
+  /** @type {number} */
+  get createdAt(){return this._attributes['created-at'];};
 
   /** @param {number} deadlineAt **/
   set deadlineAt(deadlineAt){this._attributes['deadline-at'] = deadlineAt};
@@ -2206,15 +2554,25 @@ export class Order extends Resource {
   /** @type {number} */
   get maxNumberOfPeople(){return this._attributes['max-number-of-people'];};
 
-  /** @param {number} monitoringNotes **/
-  set monitoringNotes(monitoringNotes){this._attributes['monitoring-notes'] = monitoringNotes};
-  /** @type {number} */
-  get monitoringNotes(){return this._attributes['monitoring-notes'];};
-
   /** @param {number} name **/
   set name(name){this._attributes['name'] = name};
   /** @type {number} */
   get name(){return this._attributes['name'];};
+
+  /** @param {number} clientNotes **/
+  set clientNotes(clientNotes){this._attributes['client-notes'] = clientNotes};
+  /** @type {number} */
+  get clientNotes(){return this._attributes['client-notes'];};
+
+  /** @param {number} courierNotes **/
+  set courierNotes(courierNotes){this._attributes['courier-notes'] = courierNotes};
+  /** @type {number} */
+  get courierNotes(){return this._attributes['courier-notes'];};
+
+  /** @param {number} monitoringNotes **/
+  set monitoringNotes(monitoringNotes){this._attributes['monitoring-notes'] = monitoringNotes};
+  /** @type {number} */
+  get monitoringNotes(){return this._attributes['monitoring-notes'];};
 
   /** @param {number} notes **/
   set notes(notes){this._attributes['notes'] = notes};
@@ -2280,6 +2638,11 @@ export class Order extends Resource {
   set totalAmount(totalAmount){this._attributes['total-amount'] = totalAmount};
   /** @type {number} */
   get totalAmount(){return this._attributes['total-amount'];};
+
+  /** @param {number} restaurantTotalAmount **/
+  set restaurantTotalAmount(restaurantTotalAmount){this._attributes['restaurant-total-amount'] = restaurantTotalAmount};
+  /** @type {number} */
+  get restaurantTotalAmount(){return this._attributes['restaurant-total-amount'];};
 
   /** @param {number} updatedAt **/
   set updatedAt(updatedAt){this._attributes['updated-at'] = updatedAt};
@@ -2470,6 +2833,11 @@ export class Order extends Resource {
   **/
 export class OrderItem extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'order-items', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {number} quantity **/
@@ -2536,26 +2904,15 @@ export class OrderItem extends Resource {
 
 }
 
-/** @class PaymentAccount
-  * @extends {Resource}
-  **/
-export class PaymentAccount extends Resource {
-
-  // attributes
-
-
-  // relationships
-
-
-
-
-
-}
-
 /** @class PaymentCard
   * @extends {Resource}
   **/
 export class PaymentCard extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'payment-cards', attributes, relationships);
+  }
 
   // attributes
 
@@ -2618,10 +2975,56 @@ export class PaymentCard extends Resource {
 
 }
 
+/** @class PayrollRun
+  * @extends {Resource}
+  **/
+export class PayrollRun extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'payroll-runs', attributes, relationships);
+  }
+
+  // attributes
+
+  /** @param {boolean} country **/
+  set country(country){this._attributes['country'] = country};
+  /** @type {boolean} */
+  get country(){return this._attributes['country'];};
+
+  /** @param {string} payrollPeriod **/
+  set payrollPeriod(payrollPeriod){this._attributes['payroll-period'] = payrollPeriod};
+  /** @type {string} */
+  get payrollPeriod(){return this._attributes['payroll-period'];};
+
+  /** @param {boolean} paid **/
+  set paid(paid){this._attributes['paid'] = paid};
+  /** @type {boolean} */
+  get paid(){return this._attributes['paid'];};
+
+
+  // relationships
+
+
+
+
+  /** @param {DriverPayrollRun[]} driverPayrollRun **/
+  set driverPayrollRun(driverPayrollRun){this._relationships['driver-payroll-run'] = driverPayrollRun};
+  /** @type {DriverPayrollRun[]} */
+  get driverPayrollRun(){return this._relationships['driver-payroll-run']};
+
+
+}
+
 /** @class PickupLocation
   * @extends {Resource}
   **/
 export class PickupLocation extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'pickup-locations', attributes, relationships);
+  }
 
   // attributes
 
@@ -2714,6 +3117,11 @@ export class PickupLocation extends Resource {
   **/
 export class PromoCode extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'promo-codes', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {string} code **/
@@ -2805,6 +3213,11 @@ export class PromoCode extends Resource {
   **/
 export class QualifyingQuestion extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'qualifying-questions', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {string} contactPerson **/
@@ -2840,6 +3253,11 @@ export class QualifyingQuestion extends Resource {
   * @extends {Resource}
   **/
 export class Restaurant extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'restaurants', attributes, relationships);
+  }
 
   // attributes
 
@@ -3037,6 +3455,11 @@ export class Restaurant extends Resource {
   **/
 export class RestaurantClosure extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'restaurant-closures', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {date} date **/
@@ -3073,12 +3496,12 @@ export class RestaurantClosure extends Resource {
   **/
 export class RestaurantDiscount extends Resource {
 
-  // attributes
 
-  /** @param {string} amountType **/
-  set amountType(amountType){this._attributes['amount-type'] = amountType};
-  /** @type {string} */
-  get amountType(){return this._attributes['amount-type'];};
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'restaurant-discounts', attributes, relationships);
+  }
+
+  // attributes
 
   /** @param {string} accountingCode **/
   set accountingCode(accountingCode){this._attributes['accounting-code'] = accountingCode};
@@ -3089,6 +3512,16 @@ export class RestaurantDiscount extends Resource {
   set amount(amount){this._attributes['amount'] = amount};
   /** @type {string} */
   get amount(){return this._attributes['amount'];};
+
+  /** @param {string} amountType **/
+  set amountType(amountType){this._attributes['amount-type'] = amountType};
+  /** @type {string} */
+  get amountType(){return this._attributes['amount-type'];};
+
+  /** @param {string} caseId **/
+  set caseId(caseId){this._attributes['case-id'] = caseId};
+  /** @type {string} */
+  get caseId(){return this._attributes['case-id'];};
 
   /** @param {string} description **/
   set description(description){this._attributes['description'] = description};
@@ -3114,6 +3547,11 @@ export class RestaurantDiscount extends Resource {
   **/
 export class RestaurantOrderInvoice extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'restaurant-order-invoices', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {any} summary **/
@@ -3134,6 +3572,11 @@ export class RestaurantOrderInvoice extends Resource {
   * @extends {Resource}
   **/
 export class Role extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'roles', attributes, relationships);
+  }
 
   // attributes
 
@@ -3160,6 +3603,11 @@ export class Role extends Resource {
   * @extends {Resource}
   **/
 export class SalesforceSyncError extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'salesforce-sync-errors', attributes, relationships);
+  }
 
   // attributes
 
@@ -3206,6 +3654,11 @@ export class SalesforceSyncError extends Resource {
   * @extends {Resource}
   **/
 export class ServiceTime extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'service-times', attributes, relationships);
+  }
 
   // attributes
 
@@ -3263,6 +3716,11 @@ export class ServiceTime extends Resource {
   **/
 export class Tag extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'tags', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {string} emoji **/
@@ -3293,6 +3751,11 @@ export class Tag extends Resource {
   * @extends {Resource}
   **/
 export class User extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'users', attributes, relationships);
+  }
 
   // attributes
 
@@ -3345,6 +3808,11 @@ export class User extends Resource {
   set extension(extension){this._attributes['extension'] = extension};
   /** @type {boolean} */
   get extension(){return this._attributes['extension'];};
+
+  /** @param {boolean} smsNumber **/
+  set smsNumber(smsNumber){this._attributes['sms-number'] = smsNumber};
+  /** @type {boolean} */
+  get smsNumber(){return this._attributes['sms-number'];};
 
   /** @param {boolean} phoneCanSMS **/
   set phoneCanSMS(phoneCanSMS){this._attributes['phone-can-sms'] = phoneCanSMS};
@@ -3425,6 +3893,11 @@ export class User extends Resource {
   // relationships
 
 
+  /** @param {CommunicationPreference} communicationPreference **/
+  set communicationPreference(communicationPreference){this._relationships['communication-preference'] = communicationPreference};
+  /** @type {CommunicationPreference} */
+  get communicationPreference(){return this._relationships['communication-preference']};
+
 
 
   /** @param {DriverPing[]} driverPings **/
@@ -3474,6 +3947,11 @@ export class User extends Resource {
   * @extends {Resource}
   **/
 export class UserFeedback extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'user-feedbacks', attributes, relationships);
+  }
 
   // attributes
 
@@ -3536,6 +4014,11 @@ export class UserFeedback extends Resource {
   **/
 export class UserInvite extends Resource {
 
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'user-invites', attributes, relationships);
+  }
+
   // attributes
 
   /** @param {any} email **/
@@ -3586,6 +4069,11 @@ export class UserInvite extends Resource {
   * @extends {Resource}
   **/
 export class Version extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'versions', attributes, relationships);
+  }
 
   // attributes
 
@@ -3643,6 +4131,7 @@ const ResourceClasses = {
   ['client-discounts']:ClientDiscount,
   ['client-order-invoices']:ClientOrderInvoice,
   ['client-signups']:ClientSignup,
+  ['communication-preferences']:CommunicationPreference,
   ['companies']:Company,
   ['contacts']:Contact,
   ['couriers']:Courier,
@@ -3652,10 +4141,12 @@ const ResourceClasses = {
   ['dietary-tags']:DietaryTag,
   ['discount-codes']:DiscountCode,
   ['driver-days']:DriverDay,
+  ['driver-payments']:DriverPayment,
+  ['driver-payroll-runs']:DriverPayrollRun,
   ['driver-pings']:DriverPing,
+  ['driver-resources']:DriverResource,
   ['driver-weeks']:DriverWeek,
   ['email-messages']:EmailMessage,
-  ['events']:Event,
   ['giftbit-cards']:GiftbitCard,
   ['giftbit-errors']:GiftbitError,
   ['giftbit-gifts']:GiftbitGift,
@@ -3671,8 +4162,8 @@ const ResourceClasses = {
   ['menu-option-items']:MenuOptionItem,
   ['orders']:Order,
   ['order-items']:OrderItem,
-  ['payment-accounts']:PaymentAccount,
   ['payment-cards']:PaymentCard,
+  ['payroll-runs']:PayrollRun,
   ['pickup-locations']:PickupLocation,
   ['promo-codes']:PromoCode,
   ['qualifying-questions']:QualifyingQuestion,

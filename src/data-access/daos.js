@@ -161,6 +161,11 @@ export class ClientRelationshipDao extends RelationshipDao {
        @returns {Promise<Client>} **/
       billingLocation: (options) => this.toOne('billing-location', options),
     
+      /** @method billingContact
+       @params {Object} options
+       @returns {Promise<Client>} **/
+      billingContact: (options) => this.toOne('billing-contact', options),
+    
       /** @method accountManager
        @params {Object} options
        @returns {Promise<Client>} **/
@@ -359,6 +364,34 @@ export class ClientSignupRelationshipDao extends RelationshipDao {
        @returns {Promise<IndexResult<ClientSignup>>} **/
       areas: (options) => this.toMany('areas', options),
       };
+      }
+}
+
+
+/** @class CommunicationPreferenceDao
+  * @extends {ResourceDao}
+  **/
+export class CommunicationPreferenceDao extends ResourceDao {
+  constructor(client) {
+    super(client, 'communication-preferences');
+    this.relationshipDao = new CommunicationPreferenceRelationshipDao(client, 'communication-preferences')
+  }
+}
+
+/** @class CommunicationPreferenceRelationshipDao
+ * @extends {RelationshipDao}  **/
+export class CommunicationPreferenceRelationshipDao extends RelationshipDao {
+  constructor(client) {
+    super(client, 'communication-preferences');
+    
+    this.get = {
+    
+      /** @method user
+       @params {Object} options
+       @returns {Promise<CommunicationPreference>} **/
+      user: (options) => this.toOne('user', options),
+      };
+    
       }
 }
 
@@ -632,6 +665,67 @@ export class DriverDayRelationshipDao extends RelationshipDao {
 }
 
 
+/** @class DriverPaymentDao
+  * @extends {ResourceDao}
+  **/
+export class DriverPaymentDao extends ResourceDao {
+  constructor(client) {
+    super(client, 'driver-payments');
+    this.relationshipDao = new DriverPaymentRelationshipDao(client, 'driver-payments')
+  }
+}
+
+/** @class DriverPaymentRelationshipDao
+ * @extends {RelationshipDao}  **/
+export class DriverPaymentRelationshipDao extends RelationshipDao {
+  constructor(client) {
+    super(client, 'driver-payments');
+    
+    this.get = {
+    
+      /** @method driverPayrollRun
+       @params {Object} options
+       @returns {Promise<DriverPayment>} **/
+      driverPayrollRun: (options) => this.toOne('driver-payroll-run', options),
+      };
+    
+      }
+}
+
+
+/** @class DriverPayrollRunDao
+  * @extends {ResourceDao}
+  **/
+export class DriverPayrollRunDao extends ResourceDao {
+  constructor(client) {
+    super(client, 'driver-payroll-runs');
+    this.relationshipDao = new DriverPayrollRunRelationshipDao(client, 'driver-payroll-runs')
+  }
+}
+
+/** @class DriverPayrollRunRelationshipDao
+ * @extends {RelationshipDao}  **/
+export class DriverPayrollRunRelationshipDao extends RelationshipDao {
+  constructor(client) {
+    super(client, 'driver-payroll-runs');
+    
+    this.get = {
+    
+      /** @method driver
+       @params {Object} options
+       @returns {Promise<DriverPayrollRun>} **/
+      driver: (options) => this.toOne('driver', options),
+    
+      /** @method payrollRun
+       @params {Object} options
+       @returns {Promise<DriverPayrollRun>} **/
+      payrollRun: (options) => this.toOne('payroll-run', options),
+      };
+    
+      }
+}
+
+
 /** @class DriverPingDao
   * @extends {ResourceDao}
   **/
@@ -655,6 +749,26 @@ export class DriverPingRelationshipDao extends RelationshipDao {
        @returns {Promise<DriverPing>} **/
       user: (options) => this.toOne('user', options),
       };
+    
+      }
+}
+
+
+/** @class DriverResourceDao
+  * @extends {ResourceDao}
+  **/
+export class DriverResourceDao extends ResourceDao {
+  constructor(client) {
+    super(client, 'driver-resources');
+    this.relationshipDao = new DriverResourceRelationshipDao(client, 'driver-resources')
+  }
+}
+
+/** @class DriverResourceRelationshipDao
+ * @extends {RelationshipDao}  **/
+export class DriverResourceRelationshipDao extends RelationshipDao {
+  constructor(client) {
+    super(client, 'driver-resources');
     
       }
 }
@@ -711,26 +825,6 @@ export class EmailMessageRelationshipDao extends RelationshipDao {
        @returns {Promise<EmailMessage>} **/
       order: (options) => this.toOne('order', options),
       };
-    
-      }
-}
-
-
-/** @class EventDao
-  * @extends {ResourceDao}
-  **/
-export class EventDao extends ResourceDao {
-  constructor(client) {
-    super(client, 'events');
-    this.relationshipDao = new EventRelationshipDao(client, 'events')
-  }
-}
-
-/** @class EventRelationshipDao
- * @extends {RelationshipDao}  **/
-export class EventRelationshipDao extends RelationshipDao {
-  constructor(client) {
-    super(client, 'events');
     
       }
 }
@@ -1374,26 +1468,6 @@ export class OrderItemRelationshipDao extends RelationshipDao {
 }
 
 
-/** @class PaymentAccountDao
-  * @extends {ResourceDao}
-  **/
-export class PaymentAccountDao extends ResourceDao {
-  constructor(client) {
-    super(client, 'payment-accounts');
-    this.relationshipDao = new PaymentAccountRelationshipDao(client, 'payment-accounts')
-  }
-}
-
-/** @class PaymentAccountRelationshipDao
- * @extends {RelationshipDao}  **/
-export class PaymentAccountRelationshipDao extends RelationshipDao {
-  constructor(client) {
-    super(client, 'payment-accounts');
-    
-      }
-}
-
-
 /** @class PaymentCardDao
   * @extends {ResourceDao}
   **/
@@ -1423,6 +1497,34 @@ export class PaymentCardRelationshipDao extends RelationshipDao {
       user: (options) => this.toOne('user', options),
       };
     
+      }
+}
+
+
+/** @class PayrollRunDao
+  * @extends {ResourceDao}
+  **/
+export class PayrollRunDao extends ResourceDao {
+  constructor(client) {
+    super(client, 'payroll-runs');
+    this.relationshipDao = new PayrollRunRelationshipDao(client, 'payroll-runs')
+  }
+}
+
+/** @class PayrollRunRelationshipDao
+ * @extends {RelationshipDao}  **/
+export class PayrollRunRelationshipDao extends RelationshipDao {
+  constructor(client) {
+    super(client, 'payroll-runs');
+    
+    
+    this.index = {
+    
+      /** @method driverPayrollRun
+       @params {Object} options
+       @returns {Promise<IndexResult<PayrollRun>>} **/
+      driverPayrollRun: (options) => this.toMany('driver-payroll-runs', options),
+      };
       }
 }
 
@@ -1804,6 +1906,14 @@ export class UserDao extends ResourceDao {
 export class UserRelationshipDao extends RelationshipDao {
   constructor(client) {
     super(client, 'users');
+    
+    this.get = {
+    
+      /** @method communicationPreference
+       @params {Object} options
+       @returns {Promise<User>} **/
+      communicationPreference: (options) => this.toOne('communication-preference', options),
+      };
     
     
     this.index = {
