@@ -1,6 +1,6 @@
 import MasterFox from './index';
 
-const client = new MasterFox('https://concierge.food.ee/', 'H7jPOjCbT1deq+uSCmcSjwzp5kDambeXPnLieHYMZgkFCYBCG0tYpQ==');
+const client = new MasterFox('https://concierge.food.ee/', '');
 
 client
   .restaurants

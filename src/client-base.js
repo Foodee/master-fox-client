@@ -1,6 +1,7 @@
 import ResourceClasses from './resources/resources';
 import Resource from './resources/resource';
 import { dasherize, underscore } from 'inflected'
+import fetch from 'cross-fetch';
 
 function extractJRObject(data, included) {
   const id = data.id;
