@@ -157,7 +157,11 @@ export class IndexResult {
    */
   constructor(records, meta, page) {
     this.records = records;
-    this.page = page;
+    // TODO: replace this
+    this.page = page || {
+      offset: 0,
+      limit: 20
+    };
     this.meta = meta;
     this.index = 0;
   }
