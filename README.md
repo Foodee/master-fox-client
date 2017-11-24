@@ -29,6 +29,7 @@ MasterFox is a a JSONAPI compliant api details can be found here: http://jsonapi
  DriverResource | [Data Access Object](#resource-dao-DriverResource)  | [Schema](#resource-DriverResource) | [Filter Definition](#resource-filter-DriverResource) |
  DriverWeek | [Data Access Object](#resource-dao-DriverWeek)  | [Schema](#resource-DriverWeek) | [Filter Definition](#resource-filter-DriverWeek) |
  EmailMessage | [Data Access Object](#resource-dao-EmailMessage)  | [Schema](#resource-EmailMessage) | [Filter Definition](#resource-filter-EmailMessage) |
+ Event | [Data Access Object](#resource-dao-Event)  | [Schema](#resource-Event) | [Filter Definition](#resource-filter-Event) |
  GiftbitCard | [Data Access Object](#resource-dao-GiftbitCard)  | [Schema](#resource-GiftbitCard) | [Filter Definition](#resource-filter-GiftbitCard) |
  GiftbitError | [Data Access Object](#resource-dao-GiftbitError)  | [Schema](#resource-GiftbitError) | [Filter Definition](#resource-filter-GiftbitError) |
  GiftbitGift | [Data Access Object](#resource-dao-GiftbitGift)  | [Schema](#resource-GiftbitGift) | [Filter Definition](#resource-filter-GiftbitGift) |
@@ -44,6 +45,7 @@ MasterFox is a a JSONAPI compliant api details can be found here: http://jsonapi
  MenuOptionItem | [Data Access Object](#resource-dao-MenuOptionItem)  | [Schema](#resource-MenuOptionItem) | [Filter Definition](#resource-filter-MenuOptionItem) |
  Order | [Data Access Object](#resource-dao-Order)  | [Schema](#resource-Order) | [Filter Definition](#resource-filter-Order) |
  OrderItem | [Data Access Object](#resource-dao-OrderItem)  | [Schema](#resource-OrderItem) | [Filter Definition](#resource-filter-OrderItem) |
+ PaymentAccount | [Data Access Object](#resource-dao-PaymentAccount)  | [Schema](#resource-PaymentAccount) | [Filter Definition](#resource-filter-PaymentAccount) |
  PaymentCard | [Data Access Object](#resource-dao-PaymentCard)  | [Schema](#resource-PaymentCard) | [Filter Definition](#resource-filter-PaymentCard) |
  PayrollRun | [Data Access Object](#resource-dao-PayrollRun)  | [Schema](#resource-PayrollRun) | [Filter Definition](#resource-filter-PayrollRun) |
  PickupLocation | [Data Access Object](#resource-dao-PickupLocation)  | [Schema](#resource-PickupLocation) | [Filter Definition](#resource-filter-PickupLocation) |
@@ -68,14 +70,14 @@ Data access objects are connected to the base of the MasterFox client. You can i
 following code:
 
 ```JavaScript
-import MasterFox from 'master-fox';
+import MasterFox from 'master-fox-client';
 const client = new MasterFox('https://food.ee/', '<your-api-key>');
 ```
 
 You can also connect using an email and password as follows:
 
 ```JavaScript
-import MasterFox from 'master-fox';
+import MasterFox from 'master-fox-client';
 const client = await MasterFox.login('https://food.ee/', '<email>', '<password>');
 
 // will be your current API token, you can save this in order to prevent subsequent logins
@@ -772,6 +774,27 @@ const pagedIndexOfEmailMessages = await client.emailMessages.index(options);
 // Get EmailMessage#1's order
 const singleOrder = await client.emailMessages.from(1).get.order(1,  options);
 ```
+### <a name='resource-dao-Event'></a>Event
+See [EventFilter](#resource-filter-Event) for valid filters.
+See [Event](#resource-Event) for the resource schema.
+```JavaScript
+const options = {
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
+
+  // only valid for index fields
+  fitlers: {},
+  sort: '',
+  page: {
+    offet: 0,
+    limit: 20
+  }
+};
+const singleEvent= await client.events.get(1,  options);
+const pagedIndexOfEvents = await client.events.index(options);
+```
 ### <a name='resource-dao-GiftbitCard'></a>GiftbitCard
 See [GiftbitCardFilter](#resource-filter-GiftbitCard) for valid filters.
 See [GiftbitCard](#resource-GiftbitCard) for the resource schema.
@@ -1241,6 +1264,27 @@ const singleGroupOrderMember = await client.orderItems.from(1).get.groupOrderMem
 // To Many
 // Index OrderItem#1's menuOptionItems
 const pagedIndexOfMenuOptionItems = await client.orderItems.from(1).index.menuOptionItems(options);
+```
+### <a name='resource-dao-PaymentAccount'></a>PaymentAccount
+See [PaymentAccountFilter](#resource-filter-PaymentAccount) for valid filters.
+See [PaymentAccount](#resource-PaymentAccount) for the resource schema.
+```JavaScript
+const options = {
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
+
+  // only valid for index fields
+  fitlers: {},
+  sort: '',
+  page: {
+    offet: 0,
+    limit: 20
+  }
+};
+const singlePaymentAccount= await client.paymentAccounts.get(1,  options);
+const pagedIndexOfPaymentAccounts = await client.paymentAccounts.index(options);
 ```
 ### <a name='resource-dao-PaymentCard'></a>PaymentCard
 See [PaymentCardFilter](#resource-filter-PaymentCard) for valid filters.
@@ -2218,6 +2262,19 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 
 
 
+### <a name='resource-Event'></a>Event
+
+#### Attributes
+| Name | Type |
+| ------------- |:-------------:|
+| event |  any |
+| timestamp |  any |
+| createdAt |  any |
+| eventTimestamp |  any |
+
+
+
+
 ### <a name='resource-GiftbitCard'></a>GiftbitCard
 
 #### Attributes
@@ -2601,6 +2658,15 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | menuItem |  MenuItem |
 | groupOrderMember |  GroupOrderMember |
 | menuOptionItems |  MenuOptionItem[] |
+
+
+
+### <a name='resource-PaymentAccount'></a>PaymentAccount
+
+#### Attributes
+| Name | Type |
+| ------------- |:-------------:|
+
 
 
 
@@ -3267,6 +3333,18 @@ None
 
 
 
+### <a name='resource-filter-Event'></a>Event
+#### Available Filters
+| Name | Type |
+| ------------- |:-------------:|
+| id |  any |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
+
+
+
 ### <a name='resource-filter-GiftbitCard'></a>GiftbitCard
 #### Available Filters
 | Name | Type |
@@ -3465,6 +3543,18 @@ None
 
 
 ### <a name='resource-filter-OrderItem'></a>OrderItem
+#### Available Filters
+| Name | Type |
+| ------------- |:-------------:|
+| id |  integer |
+| createdAtBefore |  date |
+| createdAtAfter |  date |
+| updatedAtBefore |  date |
+| updatedAtAfter |  date |
+
+
+
+### <a name='resource-filter-PaymentAccount'></a>PaymentAccount
 #### Available Filters
 | Name | Type |
 | ------------- |:-------------:|

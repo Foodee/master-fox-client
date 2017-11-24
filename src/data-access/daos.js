@@ -830,6 +830,26 @@ export class EmailMessageRelationshipDao extends RelationshipDao {
 }
 
 
+/** @class EventDao
+  * @extends {ResourceDao}
+  **/
+export class EventDao extends ResourceDao {
+  constructor(client) {
+    super(client, 'events');
+    this.relationshipDao = new EventRelationshipDao(client, 'events')
+  }
+}
+
+/** @class EventRelationshipDao
+ * @extends {RelationshipDao}  **/
+export class EventRelationshipDao extends RelationshipDao {
+  constructor(client) {
+    super(client, 'events');
+    
+      }
+}
+
+
 /** @class GiftbitCardDao
   * @extends {ResourceDao}
   **/
@@ -1464,6 +1484,26 @@ export class OrderItemRelationshipDao extends RelationshipDao {
        @returns {Promise<IndexResult<OrderItem>>} **/
       menuOptionItems: (options) => this.toMany('menu-option-items', options),
       };
+      }
+}
+
+
+/** @class PaymentAccountDao
+  * @extends {ResourceDao}
+  **/
+export class PaymentAccountDao extends ResourceDao {
+  constructor(client) {
+    super(client, 'payment-accounts');
+    this.relationshipDao = new PaymentAccountRelationshipDao(client, 'payment-accounts')
+  }
+}
+
+/** @class PaymentAccountRelationshipDao
+ * @extends {RelationshipDao}  **/
+export class PaymentAccountRelationshipDao extends RelationshipDao {
+  constructor(client) {
+    super(client, 'payment-accounts');
+    
       }
 }
 

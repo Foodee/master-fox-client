@@ -10,8 +10,7 @@ function extractJRObject(data, included) {
 
   const resourceKlass = ResourceClasses[type] || Resource;
 
-  const relationships = Object
-    .entries(data.relationships)
+  const relationships = (Object.entries(data.relationships) || [])
     .reduce((acc, [key, value]) => {
 
       if (value.data !== undefined) {
@@ -328,10 +327,10 @@ export class JRClient {
     console.log(`${method}: ${url}`);
 
     return fetch(url, {
-        headers: this.headers,
-        method: method,
-        body: body ? JSON.stringify(body) : body
-      })
+      headers: this.headers,
+      method: method,
+      body: body ? JSON.stringify(body) : body
+    })
       .then((response) => {
         return response
           .json()

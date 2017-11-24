@@ -22,6 +22,7 @@ import {
     DriverResourceDao,
     DriverWeekDao,
     EmailMessageDao,
+    EventDao,
     GiftbitCardDao,
     GiftbitErrorDao,
     GiftbitGiftDao,
@@ -37,6 +38,7 @@ import {
     MenuOptionItemDao,
     OrderDao,
     OrderItemDao,
+    PaymentAccountDao,
     PaymentCardDao,
     PayrollRunDao,
     PickupLocationDao,
@@ -56,7 +58,6 @@ import {
     VersionDao,
 } from './data-access/daos';
 import {JRClient} from './client-base';
-import fetch from 'cross-fetch';
 
 /** @module master-fox **/
 /** @class MFClient **/
@@ -134,6 +135,9 @@ class MFClient extends JRClient {
     /** @type {EmailMessageDao} **/
     this.emailMessages = new EmailMessageDao(this);
   
+    /** @type {EventDao} **/
+    this.events = new EventDao(this);
+  
     /** @type {GiftbitCardDao} **/
     this.giftbitCards = new GiftbitCardDao(this);
   
@@ -178,6 +182,9 @@ class MFClient extends JRClient {
   
     /** @type {OrderItemDao} **/
     this.orderItems = new OrderItemDao(this);
+  
+    /** @type {PaymentAccountDao} **/
+    this.paymentAccounts = new PaymentAccountDao(this);
   
     /** @type {PaymentCardDao} **/
     this.paymentCards = new PaymentCardDao(this);
@@ -246,7 +253,7 @@ class MFClient extends JRClient {
   static login(rootUrl, email, password) {
     let url = `${rootUrl}api/v3/users/sign_in`;
     console.log(`Logging in to ${url}`);
-    return fetch(url, {
+    return this.fetch(url, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
