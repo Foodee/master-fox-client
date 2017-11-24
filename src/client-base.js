@@ -10,7 +10,7 @@ function extractJRObject(data, included) {
 
   const resourceKlass = ResourceClasses[type] || Resource;
 
-  const relationships = (Object.entries(data.relationships) || [])
+  const relationships = Object.entries(data.relationships || {})
     .reduce((acc, [key, value]) => {
 
       if (value.data !== undefined) {
