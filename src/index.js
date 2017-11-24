@@ -58,6 +58,7 @@ import {
     VersionDao,
 } from './data-access/daos';
 import {JRClient} from './client-base';
+import fetch from 'cross-fetch';
 
 /** @module master-fox **/
 /** @class MFClient **/
@@ -253,7 +254,7 @@ class MFClient extends JRClient {
   static login(rootUrl, email, password) {
     let url = `${rootUrl}api/v3/users/sign_in`;
     console.log(`Logging in to ${url}`);
-    return this.fetch(url, {
+    return fetch(url, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
