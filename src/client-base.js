@@ -157,6 +157,10 @@ export class IndexResult {
    */
   constructor(records, meta, page) {
     this.records = records;
+
+    // allow brace array access
+    this.records.forEach((record, index) => this[index] = record );
+
     // TODO: replace this
     this.page = page || {
       offset: 0,
