@@ -1215,6 +1215,26 @@ export class DriverPayment extends Resource {
   /** @type {string} */
   get ruleName(){return this._attributes['rule-name'];};
 
+  /** @param {string} orderIdentifier **/
+  set orderIdentifier(orderIdentifier){this._attributes['order-identifier'] = orderIdentifier};
+  /** @type {string} */
+  get orderIdentifier(){return this._attributes['order-identifier'];};
+
+  /** @param {date} orderDeliverAt **/
+  set orderDeliverAt(orderDeliverAt){this._attributes['order-deliver-at'] = orderDeliverAt};
+  /** @type {date} */
+  get orderDeliverAt(){return this._attributes['order-deliver-at'];};
+
+  /** @param {date} orderPickupAt **/
+  set orderPickupAt(orderPickupAt){this._attributes['order-pickup-at'] = orderPickupAt};
+  /** @type {date} */
+  get orderPickupAt(){return this._attributes['order-pickup-at'];};
+
+  /** @param {date} orderDeliveredAt **/
+  set orderDeliveredAt(orderDeliveredAt){this._attributes['order-delivered-at'] = orderDeliveredAt};
+  /** @type {date} */
+  get orderDeliveredAt(){return this._attributes['order-delivered-at'];};
+
 
   // relationships
 

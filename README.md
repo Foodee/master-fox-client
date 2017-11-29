@@ -2144,6 +2144,10 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | orderId |  integer |
 | driverPayrollRunId |  integer |
 | ruleName |  string |
+| orderIdentifier |  string |
+| orderDeliverAt |  date |
+| orderPickupAt |  date |
+| orderDeliveredAt |  date |
 
 
 #### Relationships

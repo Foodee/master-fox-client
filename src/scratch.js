@@ -1,18 +1,14 @@
 import MasterFox from './index';
 
-MasterFox.login('https://concierge.food.ee/')
+MasterFox.login('https://concierge.food.ee/', 'joe.gaudet@food.ee', '$Yjn2JFWMTBi7)')
   .then(client =>
     client
-      .restaurants
-      .index({
-        include: 'owner'
+      .orders
+      .get('119575', {
+        include: 'order-items.menu-item'
       })
-      .then((restos) => {
-        console.log(restos.length);
-        console.log(restos.total);
-        console.log(restos.hasMore);
-
-        restos.forEach(resto => console.log(resto.owner))
+      .then((order) => {
+        console.log(order);
       })
       .catch(console.error)
-  )
+  );

@@ -13,16 +13,22 @@ function extractJRObject(data, included) {
   const relationships = Object.entries(data.relationships || {})
     .reduce((acc, [key, value]) => {
 
-      if (value.data !== undefined) {
+      const relationshipData = value.data;
+
+      if (relationshipData !== undefined) {
+
 
         let related;
 
         // included relationships are either to one or to many
-        if (Array.isArray(value.data)) {
-          related = value.data.map((r) => extractJRObject(findRelationship(included, r)), included);
+        if (Array.isArray(relationshipData)) {
+          related = relationshipData
+            .map((nestedRelationshipData) =>
+              extractJRObject(findRelationship(included, nestedRelationshipData), included)
+            );
         }
         else {
-          related = extractJRObject(findRelationship(included, value.data), included);
+          related = extractJRObject(findRelationship(included, relationshipData), included);
         }
 
         acc[key] = related;
@@ -159,7 +165,7 @@ export class IndexResult {
     this.records = records;
 
     // allow brace array access
-    this.records.forEach((record, index) => this[index] = record );
+    this.records.forEach((record, index) => this[index] = record);
 
     // TODO: replace this
     this.page = page || {
