@@ -3,7 +3,7 @@ import Resource from './resources/resource';
 import { dasherize, underscore } from 'inflected'
 import fetch from 'cross-fetch';
 
-function extractJRObject(data, included) {
+export function extractJRObject(data, included) {
   const id = data.id;
   const type = data.type;
   const attributes = data.attributes;
@@ -15,8 +15,7 @@ function extractJRObject(data, included) {
 
       const relationshipData = value.data;
 
-      if (relationshipData !== undefined) {
-
+      if (relationshipData) {
 
         let related;
 
