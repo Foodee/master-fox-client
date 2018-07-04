@@ -52,13 +52,16 @@ MasterFox is a a JSONAPI compliant api details can be found here: http://jsonapi
  PromoCode | [Data Access Object](#resource-dao-PromoCode)  | [Schema](#resource-PromoCode) | [Filter Definition](#resource-filter-PromoCode) |
  QualifyingQuestion | [Data Access Object](#resource-dao-QualifyingQuestion)  | [Schema](#resource-QualifyingQuestion) | [Filter Definition](#resource-filter-QualifyingQuestion) |
  Restaurant | [Data Access Object](#resource-dao-Restaurant)  | [Schema](#resource-Restaurant) | [Filter Definition](#resource-filter-Restaurant) |
+ RestaurantCapacityTranche | [Data Access Object](#resource-dao-RestaurantCapacityTranche)  | [Schema](#resource-RestaurantCapacityTranche) | [Filter Definition](#resource-filter-RestaurantCapacityTranche) |
  RestaurantClosure | [Data Access Object](#resource-dao-RestaurantClosure)  | [Schema](#resource-RestaurantClosure) | [Filter Definition](#resource-filter-RestaurantClosure) |
  RestaurantDiscount | [Data Access Object](#resource-dao-RestaurantDiscount)  | [Schema](#resource-RestaurantDiscount) | [Filter Definition](#resource-filter-RestaurantDiscount) |
  RestaurantOrderInvoice | [Data Access Object](#resource-dao-RestaurantOrderInvoice)  | [Schema](#resource-RestaurantOrderInvoice) | [Filter Definition](#resource-filter-RestaurantOrderInvoice) |
+ RestaurantVote | [Data Access Object](#resource-dao-RestaurantVote)  | [Schema](#resource-RestaurantVote) | [Filter Definition](#resource-filter-RestaurantVote) |
  Role | [Data Access Object](#resource-dao-Role)  | [Schema](#resource-Role) | [Filter Definition](#resource-filter-Role) |
  SalesforceSyncError | [Data Access Object](#resource-dao-SalesforceSyncError)  | [Schema](#resource-SalesforceSyncError) | [Filter Definition](#resource-filter-SalesforceSyncError) |
  ServiceTime | [Data Access Object](#resource-dao-ServiceTime)  | [Schema](#resource-ServiceTime) | [Filter Definition](#resource-filter-ServiceTime) |
  Tag | [Data Access Object](#resource-dao-Tag)  | [Schema](#resource-Tag) | [Filter Definition](#resource-filter-Tag) |
+ Team | [Data Access Object](#resource-dao-Team)  | [Schema](#resource-Team) | [Filter Definition](#resource-filter-Team) |
  User | [Data Access Object](#resource-dao-User)  | [Schema](#resource-User) | [Filter Definition](#resource-filter-User) |
  UserFeedback | [Data Access Object](#resource-dao-UserFeedback)  | [Schema](#resource-UserFeedback) | [Filter Definition](#resource-filter-UserFeedback) |
  UserInvite | [Data Access Object](#resource-dao-UserInvite)  | [Schema](#resource-UserInvite) | [Filter Definition](#resource-filter-UserInvite) |
@@ -240,6 +243,8 @@ const singleContact = await client.clients.from(1).get.billingContact(1,  option
 const singleUser = await client.clients.from(1).get.accountManager(1,  options);
 // Get Client#1's owner
 const singleUser = await client.clients.from(1).get.owner(1,  options);
+// Get Client#1's salesSupport
+const singleUser = await client.clients.from(1).get.salesSupport(1,  options);
 // Get Client#1's company
 const singleCompany = await client.clients.from(1).get.company(1,  options);
 // Get Client#1's mealPlan
@@ -253,6 +258,8 @@ const singleGiftbitCard = await client.clients.from(1).get.giftbitCard(1,  optio
 const pagedIndexOfAreas = await client.clients.from(1).index.areas(options);
 // Index Client#1's deliveryLocations
 const pagedIndexOfDeliveryLocations = await client.clients.from(1).index.deliveryLocations(options);
+// Index Client#1's paymentCards
+const pagedIndexOfPaymentCards = await client.clients.from(1).index.paymentCards(options);
 // Index Client#1's adminContacts
 const pagedIndexOfContacts = await client.clients.from(1).index.adminContacts(options);
 // Index Client#1's admins
@@ -261,8 +268,8 @@ const pagedIndexOfUsers = await client.clients.from(1).index.admins(options);
 const pagedIndexOfContacts = await client.clients.from(1).index.orderContacts(options);
 // Index Client#1's orders
 const pagedIndexOfOrders = await client.clients.from(1).index.orders(options);
-// Index Client#1's paymentCards
-const pagedIndexOfPaymentCards = await client.clients.from(1).index.paymentCards(options);
+// Index Client#1's teams
+const pagedIndexOfTeams = await client.clients.from(1).index.teams(options);
 // Index Client#1's versions
 const pagedIndexOfVersions = await client.clients.from(1).index.versions(options);
 // Index Client#1's giftbitGifts
@@ -1200,6 +1207,8 @@ const singleCourier = await client.orders.from(1).get.courier(1,  options);
 const singlePromoCode = await client.orders.from(1).get.promoCode(1,  options);
 // Get Order#1's driver
 const singleUser = await client.orders.from(1).get.driver(1,  options);
+// Get Order#1's salesSupport
+const singleUser = await client.orders.from(1).get.salesSupport(1,  options);
 // Get Order#1's restaurantLocation
 const singleLocation = await client.orders.from(1).get.restaurantLocation(1,  options);
 // Get Order#1's clientLocation
@@ -1227,6 +1236,10 @@ const pagedIndexOfDeliveryCases = await client.orders.from(1).index.deliveryCase
 const pagedIndexOfDeskCases = await client.orders.from(1).index.deskCases(options);
 // Index Order#1's versions
 const pagedIndexOfVersions = await client.orders.from(1).index.versions(options);
+// Index Order#1's pollableRestaurants
+const pagedIndexOfRestaurants = await client.orders.from(1).index.pollableRestaurants(options);
+// Index Order#1's restaurantVotes
+const pagedIndexOfRestaurantVotes = await client.orders.from(1).index.restaurantVotes(options);
 // Index Order#1's groupOrderMembers
 const pagedIndexOfGroupOrderMembers = await client.orders.from(1).index.groupOrderMembers(options);
 // Index Order#1's orderItems
@@ -1454,10 +1467,16 @@ const singleUser = await client.restaurants.from(1).get.owner(1,  options);
 // To Many
 // Index Restaurant#1's orders
 const pagedIndexOfOrders = await client.restaurants.from(1).index.orders(options);
+// Index Restaurant#1's restaurantCapacityTranches
+const pagedIndexOfRestaurantCapacityTranches = await client.restaurants.from(1).index.restaurantCapacityTranches(options);
 // Index Restaurant#1's serviceTimes
 const pagedIndexOfServiceTimes = await client.restaurants.from(1).index.serviceTimes(options);
 // Index Restaurant#1's pickupLocations
 const pagedIndexOfPickupLocations = await client.restaurants.from(1).index.pickupLocations(options);
+// Index Restaurant#1's admins
+const pagedIndexOfUsers = await client.restaurants.from(1).index.admins(options);
+// Index Restaurant#1's adminContacts
+const pagedIndexOfContacts = await client.restaurants.from(1).index.adminContacts(options);
 // Index Restaurant#1's dietaryTags
 const pagedIndexOfDietaryTags = await client.restaurants.from(1).index.dietaryTags(options);
 // Index Restaurant#1's tags
@@ -1466,12 +1485,40 @@ const pagedIndexOfTags = await client.restaurants.from(1).index.tags(options);
 const pagedIndexOfAreas = await client.restaurants.from(1).index.areas(options);
 // Index Restaurant#1's menus
 const pagedIndexOfMenus = await client.restaurants.from(1).index.menus(options);
+// Index Restaurant#1's restaurantVotes
+const pagedIndexOfRestaurantVotes = await client.restaurants.from(1).index.restaurantVotes(options);
 // Index Restaurant#1's closures
 const pagedIndexOfRestaurantClosures = await client.restaurants.from(1).index.closures(options);
 // Index Restaurant#1's versions
 const pagedIndexOfVersions = await client.restaurants.from(1).index.versions(options);
 // Index Restaurant#1's promoCodes
 const pagedIndexOfPromoCodes = await client.restaurants.from(1).index.promoCodes(options);
+```
+### <a name='resource-dao-RestaurantCapacityTranche'></a>RestaurantCapacityTranche
+See [RestaurantCapacityTrancheFilter](#resource-filter-RestaurantCapacityTranche) for valid filters.
+See [RestaurantCapacityTranche](#resource-RestaurantCapacityTranche) for the resource schema.
+```JavaScript
+const options = {
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
+
+  // only valid for index fields
+  fitlers: {},
+  sort: '',
+  page: {
+    offet: 0,
+    limit: 20
+  }
+};
+const singleRestaurantCapacityTranche= await client.restaurantCapacityTranches.get(1,  options);
+const pagedIndexOfRestaurantCapacityTranches = await client.restaurantCapacityTranches.index(options);
+
+// Related Resources
+// To One
+// Get RestaurantCapacityTranche#1's restaurant
+const singleRestaurant = await client.restaurantCapacityTranches.from(1).get.restaurant(1,  options);
 ```
 ### <a name='resource-dao-RestaurantClosure'></a>RestaurantClosure
 See [RestaurantClosureFilter](#resource-filter-RestaurantClosure) for valid filters.
@@ -1545,6 +1592,34 @@ const options = {
 };
 const singleRestaurantOrderInvoice= await client.restaurantOrderInvoices.get(1,  options);
 const pagedIndexOfRestaurantOrderInvoices = await client.restaurantOrderInvoices.index(options);
+```
+### <a name='resource-dao-RestaurantVote'></a>RestaurantVote
+See [RestaurantVoteFilter](#resource-filter-RestaurantVote) for valid filters.
+See [RestaurantVote](#resource-RestaurantVote) for the resource schema.
+```JavaScript
+const options = {
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
+
+  // only valid for index fields
+  fitlers: {},
+  sort: '',
+  page: {
+    offet: 0,
+    limit: 20
+  }
+};
+const singleRestaurantVote= await client.restaurantVotes.get(1,  options);
+const pagedIndexOfRestaurantVotes = await client.restaurantVotes.index(options);
+
+// Related Resources
+// To One
+// Get RestaurantVote#1's order
+const singleOrder = await client.restaurantVotes.from(1).get.order(1,  options);
+// Get RestaurantVote#1's restaurant
+const singleRestaurant = await client.restaurantVotes.from(1).get.restaurant(1,  options);
 ```
 ### <a name='resource-dao-Role'></a>Role
 See [RoleFilter](#resource-filter-Role) for valid filters.
@@ -1640,6 +1715,35 @@ const options = {
 const singleTag= await client.tags.get(1,  options);
 const pagedIndexOfTags = await client.tags.index(options);
 ```
+### <a name='resource-dao-Team'></a>Team
+See [TeamFilter](#resource-filter-Team) for valid filters.
+See [Team](#resource-Team) for the resource schema.
+```JavaScript
+const options = {
+  // this is used to include related resources on gets or indexes
+  // if provided it will include them on the returned resources
+  // see http://jsonapi.org/format/#fetching-includes for more details
+  include: '',
+
+  // only valid for index fields
+  fitlers: {},
+  sort: '',
+  page: {
+    offet: 0,
+    limit: 20
+  }
+};
+const singleTeam= await client.teams.get(1,  options);
+const pagedIndexOfTeams = await client.teams.index(options);
+
+// Related Resources
+// To One
+// Get Team#1's client
+const singleClient = await client.teams.from(1).get.client(1,  options);
+// To Many
+// Index Team#1's users
+const pagedIndexOfUsers = await client.teams.from(1).index.users(options);
+```
 ### <a name='resource-dao-User'></a>User
 See [UserFilter](#resource-filter-User) for valid filters.
 See [User](#resource-User) for the resource schema.
@@ -1676,10 +1780,14 @@ const pagedIndexOfDriverDays = await client.users.from(1).index.driverDays(optio
 const pagedIndexOfOrders = await client.users.from(1).index.deliveredOrders(options);
 // Index User#1's couriers
 const pagedIndexOfCouriers = await client.users.from(1).index.couriers(options);
+// Index User#1's clients
+const pagedIndexOfClients = await client.users.from(1).index.clients(options);
 // Index User#1's roles
 const pagedIndexOfRoles = await client.users.from(1).index.roles(options);
 // Index User#1's paymentCards
 const pagedIndexOfPaymentCards = await client.users.from(1).index.paymentCards(options);
+// Index User#1's teams
+const pagedIndexOfTeams = await client.users.from(1).index.teams(options);
 // Index User#1's versions
 const pagedIndexOfVersions = await client.users.from(1).index.versions(options);
 ```
@@ -1729,6 +1837,12 @@ const pagedIndexOfUserInvites = await client.userInvites.index(options);
 // To One
 // Get UserInvite#1's client
 const singleClient = await client.userInvites.from(1).get.client(1,  options);
+// Get UserInvite#1's restaurant
+const singleRestaurant = await client.userInvites.from(1).get.restaurant(1,  options);
+// Get UserInvite#1's team
+const singleTeam = await client.userInvites.from(1).get.team(1,  options);
+// Get UserInvite#1's courier
+const singleCourier = await client.userInvites.from(1).get.courier(1,  options);
 // Get UserInvite#1's user
 const singleUser = await client.userInvites.from(1).get.user(1,  options);
 ```
@@ -1849,8 +1963,8 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | termDays |  string |
 | apiToken |  string |
 | veryLateScore |  string |
+| actualSegment |  string |
 | salesSupportClient |  string |
-| salesSupportAgent |  string |
 
 
 #### Relationships
@@ -1861,17 +1975,19 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | billingContact |  Contact |
 | accountManager |  User |
 | owner |  User |
+| salesSupport |  User |
 | company |  Company |
 | mealPlan |  MealPlan |
 | taxRate |  InvoicingTaxRate |
 | giftbitCard |  GiftbitCard |
 | areas |  Area[] |
 | deliveryLocations |  DeliveryLocation[] |
+| paymentCards |  PaymentCard[] |
 | adminContacts |  Contact[] |
 | admins |  User[] |
 | orderContacts |  Contact[] |
 | orders |  Order[] |
-| paymentCards |  PaymentCard[] |
+| teams |  Team[] |
 | versions |  Version[] |
 | giftbitGifts |  GiftbitGift[] |
 | giftbitErrors |  GiftbitError[] |
@@ -2339,6 +2455,8 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | department |  string |
 | termsAcceptedAt |  string |
 | stripeChargeToken |  string |
+| notifyByEmailOnDelivery |  string |
+| notifyBySMSOnDelivery |  string |
 
 
 #### Relationships
@@ -2495,6 +2613,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | name |  string |
 | active |  string |
 | description |  string |
+| internalDescription |  string |
 | position |  string |
 | minimumQuantity |  string |
 | maximumQuantity |  string |
@@ -2504,6 +2623,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | taxRateId |  string |
 | taxable |  string |
 | createdAt |  string |
+| capacityUnits |  string |
 
 
 #### Relationships
@@ -2544,6 +2664,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | clientPriceCents |  string |
 | restaurantPriceCents |  string |
 | retailPriceCents |  string |
+| deletedAt |  string |
 
 
 #### Relationships
@@ -2560,54 +2681,61 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 #### Attributes
 | Name | Type |
 | ------------- |:-------------:|
-| areaId |  number |
-| alertStatus |  number |
-| allowsPayOutOfPocket |  number |
-| bowtieServiceFee |  number |
-| clientInvoicePdf |  number |
-| createdAt |  number |
-| deadlineAt |  number |
-| deliverAt |  number |
-| deliverOn |  number |
-| deliveredAt |  number |
-| expiresAt |  number |
-| flag |  number |
-| identifier |  number |
-| isAtMaxCapacity |  number |
-| isFoodhall |  number |
-| isGroupOrder |  number |
-| isMealPlanOrder |  number |
-| isSameDay |  number |
-| lastMinute |  number |
-| maxNumberOfPeople |  number |
-| name |  number |
-| clientNotes |  number |
-| courierNotes |  number |
-| monitoringNotes |  number |
-| notes |  number |
-| numberOfPeople |  number |
-| orderSoldOut |  number |
-| payOutOfPocketFee |  number |
-| perPersonBudget |  number |
-| pickedUpAt |  number |
-| pickupAt |  number |
-| setMenu |  number |
-| skipDeliveryFee |  number |
-| stateEvent |  number |
-| state |  number |
-| tranche |  number |
-| totalAmount |  number |
-| restaurantTotalAmount |  number |
-| updatedAt |  number |
-| clientLocationId |  number |
-| clientConfirmationId |  number |
-| restaurantConfirmationId |  number |
-| isBookmark |  number |
-| bookmarkExpiresAt |  number |
-| bookmarkName |  number |
-| urlSafeId |  number |
-| uuid |  number |
-| online |  number |
+| alertStatus |  string |
+| allowsPayOutOfPocket |  string |
+| bowtieServiceFee |  string |
+| clientInvoicePdf |  string |
+| createdAt |  string |
+| deadlineAt |  string |
+| deliverAt |  string |
+| deliverOn |  string |
+| deliveredAt |  string |
+| expiresAt |  string |
+| flag |  string |
+| identifier |  string |
+| ignoresCapacityLimit |  string |
+| isAtMaxCapacity |  string |
+| isFoodhall |  string |
+| isGroupOrder |  string |
+| isSameDay |  string |
+| lastMinute |  string |
+| maxNumberOfPeople |  string |
+| name |  string |
+| clientNotes |  string |
+| courierNotes |  string |
+| monitoringNotes |  string |
+| notes |  string |
+| numberOfPeople |  string |
+| orderSoldOut |  string |
+| payOutOfPocketFee |  string |
+| perPersonBudget |  string |
+| pickedUpAt |  string |
+| pickupAt |  string |
+| setMenu |  string |
+| skipDeliveryFee |  string |
+| stateEvent |  string |
+| state |  string |
+| totalAmount |  string |
+| restaurantTotalAmount |  string |
+| updatedAt |  string |
+| clientLocationId |  string |
+| restaurantPollDeadlineAt |  string |
+| hasActivePoll |  string |
+| isAutosave |  string |
+| largeOrder |  string |
+| outsideHours |  string |
+| outOfZone |  string |
+| isMealPlanOrder |  string |
+| ordersInTranche |  string |
+| tranche |  string |
+| clientConfirmationId |  string |
+| restaurantConfirmationId |  string |
+| isBookmark |  string |
+| bookmarkExpiresAt |  string |
+| bookmarkName |  string |
+| urlSafeId |  string |
+| uuid |  string |
+| online |  string |
 
 
 #### Relationships
@@ -2623,6 +2751,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | courier |  Courier |
 | promoCode |  PromoCode |
 | driver |  User |
+| salesSupport |  User |
 | restaurantLocation |  Location |
 | clientLocation |  Location |
 | clientDiscount |  ClientDiscount |
@@ -2636,6 +2765,8 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | deliveryCases |  DeliveryCase[] |
 | deskCases |  DeskCase[] |
 | versions |  Version[] |
+| pollableRestaurants |  Restaurant[] |
+| restaurantVotes |  RestaurantVote[] |
 | groupOrderMembers |  GroupOrderMember[] |
 | orderItems |  OrderItem[] |
 
@@ -2653,6 +2784,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | custom |  number |
 | taxable |  number |
 | overridePrices |  number |
+| capacityUnits |  number |
 
 
 #### Relationships
@@ -2685,6 +2817,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | expiryYear |  number |
 | cardType |  number |
 | isDefault |  number |
+| removed |  number |
 | cardToken |  number |
 | nameOnCard |  number |
 
@@ -2806,6 +2939,7 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | thumbnailImageUrl |  Date |
 | isPayingAdminFee |  Date |
 | canGroupOrder |  Date |
+| canSameDayOrder |  Date |
 | receivesDailyOrderSummary |  Date |
 | receivesSMS |  Date |
 | marketingTitle |  Date |
@@ -2820,15 +2954,36 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | billingContact |  Contact |
 | owner |  User |
 | orders |  Order[] |
+| restaurantCapacityTranches |  RestaurantCapacityTranche[] |
 | serviceTimes |  ServiceTime[] |
 | pickupLocations |  PickupLocation[] |
+| admins |  User[] |
+| adminContacts |  Contact[] |
 | dietaryTags |  DietaryTag[] |
 | tags |  Tag[] |
 | areas |  Area[] |
 | menus |  Menu[] |
+| restaurantVotes |  RestaurantVote[] |
 | closures |  RestaurantClosure[] |
 | versions |  Version[] |
 | promoCodes |  PromoCode[] |
+
+
+
+### <a name='resource-RestaurantCapacityTranche'></a>RestaurantCapacityTranche
+
+#### Attributes
+| Name | Type |
+| ------------- |:-------------:|
+| startTime |  * |
+| endTime |  * |
+| capacity |  * |
+
+
+#### Relationships
+| Name | Type |
+| ------------- |:-------------:|
+| restaurant |  Restaurant |
 
 
 
@@ -2875,6 +3030,22 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | ------------- |:-------------:|
 | summary |  any |
 
+
+
+
+### <a name='resource-RestaurantVote'></a>RestaurantVote
+
+#### Attributes
+| Name | Type |
+| ------------- |:-------------:|
+| email |  string |
+
+
+#### Relationships
+| Name | Type |
+| ------------- |:-------------:|
+| order |  Order |
+| restaurant |  Restaurant |
 
 
 
@@ -2941,6 +3112,27 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 
 
 
+### <a name='resource-Team'></a>Team
+
+#### Attributes
+| Name | Type |
+| ------------- |:-------------:|
+| name |  string |
+| accountingCode |  string |
+| isActive |  string |
+| isDefault |  string |
+| numberOfMembers |  string |
+| perPersonBudget |  string |
+
+
+#### Relationships
+| Name | Type |
+| ------------- |:-------------:|
+| client |  Client |
+| users |  User[] |
+
+
+
 ### <a name='resource-User'></a>User
 
 #### Attributes
@@ -2950,27 +3142,33 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | email |  boolean |
 | firstName |  boolean |
 | lastName |  boolean |
+| isPending |  boolean |
 | password |  boolean |
 | passwordConfirmation |  boolean |
 | resetPasswordToken |  boolean |
-| hasPassword |  boolean |
 | phoneNumber |  boolean |
 | extension |  boolean |
+| isClientAdmin |  boolean |
 | smsNumber |  boolean |
 | phoneCanSMS |  boolean |
 | phoneType |  boolean |
 | profilePicture |  boolean |
 | features |  boolean |
 | slackChannelInfo |  boolean |
+| acceptedTermsAt |  boolean |
 | lastSignInAt |  boolean |
 | invitationSentAt |  boolean |
+| invitationStatus |  boolean |
 | invitationToken |  boolean |
+| invitationAcceptedAt |  boolean |
+| completedQuestionaire |  boolean |
 | driverDeviceInfo |  boolean |
 | driverFileNumber |  boolean |
 | driverSpeedRating |  boolean |
 | driverVehicleType |  boolean |
 | lastDriverNotificationSentAt |  boolean |
 | isActiveDriver |  boolean |
+| createdAt |  boolean |
 | clientAlwaysCall |  boolean |
 
 
@@ -2983,8 +3181,10 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | driverDays |  DriverDay[] |
 | deliveredOrders |  Order[] |
 | couriers |  Courier[] |
+| clients |  Client[] |
 | roles |  Role[] |
 | paymentCards |  PaymentCard[] |
+| teams |  Team[] |
 | versions |  Version[] |
 
 
@@ -3023,6 +3223,9 @@ using the include parameter (see: http://jsonapi.org/format/#fetching-includes)
 | Name | Type |
 | ------------- |:-------------:|
 | client |  Client |
+| restaurant |  Restaurant |
+| team |  Team |
+| courier |  Courier |
 | user |  User |
 
 
@@ -3053,10 +3256,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | key |  string |
 
 
@@ -3066,10 +3269,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | active |  boolean |
 | nearestTo |  any |
 | nearestToAddress |  any |
@@ -3083,10 +3286,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | area |  any |
 | startsAfter |  any |
 
@@ -3097,10 +3300,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | name |  String |
 | area |  any |
 | search |  any |
@@ -3112,10 +3315,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3123,11 +3326,11 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 #### Available Filters
 | Name | Type |
 | ------------- |:-------------:|
-| id |  any |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| id |  integer |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3136,10 +3339,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3148,10 +3351,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3160,10 +3363,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | name |  string |
 
 
@@ -3173,10 +3376,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | name |  any |
 
 
@@ -3186,10 +3389,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | name |  string |
 | area |  any |
 
@@ -3200,10 +3403,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3212,10 +3415,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | client |  any |
 | search |  any |
 
@@ -3226,10 +3429,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3238,10 +3441,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | name |  string |
 
 
@@ -3251,10 +3454,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3263,10 +3466,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | day |  date |
 
 
@@ -3295,10 +3498,10 @@ Filters can be applied to any index endpoint for a resource, or a related resour
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3312,10 +3515,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | name |  any |
 | monday |  date |
 | area |  any |
@@ -3328,10 +3531,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | messageType |  string |
 | recipients |  string |
 
@@ -3342,10 +3545,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3354,10 +3557,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3366,10 +3569,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3378,10 +3581,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | currencyisocode |  any |
 
 
@@ -3391,10 +3594,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | email |  string |
 | search |  any |
 
@@ -3405,10 +3608,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3417,10 +3620,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | global |  any |
 
 
@@ -3430,10 +3633,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | broken |  any |
 
 
@@ -3443,10 +3646,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | vanityUrl |  string |
 
 
@@ -3456,10 +3659,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | active |  boolean |
 
 
@@ -3469,10 +3672,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | active |  boolean |
 | internal |  boolean |
 
@@ -3483,10 +3686,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | active |  boolean |
 
 
@@ -3496,10 +3699,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3508,10 +3711,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3520,10 +3723,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | isBookmark |  boolean |
 | rejectState |  any |
 | search |  string |
@@ -3542,6 +3745,7 @@ None
 | restaurantIds |  any |
 | state |  string |
 | mealOrders |  any |
+| published |  any |
 | orderWeek |  any |
 
 
@@ -3551,10 +3755,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3563,10 +3767,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3575,10 +3779,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3595,10 +3799,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3607,10 +3811,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  uuid |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | code |  string |
 | removed |  boolean |
 | expired |  any |
@@ -3622,10 +3826,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3634,20 +3838,36 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | slug |  string |
 | canGroupOrder |  boolean |
-| name |  string |
-| search |  any |
-| features |  any |
+| area |  any |
+| availableAt |  any |
 | cuisines |  any |
 | dietaryTagOrdering |  any |
-| area |  any |
+| features |  any |
+| groupSize |  any |
+| name |  string |
+| search |  any |
 | updatedAfter |  any |
-| availableAt |  any |
+
+
+
+### <a name='resource-filter-RestaurantCapacityTranche'></a>RestaurantCapacityTranche
+#### Available Filters
+| Name | Type |
+| ------------- |:-------------:|
+| id |  integer |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
+| dayRange |  any |
+| restaurantId |  integer |
+| requestedCapacityForRestaurantAndDay |  any |
 
 
 
@@ -3656,10 +3876,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | month |  any |
 
 
@@ -3669,10 +3889,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3680,11 +3900,25 @@ None
 #### Available Filters
 | Name | Type |
 | ------------- |:-------------:|
-| id |  any |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| id |  integer |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
+
+
+
+### <a name='resource-filter-RestaurantVote'></a>RestaurantVote
+#### Available Filters
+| Name | Type |
+| ------------- |:-------------:|
+| id |  integer |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
+| order |  any |
+| email |  string |
 
 
 
@@ -3693,10 +3927,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | resource |  any |
 
 
@@ -3706,10 +3940,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | recordType |  string |
 | recordId |  integer |
 
@@ -3720,10 +3954,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3732,10 +3966,24 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
+| name |  string |
+
+
+
+### <a name='resource-filter-Team'></a>Team
+#### Available Filters
+| Name | Type |
+| ------------- |:-------------:|
+| id |  integer |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
+| search |  any |
 | name |  string |
 
 
@@ -3745,16 +3993,20 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
+| active |  boolean |
 | name |  any |
 | search |  any |
 | email |  string |
 | driverMissingMonday |  any |
 | courierArea |  any |
 | isDriver |  any |
+| team |  any |
+| resetPasswordToken |  string |
+| invitationToken |  string |
 
 
 
@@ -3763,10 +4015,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 | createdAfter |  any |
 
 
@@ -3776,10 +4028,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  any |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 
@@ -3788,10 +4040,10 @@ None
 | Name | Type |
 | ------------- |:-------------:|
 | id |  integer |
-| createdAtBefore |  date |
-| createdAtAfter |  date |
-| updatedAtBefore |  date |
-| updatedAtAfter |  date |
+| createdAtBefore |  any |
+| createdAtAfter |  any |
+| updatedAtBefore |  any |
+| updatedAtAfter |  any |
 
 
 

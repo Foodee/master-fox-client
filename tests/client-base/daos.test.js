@@ -67,7 +67,6 @@ test('ResourceDao#index filters non allowable options', () => {
 
 
 test('Resource#Update should throw you try and update a resource without and id', () => {
-
   try {
     const type = Faker.lorem.word();
     const dao = new ResourceDao(mockJRClient, type);
@@ -77,7 +76,6 @@ test('Resource#Update should throw you try and update a resource without and id'
   catch (e) {
     expect(e.message).toBe('You cannot update a resource without an id')
   }
-
 });
 
 
