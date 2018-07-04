@@ -38,6 +38,6 @@ test('Client#toJSONAPI', () => {
   const jrObject = client.toJSONAPI();
 
   expect(jrObject.data.id).toBe(id.toString());
-  expect(jrObject.data.type).toBe('clients')
-  expect(jrObject.data.attributes['account-name']).toBe(accountName)
+  expect(jrObject.data.type).toBe('clients');
+  expect(jrObject.data.attributes['account-name']).toBe(accountName);
 });

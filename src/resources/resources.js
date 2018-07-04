@@ -296,15 +296,15 @@ export class Client extends Resource {
   /** @type {string} */
   get veryLateScore(){return this._attributes['very-late-score'];};
 
+  /** @param {string} actualSegment **/
+  set actualSegment(actualSegment){this._attributes['actual-segment'] = actualSegment};
+  /** @type {string} */
+  get actualSegment(){return this._attributes['actual-segment'];};
+
   /** @param {string} salesSupportClient **/
   set salesSupportClient(salesSupportClient){this._attributes['sales-support-client'] = salesSupportClient};
   /** @type {string} */
   get salesSupportClient(){return this._attributes['sales-support-client'];};
-
-  /** @param {string} salesSupportAgent **/
-  set salesSupportAgent(salesSupportAgent){this._attributes['sales-support-agent'] = salesSupportAgent};
-  /** @type {string} */
-  get salesSupportAgent(){return this._attributes['sales-support-agent'];};
 
 
   // relationships
@@ -334,6 +334,11 @@ export class Client extends Resource {
   set owner(owner){this._relationships['owner'] = owner};
   /** @type {User} */
   get owner(){return this._relationships['owner']};
+
+  /** @param {User} salesSupport **/
+  set salesSupport(salesSupport){this._relationships['sales-support'] = salesSupport};
+  /** @type {User} */
+  get salesSupport(){return this._relationships['sales-support']};
 
   /** @param {Company} company **/
   set company(company){this._relationships['company'] = company};
@@ -367,6 +372,11 @@ export class Client extends Resource {
   /** @type {DeliveryLocation[]} */
   get deliveryLocations(){return this._relationships['delivery-locations']};
 
+  /** @param {PaymentCard[]} paymentCards **/
+  set paymentCards(paymentCards){this._relationships['payment-cards'] = paymentCards};
+  /** @type {PaymentCard[]} */
+  get paymentCards(){return this._relationships['payment-cards']};
+
   /** @param {Contact[]} adminContacts **/
   set adminContacts(adminContacts){this._relationships['admin-contacts'] = adminContacts};
   /** @type {Contact[]} */
@@ -387,10 +397,10 @@ export class Client extends Resource {
   /** @type {Order[]} */
   get orders(){return this._relationships['orders']};
 
-  /** @param {PaymentCard[]} paymentCards **/
-  set paymentCards(paymentCards){this._relationships['payment-cards'] = paymentCards};
-  /** @type {PaymentCard[]} */
-  get paymentCards(){return this._relationships['payment-cards']};
+  /** @param {Team[]} teams **/
+  set teams(teams){this._relationships['teams'] = teams};
+  /** @type {Team[]} */
+  get teams(){return this._relationships['teams']};
 
   /** @param {Version[]} versions **/
   set versions(versions){this._relationships['versions'] = versions};
@@ -1830,6 +1840,16 @@ export class GroupOrderMember extends Resource {
   /** @type {string} */
   get stripeChargeToken(){return this._attributes['stripe-charge-token'];};
 
+  /** @param {string} notifyByEmailOnDelivery **/
+  set notifyByEmailOnDelivery(notifyByEmailOnDelivery){this._attributes['notify-by-email-on-delivery'] = notifyByEmailOnDelivery};
+  /** @type {string} */
+  get notifyByEmailOnDelivery(){return this._attributes['notify-by-email-on-delivery'];};
+
+  /** @param {string} notifyBySMSOnDelivery **/
+  set notifyBySMSOnDelivery(notifyBySMSOnDelivery){this._attributes['notify-by-sms-on-delivery'] = notifyBySMSOnDelivery};
+  /** @type {string} */
+  get notifyBySMSOnDelivery(){return this._attributes['notify-by-sms-on-delivery'];};
+
 
   // relationships
 
@@ -2322,6 +2342,11 @@ export class MenuItem extends Resource {
   /** @type {string} */
   get description(){return this._attributes['description'];};
 
+  /** @param {string} internalDescription **/
+  set internalDescription(internalDescription){this._attributes['internal-description'] = internalDescription};
+  /** @type {string} */
+  get internalDescription(){return this._attributes['internal-description'];};
+
   /** @param {string} position **/
   set position(position){this._attributes['position'] = position};
   /** @type {string} */
@@ -2366,6 +2391,11 @@ export class MenuItem extends Resource {
   set createdAt(createdAt){this._attributes['created-at'] = createdAt};
   /** @type {string} */
   get createdAt(){return this._attributes['created-at'];};
+
+  /** @param {string} capacityUnits **/
+  set capacityUnits(capacityUnits){this._attributes['capacity-units'] = capacityUnits};
+  /** @type {string} */
+  get capacityUnits(){return this._attributes['capacity-units'];};
 
 
   // relationships
@@ -2479,6 +2509,11 @@ export class MenuOptionItem extends Resource {
   /** @type {string} */
   get retailPriceCents(){return this._attributes['retail-price-cents'];};
 
+  /** @param {string} deletedAt **/
+  set deletedAt(deletedAt){this._attributes['deleted-at'] = deletedAt};
+  /** @type {string} */
+  get deletedAt(){return this._attributes['deleted-at'];};
+
 
   // relationships
 
@@ -2515,244 +2550,279 @@ export class Order extends Resource {
 
   // attributes
 
-  /** @param {number} areaId **/
-  set areaId(areaId){this._attributes['area-id'] = areaId};
-  /** @type {number} */
-  get areaId(){return this._attributes['area-id'];};
-
-  /** @param {number} alertStatus **/
+  /** @param {string} alertStatus **/
   set alertStatus(alertStatus){this._attributes['alert-status'] = alertStatus};
-  /** @type {number} */
+  /** @type {string} */
   get alertStatus(){return this._attributes['alert-status'];};
 
-  /** @param {number} allowsPayOutOfPocket **/
+  /** @param {string} allowsPayOutOfPocket **/
   set allowsPayOutOfPocket(allowsPayOutOfPocket){this._attributes['allows-pay-out-of-pocket'] = allowsPayOutOfPocket};
-  /** @type {number} */
+  /** @type {string} */
   get allowsPayOutOfPocket(){return this._attributes['allows-pay-out-of-pocket'];};
 
-  /** @param {number} bowtieServiceFee **/
+  /** @param {string} bowtieServiceFee **/
   set bowtieServiceFee(bowtieServiceFee){this._attributes['bowtie-service-fee'] = bowtieServiceFee};
-  /** @type {number} */
+  /** @type {string} */
   get bowtieServiceFee(){return this._attributes['bowtie-service-fee'];};
 
-  /** @param {number} clientInvoicePdf **/
+  /** @param {string} clientInvoicePdf **/
   set clientInvoicePdf(clientInvoicePdf){this._attributes['client-invoice-pdf'] = clientInvoicePdf};
-  /** @type {number} */
+  /** @type {string} */
   get clientInvoicePdf(){return this._attributes['client-invoice-pdf'];};
 
-  /** @param {number} createdAt **/
+  /** @param {string} createdAt **/
   set createdAt(createdAt){this._attributes['created-at'] = createdAt};
-  /** @type {number} */
+  /** @type {string} */
   get createdAt(){return this._attributes['created-at'];};
 
-  /** @param {number} deadlineAt **/
+  /** @param {string} deadlineAt **/
   set deadlineAt(deadlineAt){this._attributes['deadline-at'] = deadlineAt};
-  /** @type {number} */
+  /** @type {string} */
   get deadlineAt(){return this._attributes['deadline-at'];};
 
-  /** @param {number} deliverAt **/
+  /** @param {string} deliverAt **/
   set deliverAt(deliverAt){this._attributes['deliver-at'] = deliverAt};
-  /** @type {number} */
+  /** @type {string} */
   get deliverAt(){return this._attributes['deliver-at'];};
 
-  /** @param {number} deliverOn **/
+  /** @param {string} deliverOn **/
   set deliverOn(deliverOn){this._attributes['deliver-on'] = deliverOn};
-  /** @type {number} */
+  /** @type {string} */
   get deliverOn(){return this._attributes['deliver-on'];};
 
-  /** @param {number} deliveredAt **/
+  /** @param {string} deliveredAt **/
   set deliveredAt(deliveredAt){this._attributes['delivered-at'] = deliveredAt};
-  /** @type {number} */
+  /** @type {string} */
   get deliveredAt(){return this._attributes['delivered-at'];};
 
-  /** @param {number} expiresAt **/
+  /** @param {string} expiresAt **/
   set expiresAt(expiresAt){this._attributes['expires-at'] = expiresAt};
-  /** @type {number} */
+  /** @type {string} */
   get expiresAt(){return this._attributes['expires-at'];};
 
-  /** @param {number} flag **/
+  /** @param {string} flag **/
   set flag(flag){this._attributes['flag'] = flag};
-  /** @type {number} */
+  /** @type {string} */
   get flag(){return this._attributes['flag'];};
 
-  /** @param {number} identifier **/
+  /** @param {string} identifier **/
   set identifier(identifier){this._attributes['identifier'] = identifier};
-  /** @type {number} */
+  /** @type {string} */
   get identifier(){return this._attributes['identifier'];};
 
-  /** @param {number} isAtMaxCapacity **/
+  /** @param {string} ignoresCapacityLimit **/
+  set ignoresCapacityLimit(ignoresCapacityLimit){this._attributes['ignores-capacity-limit'] = ignoresCapacityLimit};
+  /** @type {string} */
+  get ignoresCapacityLimit(){return this._attributes['ignores-capacity-limit'];};
+
+  /** @param {string} isAtMaxCapacity **/
   set isAtMaxCapacity(isAtMaxCapacity){this._attributes['is-at-max-capacity'] = isAtMaxCapacity};
-  /** @type {number} */
+  /** @type {string} */
   get isAtMaxCapacity(){return this._attributes['is-at-max-capacity'];};
 
-  /** @param {number} isFoodhall **/
+  /** @param {string} isFoodhall **/
   set isFoodhall(isFoodhall){this._attributes['is-foodhall'] = isFoodhall};
-  /** @type {number} */
+  /** @type {string} */
   get isFoodhall(){return this._attributes['is-foodhall'];};
 
-  /** @param {number} isGroupOrder **/
+  /** @param {string} isGroupOrder **/
   set isGroupOrder(isGroupOrder){this._attributes['is-group-order'] = isGroupOrder};
-  /** @type {number} */
+  /** @type {string} */
   get isGroupOrder(){return this._attributes['is-group-order'];};
 
-  /** @param {number} isMealPlanOrder **/
-  set isMealPlanOrder(isMealPlanOrder){this._attributes['is-meal-plan-order'] = isMealPlanOrder};
-  /** @type {number} */
-  get isMealPlanOrder(){return this._attributes['is-meal-plan-order'];};
-
-  /** @param {number} isSameDay **/
+  /** @param {string} isSameDay **/
   set isSameDay(isSameDay){this._attributes['is-same-day'] = isSameDay};
-  /** @type {number} */
+  /** @type {string} */
   get isSameDay(){return this._attributes['is-same-day'];};
 
-  /** @param {number} lastMinute **/
+  /** @param {string} lastMinute **/
   set lastMinute(lastMinute){this._attributes['last-minute'] = lastMinute};
-  /** @type {number} */
+  /** @type {string} */
   get lastMinute(){return this._attributes['last-minute'];};
 
-  /** @param {number} maxNumberOfPeople **/
+  /** @param {string} maxNumberOfPeople **/
   set maxNumberOfPeople(maxNumberOfPeople){this._attributes['max-number-of-people'] = maxNumberOfPeople};
-  /** @type {number} */
+  /** @type {string} */
   get maxNumberOfPeople(){return this._attributes['max-number-of-people'];};
 
-  /** @param {number} name **/
+  /** @param {string} name **/
   set name(name){this._attributes['name'] = name};
-  /** @type {number} */
+  /** @type {string} */
   get name(){return this._attributes['name'];};
 
-  /** @param {number} clientNotes **/
+  /** @param {string} clientNotes **/
   set clientNotes(clientNotes){this._attributes['client-notes'] = clientNotes};
-  /** @type {number} */
+  /** @type {string} */
   get clientNotes(){return this._attributes['client-notes'];};
 
-  /** @param {number} courierNotes **/
+  /** @param {string} courierNotes **/
   set courierNotes(courierNotes){this._attributes['courier-notes'] = courierNotes};
-  /** @type {number} */
+  /** @type {string} */
   get courierNotes(){return this._attributes['courier-notes'];};
 
-  /** @param {number} monitoringNotes **/
+  /** @param {string} monitoringNotes **/
   set monitoringNotes(monitoringNotes){this._attributes['monitoring-notes'] = monitoringNotes};
-  /** @type {number} */
+  /** @type {string} */
   get monitoringNotes(){return this._attributes['monitoring-notes'];};
 
-  /** @param {number} notes **/
+  /** @param {string} notes **/
   set notes(notes){this._attributes['notes'] = notes};
-  /** @type {number} */
+  /** @type {string} */
   get notes(){return this._attributes['notes'];};
 
-  /** @param {number} numberOfPeople **/
+  /** @param {string} numberOfPeople **/
   set numberOfPeople(numberOfPeople){this._attributes['number-of-people'] = numberOfPeople};
-  /** @type {number} */
+  /** @type {string} */
   get numberOfPeople(){return this._attributes['number-of-people'];};
 
-  /** @param {number} orderSoldOut **/
+  /** @param {string} orderSoldOut **/
   set orderSoldOut(orderSoldOut){this._attributes['order-sold-out'] = orderSoldOut};
-  /** @type {number} */
+  /** @type {string} */
   get orderSoldOut(){return this._attributes['order-sold-out'];};
 
-  /** @param {number} payOutOfPocketFee **/
+  /** @param {string} payOutOfPocketFee **/
   set payOutOfPocketFee(payOutOfPocketFee){this._attributes['pay-out-of-pocket-fee'] = payOutOfPocketFee};
-  /** @type {number} */
+  /** @type {string} */
   get payOutOfPocketFee(){return this._attributes['pay-out-of-pocket-fee'];};
 
-  /** @param {number} perPersonBudget **/
+  /** @param {string} perPersonBudget **/
   set perPersonBudget(perPersonBudget){this._attributes['per-person-budget'] = perPersonBudget};
-  /** @type {number} */
+  /** @type {string} */
   get perPersonBudget(){return this._attributes['per-person-budget'];};
 
-  /** @param {number} pickedUpAt **/
+  /** @param {string} pickedUpAt **/
   set pickedUpAt(pickedUpAt){this._attributes['picked-up-at'] = pickedUpAt};
-  /** @type {number} */
+  /** @type {string} */
   get pickedUpAt(){return this._attributes['picked-up-at'];};
 
-  /** @param {number} pickupAt **/
+  /** @param {string} pickupAt **/
   set pickupAt(pickupAt){this._attributes['pickup-at'] = pickupAt};
-  /** @type {number} */
+  /** @type {string} */
   get pickupAt(){return this._attributes['pickup-at'];};
 
-  /** @param {number} setMenu **/
+  /** @param {string} setMenu **/
   set setMenu(setMenu){this._attributes['set-menu'] = setMenu};
-  /** @type {number} */
+  /** @type {string} */
   get setMenu(){return this._attributes['set-menu'];};
 
-  /** @param {number} skipDeliveryFee **/
+  /** @param {string} skipDeliveryFee **/
   set skipDeliveryFee(skipDeliveryFee){this._attributes['skip-delivery-fee'] = skipDeliveryFee};
-  /** @type {number} */
+  /** @type {string} */
   get skipDeliveryFee(){return this._attributes['skip-delivery-fee'];};
 
-  /** @param {number} stateEvent **/
+  /** @param {string} stateEvent **/
   set stateEvent(stateEvent){this._attributes['state-event'] = stateEvent};
-  /** @type {number} */
+  /** @type {string} */
   get stateEvent(){return this._attributes['state-event'];};
 
-  /** @param {number} state **/
+  /** @param {string} state **/
   set state(state){this._attributes['state'] = state};
-  /** @type {number} */
+  /** @type {string} */
   get state(){return this._attributes['state'];};
 
-  /** @param {number} tranche **/
-  set tranche(tranche){this._attributes['tranche'] = tranche};
-  /** @type {number} */
-  get tranche(){return this._attributes['tranche'];};
-
-  /** @param {number} totalAmount **/
+  /** @param {string} totalAmount **/
   set totalAmount(totalAmount){this._attributes['total-amount'] = totalAmount};
-  /** @type {number} */
+  /** @type {string} */
   get totalAmount(){return this._attributes['total-amount'];};
 
-  /** @param {number} restaurantTotalAmount **/
+  /** @param {string} restaurantTotalAmount **/
   set restaurantTotalAmount(restaurantTotalAmount){this._attributes['restaurant-total-amount'] = restaurantTotalAmount};
-  /** @type {number} */
+  /** @type {string} */
   get restaurantTotalAmount(){return this._attributes['restaurant-total-amount'];};
 
-  /** @param {number} updatedAt **/
+  /** @param {string} updatedAt **/
   set updatedAt(updatedAt){this._attributes['updated-at'] = updatedAt};
-  /** @type {number} */
+  /** @type {string} */
   get updatedAt(){return this._attributes['updated-at'];};
 
-  /** @param {number} clientLocationId **/
+  /** @param {string} clientLocationId **/
   set clientLocationId(clientLocationId){this._attributes['client-location-id'] = clientLocationId};
-  /** @type {number} */
+  /** @type {string} */
   get clientLocationId(){return this._attributes['client-location-id'];};
 
-  /** @param {number} clientConfirmationId **/
+  /** @param {string} restaurantPollDeadlineAt **/
+  set restaurantPollDeadlineAt(restaurantPollDeadlineAt){this._attributes['restaurant-poll-deadline-at'] = restaurantPollDeadlineAt};
+  /** @type {string} */
+  get restaurantPollDeadlineAt(){return this._attributes['restaurant-poll-deadline-at'];};
+
+  /** @param {string} hasActivePoll **/
+  set hasActivePoll(hasActivePoll){this._attributes['has-active-poll'] = hasActivePoll};
+  /** @type {string} */
+  get hasActivePoll(){return this._attributes['has-active-poll'];};
+
+  /** @param {string} isAutosave **/
+  set isAutosave(isAutosave){this._attributes['is-autosave'] = isAutosave};
+  /** @type {string} */
+  get isAutosave(){return this._attributes['is-autosave'];};
+
+  /** @param {string} largeOrder **/
+  set largeOrder(largeOrder){this._attributes['large-order'] = largeOrder};
+  /** @type {string} */
+  get largeOrder(){return this._attributes['large-order'];};
+
+  /** @param {string} outsideHours **/
+  set outsideHours(outsideHours){this._attributes['outside-hours'] = outsideHours};
+  /** @type {string} */
+  get outsideHours(){return this._attributes['outside-hours'];};
+
+  /** @param {string} outOfZone **/
+  set outOfZone(outOfZone){this._attributes['out-of-zone'] = outOfZone};
+  /** @type {string} */
+  get outOfZone(){return this._attributes['out-of-zone'];};
+
+  /** @param {string} isMealPlanOrder **/
+  set isMealPlanOrder(isMealPlanOrder){this._attributes['is-meal-plan-order'] = isMealPlanOrder};
+  /** @type {string} */
+  get isMealPlanOrder(){return this._attributes['is-meal-plan-order'];};
+
+  /** @param {string} ordersInTranche **/
+  set ordersInTranche(ordersInTranche){this._attributes['orders-in-tranche'] = ordersInTranche};
+  /** @type {string} */
+  get ordersInTranche(){return this._attributes['orders-in-tranche'];};
+
+  /** @param {string} tranche **/
+  set tranche(tranche){this._attributes['tranche'] = tranche};
+  /** @type {string} */
+  get tranche(){return this._attributes['tranche'];};
+
+  /** @param {string} clientConfirmationId **/
   set clientConfirmationId(clientConfirmationId){this._attributes['client-confirmation-id'] = clientConfirmationId};
-  /** @type {number} */
+  /** @type {string} */
   get clientConfirmationId(){return this._attributes['client-confirmation-id'];};
 
-  /** @param {number} restaurantConfirmationId **/
+  /** @param {string} restaurantConfirmationId **/
   set restaurantConfirmationId(restaurantConfirmationId){this._attributes['restaurant-confirmation-id'] = restaurantConfirmationId};
-  /** @type {number} */
+  /** @type {string} */
   get restaurantConfirmationId(){return this._attributes['restaurant-confirmation-id'];};
 
-  /** @param {number} isBookmark **/
+  /** @param {string} isBookmark **/
   set isBookmark(isBookmark){this._attributes['is-bookmark'] = isBookmark};
-  /** @type {number} */
+  /** @type {string} */
   get isBookmark(){return this._attributes['is-bookmark'];};
 
-  /** @param {number} bookmarkExpiresAt **/
+  /** @param {string} bookmarkExpiresAt **/
   set bookmarkExpiresAt(bookmarkExpiresAt){this._attributes['bookmark-expires-at'] = bookmarkExpiresAt};
-  /** @type {number} */
+  /** @type {string} */
   get bookmarkExpiresAt(){return this._attributes['bookmark-expires-at'];};
 
-  /** @param {number} bookmarkName **/
+  /** @param {string} bookmarkName **/
   set bookmarkName(bookmarkName){this._attributes['bookmark-name'] = bookmarkName};
-  /** @type {number} */
+  /** @type {string} */
   get bookmarkName(){return this._attributes['bookmark-name'];};
 
-  /** @param {number} urlSafeId **/
+  /** @param {string} urlSafeId **/
   set urlSafeId(urlSafeId){this._attributes['url-safe-id'] = urlSafeId};
-  /** @type {number} */
+  /** @type {string} */
   get urlSafeId(){return this._attributes['url-safe-id'];};
 
-  /** @param {number} uuid **/
+  /** @param {string} uuid **/
   set uuid(uuid){this._attributes['uuid'] = uuid};
-  /** @type {number} */
+  /** @type {string} */
   get uuid(){return this._attributes['uuid'];};
 
-  /** @param {number} online **/
+  /** @param {string} online **/
   set online(online){this._attributes['online'] = online};
-  /** @type {number} */
+  /** @type {string} */
   get online(){return this._attributes['online'];};
 
 
@@ -2808,6 +2878,11 @@ export class Order extends Resource {
   set driver(driver){this._relationships['driver'] = driver};
   /** @type {User} */
   get driver(){return this._relationships['driver']};
+
+  /** @param {User} salesSupport **/
+  set salesSupport(salesSupport){this._relationships['sales-support'] = salesSupport};
+  /** @type {User} */
+  get salesSupport(){return this._relationships['sales-support']};
 
   /** @param {Location} restaurantLocation **/
   set restaurantLocation(restaurantLocation){this._relationships['restaurant-location'] = restaurantLocation};
@@ -2876,6 +2951,16 @@ export class Order extends Resource {
   /** @type {Version[]} */
   get versions(){return this._relationships['versions']};
 
+  /** @param {Restaurant[]} pollableRestaurants **/
+  set pollableRestaurants(pollableRestaurants){this._relationships['pollable-restaurants'] = pollableRestaurants};
+  /** @type {Restaurant[]} */
+  get pollableRestaurants(){return this._relationships['pollable-restaurants']};
+
+  /** @param {RestaurantVote[]} restaurantVotes **/
+  set restaurantVotes(restaurantVotes){this._relationships['restaurant-votes'] = restaurantVotes};
+  /** @type {RestaurantVote[]} */
+  get restaurantVotes(){return this._relationships['restaurant-votes']};
+
   /** @param {GroupOrderMember[]} groupOrderMembers **/
   set groupOrderMembers(groupOrderMembers){this._relationships['group-order-members'] = groupOrderMembers};
   /** @type {GroupOrderMember[]} */
@@ -2935,6 +3020,11 @@ export class OrderItem extends Resource {
   set overridePrices(overridePrices){this._attributes['override-prices'] = overridePrices};
   /** @type {number} */
   get overridePrices(){return this._attributes['override-prices'];};
+
+  /** @param {number} capacityUnits **/
+  set capacityUnits(capacityUnits){this._attributes['capacity-units'] = capacityUnits};
+  /** @type {number} */
+  get capacityUnits(){return this._attributes['capacity-units'];};
 
 
   // relationships
@@ -3027,6 +3117,11 @@ export class PaymentCard extends Resource {
   set isDefault(isDefault){this._attributes['default'] = isDefault};
   /** @type {number} */
   get isDefault(){return this._attributes['default'];};
+
+  /** @param {number} removed **/
+  set removed(removed){this._attributes['removed'] = removed};
+  /** @type {number} */
+  get removed(){return this._attributes['removed'];};
 
   /** @param {number} cardToken **/
   set cardToken(cardToken){this._attributes['card-token'] = cardToken};
@@ -3433,6 +3528,11 @@ export class Restaurant extends Resource {
   /** @type {Date} */
   get canGroupOrder(){return this._attributes['can-group-order'];};
 
+  /** @param {Date} canSameDayOrder **/
+  set canSameDayOrder(canSameDayOrder){this._attributes['can-same-day-order'] = canSameDayOrder};
+  /** @type {Date} */
+  get canSameDayOrder(){return this._attributes['can-same-day-order'];};
+
   /** @param {Date} receivesDailyOrderSummary **/
   set receivesDailyOrderSummary(receivesDailyOrderSummary){this._attributes['receives-daily-order-summary'] = receivesDailyOrderSummary};
   /** @type {Date} */
@@ -3484,6 +3584,11 @@ export class Restaurant extends Resource {
   /** @type {Order[]} */
   get orders(){return this._relationships['orders']};
 
+  /** @param {RestaurantCapacityTranche[]} restaurantCapacityTranches **/
+  set restaurantCapacityTranches(restaurantCapacityTranches){this._relationships['restaurant-capacity-tranches'] = restaurantCapacityTranches};
+  /** @type {RestaurantCapacityTranche[]} */
+  get restaurantCapacityTranches(){return this._relationships['restaurant-capacity-tranches']};
+
   /** @param {ServiceTime[]} serviceTimes **/
   set serviceTimes(serviceTimes){this._relationships['service-times'] = serviceTimes};
   /** @type {ServiceTime[]} */
@@ -3493,6 +3598,16 @@ export class Restaurant extends Resource {
   set pickupLocations(pickupLocations){this._relationships['pickup-locations'] = pickupLocations};
   /** @type {PickupLocation[]} */
   get pickupLocations(){return this._relationships['pickup-locations']};
+
+  /** @param {User[]} admins **/
+  set admins(admins){this._relationships['admins'] = admins};
+  /** @type {User[]} */
+  get admins(){return this._relationships['admins']};
+
+  /** @param {Contact[]} adminContacts **/
+  set adminContacts(adminContacts){this._relationships['admin-contacts'] = adminContacts};
+  /** @type {Contact[]} */
+  get adminContacts(){return this._relationships['admin-contacts']};
 
   /** @param {DietaryTag[]} dietaryTags **/
   set dietaryTags(dietaryTags){this._relationships['dietary-tags'] = dietaryTags};
@@ -3514,6 +3629,11 @@ export class Restaurant extends Resource {
   /** @type {Menu[]} */
   get menus(){return this._relationships['menus']};
 
+  /** @param {RestaurantVote[]} restaurantVotes **/
+  set restaurantVotes(restaurantVotes){this._relationships['restaurant-votes'] = restaurantVotes};
+  /** @type {RestaurantVote[]} */
+  get restaurantVotes(){return this._relationships['restaurant-votes']};
+
   /** @param {RestaurantClosure[]} closures **/
   set closures(closures){this._relationships['closures'] = closures};
   /** @type {RestaurantClosure[]} */
@@ -3528,6 +3648,47 @@ export class Restaurant extends Resource {
   set promoCodes(promoCodes){this._relationships['promo-codes'] = promoCodes};
   /** @type {PromoCode[]} */
   get promoCodes(){return this._relationships['promo-codes']};
+
+
+}
+
+/** @class RestaurantCapacityTranche
+  * @extends {Resource}
+  **/
+export class RestaurantCapacityTranche extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'restaurant-capacity-tranches', attributes, relationships);
+  }
+
+  // attributes
+
+  /** @param {*} startTime **/
+  set startTime(startTime){this._attributes['start-time'] = startTime};
+  /** @type {*} */
+  get startTime(){return this._attributes['start-time'];};
+
+  /** @param {*} endTime **/
+  set endTime(endTime){this._attributes['end-time'] = endTime};
+  /** @type {*} */
+  get endTime(){return this._attributes['end-time'];};
+
+  /** @param {*} capacity **/
+  set capacity(capacity){this._attributes['capacity'] = capacity};
+  /** @type {*} */
+  get capacity(){return this._attributes['capacity'];};
+
+
+  // relationships
+
+
+  /** @param {Restaurant} restaurant **/
+  set restaurant(restaurant){this._relationships['restaurant'] = restaurant};
+  /** @type {Restaurant} */
+  get restaurant(){return this._relationships['restaurant']};
+
+
 
 
 }
@@ -3644,6 +3805,42 @@ export class RestaurantOrderInvoice extends Resource {
 
   // relationships
 
+
+
+
+
+}
+
+/** @class RestaurantVote
+  * @extends {Resource}
+  **/
+export class RestaurantVote extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'restaurant-votes', attributes, relationships);
+  }
+
+  // attributes
+
+  /** @param {string} email **/
+  set email(email){this._attributes['email'] = email};
+  /** @type {string} */
+  get email(){return this._attributes['email'];};
+
+
+  // relationships
+
+
+  /** @param {Order} order **/
+  set order(order){this._relationships['order'] = order};
+  /** @type {Order} */
+  get order(){return this._relationships['order']};
+
+  /** @param {Restaurant} restaurant **/
+  set restaurant(restaurant){this._relationships['restaurant'] = restaurant};
+  /** @type {Restaurant} */
+  get restaurant(){return this._relationships['restaurant']};
 
 
 
@@ -3829,6 +4026,67 @@ export class Tag extends Resource {
 
 }
 
+/** @class Team
+  * @extends {Resource}
+  **/
+export class Team extends Resource {
+
+
+  constructor(id = null, attributes = {}, relationships = {}) {
+    super(id, 'teams', attributes, relationships);
+  }
+
+  // attributes
+
+  /** @param {string} name **/
+  set name(name){this._attributes['name'] = name};
+  /** @type {string} */
+  get name(){return this._attributes['name'];};
+
+  /** @param {string} accountingCode **/
+  set accountingCode(accountingCode){this._attributes['accounting-code'] = accountingCode};
+  /** @type {string} */
+  get accountingCode(){return this._attributes['accounting-code'];};
+
+  /** @param {string} isActive **/
+  set isActive(isActive){this._attributes['is-active'] = isActive};
+  /** @type {string} */
+  get isActive(){return this._attributes['is-active'];};
+
+  /** @param {string} isDefault **/
+  set isDefault(isDefault){this._attributes['is-default'] = isDefault};
+  /** @type {string} */
+  get isDefault(){return this._attributes['is-default'];};
+
+  /** @param {string} numberOfMembers **/
+  set numberOfMembers(numberOfMembers){this._attributes['number-of-members'] = numberOfMembers};
+  /** @type {string} */
+  get numberOfMembers(){return this._attributes['number-of-members'];};
+
+  /** @param {string} perPersonBudget **/
+  set perPersonBudget(perPersonBudget){this._attributes['per-person-budget'] = perPersonBudget};
+  /** @type {string} */
+  get perPersonBudget(){return this._attributes['per-person-budget'];};
+
+
+  // relationships
+
+
+  /** @param {Client} client **/
+  set client(client){this._relationships['client'] = client};
+  /** @type {Client} */
+  get client(){return this._relationships['client']};
+
+
+
+  /** @param {User[]} users **/
+  set users(users){this._relationships['users'] = users};
+  /** @type {User[]} */
+  get users(){return this._relationships['users']};
+
+
+}
+
 /** @class User
   * @extends {Resource}
   **/
@@ -3861,6 +4119,11 @@ export class User extends Resource {
   /** @type {boolean} */
   get lastName(){return this._attributes['last-name'];};
 
+  /** @param {boolean} isPending **/
+  set isPending(isPending){this._attributes['is-pending'] = isPending};
+  /** @type {boolean} */
+  get isPending(){return this._attributes['is-pending'];};
+
   /** @param {boolean} password **/
   set password(password){this._attributes['password'] = password};
   /** @type {boolean} */
@@ -3876,11 +4139,6 @@ export class User extends Resource {
   /** @type {boolean} */
   get resetPasswordToken(){return this._attributes['reset-password-token'];};
 
-  /** @param {boolean} hasPassword **/
-  set hasPassword(hasPassword){this._attributes['has-password'] = hasPassword};
-  /** @type {boolean} */
-  get hasPassword(){return this._attributes['has-password'];};
-
   /** @param {boolean} phoneNumber **/
   set phoneNumber(phoneNumber){this._attributes['phone-number'] = phoneNumber};
   /** @type {boolean} */
@@ -3890,6 +4148,11 @@ export class User extends Resource {
   set extension(extension){this._attributes['extension'] = extension};
   /** @type {boolean} */
   get extension(){return this._attributes['extension'];};
+
+  /** @param {boolean} isClientAdmin **/
+  set isClientAdmin(isClientAdmin){this._attributes['is-client-admin'] = isClientAdmin};
+  /** @type {boolean} */
+  get isClientAdmin(){return this._attributes['is-client-admin'];};
 
   /** @param {boolean} smsNumber **/
   set smsNumber(smsNumber){this._attributes['sms-number'] = smsNumber};
@@ -3921,6 +4184,11 @@ export class User extends Resource {
   /** @type {boolean} */
   get slackChannelInfo(){return this._attributes['slack-channel-info'];};
 
+  /** @param {boolean} acceptedTermsAt **/
+  set acceptedTermsAt(acceptedTermsAt){this._attributes['accepted-terms-at'] = acceptedTermsAt};
+  /** @type {boolean} */
+  get acceptedTermsAt(){return this._attributes['accepted-terms-at'];};
+
   /** @param {boolean} lastSignInAt **/
   set lastSignInAt(lastSignInAt){this._attributes['last-sign-in-at'] = lastSignInAt};
   /** @type {boolean} */
@@ -3931,10 +4199,25 @@ export class User extends Resource {
   /** @type {boolean} */
   get invitationSentAt(){return this._attributes['invitation-sent-at'];};
 
+  /** @param {boolean} invitationStatus **/
+  set invitationStatus(invitationStatus){this._attributes['invitation-status'] = invitationStatus};
+  /** @type {boolean} */
+  get invitationStatus(){return this._attributes['invitation-status'];};
+
   /** @param {boolean} invitationToken **/
   set invitationToken(invitationToken){this._attributes['invitation-token'] = invitationToken};
   /** @type {boolean} */
   get invitationToken(){return this._attributes['invitation-token'];};
+
+  /** @param {boolean} invitationAcceptedAt **/
+  set invitationAcceptedAt(invitationAcceptedAt){this._attributes['invitation-accepted-at'] = invitationAcceptedAt};
+  /** @type {boolean} */
+  get invitationAcceptedAt(){return this._attributes['invitation-accepted-at'];};
+
+  /** @param {boolean} completedQuestionaire **/
+  set completedQuestionaire(completedQuestionaire){this._attributes['completed-questionaire'] = completedQuestionaire};
+  /** @type {boolean} */
+  get completedQuestionaire(){return this._attributes['completed-questionaire'];};
 
   /** @param {boolean} driverDeviceInfo **/
   set driverDeviceInfo(driverDeviceInfo){this._attributes['driver-device-info'] = driverDeviceInfo};
@@ -3965,6 +4248,11 @@ export class User extends Resource {
   set isActiveDriver(isActiveDriver){this._attributes['is-active-driver'] = isActiveDriver};
   /** @type {boolean} */
   get isActiveDriver(){return this._attributes['is-active-driver'];};
+
+  /** @param {boolean} createdAt **/
+  set createdAt(createdAt){this._attributes['created-at'] = createdAt};
+  /** @type {boolean} */
+  get createdAt(){return this._attributes['created-at'];};
 
   /** @param {boolean} clientAlwaysCall **/
   set clientAlwaysCall(clientAlwaysCall){this._attributes['client-always-call'] = clientAlwaysCall};
@@ -4007,6 +4295,11 @@ export class User extends Resource {
   /** @type {Courier[]} */
   get couriers(){return this._relationships['couriers']};
 
+  /** @param {Client[]} clients **/
+  set clients(clients){this._relationships['clients'] = clients};
+  /** @type {Client[]} */
+  get clients(){return this._relationships['clients']};
+
   /** @param {Role[]} roles **/
   set roles(roles){this._relationships['roles'] = roles};
   /** @type {Role[]} */
@@ -4016,6 +4309,11 @@ export class User extends Resource {
   set paymentCards(paymentCards){this._relationships['payment-cards'] = paymentCards};
   /** @type {PaymentCard[]} */
   get paymentCards(){return this._relationships['payment-cards']};
+
+  /** @param {Team[]} teams **/
+  set teams(teams){this._relationships['teams'] = teams};
+  /** @type {Team[]} */
+  get teams(){return this._relationships['teams']};
 
   /** @param {Version[]} versions **/
   set versions(versions){this._relationships['versions'] = versions};
@@ -4137,6 +4435,21 @@ export class UserInvite extends Resource {
   /** @type {Client} */
   get client(){return this._relationships['client']};
 
+  /** @param {Restaurant} restaurant **/
+  set restaurant(restaurant){this._relationships['restaurant'] = restaurant};
+  /** @type {Restaurant} */
+  get restaurant(){return this._relationships['restaurant']};
+
+  /** @param {Team} team **/
+  set team(team){this._relationships['team'] = team};
+  /** @type {Team} */
+  get team(){return this._relationships['team']};
+
+  /** @param {Courier} courier **/
+  set courier(courier){this._relationships['courier'] = courier};
+  /** @type {Courier} */
+  get courier(){return this._relationships['courier']};
+
   /** @param {User} user **/
   set user(user){this._relationships['user'] = user};
   /** @type {User} */
@@ -4252,13 +4565,16 @@ const ResourceClasses = {
   ['promo-codes']:PromoCode,
   ['qualifying-questions']:QualifyingQuestion,
   ['restaurants']:Restaurant,
+  ['restaurant-capacity-tranches']:RestaurantCapacityTranche,
   ['restaurant-closures']:RestaurantClosure,
   ['restaurant-discounts']:RestaurantDiscount,
   ['restaurant-order-invoices']:RestaurantOrderInvoice,
+  ['restaurant-votes']:RestaurantVote,
   ['roles']:Role,
   ['salesforce-sync-errors']:SalesforceSyncError,
   ['service-times']:ServiceTime,
   ['tags']:Tag,
+  ['teams']:Team,
   ['users']:User,
   ['user-feedbacks']:UserFeedback,
   ['user-invites']:UserInvite,

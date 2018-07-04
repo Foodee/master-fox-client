@@ -45,13 +45,16 @@ import {
     PromoCodeDao,
     QualifyingQuestionDao,
     RestaurantDao,
+    RestaurantCapacityTrancheDao,
     RestaurantClosureDao,
     RestaurantDiscountDao,
     RestaurantOrderInvoiceDao,
+    RestaurantVoteDao,
     RoleDao,
     SalesforceSyncErrorDao,
     ServiceTimeDao,
     TagDao,
+    TeamDao,
     UserDao,
     UserFeedbackDao,
     UserInviteDao,
@@ -205,6 +208,9 @@ class MFClient extends JRClient {
     /** @type {RestaurantDao} **/
     this.restaurants = new RestaurantDao(this);
   
+    /** @type {RestaurantCapacityTrancheDao} **/
+    this.restaurantCapacityTranches = new RestaurantCapacityTrancheDao(this);
+  
     /** @type {RestaurantClosureDao} **/
     this.restaurantClosures = new RestaurantClosureDao(this);
   
@@ -213,6 +219,9 @@ class MFClient extends JRClient {
   
     /** @type {RestaurantOrderInvoiceDao} **/
     this.restaurantOrderInvoices = new RestaurantOrderInvoiceDao(this);
+  
+    /** @type {RestaurantVoteDao} **/
+    this.restaurantVotes = new RestaurantVoteDao(this);
   
     /** @type {RoleDao} **/
     this.roles = new RoleDao(this);
@@ -225,6 +234,9 @@ class MFClient extends JRClient {
   
     /** @type {TagDao} **/
     this.tags = new TagDao(this);
+  
+    /** @type {TeamDao} **/
+    this.teams = new TeamDao(this);
   
     /** @type {UserDao} **/
     this.users = new UserDao(this);
