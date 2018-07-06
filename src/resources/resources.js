@@ -7,8 +7,8 @@ import  Resource from './resource';
 export class AppConfiguration extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'app-configurations', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'app-configurations', attributes, one, many);
   }
 
   // attributes
@@ -30,9 +30,9 @@ export class AppConfiguration extends Resource {
 
 
   /** @param {Version[]} versions **/
-  set versions(versions){this._relationships['versions'] = versions};
+  set versions(versions){this._many['versions'] = versions};
   /** @type {Version[]} */
-  get versions(){return this._relationships['versions']};
+  get versions(){return this._many['versions']};
 
 
 }
@@ -43,8 +43,8 @@ export class AppConfiguration extends Resource {
 export class Area extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'areas', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'areas', attributes, one, many);
   }
 
   // attributes
@@ -129,56 +129,56 @@ export class Area extends Resource {
 
 
   /** @param {InvoicingTaxRate} deliveryFeeTaxRate **/
-  set deliveryFeeTaxRate(deliveryFeeTaxRate){this._relationships['delivery-fee-tax-rate'] = deliveryFeeTaxRate};
+  set deliveryFeeTaxRate(deliveryFeeTaxRate){this._one['delivery-fee-tax-rate'] = deliveryFeeTaxRate};
   /** @type {InvoicingTaxRate} */
-  get deliveryFeeTaxRate(){return this._relationships['delivery-fee-tax-rate']};
+  get deliveryFeeTaxRate(){return this._one['delivery-fee-tax-rate']};
 
 
 
   /** @param {Courier[]} couriers **/
-  set couriers(couriers){this._relationships['couriers'] = couriers};
+  set couriers(couriers){this._many['couriers'] = couriers};
   /** @type {Courier[]} */
-  get couriers(){return this._relationships['couriers']};
+  get couriers(){return this._many['couriers']};
 
   /** @param {Client[]} clients **/
-  set clients(clients){this._relationships['clients'] = clients};
+  set clients(clients){this._many['clients'] = clients};
   /** @type {Client[]} */
-  get clients(){return this._relationships['clients']};
+  get clients(){return this._many['clients']};
 
   /** @param {Restaurant[]} restaurants **/
-  set restaurants(restaurants){this._relationships['restaurants'] = restaurants};
+  set restaurants(restaurants){this._many['restaurants'] = restaurants};
   /** @type {Restaurant[]} */
-  get restaurants(){return this._relationships['restaurants']};
+  get restaurants(){return this._many['restaurants']};
 
   /** @param {InvoicingTaxRate[]} invoicingTaxRates **/
-  set invoicingTaxRates(invoicingTaxRates){this._relationships['invoicing-tax-rates'] = invoicingTaxRates};
+  set invoicingTaxRates(invoicingTaxRates){this._many['invoicing-tax-rates'] = invoicingTaxRates};
   /** @type {InvoicingTaxRate[]} */
-  get invoicingTaxRates(){return this._relationships['invoicing-tax-rates']};
+  get invoicingTaxRates(){return this._many['invoicing-tax-rates']};
 
   /** @param {InvoicingTaxRate[]} globalInvoicingTaxRates **/
-  set globalInvoicingTaxRates(globalInvoicingTaxRates){this._relationships['global-invoicing-tax-rates'] = globalInvoicingTaxRates};
+  set globalInvoicingTaxRates(globalInvoicingTaxRates){this._many['global-invoicing-tax-rates'] = globalInvoicingTaxRates};
   /** @type {InvoicingTaxRate[]} */
-  get globalInvoicingTaxRates(){return this._relationships['global-invoicing-tax-rates']};
+  get globalInvoicingTaxRates(){return this._many['global-invoicing-tax-rates']};
 
   /** @param {AreaClosure[]} areaClosures **/
-  set areaClosures(areaClosures){this._relationships['area-closures'] = areaClosures};
+  set areaClosures(areaClosures){this._many['area-closures'] = areaClosures};
   /** @type {AreaClosure[]} */
-  get areaClosures(){return this._relationships['area-closures']};
+  get areaClosures(){return this._many['area-closures']};
 
   /** @param {AreaClosure[]} currentAreaClosures **/
-  set currentAreaClosures(currentAreaClosures){this._relationships['current-area-closures'] = currentAreaClosures};
+  set currentAreaClosures(currentAreaClosures){this._many['current-area-closures'] = currentAreaClosures};
   /** @type {AreaClosure[]} */
-  get currentAreaClosures(){return this._relationships['current-area-closures']};
+  get currentAreaClosures(){return this._many['current-area-closures']};
 
   /** @param {PromoCode[]} promoCodes **/
-  set promoCodes(promoCodes){this._relationships['promo-codes'] = promoCodes};
+  set promoCodes(promoCodes){this._many['promo-codes'] = promoCodes};
   /** @type {PromoCode[]} */
-  get promoCodes(){return this._relationships['promo-codes']};
+  get promoCodes(){return this._many['promo-codes']};
 
   /** @param {Version[]} versions **/
-  set versions(versions){this._relationships['versions'] = versions};
+  set versions(versions){this._many['versions'] = versions};
   /** @type {Version[]} */
-  get versions(){return this._relationships['versions']};
+  get versions(){return this._many['versions']};
 
 
 }
@@ -189,8 +189,8 @@ export class Area extends Resource {
 export class AreaClosure extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'area-closures', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'area-closures', attributes, one, many);
   }
 
   // attributes
@@ -220,9 +220,9 @@ export class AreaClosure extends Resource {
 
 
   /** @param {Area} area **/
-  set area(area){this._relationships['area'] = area};
+  set area(area){this._one['area'] = area};
   /** @type {Area} */
-  get area(){return this._relationships['area']};
+  get area(){return this._one['area']};
 
 
 
@@ -235,8 +235,8 @@ export class AreaClosure extends Resource {
 export class Client extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'clients', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'clients', attributes, one, many);
   }
 
   // attributes
@@ -311,111 +311,111 @@ export class Client extends Resource {
 
 
   /** @param {Area} defaultArea **/
-  set defaultArea(defaultArea){this._relationships['default-area'] = defaultArea};
+  set defaultArea(defaultArea){this._one['default-area'] = defaultArea};
   /** @type {Area} */
-  get defaultArea(){return this._relationships['default-area']};
+  get defaultArea(){return this._one['default-area']};
 
   /** @param {Location} billingLocation **/
-  set billingLocation(billingLocation){this._relationships['billing-location'] = billingLocation};
+  set billingLocation(billingLocation){this._one['billing-location'] = billingLocation};
   /** @type {Location} */
-  get billingLocation(){return this._relationships['billing-location']};
+  get billingLocation(){return this._one['billing-location']};
 
   /** @param {Contact} billingContact **/
-  set billingContact(billingContact){this._relationships['billing-contact'] = billingContact};
+  set billingContact(billingContact){this._one['billing-contact'] = billingContact};
   /** @type {Contact} */
-  get billingContact(){return this._relationships['billing-contact']};
+  get billingContact(){return this._one['billing-contact']};
 
   /** @param {User} accountManager **/
-  set accountManager(accountManager){this._relationships['account-manager'] = accountManager};
+  set accountManager(accountManager){this._one['account-manager'] = accountManager};
   /** @type {User} */
-  get accountManager(){return this._relationships['account-manager']};
+  get accountManager(){return this._one['account-manager']};
 
   /** @param {User} owner **/
-  set owner(owner){this._relationships['owner'] = owner};
+  set owner(owner){this._one['owner'] = owner};
   /** @type {User} */
-  get owner(){return this._relationships['owner']};
+  get owner(){return this._one['owner']};
 
   /** @param {User} salesSupport **/
-  set salesSupport(salesSupport){this._relationships['sales-support'] = salesSupport};
+  set salesSupport(salesSupport){this._one['sales-support'] = salesSupport};
   /** @type {User} */
-  get salesSupport(){return this._relationships['sales-support']};
+  get salesSupport(){return this._one['sales-support']};
 
   /** @param {Company} company **/
-  set company(company){this._relationships['company'] = company};
+  set company(company){this._one['company'] = company};
   /** @type {Company} */
-  get company(){return this._relationships['company']};
+  get company(){return this._one['company']};
 
   /** @param {MealPlan} mealPlan **/
-  set mealPlan(mealPlan){this._relationships['meal-plan'] = mealPlan};
+  set mealPlan(mealPlan){this._one['meal-plan'] = mealPlan};
   /** @type {MealPlan} */
-  get mealPlan(){return this._relationships['meal-plan']};
+  get mealPlan(){return this._one['meal-plan']};
 
   /** @param {InvoicingTaxRate} taxRate **/
-  set taxRate(taxRate){this._relationships['tax-rate'] = taxRate};
+  set taxRate(taxRate){this._one['tax-rate'] = taxRate};
   /** @type {InvoicingTaxRate} */
-  get taxRate(){return this._relationships['tax-rate']};
+  get taxRate(){return this._one['tax-rate']};
 
   /** @param {GiftbitCard} giftbitCard **/
-  set giftbitCard(giftbitCard){this._relationships['giftbit-card'] = giftbitCard};
+  set giftbitCard(giftbitCard){this._one['giftbit-card'] = giftbitCard};
   /** @type {GiftbitCard} */
-  get giftbitCard(){return this._relationships['giftbit-card']};
+  get giftbitCard(){return this._one['giftbit-card']};
 
 
 
   /** @param {Area[]} areas **/
-  set areas(areas){this._relationships['areas'] = areas};
+  set areas(areas){this._many['areas'] = areas};
   /** @type {Area[]} */
-  get areas(){return this._relationships['areas']};
+  get areas(){return this._many['areas']};
 
   /** @param {DeliveryLocation[]} deliveryLocations **/
-  set deliveryLocations(deliveryLocations){this._relationships['delivery-locations'] = deliveryLocations};
+  set deliveryLocations(deliveryLocations){this._many['delivery-locations'] = deliveryLocations};
   /** @type {DeliveryLocation[]} */
-  get deliveryLocations(){return this._relationships['delivery-locations']};
+  get deliveryLocations(){return this._many['delivery-locations']};
 
   /** @param {PaymentCard[]} paymentCards **/
-  set paymentCards(paymentCards){this._relationships['payment-cards'] = paymentCards};
+  set paymentCards(paymentCards){this._many['payment-cards'] = paymentCards};
   /** @type {PaymentCard[]} */
-  get paymentCards(){return this._relationships['payment-cards']};
+  get paymentCards(){return this._many['payment-cards']};
 
   /** @param {Contact[]} adminContacts **/
-  set adminContacts(adminContacts){this._relationships['admin-contacts'] = adminContacts};
+  set adminContacts(adminContacts){this._many['admin-contacts'] = adminContacts};
   /** @type {Contact[]} */
-  get adminContacts(){return this._relationships['admin-contacts']};
+  get adminContacts(){return this._many['admin-contacts']};
 
   /** @param {User[]} admins **/
-  set admins(admins){this._relationships['admins'] = admins};
+  set admins(admins){this._many['admins'] = admins};
   /** @type {User[]} */
-  get admins(){return this._relationships['admins']};
+  get admins(){return this._many['admins']};
 
   /** @param {Contact[]} orderContacts **/
-  set orderContacts(orderContacts){this._relationships['order-contacts'] = orderContacts};
+  set orderContacts(orderContacts){this._many['order-contacts'] = orderContacts};
   /** @type {Contact[]} */
-  get orderContacts(){return this._relationships['order-contacts']};
+  get orderContacts(){return this._many['order-contacts']};
 
   /** @param {Order[]} orders **/
-  set orders(orders){this._relationships['orders'] = orders};
+  set orders(orders){this._many['orders'] = orders};
   /** @type {Order[]} */
-  get orders(){return this._relationships['orders']};
+  get orders(){return this._many['orders']};
 
   /** @param {Team[]} teams **/
-  set teams(teams){this._relationships['teams'] = teams};
+  set teams(teams){this._many['teams'] = teams};
   /** @type {Team[]} */
-  get teams(){return this._relationships['teams']};
+  get teams(){return this._many['teams']};
 
   /** @param {Version[]} versions **/
-  set versions(versions){this._relationships['versions'] = versions};
+  set versions(versions){this._many['versions'] = versions};
   /** @type {Version[]} */
-  get versions(){return this._relationships['versions']};
+  get versions(){return this._many['versions']};
 
   /** @param {GiftbitGift[]} giftbitGifts **/
-  set giftbitGifts(giftbitGifts){this._relationships['giftbit-gifts'] = giftbitGifts};
+  set giftbitGifts(giftbitGifts){this._many['giftbit-gifts'] = giftbitGifts};
   /** @type {GiftbitGift[]} */
-  get giftbitGifts(){return this._relationships['giftbit-gifts']};
+  get giftbitGifts(){return this._many['giftbit-gifts']};
 
   /** @param {GiftbitError[]} giftbitErrors **/
-  set giftbitErrors(giftbitErrors){this._relationships['giftbit-errors'] = giftbitErrors};
+  set giftbitErrors(giftbitErrors){this._many['giftbit-errors'] = giftbitErrors};
   /** @type {GiftbitError[]} */
-  get giftbitErrors(){return this._relationships['giftbit-errors']};
+  get giftbitErrors(){return this._many['giftbit-errors']};
 
 
 }
@@ -426,8 +426,8 @@ export class Client extends Resource {
 export class ClientDiscount extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'client-discounts', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'client-discounts', attributes, one, many);
   }
 
   // attributes
@@ -462,9 +462,9 @@ export class ClientDiscount extends Resource {
 
 
   /** @param {Order} order **/
-  set order(order){this._relationships['order'] = order};
+  set order(order){this._one['order'] = order};
   /** @type {Order} */
-  get order(){return this._relationships['order']};
+  get order(){return this._one['order']};
 
 
 
@@ -477,8 +477,8 @@ export class ClientDiscount extends Resource {
 export class ClientOrderInvoice extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'client-order-invoices', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'client-order-invoices', attributes, one, many);
   }
 
   // attributes
@@ -503,8 +503,8 @@ export class ClientOrderInvoice extends Resource {
 export class ClientSignup extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'client-signups', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'client-signups', attributes, one, many);
   }
 
   // attributes
@@ -614,46 +614,46 @@ export class ClientSignup extends Resource {
 
 
   /** @param {User} user **/
-  set user(user){this._relationships['user'] = user};
+  set user(user){this._one['user'] = user};
   /** @type {User} */
-  get user(){return this._relationships['user']};
+  get user(){return this._one['user']};
 
   /** @param {QualifyingQuestion} qualifyingQuestion **/
-  set qualifyingQuestion(qualifyingQuestion){this._relationships['qualifying-question'] = qualifyingQuestion};
+  set qualifyingQuestion(qualifyingQuestion){this._one['qualifying-question'] = qualifyingQuestion};
   /** @type {QualifyingQuestion} */
-  get qualifyingQuestion(){return this._relationships['qualifying-question']};
+  get qualifyingQuestion(){return this._one['qualifying-question']};
 
   /** @param {Location} billingLocation **/
-  set billingLocation(billingLocation){this._relationships['billing-location'] = billingLocation};
+  set billingLocation(billingLocation){this._one['billing-location'] = billingLocation};
   /** @type {Location} */
-  get billingLocation(){return this._relationships['billing-location']};
+  get billingLocation(){return this._one['billing-location']};
 
   /** @param {Location} deliveryLocation **/
-  set deliveryLocation(deliveryLocation){this._relationships['delivery-location'] = deliveryLocation};
+  set deliveryLocation(deliveryLocation){this._one['delivery-location'] = deliveryLocation};
   /** @type {Location} */
-  get deliveryLocation(){return this._relationships['delivery-location']};
+  get deliveryLocation(){return this._one['delivery-location']};
 
   /** @param {Contact} billingContact **/
-  set billingContact(billingContact){this._relationships['billing-contact'] = billingContact};
+  set billingContact(billingContact){this._one['billing-contact'] = billingContact};
   /** @type {Contact} */
-  get billingContact(){return this._relationships['billing-contact']};
+  get billingContact(){return this._one['billing-contact']};
 
   /** @param {Contact} contact **/
-  set contact(contact){this._relationships['contact'] = contact};
+  set contact(contact){this._one['contact'] = contact};
   /** @type {Contact} */
-  get contact(){return this._relationships['contact']};
+  get contact(){return this._one['contact']};
 
 
 
   /** @param {Client[]} clients **/
-  set clients(clients){this._relationships['clients'] = clients};
+  set clients(clients){this._many['clients'] = clients};
   /** @type {Client[]} */
-  get clients(){return this._relationships['clients']};
+  get clients(){return this._many['clients']};
 
   /** @param {Area[]} areas **/
-  set areas(areas){this._relationships['areas'] = areas};
+  set areas(areas){this._many['areas'] = areas};
   /** @type {Area[]} */
-  get areas(){return this._relationships['areas']};
+  get areas(){return this._many['areas']};
 
 
 }
@@ -664,8 +664,8 @@ export class ClientSignup extends Resource {
 export class CommunicationPreference extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'communication-preferences', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'communication-preferences', attributes, one, many);
   }
 
   // attributes
@@ -685,9 +685,9 @@ export class CommunicationPreference extends Resource {
 
 
   /** @param {User} user **/
-  set user(user){this._relationships['user'] = user};
+  set user(user){this._one['user'] = user};
   /** @type {User} */
-  get user(){return this._relationships['user']};
+  get user(){return this._one['user']};
 
 
 
@@ -700,8 +700,8 @@ export class CommunicationPreference extends Resource {
 export class Company extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'companies', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'companies', attributes, one, many);
   }
 
   // attributes
@@ -723,9 +723,9 @@ export class Company extends Resource {
 
 
   /** @param {Client[]} clients **/
-  set clients(clients){this._relationships['clients'] = clients};
+  set clients(clients){this._many['clients'] = clients};
   /** @type {Client[]} */
-  get clients(){return this._relationships['clients']};
+  get clients(){return this._many['clients']};
 
 
 }
@@ -736,8 +736,8 @@ export class Company extends Resource {
 export class Contact extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'contacts', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'contacts', attributes, one, many);
   }
 
   // attributes
@@ -792,8 +792,8 @@ export class Contact extends Resource {
 export class Courier extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'couriers', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'couriers', attributes, one, many);
   }
 
   // attributes
@@ -823,26 +823,26 @@ export class Courier extends Resource {
 
 
   /** @param {User} owner **/
-  set owner(owner){this._relationships['owner'] = owner};
+  set owner(owner){this._one['owner'] = owner};
   /** @type {User} */
-  get owner(){return this._relationships['owner']};
+  get owner(){return this._one['owner']};
 
 
 
   /** @param {User[]} drivers **/
-  set drivers(drivers){this._relationships['drivers'] = drivers};
+  set drivers(drivers){this._many['drivers'] = drivers};
   /** @type {User[]} */
-  get drivers(){return this._relationships['drivers']};
+  get drivers(){return this._many['drivers']};
 
   /** @param {Area[]} areas **/
-  set areas(areas){this._relationships['areas'] = areas};
+  set areas(areas){this._many['areas'] = areas};
   /** @type {Area[]} */
-  get areas(){return this._relationships['areas']};
+  get areas(){return this._many['areas']};
 
   /** @param {Version[]} versions **/
-  set versions(versions){this._relationships['versions'] = versions};
+  set versions(versions){this._many['versions'] = versions};
   /** @type {Version[]} */
-  get versions(){return this._relationships['versions']};
+  get versions(){return this._many['versions']};
 
 
 }
@@ -853,8 +853,8 @@ export class Courier extends Resource {
 export class DeliveryCase extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'delivery-cases', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'delivery-cases', attributes, one, many);
   }
 
   // attributes
@@ -879,14 +879,14 @@ export class DeliveryCase extends Resource {
 
 
   /** @param {User} user **/
-  set user(user){this._relationships['user'] = user};
+  set user(user){this._one['user'] = user};
   /** @type {User} */
-  get user(){return this._relationships['user']};
+  get user(){return this._one['user']};
 
   /** @param {Order} order **/
-  set order(order){this._relationships['order'] = order};
+  set order(order){this._one['order'] = order};
   /** @type {Order} */
-  get order(){return this._relationships['order']};
+  get order(){return this._one['order']};
 
 
 
@@ -899,8 +899,8 @@ export class DeliveryCase extends Resource {
 export class DeliveryLocation extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'delivery-locations', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'delivery-locations', attributes, one, many);
   }
 
   // attributes
@@ -985,14 +985,14 @@ export class DeliveryLocation extends Resource {
 
 
   /** @param {Client} client **/
-  set client(client){this._relationships['client'] = client};
+  set client(client){this._one['client'] = client};
   /** @type {Client} */
-  get client(){return this._relationships['client']};
+  get client(){return this._one['client']};
 
   /** @param {Location} location **/
-  set location(location){this._relationships['location'] = location};
+  set location(location){this._one['location'] = location};
   /** @type {Location} */
-  get location(){return this._relationships['location']};
+  get location(){return this._one['location']};
 
 
 
@@ -1005,8 +1005,8 @@ export class DeliveryLocation extends Resource {
 export class DeskCase extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'desk-cases', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'desk-cases', attributes, one, many);
   }
 
   // attributes
@@ -1046,14 +1046,14 @@ export class DeskCase extends Resource {
 
 
   /** @param {User} user **/
-  set user(user){this._relationships['user'] = user};
+  set user(user){this._one['user'] = user};
   /** @type {User} */
-  get user(){return this._relationships['user']};
+  get user(){return this._one['user']};
 
   /** @param {Order} order **/
-  set order(order){this._relationships['order'] = order};
+  set order(order){this._one['order'] = order};
   /** @type {Order} */
-  get order(){return this._relationships['order']};
+  get order(){return this._one['order']};
 
 
 
@@ -1066,8 +1066,8 @@ export class DeskCase extends Resource {
 export class DietaryTag extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'dietary-tags', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'dietary-tags', attributes, one, many);
   }
 
   // attributes
@@ -1099,9 +1099,9 @@ export class DietaryTag extends Resource {
 
 
   /** @param {MenuOptionItem[]} menuOptionItems **/
-  set menuOptionItems(menuOptionItems){this._relationships['menu-option-items'] = menuOptionItems};
+  set menuOptionItems(menuOptionItems){this._many['menu-option-items'] = menuOptionItems};
   /** @type {MenuOptionItem[]} */
-  get menuOptionItems(){return this._relationships['menu-option-items']};
+  get menuOptionItems(){return this._many['menu-option-items']};
 
 
 }
@@ -1112,8 +1112,8 @@ export class DietaryTag extends Resource {
 export class DiscountCode extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'discount-codes', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'discount-codes', attributes, one, many);
   }
 
   // attributes
@@ -1148,8 +1148,8 @@ export class DiscountCode extends Resource {
 export class DriverDay extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'driver-days', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'driver-days', attributes, one, many);
   }
 
   // attributes
@@ -1164,9 +1164,9 @@ export class DriverDay extends Resource {
 
 
   /** @param {User} driver **/
-  set driver(driver){this._relationships['driver'] = driver};
+  set driver(driver){this._one['driver'] = driver};
   /** @type {User} */
-  get driver(){return this._relationships['driver']};
+  get driver(){return this._one['driver']};
 
 
 
@@ -1179,8 +1179,8 @@ export class DriverDay extends Resource {
 export class DriverPayment extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'driver-payments', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'driver-payments', attributes, one, many);
   }
 
   // attributes
@@ -1250,9 +1250,9 @@ export class DriverPayment extends Resource {
 
 
   /** @param {DriverPayrollRun} driverPayrollRun **/
-  set driverPayrollRun(driverPayrollRun){this._relationships['driver-payroll-run'] = driverPayrollRun};
+  set driverPayrollRun(driverPayrollRun){this._one['driver-payroll-run'] = driverPayrollRun};
   /** @type {DriverPayrollRun} */
-  get driverPayrollRun(){return this._relationships['driver-payroll-run']};
+  get driverPayrollRun(){return this._one['driver-payroll-run']};
 
 
 
@@ -1265,8 +1265,8 @@ export class DriverPayment extends Resource {
 export class DriverPayrollRun extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'driver-payroll-runs', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'driver-payroll-runs', attributes, one, many);
   }
 
   // attributes
@@ -1296,14 +1296,14 @@ export class DriverPayrollRun extends Resource {
 
 
   /** @param {Driver} driver **/
-  set driver(driver){this._relationships['driver'] = driver};
+  set driver(driver){this._one['driver'] = driver};
   /** @type {Driver} */
-  get driver(){return this._relationships['driver']};
+  get driver(){return this._one['driver']};
 
   /** @param {PayrollRun} payrollRun **/
-  set payrollRun(payrollRun){this._relationships['payroll-run'] = payrollRun};
+  set payrollRun(payrollRun){this._one['payroll-run'] = payrollRun};
   /** @type {PayrollRun} */
-  get payrollRun(){return this._relationships['payroll-run']};
+  get payrollRun(){return this._one['payroll-run']};
 
 
 
@@ -1316,8 +1316,8 @@ export class DriverPayrollRun extends Resource {
 export class DriverPing extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'driver-pings', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'driver-pings', attributes, one, many);
   }
 
   // attributes
@@ -1337,9 +1337,9 @@ export class DriverPing extends Resource {
 
 
   /** @param {User} user **/
-  set user(user){this._relationships['user'] = user};
+  set user(user){this._one['user'] = user};
   /** @type {User} */
-  get user(){return this._relationships['user']};
+  get user(){return this._one['user']};
 
 
 
@@ -1352,8 +1352,8 @@ export class DriverPing extends Resource {
 export class DriverResource extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'driver-resources', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'driver-resources', attributes, one, many);
   }
 
   // attributes
@@ -1388,8 +1388,8 @@ export class DriverResource extends Resource {
 export class DriverWeek extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'driver-weeks', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'driver-weeks', attributes, one, many);
   }
 
   // attributes
@@ -1524,9 +1524,9 @@ export class DriverWeek extends Resource {
 
 
   /** @param {User} driver **/
-  set driver(driver){this._relationships['driver'] = driver};
+  set driver(driver){this._one['driver'] = driver};
   /** @type {User} */
-  get driver(){return this._relationships['driver']};
+  get driver(){return this._one['driver']};
 
 
 
@@ -1539,8 +1539,8 @@ export class DriverWeek extends Resource {
 export class EmailMessage extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'email-messages', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'email-messages', attributes, one, many);
   }
 
   // attributes
@@ -1595,9 +1595,9 @@ export class EmailMessage extends Resource {
 
 
   /** @param {Order} order **/
-  set order(order){this._relationships['order'] = order};
+  set order(order){this._one['order'] = order};
   /** @type {Order} */
-  get order(){return this._relationships['order']};
+  get order(){return this._one['order']};
 
 
 
@@ -1610,8 +1610,8 @@ export class EmailMessage extends Resource {
 export class Event extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'events', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'events', attributes, one, many);
   }
 
   // attributes
@@ -1651,8 +1651,8 @@ export class Event extends Resource {
 export class GiftbitCard extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'giftbit-cards', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'giftbit-cards', attributes, one, many);
   }
 
   // attributes
@@ -1682,8 +1682,8 @@ export class GiftbitCard extends Resource {
 export class GiftbitError extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'giftbit-errors', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'giftbit-errors', attributes, one, many);
   }
 
   // attributes
@@ -1713,9 +1713,9 @@ export class GiftbitError extends Resource {
 
 
   /** @param {Order} order **/
-  set order(order){this._relationships['order'] = order};
+  set order(order){this._one['order'] = order};
   /** @type {Order} */
-  get order(){return this._relationships['order']};
+  get order(){return this._one['order']};
 
 
 
@@ -1728,8 +1728,8 @@ export class GiftbitError extends Resource {
 export class GiftbitGift extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'giftbit-gifts', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'giftbit-gifts', attributes, one, many);
   }
 
   // attributes
@@ -1804,8 +1804,8 @@ export class GiftbitGift extends Resource {
 export class GroupOrderMember extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'group-order-members', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'group-order-members', attributes, one, many);
   }
 
   // attributes
@@ -1855,21 +1855,21 @@ export class GroupOrderMember extends Resource {
 
 
   /** @param {User} user **/
-  set user(user){this._relationships['user'] = user};
+  set user(user){this._one['user'] = user};
   /** @type {User} */
-  get user(){return this._relationships['user']};
+  get user(){return this._one['user']};
 
   /** @param {Order} order **/
-  set order(order){this._relationships['order'] = order};
+  set order(order){this._one['order'] = order};
   /** @type {Order} */
-  get order(){return this._relationships['order']};
+  get order(){return this._one['order']};
 
 
 
   /** @param {OrderItem[]} orderItems **/
-  set orderItems(orderItems){this._relationships['order-items'] = orderItems};
+  set orderItems(orderItems){this._many['order-items'] = orderItems};
   /** @type {OrderItem[]} */
-  get orderItems(){return this._relationships['order-items']};
+  get orderItems(){return this._many['order-items']};
 
 
 }
@@ -1880,8 +1880,8 @@ export class GroupOrderMember extends Resource {
 export class Invoice extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'invoices', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'invoices', attributes, one, many);
   }
 
   // attributes
@@ -1911,8 +1911,8 @@ export class Invoice extends Resource {
 export class InvoicingTaxRate extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'invoicing-tax-rates', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'invoicing-tax-rates', attributes, one, many);
   }
 
   // attributes
@@ -1962,9 +1962,9 @@ export class InvoicingTaxRate extends Resource {
 
 
   /** @param {Area} area **/
-  set area(area){this._relationships['area'] = area};
+  set area(area){this._one['area'] = area};
   /** @type {Area} */
-  get area(){return this._relationships['area']};
+  get area(){return this._one['area']};
 
 
 
@@ -1977,8 +1977,8 @@ export class InvoicingTaxRate extends Resource {
 export class Location extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'locations', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'locations', attributes, one, many);
   }
 
   // attributes
@@ -2058,9 +2058,9 @@ export class Location extends Resource {
 
 
   /** @param {Area} area **/
-  set area(area){this._relationships['area'] = area};
+  set area(area){this._one['area'] = area};
   /** @type {Area} */
-  get area(){return this._relationships['area']};
+  get area(){return this._one['area']};
 
 
 
@@ -2073,8 +2073,8 @@ export class Location extends Resource {
 export class MealPlan extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'meal-plans', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'meal-plans', attributes, one, many);
   }
 
   // attributes
@@ -2129,21 +2129,21 @@ export class MealPlan extends Resource {
 
 
   /** @param {User} mealPlanUser **/
-  set mealPlanUser(mealPlanUser){this._relationships['meal-plan-user'] = mealPlanUser};
+  set mealPlanUser(mealPlanUser){this._one['meal-plan-user'] = mealPlanUser};
   /** @type {User} */
-  get mealPlanUser(){return this._relationships['meal-plan-user']};
+  get mealPlanUser(){return this._one['meal-plan-user']};
 
   /** @param {Client} client **/
-  set client(client){this._relationships['client'] = client};
+  set client(client){this._one['client'] = client};
   /** @type {Client} */
-  get client(){return this._relationships['client']};
+  get client(){return this._one['client']};
 
 
 
   /** @param {Order[]} orders **/
-  set orders(orders){this._relationships['orders'] = orders};
+  set orders(orders){this._many['orders'] = orders};
   /** @type {Order[]} */
-  get orders(){return this._relationships['orders']};
+  get orders(){return this._many['orders']};
 
 
 }
@@ -2154,8 +2154,8 @@ export class MealPlan extends Resource {
 export class Menu extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'menus', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'menus', attributes, one, many);
   }
 
   // attributes
@@ -2200,36 +2200,36 @@ export class Menu extends Resource {
 
 
   /** @param {Area} area **/
-  set area(area){this._relationships['area'] = area};
+  set area(area){this._one['area'] = area};
   /** @type {Area} */
-  get area(){return this._relationships['area']};
+  get area(){return this._one['area']};
 
   /** @param {Restaurant} restaurant **/
-  set restaurant(restaurant){this._relationships['restaurant'] = restaurant};
+  set restaurant(restaurant){this._one['restaurant'] = restaurant};
   /** @type {Restaurant} */
-  get restaurant(){return this._relationships['restaurant']};
+  get restaurant(){return this._one['restaurant']};
 
 
 
   /** @param {MenuGroup[]} menuGroups **/
-  set menuGroups(menuGroups){this._relationships['menu-groups'] = menuGroups};
+  set menuGroups(menuGroups){this._many['menu-groups'] = menuGroups};
   /** @type {MenuGroup[]} */
-  get menuGroups(){return this._relationships['menu-groups']};
+  get menuGroups(){return this._many['menu-groups']};
 
   /** @param {MenuItem[]} menuItems **/
-  set menuItems(menuItems){this._relationships['menu-items'] = menuItems};
+  set menuItems(menuItems){this._many['menu-items'] = menuItems};
   /** @type {MenuItem[]} */
-  get menuItems(){return this._relationships['menu-items']};
+  get menuItems(){return this._many['menu-items']};
 
   /** @param {DietaryTag[]} dietaryTags **/
-  set dietaryTags(dietaryTags){this._relationships['dietary-tags'] = dietaryTags};
+  set dietaryTags(dietaryTags){this._many['dietary-tags'] = dietaryTags};
   /** @type {DietaryTag[]} */
-  get dietaryTags(){return this._relationships['dietary-tags']};
+  get dietaryTags(){return this._many['dietary-tags']};
 
   /** @param {Order[]} orders **/
-  set orders(orders){this._relationships['orders'] = orders};
+  set orders(orders){this._many['orders'] = orders};
   /** @type {Order[]} */
-  get orders(){return this._relationships['orders']};
+  get orders(){return this._many['orders']};
 
 
 }
@@ -2240,8 +2240,8 @@ export class Menu extends Resource {
 export class MenuGroup extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'menu-groups', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'menu-groups', attributes, one, many);
   }
 
   // attributes
@@ -2301,16 +2301,16 @@ export class MenuGroup extends Resource {
 
 
   /** @param {Menu} menu **/
-  set menu(menu){this._relationships['menu'] = menu};
+  set menu(menu){this._one['menu'] = menu};
   /** @type {Menu} */
-  get menu(){return this._relationships['menu']};
+  get menu(){return this._one['menu']};
 
 
 
   /** @param {MenuItem[]} menuItems **/
-  set menuItems(menuItems){this._relationships['menu-items'] = menuItems};
+  set menuItems(menuItems){this._many['menu-items'] = menuItems};
   /** @type {MenuItem[]} */
-  get menuItems(){return this._relationships['menu-items']};
+  get menuItems(){return this._many['menu-items']};
 
 
 }
@@ -2321,8 +2321,8 @@ export class MenuGroup extends Resource {
 export class MenuItem extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'menu-items', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'menu-items', attributes, one, many);
   }
 
   // attributes
@@ -2402,26 +2402,26 @@ export class MenuItem extends Resource {
 
 
   /** @param {InvoicingTaxRate} taxRate **/
-  set taxRate(taxRate){this._relationships['tax-rate'] = taxRate};
+  set taxRate(taxRate){this._one['tax-rate'] = taxRate};
   /** @type {InvoicingTaxRate} */
-  get taxRate(){return this._relationships['tax-rate']};
+  get taxRate(){return this._one['tax-rate']};
 
   /** @param {MenuGroup} menuGroup **/
-  set menuGroup(menuGroup){this._relationships['menu-group'] = menuGroup};
+  set menuGroup(menuGroup){this._one['menu-group'] = menuGroup};
   /** @type {MenuGroup} */
-  get menuGroup(){return this._relationships['menu-group']};
+  get menuGroup(){return this._one['menu-group']};
 
 
 
   /** @param {DietaryTag[]} dietaryTags **/
-  set dietaryTags(dietaryTags){this._relationships['dietary-tags'] = dietaryTags};
+  set dietaryTags(dietaryTags){this._many['dietary-tags'] = dietaryTags};
   /** @type {DietaryTag[]} */
-  get dietaryTags(){return this._relationships['dietary-tags']};
+  get dietaryTags(){return this._many['dietary-tags']};
 
   /** @param {MenuOptionGroup[]} menuOptionGroups **/
-  set menuOptionGroups(menuOptionGroups){this._relationships['menu-option-groups'] = menuOptionGroups};
+  set menuOptionGroups(menuOptionGroups){this._many['menu-option-groups'] = menuOptionGroups};
   /** @type {MenuOptionGroup[]} */
-  get menuOptionGroups(){return this._relationships['menu-option-groups']};
+  get menuOptionGroups(){return this._many['menu-option-groups']};
 
 
 }
@@ -2432,8 +2432,8 @@ export class MenuItem extends Resource {
 export class MenuOptionGroup extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'menu-option-groups', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'menu-option-groups', attributes, one, many);
   }
 
   // attributes
@@ -2463,16 +2463,16 @@ export class MenuOptionGroup extends Resource {
 
 
   /** @param {MenuItem} menuItem **/
-  set menuItem(menuItem){this._relationships['menu-item'] = menuItem};
+  set menuItem(menuItem){this._one['menu-item'] = menuItem};
   /** @type {MenuItem} */
-  get menuItem(){return this._relationships['menu-item']};
+  get menuItem(){return this._one['menu-item']};
 
 
 
   /** @param {MenuOptionItem[]} menuOptionItems **/
-  set menuOptionItems(menuOptionItems){this._relationships['menu-option-items'] = menuOptionItems};
+  set menuOptionItems(menuOptionItems){this._many['menu-option-items'] = menuOptionItems};
   /** @type {MenuOptionItem[]} */
-  get menuOptionItems(){return this._relationships['menu-option-items']};
+  get menuOptionItems(){return this._many['menu-option-items']};
 
 
 }
@@ -2483,8 +2483,8 @@ export class MenuOptionGroup extends Resource {
 export class MenuOptionItem extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'menu-option-items', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'menu-option-items', attributes, one, many);
   }
 
   // attributes
@@ -2519,21 +2519,21 @@ export class MenuOptionItem extends Resource {
 
 
   /** @param {MenuOptionGroup} menuOptionGroup **/
-  set menuOptionGroup(menuOptionGroup){this._relationships['menu-option-group'] = menuOptionGroup};
+  set menuOptionGroup(menuOptionGroup){this._one['menu-option-group'] = menuOptionGroup};
   /** @type {MenuOptionGroup} */
-  get menuOptionGroup(){return this._relationships['menu-option-group']};
+  get menuOptionGroup(){return this._one['menu-option-group']};
 
 
 
   /** @param {DietaryTag[]} dietaryTags **/
-  set dietaryTags(dietaryTags){this._relationships['dietary-tags'] = dietaryTags};
+  set dietaryTags(dietaryTags){this._many['dietary-tags'] = dietaryTags};
   /** @type {DietaryTag[]} */
-  get dietaryTags(){return this._relationships['dietary-tags']};
+  get dietaryTags(){return this._many['dietary-tags']};
 
   /** @param {OrderItem[]} orderItems **/
-  set orderItems(orderItems){this._relationships['order-items'] = orderItems};
+  set orderItems(orderItems){this._many['order-items'] = orderItems};
   /** @type {OrderItem[]} */
-  get orderItems(){return this._relationships['order-items']};
+  get orderItems(){return this._many['order-items']};
 
 
 }
@@ -2544,8 +2544,8 @@ export class MenuOptionItem extends Resource {
 export class Order extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'orders', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'orders', attributes, one, many);
   }
 
   // attributes
@@ -2830,146 +2830,146 @@ export class Order extends Resource {
 
 
   /** @param {Area} area **/
-  set area(area){this._relationships['area'] = area};
+  set area(area){this._one['area'] = area};
   /** @type {Area} */
-  get area(){return this._relationships['area']};
+  get area(){return this._one['area']};
 
   /** @param {User} owner **/
-  set owner(owner){this._relationships['owner'] = owner};
+  set owner(owner){this._one['owner'] = owner};
   /** @type {User} */
-  get owner(){return this._relationships['owner']};
+  get owner(){return this._one['owner']};
 
   /** @param {User} creator **/
-  set creator(creator){this._relationships['creator'] = creator};
+  set creator(creator){this._one['creator'] = creator};
   /** @type {User} */
-  get creator(){return this._relationships['creator']};
+  get creator(){return this._one['creator']};
 
   /** @param {PaymentCard} paymentCard **/
-  set paymentCard(paymentCard){this._relationships['payment-card'] = paymentCard};
+  set paymentCard(paymentCard){this._one['payment-card'] = paymentCard};
   /** @type {PaymentCard} */
-  get paymentCard(){return this._relationships['payment-card']};
+  get paymentCard(){return this._one['payment-card']};
 
   /** @param {Contact} contact **/
-  set contact(contact){this._relationships['contact'] = contact};
+  set contact(contact){this._one['contact'] = contact};
   /** @type {Contact} */
-  get contact(){return this._relationships['contact']};
+  get contact(){return this._one['contact']};
 
   /** @param {Client} client **/
-  set client(client){this._relationships['client'] = client};
+  set client(client){this._one['client'] = client};
   /** @type {Client} */
-  get client(){return this._relationships['client']};
+  get client(){return this._one['client']};
 
   /** @param {Restaurant} restaurant **/
-  set restaurant(restaurant){this._relationships['restaurant'] = restaurant};
+  set restaurant(restaurant){this._one['restaurant'] = restaurant};
   /** @type {Restaurant} */
-  get restaurant(){return this._relationships['restaurant']};
+  get restaurant(){return this._one['restaurant']};
 
   /** @param {Courier} courier **/
-  set courier(courier){this._relationships['courier'] = courier};
+  set courier(courier){this._one['courier'] = courier};
   /** @type {Courier} */
-  get courier(){return this._relationships['courier']};
+  get courier(){return this._one['courier']};
 
   /** @param {PromoCode} promoCode **/
-  set promoCode(promoCode){this._relationships['promo-code'] = promoCode};
+  set promoCode(promoCode){this._one['promo-code'] = promoCode};
   /** @type {PromoCode} */
-  get promoCode(){return this._relationships['promo-code']};
+  get promoCode(){return this._one['promo-code']};
 
   /** @param {User} driver **/
-  set driver(driver){this._relationships['driver'] = driver};
+  set driver(driver){this._one['driver'] = driver};
   /** @type {User} */
-  get driver(){return this._relationships['driver']};
+  get driver(){return this._one['driver']};
 
   /** @param {User} salesSupport **/
-  set salesSupport(salesSupport){this._relationships['sales-support'] = salesSupport};
+  set salesSupport(salesSupport){this._one['sales-support'] = salesSupport};
   /** @type {User} */
-  get salesSupport(){return this._relationships['sales-support']};
+  get salesSupport(){return this._one['sales-support']};
 
   /** @param {Location} restaurantLocation **/
-  set restaurantLocation(restaurantLocation){this._relationships['restaurant-location'] = restaurantLocation};
+  set restaurantLocation(restaurantLocation){this._one['restaurant-location'] = restaurantLocation};
   /** @type {Location} */
-  get restaurantLocation(){return this._relationships['restaurant-location']};
+  get restaurantLocation(){return this._one['restaurant-location']};
 
   /** @param {Location} clientLocation **/
-  set clientLocation(clientLocation){this._relationships['client-location'] = clientLocation};
+  set clientLocation(clientLocation){this._one['client-location'] = clientLocation};
   /** @type {Location} */
-  get clientLocation(){return this._relationships['client-location']};
+  get clientLocation(){return this._one['client-location']};
 
   /** @param {ClientDiscount} clientDiscount **/
-  set clientDiscount(clientDiscount){this._relationships['client-discount'] = clientDiscount};
+  set clientDiscount(clientDiscount){this._one['client-discount'] = clientDiscount};
   /** @type {ClientDiscount} */
-  get clientDiscount(){return this._relationships['client-discount']};
+  get clientDiscount(){return this._one['client-discount']};
 
   /** @param {RestaurantDiscount} restaurantDiscount **/
-  set restaurantDiscount(restaurantDiscount){this._relationships['restaurant-discount'] = restaurantDiscount};
+  set restaurantDiscount(restaurantDiscount){this._one['restaurant-discount'] = restaurantDiscount};
   /** @type {RestaurantDiscount} */
-  get restaurantDiscount(){return this._relationships['restaurant-discount']};
+  get restaurantDiscount(){return this._one['restaurant-discount']};
 
   /** @param {Menu} menu **/
-  set menu(menu){this._relationships['menu'] = menu};
+  set menu(menu){this._one['menu'] = menu};
   /** @type {Menu} */
-  get menu(){return this._relationships['menu']};
+  get menu(){return this._one['menu']};
 
   /** @param {Location} customLocation **/
-  set customLocation(customLocation){this._relationships['custom-location'] = customLocation};
+  set customLocation(customLocation){this._one['custom-location'] = customLocation};
   /** @type {Location} */
-  get customLocation(){return this._relationships['custom-location']};
+  get customLocation(){return this._one['custom-location']};
 
   /** @param {GiftbitError} giftbitError **/
-  set giftbitError(giftbitError){this._relationships['giftbit-error'] = giftbitError};
+  set giftbitError(giftbitError){this._one['giftbit-error'] = giftbitError};
   /** @type {GiftbitError} */
-  get giftbitError(){return this._relationships['giftbit-error']};
+  get giftbitError(){return this._one['giftbit-error']};
 
   /** @param {ClientOrderInvoice} clientOrderInvoice **/
-  set clientOrderInvoice(clientOrderInvoice){this._relationships['client-order-invoice'] = clientOrderInvoice};
+  set clientOrderInvoice(clientOrderInvoice){this._one['client-order-invoice'] = clientOrderInvoice};
   /** @type {ClientOrderInvoice} */
-  get clientOrderInvoice(){return this._relationships['client-order-invoice']};
+  get clientOrderInvoice(){return this._one['client-order-invoice']};
 
   /** @param {RestaurantOrderInvoice} restaurantOrderInvoice **/
-  set restaurantOrderInvoice(restaurantOrderInvoice){this._relationships['restaurant-order-invoice'] = restaurantOrderInvoice};
+  set restaurantOrderInvoice(restaurantOrderInvoice){this._one['restaurant-order-invoice'] = restaurantOrderInvoice};
   /** @type {RestaurantOrderInvoice} */
-  get restaurantOrderInvoice(){return this._relationships['restaurant-order-invoice']};
+  get restaurantOrderInvoice(){return this._one['restaurant-order-invoice']};
 
 
 
   /** @param {EmailMessage[]} emailMessages **/
-  set emailMessages(emailMessages){this._relationships['email-messages'] = emailMessages};
+  set emailMessages(emailMessages){this._many['email-messages'] = emailMessages};
   /** @type {EmailMessage[]} */
-  get emailMessages(){return this._relationships['email-messages']};
+  get emailMessages(){return this._many['email-messages']};
 
   /** @param {DeliveryCase[]} deliveryCases **/
-  set deliveryCases(deliveryCases){this._relationships['delivery-cases'] = deliveryCases};
+  set deliveryCases(deliveryCases){this._many['delivery-cases'] = deliveryCases};
   /** @type {DeliveryCase[]} */
-  get deliveryCases(){return this._relationships['delivery-cases']};
+  get deliveryCases(){return this._many['delivery-cases']};
 
   /** @param {DeskCase[]} deskCases **/
-  set deskCases(deskCases){this._relationships['desk-cases'] = deskCases};
+  set deskCases(deskCases){this._many['desk-cases'] = deskCases};
   /** @type {DeskCase[]} */
-  get deskCases(){return this._relationships['desk-cases']};
+  get deskCases(){return this._many['desk-cases']};
 
   /** @param {Version[]} versions **/
-  set versions(versions){this._relationships['versions'] = versions};
+  set versions(versions){this._many['versions'] = versions};
   /** @type {Version[]} */
-  get versions(){return this._relationships['versions']};
+  get versions(){return this._many['versions']};
 
   /** @param {Restaurant[]} pollableRestaurants **/
-  set pollableRestaurants(pollableRestaurants){this._relationships['pollable-restaurants'] = pollableRestaurants};
+  set pollableRestaurants(pollableRestaurants){this._many['pollable-restaurants'] = pollableRestaurants};
   /** @type {Restaurant[]} */
-  get pollableRestaurants(){return this._relationships['pollable-restaurants']};
+  get pollableRestaurants(){return this._many['pollable-restaurants']};
 
   /** @param {RestaurantVote[]} restaurantVotes **/
-  set restaurantVotes(restaurantVotes){this._relationships['restaurant-votes'] = restaurantVotes};
+  set restaurantVotes(restaurantVotes){this._many['restaurant-votes'] = restaurantVotes};
   /** @type {RestaurantVote[]} */
-  get restaurantVotes(){return this._relationships['restaurant-votes']};
+  get restaurantVotes(){return this._many['restaurant-votes']};
 
   /** @param {GroupOrderMember[]} groupOrderMembers **/
-  set groupOrderMembers(groupOrderMembers){this._relationships['group-order-members'] = groupOrderMembers};
+  set groupOrderMembers(groupOrderMembers){this._many['group-order-members'] = groupOrderMembers};
   /** @type {GroupOrderMember[]} */
-  get groupOrderMembers(){return this._relationships['group-order-members']};
+  get groupOrderMembers(){return this._many['group-order-members']};
 
   /** @param {OrderItem[]} orderItems **/
-  set orderItems(orderItems){this._relationships['order-items'] = orderItems};
+  set orderItems(orderItems){this._many['order-items'] = orderItems};
   /** @type {OrderItem[]} */
-  get orderItems(){return this._relationships['order-items']};
+  get orderItems(){return this._many['order-items']};
 
 
 }
@@ -2980,8 +2980,8 @@ export class Order extends Resource {
 export class OrderItem extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'order-items', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'order-items', attributes, one, many);
   }
 
   // attributes
@@ -3031,26 +3031,26 @@ export class OrderItem extends Resource {
 
 
   /** @param {Order} order **/
-  set order(order){this._relationships['order'] = order};
+  set order(order){this._one['order'] = order};
   /** @type {Order} */
-  get order(){return this._relationships['order']};
+  get order(){return this._one['order']};
 
   /** @param {MenuItem} menuItem **/
-  set menuItem(menuItem){this._relationships['menu-item'] = menuItem};
+  set menuItem(menuItem){this._one['menu-item'] = menuItem};
   /** @type {MenuItem} */
-  get menuItem(){return this._relationships['menu-item']};
+  get menuItem(){return this._one['menu-item']};
 
   /** @param {GroupOrderMember} groupOrderMember **/
-  set groupOrderMember(groupOrderMember){this._relationships['group-order-member'] = groupOrderMember};
+  set groupOrderMember(groupOrderMember){this._one['group-order-member'] = groupOrderMember};
   /** @type {GroupOrderMember} */
-  get groupOrderMember(){return this._relationships['group-order-member']};
+  get groupOrderMember(){return this._one['group-order-member']};
 
 
 
   /** @param {MenuOptionItem[]} menuOptionItems **/
-  set menuOptionItems(menuOptionItems){this._relationships['menu-option-items'] = menuOptionItems};
+  set menuOptionItems(menuOptionItems){this._many['menu-option-items'] = menuOptionItems};
   /** @type {MenuOptionItem[]} */
-  get menuOptionItems(){return this._relationships['menu-option-items']};
+  get menuOptionItems(){return this._many['menu-option-items']};
 
 
 }
@@ -3061,8 +3061,8 @@ export class OrderItem extends Resource {
 export class PaymentAccount extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'payment-accounts', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'payment-accounts', attributes, one, many);
   }
 
   // attributes
@@ -3082,8 +3082,8 @@ export class PaymentAccount extends Resource {
 export class PaymentCard extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'payment-cards', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'payment-cards', attributes, one, many);
   }
 
   // attributes
@@ -3138,14 +3138,14 @@ export class PaymentCard extends Resource {
 
 
   /** @param {Client} client **/
-  set client(client){this._relationships['client'] = client};
+  set client(client){this._one['client'] = client};
   /** @type {Client} */
-  get client(){return this._relationships['client']};
+  get client(){return this._one['client']};
 
   /** @param {User} user **/
-  set user(user){this._relationships['user'] = user};
+  set user(user){this._one['user'] = user};
   /** @type {User} */
-  get user(){return this._relationships['user']};
+  get user(){return this._one['user']};
 
 
 
@@ -3158,8 +3158,8 @@ export class PaymentCard extends Resource {
 export class PayrollRun extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'payroll-runs', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'payroll-runs', attributes, one, many);
   }
 
   // attributes
@@ -3186,9 +3186,9 @@ export class PayrollRun extends Resource {
 
 
   /** @param {DriverPayrollRun[]} driverPayrollRun **/
-  set driverPayrollRun(driverPayrollRun){this._relationships['driver-payroll-run'] = driverPayrollRun};
+  set driverPayrollRun(driverPayrollRun){this._many['driver-payroll-run'] = driverPayrollRun};
   /** @type {DriverPayrollRun[]} */
-  get driverPayrollRun(){return this._relationships['driver-payroll-run']};
+  get driverPayrollRun(){return this._many['driver-payroll-run']};
 
 
 }
@@ -3199,8 +3199,8 @@ export class PayrollRun extends Resource {
 export class PickupLocation extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'pickup-locations', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'pickup-locations', attributes, one, many);
   }
 
   // attributes
@@ -3275,14 +3275,14 @@ export class PickupLocation extends Resource {
 
 
   /** @param {Restaurant} restaurant **/
-  set restaurant(restaurant){this._relationships['restaurant'] = restaurant};
+  set restaurant(restaurant){this._one['restaurant'] = restaurant};
   /** @type {Restaurant} */
-  get restaurant(){return this._relationships['restaurant']};
+  get restaurant(){return this._one['restaurant']};
 
   /** @param {Location} location **/
-  set location(location){this._relationships['location'] = location};
+  set location(location){this._one['location'] = location};
   /** @type {Location} */
-  get location(){return this._relationships['location']};
+  get location(){return this._one['location']};
 
 
 
@@ -3295,8 +3295,8 @@ export class PickupLocation extends Resource {
 export class PromoCode extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'promo-codes', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'promo-codes', attributes, one, many);
   }
 
   // attributes
@@ -3361,26 +3361,26 @@ export class PromoCode extends Resource {
 
 
   /** @param {Area} area **/
-  set area(area){this._relationships['area'] = area};
+  set area(area){this._one['area'] = area};
   /** @type {Area} */
-  get area(){return this._relationships['area']};
+  get area(){return this._one['area']};
 
   /** @param {Restaurant} restaurant **/
-  set restaurant(restaurant){this._relationships['restaurant'] = restaurant};
+  set restaurant(restaurant){this._one['restaurant'] = restaurant};
   /** @type {Restaurant} */
-  get restaurant(){return this._relationships['restaurant']};
+  get restaurant(){return this._one['restaurant']};
 
 
 
   /** @param {Order[]} order **/
-  set order(order){this._relationships['order'] = order};
+  set order(order){this._many['order'] = order};
   /** @type {Order[]} */
-  get order(){return this._relationships['order']};
+  get order(){return this._many['order']};
 
   /** @param {Version[]} versions **/
-  set versions(versions){this._relationships['versions'] = versions};
+  set versions(versions){this._many['versions'] = versions};
   /** @type {Version[]} */
-  get versions(){return this._relationships['versions']};
+  get versions(){return this._many['versions']};
 
 
 }
@@ -3391,8 +3391,8 @@ export class PromoCode extends Resource {
 export class QualifyingQuestion extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'qualifying-questions', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'qualifying-questions', attributes, one, many);
   }
 
   // attributes
@@ -3432,8 +3432,8 @@ export class QualifyingQuestion extends Resource {
 export class Restaurant extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'restaurants', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'restaurants', attributes, one, many);
   }
 
   // attributes
@@ -3563,91 +3563,91 @@ export class Restaurant extends Resource {
 
 
   /** @param {Location} billingLocation **/
-  set billingLocation(billingLocation){this._relationships['billing-location'] = billingLocation};
+  set billingLocation(billingLocation){this._one['billing-location'] = billingLocation};
   /** @type {Location} */
-  get billingLocation(){return this._relationships['billing-location']};
+  get billingLocation(){return this._one['billing-location']};
 
   /** @param {Contact} billingContact **/
-  set billingContact(billingContact){this._relationships['billing-contact'] = billingContact};
+  set billingContact(billingContact){this._one['billing-contact'] = billingContact};
   /** @type {Contact} */
-  get billingContact(){return this._relationships['billing-contact']};
+  get billingContact(){return this._one['billing-contact']};
 
   /** @param {User} owner **/
-  set owner(owner){this._relationships['owner'] = owner};
+  set owner(owner){this._one['owner'] = owner};
   /** @type {User} */
-  get owner(){return this._relationships['owner']};
+  get owner(){return this._one['owner']};
 
 
 
   /** @param {Order[]} orders **/
-  set orders(orders){this._relationships['orders'] = orders};
+  set orders(orders){this._many['orders'] = orders};
   /** @type {Order[]} */
-  get orders(){return this._relationships['orders']};
+  get orders(){return this._many['orders']};
 
   /** @param {RestaurantCapacityTranche[]} restaurantCapacityTranches **/
-  set restaurantCapacityTranches(restaurantCapacityTranches){this._relationships['restaurant-capacity-tranches'] = restaurantCapacityTranches};
+  set restaurantCapacityTranches(restaurantCapacityTranches){this._many['restaurant-capacity-tranches'] = restaurantCapacityTranches};
   /** @type {RestaurantCapacityTranche[]} */
-  get restaurantCapacityTranches(){return this._relationships['restaurant-capacity-tranches']};
+  get restaurantCapacityTranches(){return this._many['restaurant-capacity-tranches']};
 
   /** @param {ServiceTime[]} serviceTimes **/
-  set serviceTimes(serviceTimes){this._relationships['service-times'] = serviceTimes};
+  set serviceTimes(serviceTimes){this._many['service-times'] = serviceTimes};
   /** @type {ServiceTime[]} */
-  get serviceTimes(){return this._relationships['service-times']};
+  get serviceTimes(){return this._many['service-times']};
 
   /** @param {PickupLocation[]} pickupLocations **/
-  set pickupLocations(pickupLocations){this._relationships['pickup-locations'] = pickupLocations};
+  set pickupLocations(pickupLocations){this._many['pickup-locations'] = pickupLocations};
   /** @type {PickupLocation[]} */
-  get pickupLocations(){return this._relationships['pickup-locations']};
+  get pickupLocations(){return this._many['pickup-locations']};
 
   /** @param {User[]} admins **/
-  set admins(admins){this._relationships['admins'] = admins};
+  set admins(admins){this._many['admins'] = admins};
   /** @type {User[]} */
-  get admins(){return this._relationships['admins']};
+  get admins(){return this._many['admins']};
 
   /** @param {Contact[]} adminContacts **/
-  set adminContacts(adminContacts){this._relationships['admin-contacts'] = adminContacts};
+  set adminContacts(adminContacts){this._many['admin-contacts'] = adminContacts};
   /** @type {Contact[]} */
-  get adminContacts(){return this._relationships['admin-contacts']};
+  get adminContacts(){return this._many['admin-contacts']};
 
   /** @param {DietaryTag[]} dietaryTags **/
-  set dietaryTags(dietaryTags){this._relationships['dietary-tags'] = dietaryTags};
+  set dietaryTags(dietaryTags){this._many['dietary-tags'] = dietaryTags};
   /** @type {DietaryTag[]} */
-  get dietaryTags(){return this._relationships['dietary-tags']};
+  get dietaryTags(){return this._many['dietary-tags']};
 
   /** @param {Tag[]} tags **/
-  set tags(tags){this._relationships['tags'] = tags};
+  set tags(tags){this._many['tags'] = tags};
   /** @type {Tag[]} */
-  get tags(){return this._relationships['tags']};
+  get tags(){return this._many['tags']};
 
   /** @param {Area[]} areas **/
-  set areas(areas){this._relationships['areas'] = areas};
+  set areas(areas){this._many['areas'] = areas};
   /** @type {Area[]} */
-  get areas(){return this._relationships['areas']};
+  get areas(){return this._many['areas']};
 
   /** @param {Menu[]} menus **/
-  set menus(menus){this._relationships['menus'] = menus};
+  set menus(menus){this._many['menus'] = menus};
   /** @type {Menu[]} */
-  get menus(){return this._relationships['menus']};
+  get menus(){return this._many['menus']};
 
   /** @param {RestaurantVote[]} restaurantVotes **/
-  set restaurantVotes(restaurantVotes){this._relationships['restaurant-votes'] = restaurantVotes};
+  set restaurantVotes(restaurantVotes){this._many['restaurant-votes'] = restaurantVotes};
   /** @type {RestaurantVote[]} */
-  get restaurantVotes(){return this._relationships['restaurant-votes']};
+  get restaurantVotes(){return this._many['restaurant-votes']};
 
   /** @param {RestaurantClosure[]} closures **/
-  set closures(closures){this._relationships['closures'] = closures};
+  set closures(closures){this._many['closures'] = closures};
   /** @type {RestaurantClosure[]} */
-  get closures(){return this._relationships['closures']};
+  get closures(){return this._many['closures']};
 
   /** @param {Version[]} versions **/
-  set versions(versions){this._relationships['versions'] = versions};
+  set versions(versions){this._many['versions'] = versions};
   /** @type {Version[]} */
-  get versions(){return this._relationships['versions']};
+  get versions(){return this._many['versions']};
 
   /** @param {PromoCode[]} promoCodes **/
-  set promoCodes(promoCodes){this._relationships['promo-codes'] = promoCodes};
+  set promoCodes(promoCodes){this._many['promo-codes'] = promoCodes};
   /** @type {PromoCode[]} */
-  get promoCodes(){return this._relationships['promo-codes']};
+  get promoCodes(){return this._many['promo-codes']};
 
 
 }
@@ -3658,8 +3658,8 @@ export class Restaurant extends Resource {
 export class RestaurantCapacityTranche extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'restaurant-capacity-tranches', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'restaurant-capacity-tranches', attributes, one, many);
   }
 
   // attributes
@@ -3684,9 +3684,9 @@ export class RestaurantCapacityTranche extends Resource {
 
 
   /** @param {Restaurant} restaurant **/
-  set restaurant(restaurant){this._relationships['restaurant'] = restaurant};
+  set restaurant(restaurant){this._one['restaurant'] = restaurant};
   /** @type {Restaurant} */
-  get restaurant(){return this._relationships['restaurant']};
+  get restaurant(){return this._one['restaurant']};
 
 
 
@@ -3699,8 +3699,8 @@ export class RestaurantCapacityTranche extends Resource {
 export class RestaurantClosure extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'restaurant-closures', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'restaurant-closures', attributes, one, many);
   }
 
   // attributes
@@ -3725,9 +3725,9 @@ export class RestaurantClosure extends Resource {
 
 
   /** @param {Restaurant} restaurant **/
-  set restaurant(restaurant){this._relationships['restaurant'] = restaurant};
+  set restaurant(restaurant){this._one['restaurant'] = restaurant};
   /** @type {Restaurant} */
-  get restaurant(){return this._relationships['restaurant']};
+  get restaurant(){return this._one['restaurant']};
 
 
 
@@ -3740,8 +3740,8 @@ export class RestaurantClosure extends Resource {
 export class RestaurantDiscount extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'restaurant-discounts', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'restaurant-discounts', attributes, one, many);
   }
 
   // attributes
@@ -3776,9 +3776,9 @@ export class RestaurantDiscount extends Resource {
 
 
   /** @param {Order} order **/
-  set order(order){this._relationships['order'] = order};
+  set order(order){this._one['order'] = order};
   /** @type {Order} */
-  get order(){return this._relationships['order']};
+  get order(){return this._one['order']};
 
 
 
@@ -3791,8 +3791,8 @@ export class RestaurantDiscount extends Resource {
 export class RestaurantOrderInvoice extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'restaurant-order-invoices', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'restaurant-order-invoices', attributes, one, many);
   }
 
   // attributes
@@ -3817,8 +3817,8 @@ export class RestaurantOrderInvoice extends Resource {
 export class RestaurantVote extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'restaurant-votes', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'restaurant-votes', attributes, one, many);
   }
 
   // attributes
@@ -3833,14 +3833,14 @@ export class RestaurantVote extends Resource {
 
 
   /** @param {Order} order **/
-  set order(order){this._relationships['order'] = order};
+  set order(order){this._one['order'] = order};
   /** @type {Order} */
-  get order(){return this._relationships['order']};
+  get order(){return this._one['order']};
 
   /** @param {Restaurant} restaurant **/
-  set restaurant(restaurant){this._relationships['restaurant'] = restaurant};
+  set restaurant(restaurant){this._one['restaurant'] = restaurant};
   /** @type {Restaurant} */
-  get restaurant(){return this._relationships['restaurant']};
+  get restaurant(){return this._one['restaurant']};
 
 
 
@@ -3853,8 +3853,8 @@ export class RestaurantVote extends Resource {
 export class Role extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'roles', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'roles', attributes, one, many);
   }
 
   // attributes
@@ -3869,9 +3869,9 @@ export class Role extends Resource {
 
 
   /** @param {User} user **/
-  set user(user){this._relationships['user'] = user};
+  set user(user){this._one['user'] = user};
   /** @type {User} */
-  get user(){return this._relationships['user']};
+  get user(){return this._one['user']};
 
 
 
@@ -3884,8 +3884,8 @@ export class Role extends Resource {
 export class SalesforceSyncError extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'salesforce-sync-errors', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'salesforce-sync-errors', attributes, one, many);
   }
 
   // attributes
@@ -3935,8 +3935,8 @@ export class SalesforceSyncError extends Resource {
 export class ServiceTime extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'service-times', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'service-times', attributes, one, many);
   }
 
   // attributes
@@ -3981,9 +3981,9 @@ export class ServiceTime extends Resource {
 
 
   /** @param {Restaurant} restaurant **/
-  set restaurant(restaurant){this._relationships['restaurant'] = restaurant};
+  set restaurant(restaurant){this._one['restaurant'] = restaurant};
   /** @type {Restaurant} */
-  get restaurant(){return this._relationships['restaurant']};
+  get restaurant(){return this._one['restaurant']};
 
 
 
@@ -3996,8 +3996,8 @@ export class ServiceTime extends Resource {
 export class Tag extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'tags', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'tags', attributes, one, many);
   }
 
   // attributes
@@ -4032,8 +4032,8 @@ export class Tag extends Resource {
 export class Team extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'teams', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'teams', attributes, one, many);
   }
 
   // attributes
@@ -4073,16 +4073,16 @@ export class Team extends Resource {
 
 
   /** @param {Client} client **/
-  set client(client){this._relationships['client'] = client};
+  set client(client){this._one['client'] = client};
   /** @type {Client} */
-  get client(){return this._relationships['client']};
+  get client(){return this._one['client']};
 
 
 
   /** @param {User[]} users **/
-  set users(users){this._relationships['users'] = users};
+  set users(users){this._many['users'] = users};
   /** @type {User[]} */
-  get users(){return this._relationships['users']};
+  get users(){return this._many['users']};
 
 
 }
@@ -4093,8 +4093,8 @@ export class Team extends Resource {
 export class User extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'users', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'users', attributes, one, many);
   }
 
   // attributes
@@ -4264,61 +4264,61 @@ export class User extends Resource {
 
 
   /** @param {CommunicationPreference} communicationPreference **/
-  set communicationPreference(communicationPreference){this._relationships['communication-preference'] = communicationPreference};
+  set communicationPreference(communicationPreference){this._one['communication-preference'] = communicationPreference};
   /** @type {CommunicationPreference} */
-  get communicationPreference(){return this._relationships['communication-preference']};
+  get communicationPreference(){return this._one['communication-preference']};
 
 
 
   /** @param {DriverPing[]} driverPings **/
-  set driverPings(driverPings){this._relationships['driver-pings'] = driverPings};
+  set driverPings(driverPings){this._many['driver-pings'] = driverPings};
   /** @type {DriverPing[]} */
-  get driverPings(){return this._relationships['driver-pings']};
+  get driverPings(){return this._many['driver-pings']};
 
   /** @param {DriverWeek[]} driverWeeks **/
-  set driverWeeks(driverWeeks){this._relationships['driver-weeks'] = driverWeeks};
+  set driverWeeks(driverWeeks){this._many['driver-weeks'] = driverWeeks};
   /** @type {DriverWeek[]} */
-  get driverWeeks(){return this._relationships['driver-weeks']};
+  get driverWeeks(){return this._many['driver-weeks']};
 
   /** @param {DriverDay[]} driverDays **/
-  set driverDays(driverDays){this._relationships['driver-days'] = driverDays};
+  set driverDays(driverDays){this._many['driver-days'] = driverDays};
   /** @type {DriverDay[]} */
-  get driverDays(){return this._relationships['driver-days']};
+  get driverDays(){return this._many['driver-days']};
 
   /** @param {Order[]} deliveredOrders **/
-  set deliveredOrders(deliveredOrders){this._relationships['delivered-orders'] = deliveredOrders};
+  set deliveredOrders(deliveredOrders){this._many['delivered-orders'] = deliveredOrders};
   /** @type {Order[]} */
-  get deliveredOrders(){return this._relationships['delivered-orders']};
+  get deliveredOrders(){return this._many['delivered-orders']};
 
   /** @param {Courier[]} couriers **/
-  set couriers(couriers){this._relationships['couriers'] = couriers};
+  set couriers(couriers){this._many['couriers'] = couriers};
   /** @type {Courier[]} */
-  get couriers(){return this._relationships['couriers']};
+  get couriers(){return this._many['couriers']};
 
   /** @param {Client[]} clients **/
-  set clients(clients){this._relationships['clients'] = clients};
+  set clients(clients){this._many['clients'] = clients};
   /** @type {Client[]} */
-  get clients(){return this._relationships['clients']};
+  get clients(){return this._many['clients']};
 
   /** @param {Role[]} roles **/
-  set roles(roles){this._relationships['roles'] = roles};
+  set roles(roles){this._many['roles'] = roles};
   /** @type {Role[]} */
-  get roles(){return this._relationships['roles']};
+  get roles(){return this._many['roles']};
 
   /** @param {PaymentCard[]} paymentCards **/
-  set paymentCards(paymentCards){this._relationships['payment-cards'] = paymentCards};
+  set paymentCards(paymentCards){this._many['payment-cards'] = paymentCards};
   /** @type {PaymentCard[]} */
-  get paymentCards(){return this._relationships['payment-cards']};
+  get paymentCards(){return this._many['payment-cards']};
 
   /** @param {Team[]} teams **/
-  set teams(teams){this._relationships['teams'] = teams};
+  set teams(teams){this._many['teams'] = teams};
   /** @type {Team[]} */
-  get teams(){return this._relationships['teams']};
+  get teams(){return this._many['teams']};
 
   /** @param {Version[]} versions **/
-  set versions(versions){this._relationships['versions'] = versions};
+  set versions(versions){this._many['versions'] = versions};
   /** @type {Version[]} */
-  get versions(){return this._relationships['versions']};
+  get versions(){return this._many['versions']};
 
 
 }
@@ -4329,8 +4329,8 @@ export class User extends Resource {
 export class UserFeedback extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'user-feedbacks', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'user-feedbacks', attributes, one, many);
   }
 
   // attributes
@@ -4395,8 +4395,8 @@ export class UserFeedback extends Resource {
 export class UserInvite extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'user-invites', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'user-invites', attributes, one, many);
   }
 
   // attributes
@@ -4431,29 +4431,29 @@ export class UserInvite extends Resource {
 
 
   /** @param {Client} client **/
-  set client(client){this._relationships['client'] = client};
+  set client(client){this._one['client'] = client};
   /** @type {Client} */
-  get client(){return this._relationships['client']};
+  get client(){return this._one['client']};
 
   /** @param {Restaurant} restaurant **/
-  set restaurant(restaurant){this._relationships['restaurant'] = restaurant};
+  set restaurant(restaurant){this._one['restaurant'] = restaurant};
   /** @type {Restaurant} */
-  get restaurant(){return this._relationships['restaurant']};
+  get restaurant(){return this._one['restaurant']};
 
   /** @param {Team} team **/
-  set team(team){this._relationships['team'] = team};
+  set team(team){this._one['team'] = team};
   /** @type {Team} */
-  get team(){return this._relationships['team']};
+  get team(){return this._one['team']};
 
   /** @param {Courier} courier **/
-  set courier(courier){this._relationships['courier'] = courier};
+  set courier(courier){this._one['courier'] = courier};
   /** @type {Courier} */
-  get courier(){return this._relationships['courier']};
+  get courier(){return this._one['courier']};
 
   /** @param {User} user **/
-  set user(user){this._relationships['user'] = user};
+  set user(user){this._one['user'] = user};
   /** @type {User} */
-  get user(){return this._relationships['user']};
+  get user(){return this._one['user']};
 
 
 
@@ -4466,8 +4466,8 @@ export class UserInvite extends Resource {
 export class Version extends Resource {
 
 
-  constructor(id = null, attributes = {}, relationships = {}) {
-    super(id, 'versions', attributes, relationships);
+  constructor(id = null, attributes = {}, one = {}, many= {}) {
+    super(id, 'versions', attributes, one, many);
   }
 
   // attributes

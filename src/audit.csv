@@ -1,0 +1,653 @@
+Resource / Relationship, public, client, foodee
+
+
+  AppConfiguration
+  get_related_resource
+  
+
+  get_related_resources
+      Version
+  
+
+
+  Area
+  get_related_resource
+      InvoicingTaxRate
+  
+
+  get_related_resources
+      Courier
+      Client
+      Restaurant
+      InvoicingTaxRate
+      InvoicingTaxRate
+      AreaClosure
+      AreaClosure
+      PromoCode
+      Version
+  
+
+
+  AreaClosure
+  get_related_resource
+      Area
+  
+
+  get_related_resources
+  
+
+
+  Client
+  get_related_resource
+      Area
+      Location
+      Contact
+      User
+      User
+      User
+      Company
+      MealPlan
+      InvoicingTaxRate
+      GiftbitCard
+  
+
+  get_related_resources
+      Area
+      DeliveryLocation
+      PaymentCard
+      Contact
+      User
+      Contact
+      Order
+      Team
+      Version
+      GiftbitGift
+      GiftbitError
+  
+
+
+  ClientDiscount
+  get_related_resource
+      Order
+  
+
+  get_related_resources
+  
+
+
+  ClientOrderInvoice
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  ClientSignup
+  get_related_resource
+      User
+      QualifyingQuestion
+      Location
+      Location
+      Contact
+      Contact
+  
+
+  get_related_resources
+      Client
+      Area
+  
+
+
+  CommunicationPreference
+  get_related_resource
+      User
+  
+
+  get_related_resources
+  
+
+
+  Company
+  get_related_resource
+  
+
+  get_related_resources
+      Client
+  
+
+
+  Contact
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  Courier
+  get_related_resource
+      User
+  
+
+  get_related_resources
+      User
+      Area
+      Version
+  
+
+
+  DeliveryCase
+  get_related_resource
+      User
+      Order
+  
+
+  get_related_resources
+  
+
+
+  DeliveryLocation
+  get_related_resource
+      Client
+      Location
+  
+
+  get_related_resources
+  
+
+
+  DeskCase
+  get_related_resource
+      User
+      Order
+  
+
+  get_related_resources
+  
+
+
+  DietaryTag
+  get_related_resource
+  
+
+  get_related_resources
+      MenuOptionItem
+  
+
+
+  DiscountCode
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  DriverDay
+  get_related_resource
+      User
+  
+
+  get_related_resources
+  
+
+
+  DriverPayment
+  get_related_resource
+      DriverPayrollRun
+  
+
+  get_related_resources
+  
+
+
+  DriverPayrollRun
+  get_related_resource
+      Driver
+      PayrollRun
+  
+
+  get_related_resources
+  
+
+
+  DriverPing
+  get_related_resource
+      User
+  
+
+  get_related_resources
+  
+
+
+  DriverResource
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  DriverWeek
+  get_related_resource
+      User
+  
+
+  get_related_resources
+  
+
+
+  EmailMessage
+  get_related_resource
+      Order
+  
+
+  get_related_resources
+  
+
+
+  Event
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  GiftbitCard
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  GiftbitError
+  get_related_resource
+      Order
+  
+
+  get_related_resources
+  
+
+
+  GiftbitGift
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  GroupOrderMember
+  get_related_resource
+      User
+      Order
+  
+
+  get_related_resources
+      OrderItem
+  
+
+
+  Invoice
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  InvoicingTaxRate
+  get_related_resource
+      Area
+  
+
+  get_related_resources
+  
+
+
+  Location
+  get_related_resource
+      Area
+  
+
+  get_related_resources
+  
+
+
+  MealPlan
+  get_related_resource
+      User
+      Client
+  
+
+  get_related_resources
+      Order
+  
+
+
+  Menu
+  get_related_resource
+      Area
+      Restaurant
+  
+
+  get_related_resources
+      MenuGroup
+      MenuItem
+      DietaryTag
+      Order
+  
+
+
+  MenuGroup
+  get_related_resource
+      Menu
+  
+
+  get_related_resources
+      MenuItem
+  
+
+
+  MenuItem
+  get_related_resource
+      InvoicingTaxRate
+      MenuGroup
+  
+
+  get_related_resources
+      DietaryTag
+      MenuOptionGroup
+  
+
+
+  MenuOptionGroup
+  get_related_resource
+      MenuItem
+  
+
+  get_related_resources
+      MenuOptionItem
+  
+
+
+  MenuOptionItem
+  get_related_resource
+      MenuOptionGroup
+  
+
+  get_related_resources
+      DietaryTag
+      OrderItem
+  
+
+
+  Order
+  get_related_resource
+      Area
+      User
+      User
+      PaymentCard
+      Contact
+      Client
+      Restaurant
+      Courier
+      PromoCode
+      User
+      User
+      Location
+      Location
+      ClientDiscount
+      RestaurantDiscount
+      Menu
+      Location
+      GiftbitError
+      ClientOrderInvoice
+      RestaurantOrderInvoice
+  
+
+  get_related_resources
+      EmailMessage
+      DeliveryCase
+      DeskCase
+      Version
+      Restaurant
+      RestaurantVote
+      GroupOrderMember
+      OrderItem
+  
+
+
+  OrderItem
+  get_related_resource
+      Order
+      MenuItem
+      GroupOrderMember
+  
+
+  get_related_resources
+      MenuOptionItem
+  
+
+
+  PaymentAccount
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  PaymentCard
+  get_related_resource
+      Client
+      User
+  
+
+  get_related_resources
+  
+
+
+  PayrollRun
+  get_related_resource
+  
+
+  get_related_resources
+      DriverPayrollRun
+  
+
+
+  PickupLocation
+  get_related_resource
+      Restaurant
+      Location
+  
+
+  get_related_resources
+  
+
+
+  PromoCode
+  get_related_resource
+      Area
+      Restaurant
+  
+
+  get_related_resources
+      Order
+      Version
+  
+
+
+  QualifyingQuestion
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  Restaurant
+  get_related_resource
+      Location
+      Contact
+      User
+  
+
+  get_related_resources
+      Order
+      RestaurantCapacityTranche
+      ServiceTime
+      PickupLocation
+      User
+      Contact
+      DietaryTag
+      Tag
+      Area
+      Menu
+      RestaurantVote
+      RestaurantClosure
+      Version
+      PromoCode
+  
+
+
+  RestaurantCapacityTranche
+  get_related_resource
+      Restaurant
+  
+
+  get_related_resources
+  
+
+
+  RestaurantClosure
+  get_related_resource
+      Restaurant
+  
+
+  get_related_resources
+  
+
+
+  RestaurantDiscount
+  get_related_resource
+      Order
+  
+
+  get_related_resources
+  
+
+
+  RestaurantOrderInvoice
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  RestaurantVote
+  get_related_resource
+      Order
+      Restaurant
+  
+
+  get_related_resources
+  
+
+
+  Role
+  get_related_resource
+      User
+  
+
+  get_related_resources
+  
+
+
+  SalesforceSyncError
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  ServiceTime
+  get_related_resource
+      Restaurant
+  
+
+  get_related_resources
+  
+
+
+  Tag
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  Team
+  get_related_resource
+      Client
+  
+
+  get_related_resources
+      User
+  
+
+
+  User
+  get_related_resource
+      CommunicationPreference
+  
+
+  get_related_resources
+      DriverPing
+      DriverWeek
+      DriverDay
+      Order
+      Courier
+      Client
+      Role
+      PaymentCard
+      Team
+      Version
+  
+
+
+  UserFeedback
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  UserInvite
+  get_related_resource
+      Client
+      Restaurant
+      Team
+      Courier
+      User
+  
+
+  get_related_resources
+  
+
+
+  Version
+  get_related_resource
+  
+
+  get_related_resources
+  
+
