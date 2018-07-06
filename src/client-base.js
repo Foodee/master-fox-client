@@ -8,7 +8,11 @@ export function extractJRObject(data, included) {
   const type = data.type;
   const attributes = data.attributes;
 
-  const resourceKlass = ResourceClasses[type] || Resource;
+  const resourceKlass = ResourceClasses[type];
+
+  if (!resourceKlass) {
+    throw 'Could not find a resource for type ' + type + ', perhaps the client needs to be regenerated.'
+  }
 
   const relationships = Object.entries(data.relationships || {})
     .reduce((acc, [key, value]) => {
@@ -16,35 +20,26 @@ export function extractJRObject(data, included) {
       const relationshipData = value.data;
 
       if (relationshipData) {
-
-        let related;
-
         // included relationships are either to one or to many
         if (Array.isArray(relationshipData)) {
-          related = relationshipData
+          acc.many[key] = relationshipData
             .map((nestedRelationshipData) =>
               extractJRObject(findRelationship(included, nestedRelationshipData), included)
             );
         }
         else {
-          related = extractJRObject(findRelationship(included, relationshipData), included);
+          acc.one[key] = extractJRObject(findRelationship(included, relationshipData), included);
         }
 
-        acc[key] = related;
       }
 
       return acc;
-    }, {});
+    }, {
+      one: {},
+      many: {}
+    });
 
-  // look this up in the class registry
-  const ret = new resourceKlass();
-
-  ret.id = id;
-  ret.type = type;
-  ret.attributes = attributes;
-  ret.relationships = relationships;
-
-  return ret;
+  return new resourceKlass(id, attributes, relationships.one, relationships.many);
 }
 
 function findRelationship(included, {type, id}) {
@@ -96,11 +91,12 @@ export class ResourceDao {
    * Create a new resource
    *
    * @param {T} resource
-   * @param {{include: string}} options
+   * @param {String[] | String} relationships to include
    * @return Promise<T>
    */
-  create(resource, options = {}) {
-    return this._client.post(this._route, resource.toJR(), options.include);
+  create(resource, options = {include: []}) {
+    const include = Array.isArray(options.include) ? options.include : (options.include || '').split(',');
+    return this._client.post(this._route, resource.toJSONAPI(include), options.include);
   }
 
   /**
@@ -110,13 +106,55 @@ export class ResourceDao {
    * @param {{include: string}} options
    * @return Promise<T>
    */
-  update(resource, options = {}) {
+  update(resource, options = {include: []}) {
 
     if (!resource.id) {
       throw new Error('You cannot update a resource without an id')
     }
 
-    return this._client.patch(`${this._route}/${resource.id}`, resource.toJR(), options.include);
+    const include = Array.isArray(options.include) ? options.include : (options.include || '').split(',');
+
+    return this._client.patch(`${this._route}/${resource.id}`, resource.toJSONAPI(include), options.include);
+  }
+
+
+  /**
+   * Deletes the provided resource
+   *
+   * @param {T} resource
+   * @param {{include: string}} options
+   * @return Promise<T>
+   */
+  destroy(resource) {
+
+    if (!resource.id) {
+      throw new Error('You cannot destroy a resource without an id')
+    }
+
+    return this._client.delete(`${this._route}/${resource.id}`);
+  }
+
+  action(actionRoute, body = null) {
+    return this._client.customPost(`${this._route}/${actionRoute}`, body);
+  }
+
+  /**
+   * Loads a JR resource object form the class registry
+   *
+   * TODO: add support for relationships
+   * @param {Object} request
+   * @return {Resource}
+   */
+  static fromJSONAPI(request) {
+    const data = request.data;
+    const {type, id, attributes} = data;
+    const klass = ResourceClasses[type];
+
+    return new klass(id, attributes, {});
+  }
+
+  static fromJSON(data) {
+    //  TODO
   }
 
 }
@@ -144,6 +182,10 @@ export class RelationshipDao {
 
   toMany(childRoute, options = {}) {
     return this._client.index(`${this._parentRoute}/${this._id}/${childRoute}`, options.include, options.filter, options.sort, options.page);
+  }
+
+  action(actionRoute, body = null) {
+    return this._client.customPost(`${this._parentRoute}/${this._id}/${actionRoute}`, body);
   }
 
 }
@@ -311,7 +353,7 @@ export class JRClient {
     let qs = [];
 
     // Append Filters
-    if (include) {
+    if (include && include.length > 0) {
       if (Array.isArray(include)) {
         include = include.join(',');
       }
@@ -339,8 +381,13 @@ export class JRClient {
 
     console.log(`${method}: ${url}`);
 
+    return this._doFetch(url, method, this.headers, body);
+  }
+
+
+  _doFetch(url, method, headers, body) {
     return fetch(url, {
-      headers: this.headers,
+      headers: headers,
       method: method,
       body: body ? JSON.stringify(body) : body
     })
@@ -361,9 +408,8 @@ export class JRClient {
 
             return body;
           })
-      })
+      });
   }
-
 
   index(uri, include, filter, sort, page) {
     return this.fetchJR(uri, {
@@ -389,6 +435,12 @@ export class JRClient {
         include: include
       })
       .then(({data, included}) => extractJRObject(data, included));
+  }
+
+  customPost(uri, body) {
+    // TODO: add supoport for query string
+    const url = `${this.baseUrl}api/v3/${uri}`;
+    return this._doFetch(url, 'POST', this.headers, body)
   }
 
   patch(uri, record, include) {

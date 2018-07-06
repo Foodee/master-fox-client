@@ -7,7 +7,7 @@ import { ResourceDao, RelationshipDao } from '../client-base';
 export class AppConfigurationDao extends ResourceDao {
   constructor(client) {
     super(client, 'app-configurations');
-    this.relationshipDao = new AppConfigurationRelationshipDao(client, 'app-configurations')
+    this.relationshipDao = new AppConfigurationRelationshipDao(client);
   }
 }
 
@@ -22,7 +22,7 @@ export class AppConfigurationRelationshipDao extends RelationshipDao {
     
       /** @method versions
        @params {Object} options
-       @returns {Promise<IndexResult<AppConfiguration>>} **/
+       @returns {Promise<IndexResult<Version>>} **/
       versions: (options) => this.toMany('versions', options),
       };
       }
@@ -35,7 +35,7 @@ export class AppConfigurationRelationshipDao extends RelationshipDao {
 export class AreaDao extends ResourceDao {
   constructor(client) {
     super(client, 'areas');
-    this.relationshipDao = new AreaRelationshipDao(client, 'areas')
+    this.relationshipDao = new AreaRelationshipDao(client);
   }
 }
 
@@ -49,7 +49,7 @@ export class AreaRelationshipDao extends RelationshipDao {
     
       /** @method deliveryFeeTaxRate
        @params {Object} options
-       @returns {Promise<Area>} **/
+       @returns {Promise<InvoicingTaxRate>} **/
       deliveryFeeTaxRate: (options) => this.toOne('delivery-fee-tax-rate', options),
       };
     
@@ -58,47 +58,47 @@ export class AreaRelationshipDao extends RelationshipDao {
     
       /** @method couriers
        @params {Object} options
-       @returns {Promise<IndexResult<Area>>} **/
+       @returns {Promise<IndexResult<Courier>>} **/
       couriers: (options) => this.toMany('couriers', options),
     
       /** @method clients
        @params {Object} options
-       @returns {Promise<IndexResult<Area>>} **/
+       @returns {Promise<IndexResult<Client>>} **/
       clients: (options) => this.toMany('clients', options),
     
       /** @method restaurants
        @params {Object} options
-       @returns {Promise<IndexResult<Area>>} **/
+       @returns {Promise<IndexResult<Restaurant>>} **/
       restaurants: (options) => this.toMany('restaurants', options),
     
       /** @method invoicingTaxRates
        @params {Object} options
-       @returns {Promise<IndexResult<Area>>} **/
+       @returns {Promise<IndexResult<InvoicingTaxRate>>} **/
       invoicingTaxRates: (options) => this.toMany('invoicing-tax-rates', options),
     
       /** @method globalInvoicingTaxRates
        @params {Object} options
-       @returns {Promise<IndexResult<Area>>} **/
+       @returns {Promise<IndexResult<InvoicingTaxRate>>} **/
       globalInvoicingTaxRates: (options) => this.toMany('global-invoicing-tax-rates', options),
     
       /** @method areaClosures
        @params {Object} options
-       @returns {Promise<IndexResult<Area>>} **/
+       @returns {Promise<IndexResult<AreaClosure>>} **/
       areaClosures: (options) => this.toMany('area-closures', options),
     
       /** @method currentAreaClosures
        @params {Object} options
-       @returns {Promise<IndexResult<Area>>} **/
+       @returns {Promise<IndexResult<AreaClosure>>} **/
       currentAreaClosures: (options) => this.toMany('current-area-closures', options),
     
       /** @method promoCodes
        @params {Object} options
-       @returns {Promise<IndexResult<Area>>} **/
+       @returns {Promise<IndexResult<PromoCode>>} **/
       promoCodes: (options) => this.toMany('promo-codes', options),
     
       /** @method versions
        @params {Object} options
-       @returns {Promise<IndexResult<Area>>} **/
+       @returns {Promise<IndexResult<Version>>} **/
       versions: (options) => this.toMany('versions', options),
       };
       }
@@ -111,7 +111,7 @@ export class AreaRelationshipDao extends RelationshipDao {
 export class AreaClosureDao extends ResourceDao {
   constructor(client) {
     super(client, 'area-closures');
-    this.relationshipDao = new AreaClosureRelationshipDao(client, 'area-closures')
+    this.relationshipDao = new AreaClosureRelationshipDao(client);
   }
 }
 
@@ -125,7 +125,7 @@ export class AreaClosureRelationshipDao extends RelationshipDao {
     
       /** @method area
        @params {Object} options
-       @returns {Promise<AreaClosure>} **/
+       @returns {Promise<Area>} **/
       area: (options) => this.toOne('area', options),
       };
     
@@ -139,7 +139,7 @@ export class AreaClosureRelationshipDao extends RelationshipDao {
 export class ClientDao extends ResourceDao {
   constructor(client) {
     super(client, 'clients');
-    this.relationshipDao = new ClientRelationshipDao(client, 'clients')
+    this.relationshipDao = new ClientRelationshipDao(client);
   }
 }
 
@@ -153,52 +153,52 @@ export class ClientRelationshipDao extends RelationshipDao {
     
       /** @method defaultArea
        @params {Object} options
-       @returns {Promise<Client>} **/
+       @returns {Promise<Area>} **/
       defaultArea: (options) => this.toOne('default-area', options),
     
       /** @method billingLocation
        @params {Object} options
-       @returns {Promise<Client>} **/
+       @returns {Promise<Location>} **/
       billingLocation: (options) => this.toOne('billing-location', options),
     
       /** @method billingContact
        @params {Object} options
-       @returns {Promise<Client>} **/
+       @returns {Promise<Contact>} **/
       billingContact: (options) => this.toOne('billing-contact', options),
     
       /** @method accountManager
        @params {Object} options
-       @returns {Promise<Client>} **/
+       @returns {Promise<User>} **/
       accountManager: (options) => this.toOne('account-manager', options),
     
       /** @method owner
        @params {Object} options
-       @returns {Promise<Client>} **/
+       @returns {Promise<User>} **/
       owner: (options) => this.toOne('owner', options),
     
       /** @method salesSupport
        @params {Object} options
-       @returns {Promise<Client>} **/
+       @returns {Promise<User>} **/
       salesSupport: (options) => this.toOne('sales-support', options),
     
       /** @method company
        @params {Object} options
-       @returns {Promise<Client>} **/
+       @returns {Promise<Company>} **/
       company: (options) => this.toOne('company', options),
     
       /** @method mealPlan
        @params {Object} options
-       @returns {Promise<Client>} **/
+       @returns {Promise<MealPlan>} **/
       mealPlan: (options) => this.toOne('meal-plan', options),
     
       /** @method taxRate
        @params {Object} options
-       @returns {Promise<Client>} **/
+       @returns {Promise<InvoicingTaxRate>} **/
       taxRate: (options) => this.toOne('tax-rate', options),
     
       /** @method giftbitCard
        @params {Object} options
-       @returns {Promise<Client>} **/
+       @returns {Promise<GiftbitCard>} **/
       giftbitCard: (options) => this.toOne('giftbit-card', options),
       };
     
@@ -207,57 +207,57 @@ export class ClientRelationshipDao extends RelationshipDao {
     
       /** @method areas
        @params {Object} options
-       @returns {Promise<IndexResult<Client>>} **/
+       @returns {Promise<IndexResult<Area>>} **/
       areas: (options) => this.toMany('areas', options),
     
       /** @method deliveryLocations
        @params {Object} options
-       @returns {Promise<IndexResult<Client>>} **/
+       @returns {Promise<IndexResult<DeliveryLocation>>} **/
       deliveryLocations: (options) => this.toMany('delivery-locations', options),
     
       /** @method paymentCards
        @params {Object} options
-       @returns {Promise<IndexResult<Client>>} **/
+       @returns {Promise<IndexResult<PaymentCard>>} **/
       paymentCards: (options) => this.toMany('payment-cards', options),
     
       /** @method adminContacts
        @params {Object} options
-       @returns {Promise<IndexResult<Client>>} **/
+       @returns {Promise<IndexResult<Contact>>} **/
       adminContacts: (options) => this.toMany('admin-contacts', options),
     
       /** @method admins
        @params {Object} options
-       @returns {Promise<IndexResult<Client>>} **/
+       @returns {Promise<IndexResult<User>>} **/
       admins: (options) => this.toMany('admins', options),
     
       /** @method orderContacts
        @params {Object} options
-       @returns {Promise<IndexResult<Client>>} **/
+       @returns {Promise<IndexResult<Contact>>} **/
       orderContacts: (options) => this.toMany('order-contacts', options),
     
       /** @method orders
        @params {Object} options
-       @returns {Promise<IndexResult<Client>>} **/
+       @returns {Promise<IndexResult<Order>>} **/
       orders: (options) => this.toMany('orders', options),
     
       /** @method teams
        @params {Object} options
-       @returns {Promise<IndexResult<Client>>} **/
+       @returns {Promise<IndexResult<Team>>} **/
       teams: (options) => this.toMany('teams', options),
     
       /** @method versions
        @params {Object} options
-       @returns {Promise<IndexResult<Client>>} **/
+       @returns {Promise<IndexResult<Version>>} **/
       versions: (options) => this.toMany('versions', options),
     
       /** @method giftbitGifts
        @params {Object} options
-       @returns {Promise<IndexResult<Client>>} **/
+       @returns {Promise<IndexResult<GiftbitGift>>} **/
       giftbitGifts: (options) => this.toMany('giftbit-gifts', options),
     
       /** @method giftbitErrors
        @params {Object} options
-       @returns {Promise<IndexResult<Client>>} **/
+       @returns {Promise<IndexResult<GiftbitError>>} **/
       giftbitErrors: (options) => this.toMany('giftbit-errors', options),
       };
       }
@@ -270,7 +270,7 @@ export class ClientRelationshipDao extends RelationshipDao {
 export class ClientDiscountDao extends ResourceDao {
   constructor(client) {
     super(client, 'client-discounts');
-    this.relationshipDao = new ClientDiscountRelationshipDao(client, 'client-discounts')
+    this.relationshipDao = new ClientDiscountRelationshipDao(client);
   }
 }
 
@@ -284,7 +284,7 @@ export class ClientDiscountRelationshipDao extends RelationshipDao {
     
       /** @method order
        @params {Object} options
-       @returns {Promise<ClientDiscount>} **/
+       @returns {Promise<Order>} **/
       order: (options) => this.toOne('order', options),
       };
     
@@ -298,7 +298,7 @@ export class ClientDiscountRelationshipDao extends RelationshipDao {
 export class ClientOrderInvoiceDao extends ResourceDao {
   constructor(client) {
     super(client, 'client-order-invoices');
-    this.relationshipDao = new ClientOrderInvoiceRelationshipDao(client, 'client-order-invoices')
+    this.relationshipDao = new ClientOrderInvoiceRelationshipDao(client);
   }
 }
 
@@ -318,7 +318,7 @@ export class ClientOrderInvoiceRelationshipDao extends RelationshipDao {
 export class ClientSignupDao extends ResourceDao {
   constructor(client) {
     super(client, 'client-signups');
-    this.relationshipDao = new ClientSignupRelationshipDao(client, 'client-signups')
+    this.relationshipDao = new ClientSignupRelationshipDao(client);
   }
 }
 
@@ -332,32 +332,32 @@ export class ClientSignupRelationshipDao extends RelationshipDao {
     
       /** @method user
        @params {Object} options
-       @returns {Promise<ClientSignup>} **/
+       @returns {Promise<User>} **/
       user: (options) => this.toOne('user', options),
     
       /** @method qualifyingQuestion
        @params {Object} options
-       @returns {Promise<ClientSignup>} **/
+       @returns {Promise<QualifyingQuestion>} **/
       qualifyingQuestion: (options) => this.toOne('qualifying-question', options),
     
       /** @method billingLocation
        @params {Object} options
-       @returns {Promise<ClientSignup>} **/
+       @returns {Promise<Location>} **/
       billingLocation: (options) => this.toOne('billing-location', options),
     
       /** @method deliveryLocation
        @params {Object} options
-       @returns {Promise<ClientSignup>} **/
+       @returns {Promise<Location>} **/
       deliveryLocation: (options) => this.toOne('delivery-location', options),
     
       /** @method billingContact
        @params {Object} options
-       @returns {Promise<ClientSignup>} **/
+       @returns {Promise<Contact>} **/
       billingContact: (options) => this.toOne('billing-contact', options),
     
       /** @method contact
        @params {Object} options
-       @returns {Promise<ClientSignup>} **/
+       @returns {Promise<Contact>} **/
       contact: (options) => this.toOne('contact', options),
       };
     
@@ -366,12 +366,12 @@ export class ClientSignupRelationshipDao extends RelationshipDao {
     
       /** @method clients
        @params {Object} options
-       @returns {Promise<IndexResult<ClientSignup>>} **/
+       @returns {Promise<IndexResult<Client>>} **/
       clients: (options) => this.toMany('clients', options),
     
       /** @method areas
        @params {Object} options
-       @returns {Promise<IndexResult<ClientSignup>>} **/
+       @returns {Promise<IndexResult<Area>>} **/
       areas: (options) => this.toMany('areas', options),
       };
       }
@@ -384,7 +384,7 @@ export class ClientSignupRelationshipDao extends RelationshipDao {
 export class CommunicationPreferenceDao extends ResourceDao {
   constructor(client) {
     super(client, 'communication-preferences');
-    this.relationshipDao = new CommunicationPreferenceRelationshipDao(client, 'communication-preferences')
+    this.relationshipDao = new CommunicationPreferenceRelationshipDao(client);
   }
 }
 
@@ -398,7 +398,7 @@ export class CommunicationPreferenceRelationshipDao extends RelationshipDao {
     
       /** @method user
        @params {Object} options
-       @returns {Promise<CommunicationPreference>} **/
+       @returns {Promise<User>} **/
       user: (options) => this.toOne('user', options),
       };
     
@@ -412,7 +412,7 @@ export class CommunicationPreferenceRelationshipDao extends RelationshipDao {
 export class CompanyDao extends ResourceDao {
   constructor(client) {
     super(client, 'companies');
-    this.relationshipDao = new CompanyRelationshipDao(client, 'companies')
+    this.relationshipDao = new CompanyRelationshipDao(client);
   }
 }
 
@@ -427,7 +427,7 @@ export class CompanyRelationshipDao extends RelationshipDao {
     
       /** @method clients
        @params {Object} options
-       @returns {Promise<IndexResult<Company>>} **/
+       @returns {Promise<IndexResult<Client>>} **/
       clients: (options) => this.toMany('clients', options),
       };
       }
@@ -440,7 +440,7 @@ export class CompanyRelationshipDao extends RelationshipDao {
 export class ContactDao extends ResourceDao {
   constructor(client) {
     super(client, 'contacts');
-    this.relationshipDao = new ContactRelationshipDao(client, 'contacts')
+    this.relationshipDao = new ContactRelationshipDao(client);
   }
 }
 
@@ -460,7 +460,7 @@ export class ContactRelationshipDao extends RelationshipDao {
 export class CourierDao extends ResourceDao {
   constructor(client) {
     super(client, 'couriers');
-    this.relationshipDao = new CourierRelationshipDao(client, 'couriers')
+    this.relationshipDao = new CourierRelationshipDao(client);
   }
 }
 
@@ -474,7 +474,7 @@ export class CourierRelationshipDao extends RelationshipDao {
     
       /** @method owner
        @params {Object} options
-       @returns {Promise<Courier>} **/
+       @returns {Promise<User>} **/
       owner: (options) => this.toOne('owner', options),
       };
     
@@ -483,17 +483,17 @@ export class CourierRelationshipDao extends RelationshipDao {
     
       /** @method drivers
        @params {Object} options
-       @returns {Promise<IndexResult<Courier>>} **/
+       @returns {Promise<IndexResult<User>>} **/
       drivers: (options) => this.toMany('drivers', options),
     
       /** @method areas
        @params {Object} options
-       @returns {Promise<IndexResult<Courier>>} **/
+       @returns {Promise<IndexResult<Area>>} **/
       areas: (options) => this.toMany('areas', options),
     
       /** @method versions
        @params {Object} options
-       @returns {Promise<IndexResult<Courier>>} **/
+       @returns {Promise<IndexResult<Version>>} **/
       versions: (options) => this.toMany('versions', options),
       };
       }
@@ -506,7 +506,7 @@ export class CourierRelationshipDao extends RelationshipDao {
 export class DeliveryCaseDao extends ResourceDao {
   constructor(client) {
     super(client, 'delivery-cases');
-    this.relationshipDao = new DeliveryCaseRelationshipDao(client, 'delivery-cases')
+    this.relationshipDao = new DeliveryCaseRelationshipDao(client);
   }
 }
 
@@ -520,12 +520,12 @@ export class DeliveryCaseRelationshipDao extends RelationshipDao {
     
       /** @method user
        @params {Object} options
-       @returns {Promise<DeliveryCase>} **/
+       @returns {Promise<User>} **/
       user: (options) => this.toOne('user', options),
     
       /** @method order
        @params {Object} options
-       @returns {Promise<DeliveryCase>} **/
+       @returns {Promise<Order>} **/
       order: (options) => this.toOne('order', options),
       };
     
@@ -539,7 +539,7 @@ export class DeliveryCaseRelationshipDao extends RelationshipDao {
 export class DeliveryLocationDao extends ResourceDao {
   constructor(client) {
     super(client, 'delivery-locations');
-    this.relationshipDao = new DeliveryLocationRelationshipDao(client, 'delivery-locations')
+    this.relationshipDao = new DeliveryLocationRelationshipDao(client);
   }
 }
 
@@ -553,12 +553,12 @@ export class DeliveryLocationRelationshipDao extends RelationshipDao {
     
       /** @method client
        @params {Object} options
-       @returns {Promise<DeliveryLocation>} **/
+       @returns {Promise<Client>} **/
       client: (options) => this.toOne('client', options),
     
       /** @method location
        @params {Object} options
-       @returns {Promise<DeliveryLocation>} **/
+       @returns {Promise<Location>} **/
       location: (options) => this.toOne('location', options),
       };
     
@@ -572,7 +572,7 @@ export class DeliveryLocationRelationshipDao extends RelationshipDao {
 export class DeskCaseDao extends ResourceDao {
   constructor(client) {
     super(client, 'desk-cases');
-    this.relationshipDao = new DeskCaseRelationshipDao(client, 'desk-cases')
+    this.relationshipDao = new DeskCaseRelationshipDao(client);
   }
 }
 
@@ -586,12 +586,12 @@ export class DeskCaseRelationshipDao extends RelationshipDao {
     
       /** @method user
        @params {Object} options
-       @returns {Promise<DeskCase>} **/
+       @returns {Promise<User>} **/
       user: (options) => this.toOne('user', options),
     
       /** @method order
        @params {Object} options
-       @returns {Promise<DeskCase>} **/
+       @returns {Promise<Order>} **/
       order: (options) => this.toOne('order', options),
       };
     
@@ -605,7 +605,7 @@ export class DeskCaseRelationshipDao extends RelationshipDao {
 export class DietaryTagDao extends ResourceDao {
   constructor(client) {
     super(client, 'dietary-tags');
-    this.relationshipDao = new DietaryTagRelationshipDao(client, 'dietary-tags')
+    this.relationshipDao = new DietaryTagRelationshipDao(client);
   }
 }
 
@@ -620,7 +620,7 @@ export class DietaryTagRelationshipDao extends RelationshipDao {
     
       /** @method menuOptionItems
        @params {Object} options
-       @returns {Promise<IndexResult<DietaryTag>>} **/
+       @returns {Promise<IndexResult<MenuOptionItem>>} **/
       menuOptionItems: (options) => this.toMany('menu-option-items', options),
       };
       }
@@ -633,7 +633,7 @@ export class DietaryTagRelationshipDao extends RelationshipDao {
 export class DiscountCodeDao extends ResourceDao {
   constructor(client) {
     super(client, 'discount-codes');
-    this.relationshipDao = new DiscountCodeRelationshipDao(client, 'discount-codes')
+    this.relationshipDao = new DiscountCodeRelationshipDao(client);
   }
 }
 
@@ -653,7 +653,7 @@ export class DiscountCodeRelationshipDao extends RelationshipDao {
 export class DriverDayDao extends ResourceDao {
   constructor(client) {
     super(client, 'driver-days');
-    this.relationshipDao = new DriverDayRelationshipDao(client, 'driver-days')
+    this.relationshipDao = new DriverDayRelationshipDao(client);
   }
 }
 
@@ -667,7 +667,7 @@ export class DriverDayRelationshipDao extends RelationshipDao {
     
       /** @method driver
        @params {Object} options
-       @returns {Promise<DriverDay>} **/
+       @returns {Promise<User>} **/
       driver: (options) => this.toOne('driver', options),
       };
     
@@ -681,7 +681,7 @@ export class DriverDayRelationshipDao extends RelationshipDao {
 export class DriverPaymentDao extends ResourceDao {
   constructor(client) {
     super(client, 'driver-payments');
-    this.relationshipDao = new DriverPaymentRelationshipDao(client, 'driver-payments')
+    this.relationshipDao = new DriverPaymentRelationshipDao(client);
   }
 }
 
@@ -695,7 +695,7 @@ export class DriverPaymentRelationshipDao extends RelationshipDao {
     
       /** @method driverPayrollRun
        @params {Object} options
-       @returns {Promise<DriverPayment>} **/
+       @returns {Promise<DriverPayrollRun>} **/
       driverPayrollRun: (options) => this.toOne('driver-payroll-run', options),
       };
     
@@ -709,7 +709,7 @@ export class DriverPaymentRelationshipDao extends RelationshipDao {
 export class DriverPayrollRunDao extends ResourceDao {
   constructor(client) {
     super(client, 'driver-payroll-runs');
-    this.relationshipDao = new DriverPayrollRunRelationshipDao(client, 'driver-payroll-runs')
+    this.relationshipDao = new DriverPayrollRunRelationshipDao(client);
   }
 }
 
@@ -723,12 +723,12 @@ export class DriverPayrollRunRelationshipDao extends RelationshipDao {
     
       /** @method driver
        @params {Object} options
-       @returns {Promise<DriverPayrollRun>} **/
+       @returns {Promise<Driver>} **/
       driver: (options) => this.toOne('driver', options),
     
       /** @method payrollRun
        @params {Object} options
-       @returns {Promise<DriverPayrollRun>} **/
+       @returns {Promise<PayrollRun>} **/
       payrollRun: (options) => this.toOne('payroll-run', options),
       };
     
@@ -742,7 +742,7 @@ export class DriverPayrollRunRelationshipDao extends RelationshipDao {
 export class DriverPingDao extends ResourceDao {
   constructor(client) {
     super(client, 'driver-pings');
-    this.relationshipDao = new DriverPingRelationshipDao(client, 'driver-pings')
+    this.relationshipDao = new DriverPingRelationshipDao(client);
   }
 }
 
@@ -756,7 +756,7 @@ export class DriverPingRelationshipDao extends RelationshipDao {
     
       /** @method user
        @params {Object} options
-       @returns {Promise<DriverPing>} **/
+       @returns {Promise<User>} **/
       user: (options) => this.toOne('user', options),
       };
     
@@ -770,7 +770,7 @@ export class DriverPingRelationshipDao extends RelationshipDao {
 export class DriverResourceDao extends ResourceDao {
   constructor(client) {
     super(client, 'driver-resources');
-    this.relationshipDao = new DriverResourceRelationshipDao(client, 'driver-resources')
+    this.relationshipDao = new DriverResourceRelationshipDao(client);
   }
 }
 
@@ -790,7 +790,7 @@ export class DriverResourceRelationshipDao extends RelationshipDao {
 export class DriverWeekDao extends ResourceDao {
   constructor(client) {
     super(client, 'driver-weeks');
-    this.relationshipDao = new DriverWeekRelationshipDao(client, 'driver-weeks')
+    this.relationshipDao = new DriverWeekRelationshipDao(client);
   }
 }
 
@@ -804,7 +804,7 @@ export class DriverWeekRelationshipDao extends RelationshipDao {
     
       /** @method driver
        @params {Object} options
-       @returns {Promise<DriverWeek>} **/
+       @returns {Promise<User>} **/
       driver: (options) => this.toOne('driver', options),
       };
     
@@ -818,7 +818,7 @@ export class DriverWeekRelationshipDao extends RelationshipDao {
 export class EmailMessageDao extends ResourceDao {
   constructor(client) {
     super(client, 'email-messages');
-    this.relationshipDao = new EmailMessageRelationshipDao(client, 'email-messages')
+    this.relationshipDao = new EmailMessageRelationshipDao(client);
   }
 }
 
@@ -832,7 +832,7 @@ export class EmailMessageRelationshipDao extends RelationshipDao {
     
       /** @method order
        @params {Object} options
-       @returns {Promise<EmailMessage>} **/
+       @returns {Promise<Order>} **/
       order: (options) => this.toOne('order', options),
       };
     
@@ -846,7 +846,7 @@ export class EmailMessageRelationshipDao extends RelationshipDao {
 export class EventDao extends ResourceDao {
   constructor(client) {
     super(client, 'events');
-    this.relationshipDao = new EventRelationshipDao(client, 'events')
+    this.relationshipDao = new EventRelationshipDao(client);
   }
 }
 
@@ -866,7 +866,7 @@ export class EventRelationshipDao extends RelationshipDao {
 export class GiftbitCardDao extends ResourceDao {
   constructor(client) {
     super(client, 'giftbit-cards');
-    this.relationshipDao = new GiftbitCardRelationshipDao(client, 'giftbit-cards')
+    this.relationshipDao = new GiftbitCardRelationshipDao(client);
   }
 }
 
@@ -886,7 +886,7 @@ export class GiftbitCardRelationshipDao extends RelationshipDao {
 export class GiftbitErrorDao extends ResourceDao {
   constructor(client) {
     super(client, 'giftbit-errors');
-    this.relationshipDao = new GiftbitErrorRelationshipDao(client, 'giftbit-errors')
+    this.relationshipDao = new GiftbitErrorRelationshipDao(client);
   }
 }
 
@@ -900,7 +900,7 @@ export class GiftbitErrorRelationshipDao extends RelationshipDao {
     
       /** @method order
        @params {Object} options
-       @returns {Promise<GiftbitError>} **/
+       @returns {Promise<Order>} **/
       order: (options) => this.toOne('order', options),
       };
     
@@ -914,7 +914,7 @@ export class GiftbitErrorRelationshipDao extends RelationshipDao {
 export class GiftbitGiftDao extends ResourceDao {
   constructor(client) {
     super(client, 'giftbit-gifts');
-    this.relationshipDao = new GiftbitGiftRelationshipDao(client, 'giftbit-gifts')
+    this.relationshipDao = new GiftbitGiftRelationshipDao(client);
   }
 }
 
@@ -934,7 +934,7 @@ export class GiftbitGiftRelationshipDao extends RelationshipDao {
 export class GroupOrderMemberDao extends ResourceDao {
   constructor(client) {
     super(client, 'group-order-members');
-    this.relationshipDao = new GroupOrderMemberRelationshipDao(client, 'group-order-members')
+    this.relationshipDao = new GroupOrderMemberRelationshipDao(client);
   }
 }
 
@@ -948,12 +948,12 @@ export class GroupOrderMemberRelationshipDao extends RelationshipDao {
     
       /** @method user
        @params {Object} options
-       @returns {Promise<GroupOrderMember>} **/
+       @returns {Promise<User>} **/
       user: (options) => this.toOne('user', options),
     
       /** @method order
        @params {Object} options
-       @returns {Promise<GroupOrderMember>} **/
+       @returns {Promise<Order>} **/
       order: (options) => this.toOne('order', options),
       };
     
@@ -962,7 +962,7 @@ export class GroupOrderMemberRelationshipDao extends RelationshipDao {
     
       /** @method orderItems
        @params {Object} options
-       @returns {Promise<IndexResult<GroupOrderMember>>} **/
+       @returns {Promise<IndexResult<OrderItem>>} **/
       orderItems: (options) => this.toMany('order-items', options),
       };
       }
@@ -975,7 +975,7 @@ export class GroupOrderMemberRelationshipDao extends RelationshipDao {
 export class InvoiceDao extends ResourceDao {
   constructor(client) {
     super(client, 'invoices');
-    this.relationshipDao = new InvoiceRelationshipDao(client, 'invoices')
+    this.relationshipDao = new InvoiceRelationshipDao(client);
   }
 }
 
@@ -995,7 +995,7 @@ export class InvoiceRelationshipDao extends RelationshipDao {
 export class InvoicingTaxRateDao extends ResourceDao {
   constructor(client) {
     super(client, 'invoicing-tax-rates');
-    this.relationshipDao = new InvoicingTaxRateRelationshipDao(client, 'invoicing-tax-rates')
+    this.relationshipDao = new InvoicingTaxRateRelationshipDao(client);
   }
 }
 
@@ -1009,7 +1009,7 @@ export class InvoicingTaxRateRelationshipDao extends RelationshipDao {
     
       /** @method area
        @params {Object} options
-       @returns {Promise<InvoicingTaxRate>} **/
+       @returns {Promise<Area>} **/
       area: (options) => this.toOne('area', options),
       };
     
@@ -1023,7 +1023,7 @@ export class InvoicingTaxRateRelationshipDao extends RelationshipDao {
 export class LocationDao extends ResourceDao {
   constructor(client) {
     super(client, 'locations');
-    this.relationshipDao = new LocationRelationshipDao(client, 'locations')
+    this.relationshipDao = new LocationRelationshipDao(client);
   }
 }
 
@@ -1037,7 +1037,7 @@ export class LocationRelationshipDao extends RelationshipDao {
     
       /** @method area
        @params {Object} options
-       @returns {Promise<Location>} **/
+       @returns {Promise<Area>} **/
       area: (options) => this.toOne('area', options),
       };
     
@@ -1051,7 +1051,7 @@ export class LocationRelationshipDao extends RelationshipDao {
 export class MealPlanDao extends ResourceDao {
   constructor(client) {
     super(client, 'meal-plans');
-    this.relationshipDao = new MealPlanRelationshipDao(client, 'meal-plans')
+    this.relationshipDao = new MealPlanRelationshipDao(client);
   }
 }
 
@@ -1065,12 +1065,12 @@ export class MealPlanRelationshipDao extends RelationshipDao {
     
       /** @method mealPlanUser
        @params {Object} options
-       @returns {Promise<MealPlan>} **/
+       @returns {Promise<User>} **/
       mealPlanUser: (options) => this.toOne('meal-plan-user', options),
     
       /** @method client
        @params {Object} options
-       @returns {Promise<MealPlan>} **/
+       @returns {Promise<Client>} **/
       client: (options) => this.toOne('client', options),
       };
     
@@ -1079,7 +1079,7 @@ export class MealPlanRelationshipDao extends RelationshipDao {
     
       /** @method orders
        @params {Object} options
-       @returns {Promise<IndexResult<MealPlan>>} **/
+       @returns {Promise<IndexResult<Order>>} **/
       orders: (options) => this.toMany('orders', options),
       };
       }
@@ -1092,7 +1092,7 @@ export class MealPlanRelationshipDao extends RelationshipDao {
 export class MenuDao extends ResourceDao {
   constructor(client) {
     super(client, 'menus');
-    this.relationshipDao = new MenuRelationshipDao(client, 'menus')
+    this.relationshipDao = new MenuRelationshipDao(client);
   }
 }
 
@@ -1106,12 +1106,12 @@ export class MenuRelationshipDao extends RelationshipDao {
     
       /** @method area
        @params {Object} options
-       @returns {Promise<Menu>} **/
+       @returns {Promise<Area>} **/
       area: (options) => this.toOne('area', options),
     
       /** @method restaurant
        @params {Object} options
-       @returns {Promise<Menu>} **/
+       @returns {Promise<Restaurant>} **/
       restaurant: (options) => this.toOne('restaurant', options),
       };
     
@@ -1120,22 +1120,22 @@ export class MenuRelationshipDao extends RelationshipDao {
     
       /** @method menuGroups
        @params {Object} options
-       @returns {Promise<IndexResult<Menu>>} **/
+       @returns {Promise<IndexResult<MenuGroup>>} **/
       menuGroups: (options) => this.toMany('menu-groups', options),
     
       /** @method menuItems
        @params {Object} options
-       @returns {Promise<IndexResult<Menu>>} **/
+       @returns {Promise<IndexResult<MenuItem>>} **/
       menuItems: (options) => this.toMany('menu-items', options),
     
       /** @method dietaryTags
        @params {Object} options
-       @returns {Promise<IndexResult<Menu>>} **/
+       @returns {Promise<IndexResult<DietaryTag>>} **/
       dietaryTags: (options) => this.toMany('dietary-tags', options),
     
       /** @method orders
        @params {Object} options
-       @returns {Promise<IndexResult<Menu>>} **/
+       @returns {Promise<IndexResult<Order>>} **/
       orders: (options) => this.toMany('orders', options),
       };
       }
@@ -1148,7 +1148,7 @@ export class MenuRelationshipDao extends RelationshipDao {
 export class MenuGroupDao extends ResourceDao {
   constructor(client) {
     super(client, 'menu-groups');
-    this.relationshipDao = new MenuGroupRelationshipDao(client, 'menu-groups')
+    this.relationshipDao = new MenuGroupRelationshipDao(client);
   }
 }
 
@@ -1162,7 +1162,7 @@ export class MenuGroupRelationshipDao extends RelationshipDao {
     
       /** @method menu
        @params {Object} options
-       @returns {Promise<MenuGroup>} **/
+       @returns {Promise<Menu>} **/
       menu: (options) => this.toOne('menu', options),
       };
     
@@ -1171,7 +1171,7 @@ export class MenuGroupRelationshipDao extends RelationshipDao {
     
       /** @method menuItems
        @params {Object} options
-       @returns {Promise<IndexResult<MenuGroup>>} **/
+       @returns {Promise<IndexResult<MenuItem>>} **/
       menuItems: (options) => this.toMany('menu-items', options),
       };
       }
@@ -1184,7 +1184,7 @@ export class MenuGroupRelationshipDao extends RelationshipDao {
 export class MenuItemDao extends ResourceDao {
   constructor(client) {
     super(client, 'menu-items');
-    this.relationshipDao = new MenuItemRelationshipDao(client, 'menu-items')
+    this.relationshipDao = new MenuItemRelationshipDao(client);
   }
 }
 
@@ -1198,12 +1198,12 @@ export class MenuItemRelationshipDao extends RelationshipDao {
     
       /** @method taxRate
        @params {Object} options
-       @returns {Promise<MenuItem>} **/
+       @returns {Promise<InvoicingTaxRate>} **/
       taxRate: (options) => this.toOne('tax-rate', options),
     
       /** @method menuGroup
        @params {Object} options
-       @returns {Promise<MenuItem>} **/
+       @returns {Promise<MenuGroup>} **/
       menuGroup: (options) => this.toOne('menu-group', options),
       };
     
@@ -1212,12 +1212,12 @@ export class MenuItemRelationshipDao extends RelationshipDao {
     
       /** @method dietaryTags
        @params {Object} options
-       @returns {Promise<IndexResult<MenuItem>>} **/
+       @returns {Promise<IndexResult<DietaryTag>>} **/
       dietaryTags: (options) => this.toMany('dietary-tags', options),
     
       /** @method menuOptionGroups
        @params {Object} options
-       @returns {Promise<IndexResult<MenuItem>>} **/
+       @returns {Promise<IndexResult<MenuOptionGroup>>} **/
       menuOptionGroups: (options) => this.toMany('menu-option-groups', options),
       };
       }
@@ -1230,7 +1230,7 @@ export class MenuItemRelationshipDao extends RelationshipDao {
 export class MenuOptionGroupDao extends ResourceDao {
   constructor(client) {
     super(client, 'menu-option-groups');
-    this.relationshipDao = new MenuOptionGroupRelationshipDao(client, 'menu-option-groups')
+    this.relationshipDao = new MenuOptionGroupRelationshipDao(client);
   }
 }
 
@@ -1244,7 +1244,7 @@ export class MenuOptionGroupRelationshipDao extends RelationshipDao {
     
       /** @method menuItem
        @params {Object} options
-       @returns {Promise<MenuOptionGroup>} **/
+       @returns {Promise<MenuItem>} **/
       menuItem: (options) => this.toOne('menu-item', options),
       };
     
@@ -1253,7 +1253,7 @@ export class MenuOptionGroupRelationshipDao extends RelationshipDao {
     
       /** @method menuOptionItems
        @params {Object} options
-       @returns {Promise<IndexResult<MenuOptionGroup>>} **/
+       @returns {Promise<IndexResult<MenuOptionItem>>} **/
       menuOptionItems: (options) => this.toMany('menu-option-items', options),
       };
       }
@@ -1266,7 +1266,7 @@ export class MenuOptionGroupRelationshipDao extends RelationshipDao {
 export class MenuOptionItemDao extends ResourceDao {
   constructor(client) {
     super(client, 'menu-option-items');
-    this.relationshipDao = new MenuOptionItemRelationshipDao(client, 'menu-option-items')
+    this.relationshipDao = new MenuOptionItemRelationshipDao(client);
   }
 }
 
@@ -1280,7 +1280,7 @@ export class MenuOptionItemRelationshipDao extends RelationshipDao {
     
       /** @method menuOptionGroup
        @params {Object} options
-       @returns {Promise<MenuOptionItem>} **/
+       @returns {Promise<MenuOptionGroup>} **/
       menuOptionGroup: (options) => this.toOne('menu-option-group', options),
       };
     
@@ -1289,12 +1289,12 @@ export class MenuOptionItemRelationshipDao extends RelationshipDao {
     
       /** @method dietaryTags
        @params {Object} options
-       @returns {Promise<IndexResult<MenuOptionItem>>} **/
+       @returns {Promise<IndexResult<DietaryTag>>} **/
       dietaryTags: (options) => this.toMany('dietary-tags', options),
     
       /** @method orderItems
        @params {Object} options
-       @returns {Promise<IndexResult<MenuOptionItem>>} **/
+       @returns {Promise<IndexResult<OrderItem>>} **/
       orderItems: (options) => this.toMany('order-items', options),
       };
       }
@@ -1307,7 +1307,7 @@ export class MenuOptionItemRelationshipDao extends RelationshipDao {
 export class OrderDao extends ResourceDao {
   constructor(client) {
     super(client, 'orders');
-    this.relationshipDao = new OrderRelationshipDao(client, 'orders')
+    this.relationshipDao = new OrderRelationshipDao(client);
   }
 }
 
@@ -1321,102 +1321,102 @@ export class OrderRelationshipDao extends RelationshipDao {
     
       /** @method area
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<Area>} **/
       area: (options) => this.toOne('area', options),
     
       /** @method owner
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<User>} **/
       owner: (options) => this.toOne('owner', options),
     
       /** @method creator
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<User>} **/
       creator: (options) => this.toOne('creator', options),
     
       /** @method paymentCard
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<PaymentCard>} **/
       paymentCard: (options) => this.toOne('payment-card', options),
     
       /** @method contact
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<Contact>} **/
       contact: (options) => this.toOne('contact', options),
     
       /** @method client
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<Client>} **/
       client: (options) => this.toOne('client', options),
     
       /** @method restaurant
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<Restaurant>} **/
       restaurant: (options) => this.toOne('restaurant', options),
     
       /** @method courier
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<Courier>} **/
       courier: (options) => this.toOne('courier', options),
     
       /** @method promoCode
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<PromoCode>} **/
       promoCode: (options) => this.toOne('promo-code', options),
     
       /** @method driver
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<User>} **/
       driver: (options) => this.toOne('driver', options),
     
       /** @method salesSupport
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<User>} **/
       salesSupport: (options) => this.toOne('sales-support', options),
     
       /** @method restaurantLocation
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<Location>} **/
       restaurantLocation: (options) => this.toOne('restaurant-location', options),
     
       /** @method clientLocation
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<Location>} **/
       clientLocation: (options) => this.toOne('client-location', options),
     
       /** @method clientDiscount
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<ClientDiscount>} **/
       clientDiscount: (options) => this.toOne('client-discount', options),
     
       /** @method restaurantDiscount
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<RestaurantDiscount>} **/
       restaurantDiscount: (options) => this.toOne('restaurant-discount', options),
     
       /** @method menu
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<Menu>} **/
       menu: (options) => this.toOne('menu', options),
     
       /** @method customLocation
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<Location>} **/
       customLocation: (options) => this.toOne('custom-location', options),
     
       /** @method giftbitError
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<GiftbitError>} **/
       giftbitError: (options) => this.toOne('giftbit-error', options),
     
       /** @method clientOrderInvoice
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<ClientOrderInvoice>} **/
       clientOrderInvoice: (options) => this.toOne('client-order-invoice', options),
     
       /** @method restaurantOrderInvoice
        @params {Object} options
-       @returns {Promise<Order>} **/
+       @returns {Promise<RestaurantOrderInvoice>} **/
       restaurantOrderInvoice: (options) => this.toOne('restaurant-order-invoice', options),
       };
     
@@ -1425,42 +1425,42 @@ export class OrderRelationshipDao extends RelationshipDao {
     
       /** @method emailMessages
        @params {Object} options
-       @returns {Promise<IndexResult<Order>>} **/
+       @returns {Promise<IndexResult<EmailMessage>>} **/
       emailMessages: (options) => this.toMany('email-messages', options),
     
       /** @method deliveryCases
        @params {Object} options
-       @returns {Promise<IndexResult<Order>>} **/
+       @returns {Promise<IndexResult<DeliveryCase>>} **/
       deliveryCases: (options) => this.toMany('delivery-cases', options),
     
       /** @method deskCases
        @params {Object} options
-       @returns {Promise<IndexResult<Order>>} **/
+       @returns {Promise<IndexResult<DeskCase>>} **/
       deskCases: (options) => this.toMany('desk-cases', options),
     
       /** @method versions
        @params {Object} options
-       @returns {Promise<IndexResult<Order>>} **/
+       @returns {Promise<IndexResult<Version>>} **/
       versions: (options) => this.toMany('versions', options),
     
       /** @method pollableRestaurants
        @params {Object} options
-       @returns {Promise<IndexResult<Order>>} **/
+       @returns {Promise<IndexResult<Restaurant>>} **/
       pollableRestaurants: (options) => this.toMany('pollable-restaurants', options),
     
       /** @method restaurantVotes
        @params {Object} options
-       @returns {Promise<IndexResult<Order>>} **/
+       @returns {Promise<IndexResult<RestaurantVote>>} **/
       restaurantVotes: (options) => this.toMany('restaurant-votes', options),
     
       /** @method groupOrderMembers
        @params {Object} options
-       @returns {Promise<IndexResult<Order>>} **/
+       @returns {Promise<IndexResult<GroupOrderMember>>} **/
       groupOrderMembers: (options) => this.toMany('group-order-members', options),
     
       /** @method orderItems
        @params {Object} options
-       @returns {Promise<IndexResult<Order>>} **/
+       @returns {Promise<IndexResult<OrderItem>>} **/
       orderItems: (options) => this.toMany('order-items', options),
       };
       }
@@ -1473,7 +1473,7 @@ export class OrderRelationshipDao extends RelationshipDao {
 export class OrderItemDao extends ResourceDao {
   constructor(client) {
     super(client, 'order-items');
-    this.relationshipDao = new OrderItemRelationshipDao(client, 'order-items')
+    this.relationshipDao = new OrderItemRelationshipDao(client);
   }
 }
 
@@ -1487,17 +1487,17 @@ export class OrderItemRelationshipDao extends RelationshipDao {
     
       /** @method order
        @params {Object} options
-       @returns {Promise<OrderItem>} **/
+       @returns {Promise<Order>} **/
       order: (options) => this.toOne('order', options),
     
       /** @method menuItem
        @params {Object} options
-       @returns {Promise<OrderItem>} **/
+       @returns {Promise<MenuItem>} **/
       menuItem: (options) => this.toOne('menu-item', options),
     
       /** @method groupOrderMember
        @params {Object} options
-       @returns {Promise<OrderItem>} **/
+       @returns {Promise<GroupOrderMember>} **/
       groupOrderMember: (options) => this.toOne('group-order-member', options),
       };
     
@@ -1506,7 +1506,7 @@ export class OrderItemRelationshipDao extends RelationshipDao {
     
       /** @method menuOptionItems
        @params {Object} options
-       @returns {Promise<IndexResult<OrderItem>>} **/
+       @returns {Promise<IndexResult<MenuOptionItem>>} **/
       menuOptionItems: (options) => this.toMany('menu-option-items', options),
       };
       }
@@ -1519,7 +1519,7 @@ export class OrderItemRelationshipDao extends RelationshipDao {
 export class PaymentAccountDao extends ResourceDao {
   constructor(client) {
     super(client, 'payment-accounts');
-    this.relationshipDao = new PaymentAccountRelationshipDao(client, 'payment-accounts')
+    this.relationshipDao = new PaymentAccountRelationshipDao(client);
   }
 }
 
@@ -1539,7 +1539,7 @@ export class PaymentAccountRelationshipDao extends RelationshipDao {
 export class PaymentCardDao extends ResourceDao {
   constructor(client) {
     super(client, 'payment-cards');
-    this.relationshipDao = new PaymentCardRelationshipDao(client, 'payment-cards')
+    this.relationshipDao = new PaymentCardRelationshipDao(client);
   }
 }
 
@@ -1553,12 +1553,12 @@ export class PaymentCardRelationshipDao extends RelationshipDao {
     
       /** @method client
        @params {Object} options
-       @returns {Promise<PaymentCard>} **/
+       @returns {Promise<Client>} **/
       client: (options) => this.toOne('client', options),
     
       /** @method user
        @params {Object} options
-       @returns {Promise<PaymentCard>} **/
+       @returns {Promise<User>} **/
       user: (options) => this.toOne('user', options),
       };
     
@@ -1572,7 +1572,7 @@ export class PaymentCardRelationshipDao extends RelationshipDao {
 export class PayrollRunDao extends ResourceDao {
   constructor(client) {
     super(client, 'payroll-runs');
-    this.relationshipDao = new PayrollRunRelationshipDao(client, 'payroll-runs')
+    this.relationshipDao = new PayrollRunRelationshipDao(client);
   }
 }
 
@@ -1587,7 +1587,7 @@ export class PayrollRunRelationshipDao extends RelationshipDao {
     
       /** @method driverPayrollRun
        @params {Object} options
-       @returns {Promise<IndexResult<PayrollRun>>} **/
+       @returns {Promise<IndexResult<DriverPayrollRun>>} **/
       driverPayrollRun: (options) => this.toMany('driver-payroll-runs', options),
       };
       }
@@ -1600,7 +1600,7 @@ export class PayrollRunRelationshipDao extends RelationshipDao {
 export class PickupLocationDao extends ResourceDao {
   constructor(client) {
     super(client, 'pickup-locations');
-    this.relationshipDao = new PickupLocationRelationshipDao(client, 'pickup-locations')
+    this.relationshipDao = new PickupLocationRelationshipDao(client);
   }
 }
 
@@ -1614,12 +1614,12 @@ export class PickupLocationRelationshipDao extends RelationshipDao {
     
       /** @method restaurant
        @params {Object} options
-       @returns {Promise<PickupLocation>} **/
+       @returns {Promise<Restaurant>} **/
       restaurant: (options) => this.toOne('restaurant', options),
     
       /** @method location
        @params {Object} options
-       @returns {Promise<PickupLocation>} **/
+       @returns {Promise<Location>} **/
       location: (options) => this.toOne('location', options),
       };
     
@@ -1633,7 +1633,7 @@ export class PickupLocationRelationshipDao extends RelationshipDao {
 export class PromoCodeDao extends ResourceDao {
   constructor(client) {
     super(client, 'promo-codes');
-    this.relationshipDao = new PromoCodeRelationshipDao(client, 'promo-codes')
+    this.relationshipDao = new PromoCodeRelationshipDao(client);
   }
 }
 
@@ -1647,12 +1647,12 @@ export class PromoCodeRelationshipDao extends RelationshipDao {
     
       /** @method area
        @params {Object} options
-       @returns {Promise<PromoCode>} **/
+       @returns {Promise<Area>} **/
       area: (options) => this.toOne('area', options),
     
       /** @method restaurant
        @params {Object} options
-       @returns {Promise<PromoCode>} **/
+       @returns {Promise<Restaurant>} **/
       restaurant: (options) => this.toOne('restaurant', options),
       };
     
@@ -1661,12 +1661,12 @@ export class PromoCodeRelationshipDao extends RelationshipDao {
     
       /** @method order
        @params {Object} options
-       @returns {Promise<IndexResult<PromoCode>>} **/
+       @returns {Promise<IndexResult<Order>>} **/
       order: (options) => this.toMany('orders', options),
     
       /** @method versions
        @params {Object} options
-       @returns {Promise<IndexResult<PromoCode>>} **/
+       @returns {Promise<IndexResult<Version>>} **/
       versions: (options) => this.toMany('versions', options),
       };
       }
@@ -1679,7 +1679,7 @@ export class PromoCodeRelationshipDao extends RelationshipDao {
 export class QualifyingQuestionDao extends ResourceDao {
   constructor(client) {
     super(client, 'qualifying-questions');
-    this.relationshipDao = new QualifyingQuestionRelationshipDao(client, 'qualifying-questions')
+    this.relationshipDao = new QualifyingQuestionRelationshipDao(client);
   }
 }
 
@@ -1699,7 +1699,7 @@ export class QualifyingQuestionRelationshipDao extends RelationshipDao {
 export class RestaurantDao extends ResourceDao {
   constructor(client) {
     super(client, 'restaurants');
-    this.relationshipDao = new RestaurantRelationshipDao(client, 'restaurants')
+    this.relationshipDao = new RestaurantRelationshipDao(client);
   }
 }
 
@@ -1713,17 +1713,17 @@ export class RestaurantRelationshipDao extends RelationshipDao {
     
       /** @method billingLocation
        @params {Object} options
-       @returns {Promise<Restaurant>} **/
+       @returns {Promise<Location>} **/
       billingLocation: (options) => this.toOne('billing-location', options),
     
       /** @method billingContact
        @params {Object} options
-       @returns {Promise<Restaurant>} **/
+       @returns {Promise<Contact>} **/
       billingContact: (options) => this.toOne('billing-contact', options),
     
       /** @method owner
        @params {Object} options
-       @returns {Promise<Restaurant>} **/
+       @returns {Promise<User>} **/
       owner: (options) => this.toOne('owner', options),
       };
     
@@ -1732,72 +1732,72 @@ export class RestaurantRelationshipDao extends RelationshipDao {
     
       /** @method orders
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<Order>>} **/
       orders: (options) => this.toMany('orders', options),
     
       /** @method restaurantCapacityTranches
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<RestaurantCapacityTranche>>} **/
       restaurantCapacityTranches: (options) => this.toMany('restaurant-capacity-tranches', options),
     
       /** @method serviceTimes
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<ServiceTime>>} **/
       serviceTimes: (options) => this.toMany('service-times', options),
     
       /** @method pickupLocations
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<PickupLocation>>} **/
       pickupLocations: (options) => this.toMany('pickup-locations', options),
     
       /** @method admins
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<User>>} **/
       admins: (options) => this.toMany('admins', options),
     
       /** @method adminContacts
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<Contact>>} **/
       adminContacts: (options) => this.toMany('admin-contacts', options),
     
       /** @method dietaryTags
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<DietaryTag>>} **/
       dietaryTags: (options) => this.toMany('dietary-tags', options),
     
       /** @method tags
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<Tag>>} **/
       tags: (options) => this.toMany('tags', options),
     
       /** @method areas
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<Area>>} **/
       areas: (options) => this.toMany('areas', options),
     
       /** @method menus
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<Menu>>} **/
       menus: (options) => this.toMany('menus', options),
     
       /** @method restaurantVotes
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<RestaurantVote>>} **/
       restaurantVotes: (options) => this.toMany('restaurant-votes', options),
     
       /** @method closures
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<RestaurantClosure>>} **/
       closures: (options) => this.toMany('closures', options),
     
       /** @method versions
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<Version>>} **/
       versions: (options) => this.toMany('versions', options),
     
       /** @method promoCodes
        @params {Object} options
-       @returns {Promise<IndexResult<Restaurant>>} **/
+       @returns {Promise<IndexResult<PromoCode>>} **/
       promoCodes: (options) => this.toMany('promo-codes', options),
       };
       }
@@ -1810,7 +1810,7 @@ export class RestaurantRelationshipDao extends RelationshipDao {
 export class RestaurantCapacityTrancheDao extends ResourceDao {
   constructor(client) {
     super(client, 'restaurant-capacity-tranches');
-    this.relationshipDao = new RestaurantCapacityTrancheRelationshipDao(client, 'restaurant-capacity-tranches')
+    this.relationshipDao = new RestaurantCapacityTrancheRelationshipDao(client);
   }
 }
 
@@ -1824,7 +1824,7 @@ export class RestaurantCapacityTrancheRelationshipDao extends RelationshipDao {
     
       /** @method restaurant
        @params {Object} options
-       @returns {Promise<RestaurantCapacityTranche>} **/
+       @returns {Promise<Restaurant>} **/
       restaurant: (options) => this.toOne('restaurant', options),
       };
     
@@ -1838,7 +1838,7 @@ export class RestaurantCapacityTrancheRelationshipDao extends RelationshipDao {
 export class RestaurantClosureDao extends ResourceDao {
   constructor(client) {
     super(client, 'restaurant-closures');
-    this.relationshipDao = new RestaurantClosureRelationshipDao(client, 'restaurant-closures')
+    this.relationshipDao = new RestaurantClosureRelationshipDao(client);
   }
 }
 
@@ -1852,7 +1852,7 @@ export class RestaurantClosureRelationshipDao extends RelationshipDao {
     
       /** @method restaurant
        @params {Object} options
-       @returns {Promise<RestaurantClosure>} **/
+       @returns {Promise<Restaurant>} **/
       restaurant: (options) => this.toOne('restaurant', options),
       };
     
@@ -1866,7 +1866,7 @@ export class RestaurantClosureRelationshipDao extends RelationshipDao {
 export class RestaurantDiscountDao extends ResourceDao {
   constructor(client) {
     super(client, 'restaurant-discounts');
-    this.relationshipDao = new RestaurantDiscountRelationshipDao(client, 'restaurant-discounts')
+    this.relationshipDao = new RestaurantDiscountRelationshipDao(client);
   }
 }
 
@@ -1880,7 +1880,7 @@ export class RestaurantDiscountRelationshipDao extends RelationshipDao {
     
       /** @method order
        @params {Object} options
-       @returns {Promise<RestaurantDiscount>} **/
+       @returns {Promise<Order>} **/
       order: (options) => this.toOne('order', options),
       };
     
@@ -1894,7 +1894,7 @@ export class RestaurantDiscountRelationshipDao extends RelationshipDao {
 export class RestaurantOrderInvoiceDao extends ResourceDao {
   constructor(client) {
     super(client, 'restaurant-order-invoices');
-    this.relationshipDao = new RestaurantOrderInvoiceRelationshipDao(client, 'restaurant-order-invoices')
+    this.relationshipDao = new RestaurantOrderInvoiceRelationshipDao(client);
   }
 }
 
@@ -1914,7 +1914,7 @@ export class RestaurantOrderInvoiceRelationshipDao extends RelationshipDao {
 export class RestaurantVoteDao extends ResourceDao {
   constructor(client) {
     super(client, 'restaurant-votes');
-    this.relationshipDao = new RestaurantVoteRelationshipDao(client, 'restaurant-votes')
+    this.relationshipDao = new RestaurantVoteRelationshipDao(client);
   }
 }
 
@@ -1928,12 +1928,12 @@ export class RestaurantVoteRelationshipDao extends RelationshipDao {
     
       /** @method order
        @params {Object} options
-       @returns {Promise<RestaurantVote>} **/
+       @returns {Promise<Order>} **/
       order: (options) => this.toOne('order', options),
     
       /** @method restaurant
        @params {Object} options
-       @returns {Promise<RestaurantVote>} **/
+       @returns {Promise<Restaurant>} **/
       restaurant: (options) => this.toOne('restaurant', options),
       };
     
@@ -1947,7 +1947,7 @@ export class RestaurantVoteRelationshipDao extends RelationshipDao {
 export class RoleDao extends ResourceDao {
   constructor(client) {
     super(client, 'roles');
-    this.relationshipDao = new RoleRelationshipDao(client, 'roles')
+    this.relationshipDao = new RoleRelationshipDao(client);
   }
 }
 
@@ -1961,7 +1961,7 @@ export class RoleRelationshipDao extends RelationshipDao {
     
       /** @method user
        @params {Object} options
-       @returns {Promise<Role>} **/
+       @returns {Promise<User>} **/
       user: (options) => this.toOne('user', options),
       };
     
@@ -1975,7 +1975,7 @@ export class RoleRelationshipDao extends RelationshipDao {
 export class SalesforceSyncErrorDao extends ResourceDao {
   constructor(client) {
     super(client, 'salesforce-sync-errors');
-    this.relationshipDao = new SalesforceSyncErrorRelationshipDao(client, 'salesforce-sync-errors')
+    this.relationshipDao = new SalesforceSyncErrorRelationshipDao(client);
   }
 }
 
@@ -1995,7 +1995,7 @@ export class SalesforceSyncErrorRelationshipDao extends RelationshipDao {
 export class ServiceTimeDao extends ResourceDao {
   constructor(client) {
     super(client, 'service-times');
-    this.relationshipDao = new ServiceTimeRelationshipDao(client, 'service-times')
+    this.relationshipDao = new ServiceTimeRelationshipDao(client);
   }
 }
 
@@ -2009,7 +2009,7 @@ export class ServiceTimeRelationshipDao extends RelationshipDao {
     
       /** @method restaurant
        @params {Object} options
-       @returns {Promise<ServiceTime>} **/
+       @returns {Promise<Restaurant>} **/
       restaurant: (options) => this.toOne('restaurant', options),
       };
     
@@ -2023,7 +2023,7 @@ export class ServiceTimeRelationshipDao extends RelationshipDao {
 export class TagDao extends ResourceDao {
   constructor(client) {
     super(client, 'tags');
-    this.relationshipDao = new TagRelationshipDao(client, 'tags')
+    this.relationshipDao = new TagRelationshipDao(client);
   }
 }
 
@@ -2043,7 +2043,7 @@ export class TagRelationshipDao extends RelationshipDao {
 export class TeamDao extends ResourceDao {
   constructor(client) {
     super(client, 'teams');
-    this.relationshipDao = new TeamRelationshipDao(client, 'teams')
+    this.relationshipDao = new TeamRelationshipDao(client);
   }
 }
 
@@ -2057,7 +2057,7 @@ export class TeamRelationshipDao extends RelationshipDao {
     
       /** @method client
        @params {Object} options
-       @returns {Promise<Team>} **/
+       @returns {Promise<Client>} **/
       client: (options) => this.toOne('client', options),
       };
     
@@ -2066,7 +2066,7 @@ export class TeamRelationshipDao extends RelationshipDao {
     
       /** @method users
        @params {Object} options
-       @returns {Promise<IndexResult<Team>>} **/
+       @returns {Promise<IndexResult<User>>} **/
       users: (options) => this.toMany('users', options),
       };
       }
@@ -2079,7 +2079,7 @@ export class TeamRelationshipDao extends RelationshipDao {
 export class UserDao extends ResourceDao {
   constructor(client) {
     super(client, 'users');
-    this.relationshipDao = new UserRelationshipDao(client, 'users')
+    this.relationshipDao = new UserRelationshipDao(client);
   }
 }
 
@@ -2093,7 +2093,7 @@ export class UserRelationshipDao extends RelationshipDao {
     
       /** @method communicationPreference
        @params {Object} options
-       @returns {Promise<User>} **/
+       @returns {Promise<CommunicationPreference>} **/
       communicationPreference: (options) => this.toOne('communication-preference', options),
       };
     
@@ -2102,52 +2102,52 @@ export class UserRelationshipDao extends RelationshipDao {
     
       /** @method driverPings
        @params {Object} options
-       @returns {Promise<IndexResult<User>>} **/
+       @returns {Promise<IndexResult<DriverPing>>} **/
       driverPings: (options) => this.toMany('driver-pings', options),
     
       /** @method driverWeeks
        @params {Object} options
-       @returns {Promise<IndexResult<User>>} **/
+       @returns {Promise<IndexResult<DriverWeek>>} **/
       driverWeeks: (options) => this.toMany('driver-weeks', options),
     
       /** @method driverDays
        @params {Object} options
-       @returns {Promise<IndexResult<User>>} **/
+       @returns {Promise<IndexResult<DriverDay>>} **/
       driverDays: (options) => this.toMany('driver-days', options),
     
       /** @method deliveredOrders
        @params {Object} options
-       @returns {Promise<IndexResult<User>>} **/
+       @returns {Promise<IndexResult<Order>>} **/
       deliveredOrders: (options) => this.toMany('delivered-orders', options),
     
       /** @method couriers
        @params {Object} options
-       @returns {Promise<IndexResult<User>>} **/
+       @returns {Promise<IndexResult<Courier>>} **/
       couriers: (options) => this.toMany('couriers', options),
     
       /** @method clients
        @params {Object} options
-       @returns {Promise<IndexResult<User>>} **/
+       @returns {Promise<IndexResult<Client>>} **/
       clients: (options) => this.toMany('clients', options),
     
       /** @method roles
        @params {Object} options
-       @returns {Promise<IndexResult<User>>} **/
+       @returns {Promise<IndexResult<Role>>} **/
       roles: (options) => this.toMany('roles', options),
     
       /** @method paymentCards
        @params {Object} options
-       @returns {Promise<IndexResult<User>>} **/
+       @returns {Promise<IndexResult<PaymentCard>>} **/
       paymentCards: (options) => this.toMany('payment-cards', options),
     
       /** @method teams
        @params {Object} options
-       @returns {Promise<IndexResult<User>>} **/
+       @returns {Promise<IndexResult<Team>>} **/
       teams: (options) => this.toMany('teams', options),
     
       /** @method versions
        @params {Object} options
-       @returns {Promise<IndexResult<User>>} **/
+       @returns {Promise<IndexResult<Version>>} **/
       versions: (options) => this.toMany('versions', options),
       };
       }
@@ -2160,7 +2160,7 @@ export class UserRelationshipDao extends RelationshipDao {
 export class UserFeedbackDao extends ResourceDao {
   constructor(client) {
     super(client, 'user-feedbacks');
-    this.relationshipDao = new UserFeedbackRelationshipDao(client, 'user-feedbacks')
+    this.relationshipDao = new UserFeedbackRelationshipDao(client);
   }
 }
 
@@ -2180,7 +2180,7 @@ export class UserFeedbackRelationshipDao extends RelationshipDao {
 export class UserInviteDao extends ResourceDao {
   constructor(client) {
     super(client, 'user-invites');
-    this.relationshipDao = new UserInviteRelationshipDao(client, 'user-invites')
+    this.relationshipDao = new UserInviteRelationshipDao(client);
   }
 }
 
@@ -2194,27 +2194,27 @@ export class UserInviteRelationshipDao extends RelationshipDao {
     
       /** @method client
        @params {Object} options
-       @returns {Promise<UserInvite>} **/
+       @returns {Promise<Client>} **/
       client: (options) => this.toOne('client', options),
     
       /** @method restaurant
        @params {Object} options
-       @returns {Promise<UserInvite>} **/
+       @returns {Promise<Restaurant>} **/
       restaurant: (options) => this.toOne('restaurant', options),
     
       /** @method team
        @params {Object} options
-       @returns {Promise<UserInvite>} **/
+       @returns {Promise<Team>} **/
       team: (options) => this.toOne('team', options),
     
       /** @method courier
        @params {Object} options
-       @returns {Promise<UserInvite>} **/
+       @returns {Promise<Courier>} **/
       courier: (options) => this.toOne('courier', options),
     
       /** @method user
        @params {Object} options
-       @returns {Promise<UserInvite>} **/
+       @returns {Promise<User>} **/
       user: (options) => this.toOne('user', options),
       };
     
@@ -2228,7 +2228,7 @@ export class UserInviteRelationshipDao extends RelationshipDao {
 export class VersionDao extends ResourceDao {
   constructor(client) {
     super(client, 'versions');
-    this.relationshipDao = new VersionRelationshipDao(client, 'versions')
+    this.relationshipDao = new VersionRelationshipDao(client);
   }
 }
 

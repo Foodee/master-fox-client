@@ -13,7 +13,6 @@
     "license": "ISC",
     "dependencies": {
         "cross-fetch": "^1.1.1",
-        "flow": "^0.2.3",
         "inflected": "^2.0.2"
     },
     "devDependencies": {
@@ -27,7 +26,6 @@
         "esdoc-standard-plugin": "^1.0.0",
         "esdoc-type-inference-plugin": "^1.0.1",
         "faker": "^4.1.0",
-        "flow-bin": "^0.57.3",
         "jest": "^21.2.1",
         "jsdoc": "^3.5.5"
     }
