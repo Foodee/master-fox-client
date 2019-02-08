@@ -3,7 +3,7 @@ import Resource from './resources/resource';
 import { dasherize, underscore } from 'inflected'
 import fetch from 'cross-fetch';
 
-export function extractJRObject(data, included = []) {
+export function extractJRObject(data, included = [], registry = {}) {
 
   if (!data) {
     return null;
@@ -11,39 +11,45 @@ export function extractJRObject(data, included = []) {
 
   const id = data.id;
   const type = data.type;
-  const attributes = data.attributes;
+
+  if (registry[data.type] && registry[data.type][data.id]) {
+    return registry[data.type][data.id];
+  }
+
+  registry[data.type] = registry[data.type] || {};
 
   const resourceKlass = ResourceClasses[type];
+  const attributes = data.attributes;
+  const relationships = {one: {}, many: {}};
+  const ret = new resourceKlass(id, attributes, relationships.one, relationships.many);
+
+  registry[data.type][id] = ret;
 
   if (!resourceKlass) {
     throw 'Could not find a resource for type ' + type + ', perhaps the client needs to be regenerated.'
   }
 
-  const relationships = Object.entries(data.relationships || {})
-    .reduce((acc, [key, value]) => {
+  Object
+    .entries(data.relationships || {})
+    .forEach(([key, value]) => {
 
       const relationshipData = value.data;
 
       if (relationshipData) {
         // included relationships are either to one or to many
         if (Array.isArray(relationshipData)) {
-          acc.many[key] = relationshipData
+          relationships.many[key] = relationshipData
             .map((nestedRelationshipData) =>
-              extractJRObject(findRelationship(included, nestedRelationshipData), included)
+              extractJRObject(findRelationship(included, nestedRelationshipData), included, registry)
             );
         } else {
-          acc.one[key] = extractJRObject(findRelationship(included, relationshipData), included);
+          relationships.one[key] = extractJRObject(findRelationship(included, relationshipData), included, registry);
         }
-
       }
 
-      return acc;
-    }, {
-      one: {},
-      many: {}
     });
 
-  return new resourceKlass(id, attributes, relationships.one, relationships.many);
+  return ret;
 }
 
 function findRelationship(included, {type, id}) {
