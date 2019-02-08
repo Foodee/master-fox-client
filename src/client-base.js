@@ -3,7 +3,12 @@ import Resource from './resources/resource';
 import { dasherize, underscore } from 'inflected'
 import fetch from 'cross-fetch';
 
-export function extractJRObject(data, included) {
+export function extractJRObject(data, included = []) {
+
+  if (!data) {
+    return null;
+  }
+
   const id = data.id;
   const type = data.type;
   const attributes = data.attributes;
@@ -26,8 +31,7 @@ export function extractJRObject(data, included) {
             .map((nestedRelationshipData) =>
               extractJRObject(findRelationship(included, nestedRelationshipData), included)
             );
-        }
-        else {
+        } else {
           acc.one[key] = extractJRObject(findRelationship(included, relationshipData), included);
         }
 
@@ -400,8 +404,7 @@ export class JRClient {
               const errors = body.errors;
               if (errors && errors[0]) {
                 throw `${errors[0].title}: ${errors[0].detail}`;
-              }
-              else {
+              } else {
                 throw `${response.status}: something went wrong`;
               }
             }
