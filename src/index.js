@@ -1,4 +1,8 @@
 import {
+    AccountingConsolidationConfigurationDao,
+    AccountingConsolidationRunDao,
+    AccountingLedgerItemDao,
+    AccountingLineItemDao,
     AppConfigurationDao,
     AreaDao,
     AreaClosureDao,
@@ -10,6 +14,9 @@ import {
     CompanyDao,
     ContactDao,
     CourierDao,
+    CurrenciesCurrencyDao,
+    CurrenciesTransactionDao,
+    CurrenciesWalletDao,
     DeliveryCaseDao,
     DeliveryLocationDao,
     DeskCaseDao,
@@ -23,19 +30,38 @@ import {
     DriverWeekDao,
     EmailMessageDao,
     EventDao,
+    FeatureFlagDescriptionDao,
+    FoodTypeDao,
     GiftbitCardDao,
     GiftbitErrorDao,
     GiftbitGiftDao,
     GroupOrderMemberDao,
+    HistorianVersionDao,
     InvoiceDao,
+    InvoicingLedgerItemDao,
     InvoicingTaxRateDao,
     LocationDao,
+    LogisticsArrivalEstimateDao,
+    LogisticsDeliveryDao,
     MealPlanDao,
+    MealPlanningEventDao,
+    MealPlanningInstanceDao,
+    MealPlanningLogRecordDao,
+    MealPlanningPreferenceProfileDao,
+    MealPlanningRequirementDao,
+    MealPlanningRequirementConstraintDao,
+    MealPlanningRequirementGroupDao,
+    MealPlanningReservationDao,
+    MealPlanningRestaurantConstraintDao,
+    MealPlanningScheduleDao,
+    MealPlanningTemplateDao,
+    MealTypeDao,
     MenuDao,
     MenuGroupDao,
     MenuItemDao,
     MenuOptionGroupDao,
     MenuOptionItemDao,
+    NotificationLogDao,
     OrderDao,
     OrderItemDao,
     PaymentAccountDao,
@@ -44,21 +70,24 @@ import {
     PickupLocationDao,
     PromoCodeDao,
     QualifyingQuestionDao,
+    ReleaseNoteDao,
     RestaurantDao,
     RestaurantCapacityTrancheDao,
     RestaurantClosureDao,
     RestaurantDiscountDao,
     RestaurantOrderInvoiceDao,
+    RestaurantRankingDao,
     RestaurantVoteDao,
     RoleDao,
+    SalesforceCaseDao,
     SalesforceSyncErrorDao,
     ServiceTimeDao,
+    SubscriptionPlanDao,
     TagDao,
     TeamDao,
     UserDao,
     UserFeedbackDao,
     UserInviteDao,
-    VersionDao,
 } from './data-access/daos';
 import { JRClient, ResourceDao } from './client-base';
 import fetch from 'cross-fetch';
@@ -75,6 +104,18 @@ class MFClient extends JRClient {
 
     /** @type {string} **/
     this.email = email;
+  
+    /** @type {AccountingConsolidationConfigurationDao} **/
+    this.accountingConsolidationConfigurations = new AccountingConsolidationConfigurationDao(this);
+  
+    /** @type {AccountingConsolidationRunDao} **/
+    this.accountingConsolidationRuns = new AccountingConsolidationRunDao(this);
+  
+    /** @type {AccountingLedgerItemDao} **/
+    this.accountingLedgerItems = new AccountingLedgerItemDao(this);
+  
+    /** @type {AccountingLineItemDao} **/
+    this.accountingLineItems = new AccountingLineItemDao(this);
   
     /** @type {AppConfigurationDao} **/
     this.appConfigurations = new AppConfigurationDao(this);
@@ -108,6 +149,15 @@ class MFClient extends JRClient {
   
     /** @type {CourierDao} **/
     this.couriers = new CourierDao(this);
+  
+    /** @type {CurrenciesCurrencyDao} **/
+    this.currenciesCurrencies = new CurrenciesCurrencyDao(this);
+  
+    /** @type {CurrenciesTransactionDao} **/
+    this.currenciesTransactions = new CurrenciesTransactionDao(this);
+  
+    /** @type {CurrenciesWalletDao} **/
+    this.currenciesWallets = new CurrenciesWalletDao(this);
   
     /** @type {DeliveryCaseDao} **/
     this.deliveryCases = new DeliveryCaseDao(this);
@@ -148,6 +198,12 @@ class MFClient extends JRClient {
     /** @type {EventDao} **/
     this.events = new EventDao(this);
   
+    /** @type {FeatureFlagDescriptionDao} **/
+    this.featureFlagDescriptions = new FeatureFlagDescriptionDao(this);
+  
+    /** @type {FoodTypeDao} **/
+    this.foodTypes = new FoodTypeDao(this);
+  
     /** @type {GiftbitCardDao} **/
     this.giftbitCards = new GiftbitCardDao(this);
   
@@ -160,8 +216,14 @@ class MFClient extends JRClient {
     /** @type {GroupOrderMemberDao} **/
     this.groupOrderMembers = new GroupOrderMemberDao(this);
   
+    /** @type {HistorianVersionDao} **/
+    this.historianVersions = new HistorianVersionDao(this);
+  
     /** @type {InvoiceDao} **/
     this.invoices = new InvoiceDao(this);
+  
+    /** @type {InvoicingLedgerItemDao} **/
+    this.invoicingLedgerItems = new InvoicingLedgerItemDao(this);
   
     /** @type {InvoicingTaxRateDao} **/
     this.invoicingTaxRates = new InvoicingTaxRateDao(this);
@@ -169,8 +231,50 @@ class MFClient extends JRClient {
     /** @type {LocationDao} **/
     this.locations = new LocationDao(this);
   
+    /** @type {LogisticsArrivalEstimateDao} **/
+    this.logisticsArrivalEstimates = new LogisticsArrivalEstimateDao(this);
+  
+    /** @type {LogisticsDeliveryDao} **/
+    this.logisticsDeliveries = new LogisticsDeliveryDao(this);
+  
     /** @type {MealPlanDao} **/
     this.mealPlans = new MealPlanDao(this);
+  
+    /** @type {MealPlanningEventDao} **/
+    this.mealPlanningEvents = new MealPlanningEventDao(this);
+  
+    /** @type {MealPlanningInstanceDao} **/
+    this.mealPlanningInstances = new MealPlanningInstanceDao(this);
+  
+    /** @type {MealPlanningLogRecordDao} **/
+    this.mealPlanningLogRecords = new MealPlanningLogRecordDao(this);
+  
+    /** @type {MealPlanningPreferenceProfileDao} **/
+    this.mealPlanningPreferenceProfiles = new MealPlanningPreferenceProfileDao(this);
+  
+    /** @type {MealPlanningRequirementDao} **/
+    this.mealPlanningRequirements = new MealPlanningRequirementDao(this);
+  
+    /** @type {MealPlanningRequirementConstraintDao} **/
+    this.mealPlanningRequirementConstraints = new MealPlanningRequirementConstraintDao(this);
+  
+    /** @type {MealPlanningRequirementGroupDao} **/
+    this.mealPlanningRequirementGroups = new MealPlanningRequirementGroupDao(this);
+  
+    /** @type {MealPlanningReservationDao} **/
+    this.mealPlanningReservations = new MealPlanningReservationDao(this);
+  
+    /** @type {MealPlanningRestaurantConstraintDao} **/
+    this.mealPlanningRestaurantConstraints = new MealPlanningRestaurantConstraintDao(this);
+  
+    /** @type {MealPlanningScheduleDao} **/
+    this.mealPlanningSchedules = new MealPlanningScheduleDao(this);
+  
+    /** @type {MealPlanningTemplateDao} **/
+    this.mealPlanningTemplates = new MealPlanningTemplateDao(this);
+  
+    /** @type {MealTypeDao} **/
+    this.mealTypes = new MealTypeDao(this);
   
     /** @type {MenuDao} **/
     this.menus = new MenuDao(this);
@@ -186,6 +290,9 @@ class MFClient extends JRClient {
   
     /** @type {MenuOptionItemDao} **/
     this.menuOptionItems = new MenuOptionItemDao(this);
+  
+    /** @type {NotificationLogDao} **/
+    this.notificationLogs = new NotificationLogDao(this);
   
     /** @type {OrderDao} **/
     this.orders = new OrderDao(this);
@@ -211,6 +318,9 @@ class MFClient extends JRClient {
     /** @type {QualifyingQuestionDao} **/
     this.qualifyingQuestions = new QualifyingQuestionDao(this);
   
+    /** @type {ReleaseNoteDao} **/
+    this.releaseNotes = new ReleaseNoteDao(this);
+  
     /** @type {RestaurantDao} **/
     this.restaurants = new RestaurantDao(this);
   
@@ -226,17 +336,26 @@ class MFClient extends JRClient {
     /** @type {RestaurantOrderInvoiceDao} **/
     this.restaurantOrderInvoices = new RestaurantOrderInvoiceDao(this);
   
+    /** @type {RestaurantRankingDao} **/
+    this.restaurantRankings = new RestaurantRankingDao(this);
+  
     /** @type {RestaurantVoteDao} **/
     this.restaurantVotes = new RestaurantVoteDao(this);
   
     /** @type {RoleDao} **/
     this.roles = new RoleDao(this);
   
+    /** @type {SalesforceCaseDao} **/
+    this.salesforceCases = new SalesforceCaseDao(this);
+  
     /** @type {SalesforceSyncErrorDao} **/
     this.salesforceSyncErrors = new SalesforceSyncErrorDao(this);
   
     /** @type {ServiceTimeDao} **/
     this.serviceTimes = new ServiceTimeDao(this);
+  
+    /** @type {SubscriptionPlanDao} **/
+    this.subscriptionPlans = new SubscriptionPlanDao(this);
   
     /** @type {TagDao} **/
     this.tags = new TagDao(this);
@@ -252,9 +371,6 @@ class MFClient extends JRClient {
   
     /** @type {UserInviteDao} **/
     this.userInvites = new UserInviteDao(this);
-  
-    /** @type {VersionDao} **/
-    this.versions = new VersionDao(this);
   
   }
 

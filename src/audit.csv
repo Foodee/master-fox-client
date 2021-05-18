@@ -1,12 +1,54 @@
 Resource / Relationship, public, client, foodee
 
 
+  AccountingConsolidationConfiguration
+  get_related_resource
+      PaymentCard
+      Client
+  
+
+  get_related_resources
+      AccountingConsolidationRun
+  
+
+
+  AccountingConsolidationRun
+  get_related_resource
+      AccountingConsolidationConfiguration
+      AccountingLedgerItem
+      Client
+  
+
+  get_related_resources
+  
+
+
+  AccountingLedgerItem
+  get_related_resource
+      AccountingLedgerItem
+  
+
+  get_related_resources
+      AccountingLineItem
+      AccountingLedgerItem
+  
+
+
+  AccountingLineItem
+  get_related_resource
+      AccountingLedgerItem
+  
+
+  get_related_resources
+  
+
+
   AppConfiguration
   get_related_resource
   
 
   get_related_resources
-      Version
+      HistorianVersion
   
 
 
@@ -24,7 +66,9 @@ Resource / Relationship, public, client, foodee
       AreaClosure
       AreaClosure
       PromoCode
-      Version
+      Order
+      HistorianVersion
+      HistorianVersion
   
 
 
@@ -42,13 +86,16 @@ Resource / Relationship, public, client, foodee
       Area
       Location
       Contact
+      SubscriptionPlan
       User
       User
       User
       Company
       MealPlan
+      MealPlanningPreferenceProfile
       InvoicingTaxRate
       GiftbitCard
+      CurrenciesWallet
   
 
   get_related_resources
@@ -59,8 +106,14 @@ Resource / Relationship, public, client, foodee
       User
       Contact
       Order
+      Contact
       Team
-      Version
+      HistorianVersion
+      HistorianVersion
+      MealPlanningTemplate
+      MealPlanningInstance
+      MealPlanningReservation
+      ClientDiscount
       GiftbitGift
       GiftbitError
   
@@ -69,6 +122,7 @@ Resource / Relationship, public, client, foodee
   ClientDiscount
   get_related_resource
       Order
+      Owner
   
 
   get_related_resources
@@ -133,7 +187,35 @@ Resource / Relationship, public, client, foodee
   get_related_resources
       User
       Area
-      Version
+      HistorianVersion
+  
+
+
+  CurrenciesCurrency
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  CurrenciesTransaction
+  get_related_resource
+      Agent
+      Subject
+  
+
+  get_related_resources
+  
+
+
+  CurrenciesWallet
+  get_related_resource
+      Owner
+  
+
+  get_related_resources
+      Currencies::Transaction
   
 
 
@@ -255,6 +337,23 @@ Resource / Relationship, public, client, foodee
   
 
 
+  FeatureFlagDescription
+  get_related_resource
+  
+
+  get_related_resources
+      SubscriptionPlan
+  
+
+
+  FoodType
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
   GiftbitCard
   get_related_resource
   
@@ -284,10 +383,19 @@ Resource / Relationship, public, client, foodee
   get_related_resource
       User
       Order
+      AccountingLedgerItem
   
 
   get_related_resources
       OrderItem
+  
+
+
+  HistorianVersion
+  get_related_resource
+  
+
+  get_related_resources
   
 
 
@@ -299,7 +407,24 @@ Resource / Relationship, public, client, foodee
   
 
 
+  InvoicingLedgerItem
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
   InvoicingTaxRate
+  get_related_resource
+  
+
+  get_related_resources
+      Area
+  
+
+
+  Location
   get_related_resource
       Area
   
@@ -308,9 +433,20 @@ Resource / Relationship, public, client, foodee
   
 
 
-  Location
+  LogisticsArrivalEstimate
   get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  LogisticsDelivery
+  get_related_resource
+      User
+      Courier
       Area
+      Order
   
 
   get_related_resources
@@ -325,6 +461,168 @@ Resource / Relationship, public, client, foodee
 
   get_related_resources
       Order
+  
+
+
+  MealPlanningEvent
+  get_related_resource
+      MealPlanningInstance
+  
+
+  get_related_resources
+      Order
+      Restaurant
+      MealPlanningReservation
+      MealPlanningRestaurantConstraint
+      User
+  
+
+
+  MealPlanningInstance
+  get_related_resource
+      Client
+      Area
+      MealPlanningTemplate
+      MealPlanningPreferenceProfile
+      Order
+      User
+  
+
+  get_related_resources
+      MealPlanningReservation
+      MealPlanningEvent
+      MealPlanningRestaurantConstraint
+      User
+      Order
+      MealPlanningLogRecord
+  
+
+
+  MealPlanningLogRecord
+  get_related_resource
+      Planable
+  
+
+  get_related_resources
+  
+
+
+  MealPlanningPreferenceProfile
+  get_related_resource
+      Preferee
+  
+
+  get_related_resources
+      MealPlanningRequirement
+      MealPlanningRequirementGroup
+      Restaurant
+      Restaurant
+      Tag
+      Tag
+  
+
+
+  MealPlanningRequirement
+  get_related_resource
+      MealPlanningPreferenceProfile
+      MealPlanningRequirementGroup
+      MealPlanningRestaurantConstraint
+      Order
+  
+
+  get_related_resources
+      MealPlanningRequirementConstraint
+      Tag
+      DietaryTag
+      DietaryTag
+      DietaryTag
+      FoodType
+      MealType
+  
+
+
+  MealPlanningRequirementConstraint
+  get_related_resource
+      MealPlanningRequirement
+  
+
+  get_related_resources
+      MealType
+      FoodType
+      DietaryTag
+      DietaryTag
+      DietaryTag
+  
+
+
+  MealPlanningRequirementGroup
+  get_related_resource
+      MealPlanningPreferenceProfile
+  
+
+  get_related_resources
+      MealPlanningRequirement
+  
+
+
+  MealPlanningReservation
+  get_related_resource
+      Area
+      Client
+      Restaurant
+      MealPlanningInstance
+      MealPlanningEvent
+      Order
+  
+
+  get_related_resources
+  
+
+
+  MealPlanningRestaurantConstraint
+  get_related_resource
+      MealPlanningTemplate
+      MealPlanningInstance
+      MealPlanningEvent
+      MealPlanningRequirement
+  
+
+  get_related_resources
+      Restaurant
+  
+
+
+  MealPlanningSchedule
+  get_related_resource
+      MealPlanningTemplate
+  
+
+  get_related_resources
+      MealPlanningSkipPeriod
+  
+
+
+  MealPlanningTemplate
+  get_related_resource
+      Client
+      Order
+      Area
+      MealPlanningPreferenceProfile
+      MealPlanningSchedule
+      User
+  
+
+  get_related_resources
+      MealPlanningInstance
+      MealPlanningRestaurantConstraint
+  
+
+
+  MealType
+  get_related_resource
+  
+
+  get_related_resources
   
 
 
@@ -349,6 +647,8 @@ Resource / Relationship, public, client, foodee
 
   get_related_resources
       MenuItem
+      MealType
+      FoodType
   
 
 
@@ -360,6 +660,8 @@ Resource / Relationship, public, client, foodee
 
   get_related_resources
       DietaryTag
+      MealType
+      FoodType
       MenuOptionGroup
   
 
@@ -385,6 +687,15 @@ Resource / Relationship, public, client, foodee
   
 
 
+  NotificationLog
+  get_related_resource
+      Order
+  
+
+  get_related_resources
+  
+
+
   Order
   get_related_resource
       Area
@@ -400,24 +711,40 @@ Resource / Relationship, public, client, foodee
       User
       Location
       Location
-      ClientDiscount
-      RestaurantDiscount
       Menu
+      MealPlanningRequirement
       Location
       GiftbitError
+      InvoicingLedgerItem
+      InvoicingLedgerItem
+      AccountingLedgerItem
+      AccountingLedgerItem
       ClientOrderInvoice
       RestaurantOrderInvoice
+      LogisticsArrivalEstimate
   
 
   get_related_resources
+      ClientDiscount
+      RestaurantDiscount
       EmailMessage
       DeliveryCase
       DeskCase
-      Version
+      HistorianVersion
+      HistorianVersion
       Restaurant
       RestaurantVote
+      Team
+      User
+      User
+      GroupOrderMember
+      User
+      User
       GroupOrderMember
       OrderItem
+      AccountingLedgerItem
+      SalesforceCase
+      NotificationLog
   
 
 
@@ -478,11 +805,19 @@ Resource / Relationship, public, client, foodee
 
   get_related_resources
       Order
-      Version
+      HistorianVersion
   
 
 
   QualifyingQuestion
+  get_related_resource
+  
+
+  get_related_resources
+  
+
+
+  ReleaseNote
   get_related_resource
   
 
@@ -495,23 +830,29 @@ Resource / Relationship, public, client, foodee
       Location
       Contact
       User
+      Menu
   
 
   get_related_resources
+      User
+      Contact
+      HistorianVersion
+      HistorianVersion
+      PromoCode
+      MealPlanningRestaurantConstraint
+      RestaurantRanking
       Order
       RestaurantCapacityTranche
       ServiceTime
       PickupLocation
-      User
-      Contact
       DietaryTag
+      FoodType
+      MealType
       Tag
       Area
       Menu
       RestaurantVote
       RestaurantClosure
-      Version
-      PromoCode
   
 
 
@@ -550,6 +891,15 @@ Resource / Relationship, public, client, foodee
   
 
 
+  RestaurantRanking
+  get_related_resource
+      Restaurant
+  
+
+  get_related_resources
+  
+
+
   RestaurantVote
   get_related_resource
       Order
@@ -563,6 +913,15 @@ Resource / Relationship, public, client, foodee
   Role
   get_related_resource
       User
+  
+
+  get_related_resources
+  
+
+
+  SalesforceCase
+  get_related_resource
+      Order
   
 
   get_related_resources
@@ -586,6 +945,16 @@ Resource / Relationship, public, client, foodee
   
 
 
+  SubscriptionPlan
+  get_related_resource
+  
+
+  get_related_resources
+      Client
+      FeatureFlagDescription
+  
+
+
   Tag
   get_related_resource
   
@@ -601,12 +970,16 @@ Resource / Relationship, public, client, foodee
 
   get_related_resources
       User
+      Order
+      MealPlanningPreferenceProfile
   
 
 
   User
   get_related_resource
+      Client
       CommunicationPreference
+      MealPlanningPreferenceProfile
   
 
   get_related_resources
@@ -616,10 +989,14 @@ Resource / Relationship, public, client, foodee
       Order
       Courier
       Client
+      Area
       Role
       PaymentCard
       Team
-      Version
+      HistorianVersion
+      HistorianVersion
+      Order
+      MealPlanningEvent
   
 
 
@@ -638,14 +1015,6 @@ Resource / Relationship, public, client, foodee
       Team
       Courier
       User
-  
-
-  get_related_resources
-  
-
-
-  Version
-  get_related_resource
   
 
   get_related_resources
